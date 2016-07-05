@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  wood: 1
+  gold: 1
+  storage: 1
+  last_update: MyString
+
+two:
+  user_id: 
+  wood: 1
+  gold: 1
+  storage: 1
+  last_update: MyString

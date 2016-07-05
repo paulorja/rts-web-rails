@@ -1,0 +1,10 @@
+- if flash[:notice]
+  .flash-notice= flash[:notice]
+
+- if flash[:alert]
+  .flash-alert
+    - if flash[:alert].is_a? Array
+      - flash[:alert].each do |m|
+        %li= m
+    - else
+      = flash[:alert]

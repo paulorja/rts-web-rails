@@ -1,0 +1,22 @@
+
+.sprite {
+  width: 64px;
+  height: 64px;
+  background-color:blue;
+  background-size: 100% 100%;
+  float:left;
+  padding: 0px;
+  margin: 0px;
+}
+
+.sprite-grass {
+  background-image: url(image_path('sprites/world/terrain/grass.png'));
+}
+
+.sprite-water {
+  background-image: url(image_path('sprites/world/terrain/water.png'));
+}
+
+.sprite-tree {
+  background-image: url(image_path('sprites/world/terrain/tree.png'));
+}

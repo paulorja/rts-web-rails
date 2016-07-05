@@ -1,0 +1,19 @@
+#game-content-left
+
+  - @cells.each do |cell|
+    .sprite{class: get_terrain(cell.terrain_code)[:css_class]}
+      = cell.x.to_s + '-' + cell.y.to_s
+#game-content-right
+  %table
+    %tr
+      %td
+      %td= link_to '/\\', world_zoom_c_path(@x, @y.to_i+1)
+      %td
+    %tr
+      %td= link_to '<', world_zoom_c_path(@x.to_i-1, @y)
+      %td
+      %td= link_to '>', world_zoom_c_path(@x.to_i+1, @y)
+    %tr
+      %td
+      %td= link_to 'V', world_zoom_c_path(@x, @y.to_i-1)
+      %td

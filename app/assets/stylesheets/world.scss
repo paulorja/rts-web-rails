@@ -1,0 +1,23 @@
+// Place all the styles related to the World controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#world_selection {
+  width:16px;
+  height:16px;
+  border: dotted 2px red;
+  position: absolute;
+}
+
+#world_selection:hover {
+  cursor:none;
+}
+
+#world {
+  width:512px;
+  height: 512px;
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-image:url(/assets/world.bmp);
+
+}

@@ -1,0 +1,5 @@
+- if current_user
+  = link_to('World', world_path)
+
+  = '('+current_user.login+')'
+  = link_to('Logout', '/logout')

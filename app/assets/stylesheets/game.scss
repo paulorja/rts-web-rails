@@ -1,0 +1,58 @@
+body {
+  margin: 0px auto;
+  background: #9ea0a3;
+  font-family: sans-serif;
+}
+
+#game-container {
+  background:black;
+  width: 752px;
+  height: 572px;
+  margin: 0px auto;
+}
+
+#game-header {
+  height: 30px;
+  background: #666666;
+}
+
+#game-content {
+  height: 512px;
+  background: yellow;
+}
+
+#game-content-left {
+  float: left;
+  width: 512px;
+  height: 100%;
+  background: red;
+}
+
+#game-content-right {
+  float: left;
+  width: 240px;
+  height: 100%;
+}
+
+#game-footer {
+  height: 30px;
+  background: #666666;
+}
+
+.flash-notice, .flash-alert {
+  position: absolute;
+  padding: 5px;
+  border-radius: 5px;
+  left: 5px;
+  top: 5px;
+}
+
+.flash-notice {
+  background: lightgreen;
+  border: darkgreen 2px solid;
+}
+
+.flash-alert {
+  background: indianred;
+  border: darkred 2px solid;
+}

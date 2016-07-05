@@ -1,0 +1,20 @@
+#game-content-left
+
+#game-content-right
+  %h4 Login
+  = form_for :user, url: 'login', html: { class: 'form-user' } do |u|
+    = u.label :login
+    = u.text_field :login
+    = u.label :password
+    = u.password_field :password
+    = u.submit 'Submit!'
+
+  %h4 Register
+  = form_for :user, url: 'register', html: { class: 'form-user' } do |u|
+    = u.label :login
+    = u.text_field :login
+    = u.label :password
+    = u.password_field :password
+    = u.label :password_confirmation
+    = u.password_field :password_confirmation
+    = u.submit 'Submit!'
