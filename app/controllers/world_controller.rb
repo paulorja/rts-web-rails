@@ -11,7 +11,10 @@ class WorldController < ApplicationController
 
   end
 
-  def world_detail
+  def cell_actions
+    @cell = Cell.find(params[:cell_id])
+
+    render file: 'world/cell_actions', layout: false
   end
 
   private

@@ -8,9 +8,7 @@
 }
 
 .sprite {
-  background-color:blue;
   background-size: 100% 100%;
-
   z-index: 1;
 }
 
@@ -42,4 +40,8 @@
 
 .sprite-diamond {
   background-image: url(image_path('sprites/world/terrain/diamond.png'));
+}
+
+.sprite-house {
+  background-image: url(image_path('sprites/world/building/house.png'));
 }

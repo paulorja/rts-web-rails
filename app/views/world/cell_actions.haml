@@ -1,0 +1,7 @@
+- terrain = Terrain.get_terrain(@cell.terrain_code)
+
+.content-title= terrain[:name]
+= 'x: '+@cell.x.to_s+' y: '+@cell.y.to_s
+%br
+- if terrain[:code] == TERRAIN[:grass][:code]
+  = link_to 'Construir Casa', '#'

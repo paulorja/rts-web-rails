@@ -4,5 +4,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: {maximum: 16, minimum: 4}
   validates :password, confirmation: true
 
+
   enum user_type: [:player, :admin]
+
+  has_one :user_data, dependent: :destroy
 end

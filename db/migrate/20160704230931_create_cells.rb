@@ -4,7 +4,7 @@ class CreateCells < ActiveRecord::Migration
       t.integer :x
       t.integer :y
       t.integer :terrain_code
-
+      t.integer :building_code
     end
   end
 end

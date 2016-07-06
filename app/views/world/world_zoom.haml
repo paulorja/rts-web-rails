@@ -1,18 +1,22 @@
 #game-content-left
 
-  #cell-layer-1.cell-layer
+  #cell-layer-1.cell_layer
     - @cells.each do |cell|
       .sprite{class: Terrain.get_terrain(cell.terrain_code)[:css_class]}
 
-  #cell-layer-2
-    = #buildings
+  #cell-layer-2.cell_layer
+    - @cells.each do |cell|
+      - unless cell.building_code.nil?
+        .sprite{class: Building.get_building(cell.building_code)[:css_class]}
+      - else
+        .sprite
 
   #cell-layer-1.cell_layer
     - @cells.each do |cell|
-      .link-sprite{obj_name: 'grama'}
+      .link-sprite{obj_id: cell.id}
 
 #game-content-right
-  %div Navegar Pelo Mapa
+  .content-title Navegar Pelo Mapa
   %table
     %tr
       %td
@@ -26,3 +30,5 @@
       %td
       %td= link_to 'V', world_zoom_c_path(@x, @y.to_i+1)
       %td
+
+  .content-selected-sprite{style: 'display:none;'}

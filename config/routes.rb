@@ -10,12 +10,15 @@ Rails.application.routes.draw do
 
   #world
 
-  #world
-
   get 'world'            => 'world#world'
   get 'world_zoom'       => 'world#world_zoom'
   get 'world_zoom/:x/:y', to: 'world#world_zoom', as: 'world_zoom_c'
   get 'world/:id'        => 'world#world_terrian'
+
+
+  #terrain
+
+  get '/cell_actions/:cell_id', to: 'world#cell_actions'
 
   #admin
 

@@ -16,6 +16,8 @@ class UserController < ApplicationController
     @user.user_type = User.user_types[:player]
 
     if @user.save
+      UserData.create({user_id: @user.id, wood: 50000, gold: 4500})
+
       session['current_user_id'] = @user.id
       redirect_to world_path
     else

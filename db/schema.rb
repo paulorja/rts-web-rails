@@ -14,9 +14,10 @@
 ActiveRecord::Schema.define(version: 20160704230931) do
 
   create_table "cells", force: :cascade do |t|
-    t.integer "x",            limit: 4
-    t.integer "y",            limit: 4
-    t.integer "terrain_code", limit: 4
+    t.integer "x",             limit: 4
+    t.integer "y",             limit: 4
+    t.integer "terrain_code",  limit: 4
+    t.integer "building_code", limit: 4
   end
 
   create_table "events", force: :cascade do |t|
