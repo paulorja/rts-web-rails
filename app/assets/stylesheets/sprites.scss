@@ -1,12 +1,23 @@
 
-.sprite {
+.sprite, .link-sprite {
   width: 64px;
   height: 64px;
-  background-color:blue;
-  background-size: 100% 100%;
   float:left;
   padding: 0px;
   margin: 0px;
+}
+
+.sprite {
+  background-color:blue;
+  background-size: 100% 100%;
+
+  z-index: 1;
+}
+
+.sprite-selected {
+  z-index: 2;
+  position: relative;
+  outline: 2px dotted red;
 }
 
 .sprite-grass {
@@ -19,4 +30,16 @@
 
 .sprite-tree {
   background-image: url(image_path('sprites/world/terrain/tree.png'));
+}
+
+.sprite-iron {
+  background-image: url(image_path('sprites/world/terrain/iron.png'));
+}
+
+.sprite-gold {
+  background-image: url(image_path('sprites/world/terrain/gold.png'));
+}
+
+.sprite-diamond {
+  background-image: url(image_path('sprites/world/terrain/diamond.png'));
 }
