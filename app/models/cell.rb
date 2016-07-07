@@ -1,5 +1,7 @@
 class Cell < ActiveRecord::Base
 
+  belongs_to :user
+
   def self.world_zoom(x, y)
     x = x.to_i
     y = y.to_i
@@ -12,8 +14,6 @@ class Cell < ActiveRecord::Base
     max_y = y+range-1
 
     Cell.where('x > ? and x < ? and y > ? and y < ?', min_x, max_x, min_y, max_y).order('y ASC, x ASC')
-
-
   end
 
 end

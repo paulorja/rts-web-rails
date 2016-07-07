@@ -3,8 +3,10 @@ class CreateCells < ActiveRecord::Migration
     create_table :cells do |t|
       t.integer :x
       t.integer :y
-      t.integer :terrain_code
-      t.integer :building_code
+      t.integer :terrain_code, default: 0
+      t.integer :building_code, default: 0
+      t.integer :building_level, default: 0
+      t.integer :user_id, default: 0
     end
   end
 end

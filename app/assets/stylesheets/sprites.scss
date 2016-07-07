@@ -1,22 +1,31 @@
 
 .sprite, .link-sprite {
-  width: 64px;
-  height: 64px;
   float:left;
   padding: 0px;
   margin: 0px;
 }
 
 .sprite {
+  width: 64px;
+  height: 64px;
   background-size: 100% 100%;
   z-index: 1;
 }
+
+.link-sprite {
+  width: 62px;
+  height: 62px;
+  border: solid 1px transparent;
+}
+
 
 .sprite-selected {
   z-index: 2;
   position: relative;
   outline: 2px dotted red;
 }
+
+/* TERRAINS */
 
 .sprite-grass {
   background-image: url(image_path('sprites/world/terrain/grass.png'));
@@ -42,6 +51,16 @@
   background-image: url(image_path('sprites/world/terrain/diamond.png'));
 }
 
+/* BUILDINGS */
+
 .sprite-house {
   background-image: url(image_path('sprites/world/building/house.png'));
+}
+
+.sprite-road {
+  background-image: url(image_path('sprites/world/building/road.png'));
+}
+
+.sprite-town-center {
+  background-image: url(image_path('sprites/world/building/town_center.png'));
 }

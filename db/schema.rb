@@ -14,10 +14,12 @@
 ActiveRecord::Schema.define(version: 20160704230931) do
 
   create_table "cells", force: :cascade do |t|
-    t.integer "x",             limit: 4
-    t.integer "y",             limit: 4
-    t.integer "terrain_code",  limit: 4
-    t.integer "building_code", limit: 4
+    t.integer "x",              limit: 4
+    t.integer "y",              limit: 4
+    t.integer "terrain_code",   limit: 4, default: 0
+    t.integer "building_code",  limit: 4, default: 0
+    t.integer "building_level", limit: 4, default: 0
+    t.integer "user_id",        limit: 4, default: 0
   end
 
   create_table "events", force: :cascade do |t|
@@ -45,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160704230931) do
     t.string   "email",      limit: 255
     t.string   "password",   limit: 255
     t.integer  "user_type",  limit: 4
+    t.string   "color",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

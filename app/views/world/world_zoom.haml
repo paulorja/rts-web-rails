@@ -6,14 +6,18 @@
 
   #cell-layer-2.cell_layer
     - @cells.each do |cell|
-      - unless cell.building_code.nil?
-        .sprite{class: Building.get_building(cell.building_code)[:css_class]}
+      - building = Building.get_building(cell.building_code)
+      - if building != nil
+        .sprite{class: building[:css_class]}
       - else
         .sprite
 
   #cell-layer-1.cell_layer
     - @cells.each do |cell|
-      .link-sprite{obj_id: cell.id}
+      - if cell.user.nil?
+        .link-sprite{obj_id: cell.id}
+      - else
+        .link-sprite{obj_id: cell.id, style: "border-color: #{cell.user.color}"}
 
 #game-content-right
   .content-title Navegar Pelo Mapa

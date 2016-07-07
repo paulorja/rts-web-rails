@@ -16,7 +16,7 @@ class UserController < ApplicationController
     @user.user_type = User.user_types[:player]
 
     if @user.save
-      UserData.create({user_id: @user.id, wood: 50000, gold: 4500})
+      @user.create_user_data
 
       session['current_user_id'] = @user.id
       redirect_to world_path
@@ -35,6 +35,6 @@ class UserController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:login, :password, :password_confirmation)
+      params.require(:user).permit(:login, :password, :password_confirmation, :color)
     end
 end

@@ -4,17 +4,31 @@
   %h4 Login
   = form_for :user, url: 'login', html: { class: 'form-user' } do |u|
     = u.label :login
+    %br
     = u.text_field :login
+    %br
     = u.label :password
+    %br
     = u.password_field :password
+    %br
     = u.submit 'Submit!'
 
   %h4 Register
   = form_for :user, url: 'register', html: { class: 'form-user' } do |u|
     = u.label :login
+    %br
     = u.text_field :login
+    %br
     = u.label :password
+    %br
     = u.password_field :password
+    %br
     = u.label :password_confirmation
+    %br
     = u.password_field :password_confirmation
+    %br
+    = u.label :color
+    %br
+    = u.color_field :color
+    %br
     = u.submit 'Submit!'

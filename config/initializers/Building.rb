@@ -3,6 +3,16 @@ BUILDING = {
         name: 'Casa',
         code: 1,
         css_class: 'sprite-house'
+    },
+    road: {
+        name: 'Estrada',
+        code: 2,
+        css_class: 'sprite-road'
+    },
+    town_center: {
+        name: 'Centro de Cidade',
+        code: 3,
+        css_class: 'sprite-town-center'
     }
 }
 
@@ -14,7 +24,7 @@ class Building
         return b[1]
       end
     end
-    raise 'BUILDING NOT FOUND'
+    nil
   end
 end
 
