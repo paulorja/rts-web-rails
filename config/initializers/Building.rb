@@ -2,17 +2,33 @@ BUILDING = {
     house: {
         name: 'Casa',
         code: 1,
-        css_class: 'sprite-house'
+        css_class: 'sprite-house',
+        levels: [
+            {
+                wood: 50,
+                gold: 10
+            },
+            {
+                wood: 150,
+                gold: 50
+            },
+            {
+                wood: 320,
+                gold: 90
+            }
+        ]
     },
     road: {
         name: 'Estrada',
         code: 2,
-        css_class: 'sprite-road'
+        css_class: 'sprite-road',
+        terrain: :grass
     },
     town_center: {
         name: 'Centro de Cidade',
         code: 3,
-        css_class: 'sprite-town-center'
+        css_class: 'sprite-town-center',
+        terrain: :grass
     }
 }
 

@@ -13,7 +13,8 @@
 
 
 - if building.nil?
-  - if terrain[:code] == TERRAIN[:grass][:code]
-    = link_to 'Construir Casa', '#'
-- else
+  - terrain[:buildings].each do |b|
+    .build-container
+      .build-icon{class: BUILDING[b][:css_class]}
+      = link_to 'Construir '+BUILDING[b][:name], build_path(@cell.x, @cell.y, BUILDING[b][:code])
 

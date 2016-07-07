@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'world_zoom/:x/:y', to: 'world#world_zoom', as: 'world_zoom_c'
   get 'world/:id'        => 'world#world_terrian'
 
+  get 'world_zoom/:x/:y/build/:building_code', to: 'world#build', as: 'build'
+
 
   #terrain
 
@@ -24,4 +26,6 @@ Rails.application.routes.draw do
 
   get '/admin',             to: 'admin#home'
   get '/admin/reset_world', to: 'admin#reset_world'
+
+
 end

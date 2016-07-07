@@ -64,3 +64,21 @@ body {
   text-align: center;
   font-family: "Helvetica Neue", "Arial", sans-serif;
 }
+
+
+.build-container {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border-top: saddlebrown solid 1px;
+}
+
+.build-icon {
+  width: 28px;
+  height: 28px;
+  background-size: 100% 100%;
+  z-index: 1;
+  float:left;
+  padding: 0px;
+  margin: 0px;
+}
