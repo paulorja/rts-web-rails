@@ -3,9 +3,8 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.integer :start_time
       t.integer :end_time
-      t.integer :type
+      t.integer :event_type
 
-      t.timestamps null: false
     end
   end
 end

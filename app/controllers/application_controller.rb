@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
+  before_action :resolve_events
 
   def current_user
     User.where('id = ?', session['current_user_id']).first
@@ -18,6 +19,12 @@ class ApplicationController < ActionController::Base
     if current_user.nil? or current_user.admin? == false
       redirect_to root_path
     end
+  end
+
+  include WorldHelper
+
+  def resolve_events
+    Event.resolve_events
   end
 
 end

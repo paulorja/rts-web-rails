@@ -6,6 +6,7 @@
     = terrain[:name]
   - else
     = building[:name]
+    = " nível #{@cell.building_level}"
     = '('+@cell.user.login+')'
 
 = 'x: '+@cell.x.to_s+' y: '+@cell.y.to_s

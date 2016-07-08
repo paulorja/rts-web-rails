@@ -12,9 +12,9 @@ class AdminController < ApplicationController
 
     conn = ActiveRecord::Base.connection
 
-    conn.execute 'TRUNCATE TABLE cells'
+    #conn.execute 'TRUNCATE TABLE cells'
 
-    User.where('user_type = ?', 0).destroy_all
+    #User.where('user_type = ?', 0).destroy_all
 
     WorldCreation.new(conn)
 

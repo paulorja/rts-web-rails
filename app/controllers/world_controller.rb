@@ -19,11 +19,19 @@ class WorldController < ApplicationController
   def build
     x = params[:x]
     y = params[:y]
+    building_code = params[:building_code]
 
+    cell = Cell.where('x = ? and y = ?', x, y).first
 
-    @cell = Cell.where('x = ? and y = ?', x, y).first
+    event = Event.new()
+    event.start_time = Time.now.to_i
+    event.end_time = Time.now.to_i + 5
+    event.event_type = :building_up
+    event.save
 
-    @cell.update_attributes({building_code: params[:building_code], user_id: current_user.id})
+    EventBuildingUp.create({cell_id: cell.id, event_id: event.id})
+
+    cell.update_attributes({building_code: building_code, user_id: current_user.id})
 
     update_world_pixel(x, y, current_user.color)
 
