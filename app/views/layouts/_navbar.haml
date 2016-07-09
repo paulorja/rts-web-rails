@@ -1,11 +1,22 @@
 - if current_user
-  = link_to('World', world_path)
-
-  = '('+current_user.login+')'
-  = link_to('Logout', '/logout')
+  = link_to(world_path) do
+    .navbar-item.world-button
 
 
-  Wood:
-  = current_user.user_data.wood
-  Gold:
-  = current_user.user_data.gold
+
+
+- if current_user
+  = render 'layouts/navbar_recourse', { amount: current_user.user_data.wood, recourse: :wood, max: current_user.user_data.storage }
+  = render 'layouts/navbar_recourse', { amount: current_user.user_data.gold, recourse: :stone, max: current_user.user_data.storage }
+  = render 'layouts/navbar_recourse', { amount: current_user.user_data.gold, recourse: :gold, max: current_user.user_data.storage }
+  = render 'layouts/navbar_recourse', { amount: current_user.user_data.gold, recourse: :diamond, max: current_user.user_data.storage }
+
+
+  .navbar-item{style: 'float:right'}
+
+    = current_user.login
+    = link_to('X', '/logout')
+
+
+
+

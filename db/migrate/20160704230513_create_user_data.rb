@@ -4,6 +4,8 @@ class CreateUserData < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.integer :wood
       t.integer :gold
+      t.integer :diamond
+      t.integer :stone
       t.integer :storage
       t.string :last_update
 

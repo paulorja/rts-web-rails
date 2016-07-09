@@ -1,0 +1,45 @@
+
+.world-button {
+  width:50px;
+  background-image: url('sprites/icons/world.png');
+  background-repeat: no-repeat;
+}
+
+/* NAVBAR RECOURSE */
+
+.recourse-container {
+  width: 90px;
+  font-size: 12px;
+}
+
+.recourse-icon {
+  float: left;
+  height: 30px;
+  width: 30px;
+}
+
+.recourse-icon img {
+  float: left;
+  margin: 3px;
+}
+
+.recourse-label {
+  width: 60px;
+  float: right;
+  height: 14px;
+  padding-top: 4px;
+  text-align: center;
+}
+
+.recourse-progress-bar {
+  width: 60px;
+  height: 4px;
+  background: red;
+  float: right;
+}
+
+.recourse-progress-bar-completed {
+  height: 4px;
+  background: green;
+  float: left;
+}

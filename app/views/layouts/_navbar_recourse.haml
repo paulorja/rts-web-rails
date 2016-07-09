@@ -1,0 +1,26 @@
+- case recourse
+  - when :wood
+    - title = 'Wood'
+    - sprite = '/icons/wood'
+  - when :gold
+    - title = 'Gold'
+    - sprite = '/icons/gold'
+  - when :diamond
+    - title = 'Diamond'
+    - sprite = '/icons/diamond'
+  - when :stone
+    - title = 'Stone'
+    - sprite = '/icons/stone'
+  -else
+    - title = fuck
+
+
+.recourse-container.navbar-item
+  .recourse-icon
+    = image_tag "sprites#{sprite}"
+  .recourse-label
+    = amount.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1 ")
+  .recourse-progress-bar
+    - width = amount.to_f/max.to_f*100
+    - width = 100 if width>100
+    .recourse-progress-bar-completed{style: "width: #{width.to_s}%"}
