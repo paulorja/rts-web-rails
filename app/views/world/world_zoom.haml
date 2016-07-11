@@ -8,7 +8,7 @@
     - @cells.each do |cell|
       - building = Building.get_building(cell.building_code)
       - if building != nil
-        .sprite{class: building[:css_class]}
+        .sprite{class: "#{building[:css_class]}-#{cell.building_level}"}
       - else
         .sprite
 
@@ -21,18 +21,6 @@
 
 #game-content-right
   .content-title Navegar Pelo Mapa
-  %table
-    %tr
-      %td
-      %td= link_to '/\\', world_zoom_c_path(@x, @y.to_i-1)
-      %td
-    %tr
-      %td= link_to '<', world_zoom_c_path(@x.to_i-1, @y)
-      %td
-      %td= link_to '>', world_zoom_c_path(@x.to_i+1, @y)
-    %tr
-      %td
-      %td= link_to 'V', world_zoom_c_path(@x, @y.to_i+1)
-      %td
+  = render 'world/world_navigation'
 
   .content-selected-sprite{style: 'display:none;'}

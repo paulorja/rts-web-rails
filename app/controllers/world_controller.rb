@@ -7,7 +7,8 @@ class WorldController < ApplicationController
   def world_zoom
     set_x_y
 
-    @cells = Cell.world_zoom(@x, @y)
+    @cells = Cell.includes(:user).world_zoom(@x, @y)
+
   end
 
   def cell_actions
@@ -25,15 +26,15 @@ class WorldController < ApplicationController
 
     event = Event.new()
     event.start_time = Time.now.to_i
-    event.end_time = Time.now.to_i + 5
+    event.end_time = Time.now.to_i + 25
     event.event_type = :building_up
     event.save
 
     EventBuildingUp.create({cell_id: cell.id, event_id: event.id})
 
-    cell.update_attributes({building_code: building_code, user_id: current_user.id})
+    cell.update_attributes({building_code: building_code, user_id: @current_user.id})
 
-    update_world_pixel(x, y, current_user.color)
+    update_world_pixel(x, y, @current_user.color)
 
 
     redirect_to :back
