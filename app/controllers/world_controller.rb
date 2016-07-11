@@ -23,18 +23,27 @@ class WorldController < ApplicationController
     building_code = params[:building_code]
 
     cell = Cell.where('x = ? and y = ?', x, y).first
+    building = Building.get_building(building_code.to_i)
+    terrain = Terrain.get_terrain(cell.terrain_code)
 
-    event = Event.new()
-    event.start_time = Time.now.to_i
-    event.end_time = Time.now.to_i + 25
-    event.event_type = :building_up
-    event.save
+    recourses_ok = false
+    terrain_ok = false
+    road_ok = true
 
-    EventBuildingUp.create({cell_id: cell.id, event_id: event.id})
+    if road_ok and terrain_ok and recourses_ok
+      event = Event.new()
+      event.start_time = Time.now.to_i
+      event.end_time = Time.now.to_i + building[:levels][1][:time]
+      event.event_type = :building_up
+      event.save
 
-    cell.update_attributes({building_code: building_code, user_id: @current_user.id})
+      EventBuildingUp.create({cell_id: cell.id, event_id: event.id})
 
-    update_world_pixel(x, y, @current_user.color)
+      cell.update_attributes({building_code: building_code, user_id: @current_user.id})
+
+      update_world_pixel(x, y, @current_user.color)
+    end
+
 
 
     redirect_to :back

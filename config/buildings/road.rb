@@ -4,8 +4,20 @@
     css_class: 'sprite-road',
     terrain: :grass,
     levels: [
-      {
-
-      }
+        {
+        },
+        {
+            stone: 150,
+            wood: 25,
+            time: 15
+        },
+        {
+            wood: 150,
+            gold: 50
+        },
+        {
+            wood: 320,
+            gold: 90
+        }
     ]
 }

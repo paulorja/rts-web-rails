@@ -7,7 +7,8 @@
         },
         {
             wood: 50,
-            gold: 10
+            gold: 10,
+            time: 22
         },
         {
             wood: 150,

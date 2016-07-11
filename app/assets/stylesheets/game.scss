@@ -73,17 +73,40 @@ body {
 
 .build-container {
   position: relative;
-  width: 100%;
+  width: 230px;
   height: 30px;
-  border-top: saddlebrown solid 1px;
+  margin: 5px;
 }
 
 .build-icon {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   background-size: 100% 100%;
   z-index: 1;
   float:left;
   padding: 0px;
   margin: 0px;
+  border-radius: 100%;
+  border: solid 2px black;
+}
+
+.build-label {
+  width: 195px;
+  height: 15px;
+  float: right;
+}
+
+.build-label a {
+  color: #292789;
+  text-decoration: none;
+}
+
+.build-label a:hover {
+  text-decoration: underline;
+}
+
+.build-recourses {
+  height: 15px;
+  width: 195px;
+  float: right;
 }

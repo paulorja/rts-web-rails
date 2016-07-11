@@ -16,6 +16,20 @@
 - if building.nil?
   - terrain[:buildings].each do |b|
     .build-container
-      .build-icon{class: BUILDING[b][:css_class]}
-      = link_to 'Construir '+BUILDING[b][:name], build_path(@cell.x, @cell.y, BUILDING[b][:code])
-
+      .build-icon{class: "#{BUILDING[b][:css_class]}-1"}
+      .build-label
+        = link_to 'Construir ', build_path(@cell.x, @cell.y, BUILDING[b][:code])
+      .build-recourses
+        - if BUILDING[b][:levels][1][:wood] and BUILDING[b][:levels][1][:wood].to_i > 0
+          = image_tag 'sprites/icons/wood.png', width: 12
+          = BUILDING[b][:levels][1][:wood]
+        - if BUILDING[b][:levels][1][:stone] and BUILDING[b][:levels][1][:stone].to_i > 0
+          = image_tag 'sprites/icons/stone.png', width: 12
+          = BUILDING[b][:levels][1][:stone]
+        - if BUILDING[b][:levels][1][:gold] and BUILDING[b][:levels][1][:gold].to_i > 0
+          = image_tag 'sprites/icons/gold.png', width: 12
+          = BUILDING[b][:levels][1][:gold]
+        - if BUILDING[b][:levels][1][:diamond] and BUILDING[b][:levels][1][:diamond].to_i > 0
+          = image_tag 'sprites/icons/diamond.png', width: 12
+          = BUILDING[b][:levels][1][:diamond]
+        = "Time: #{BUILDING[b][:levels][1][:time]}"
