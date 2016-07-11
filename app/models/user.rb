@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
 
     require 'rmagick'
 
+    
 
     img = Magick::Image.read('app/assets/images/world.bmp')[0]
-
     img.pixel_color(1, 1, 'rgb(254, 254, 254)')
 
     img.write('app/assets/images/world.bmp')
