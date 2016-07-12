@@ -3,8 +3,8 @@ class Cell < ActiveRecord::Base
   belongs_to :user
 
 
-  def arredores(range)
-    Cell.where('x >= ? and y >= ? and x <= ? and y <= ?', x-range, y-range, x+range, y+range).order('y ASC, x ASC')
+  def is_road
+    true if building_code == BUILDING[:road][:code]
   end
 
   def have_building
@@ -25,6 +25,29 @@ class Cell < ActiveRecord::Base
 
   def is_diamond
     true if terrain_code == TERRAIN[:diamond][:code]
+  end
+
+  def arredores(range)
+    Cell.where('x >= ? and y >= ? and x <= ? and y <= ?', x-range, y-range, x+range, y+range).order('y ASC, x ASC')
+  end
+
+  def terrain_can_build(terrain, building)
+    terrain[:buildings].each do |b|
+      true if b == building[:code]
+    end
+
+    false
+  end
+
+  def have_user_road(user_id)
+    arredores = arredores(1)
+
+    true if arredores[1].is_road and arredores[1].user_id == user_id
+    true if arredores[3].is_road and arredores[3].user_id == user_id
+    true if arredores[5].is_road and arredores[5].user_id == user_id
+    true if arredores[7].is_road and arredores[7].user_id == user_id
+
+    false
   end
 
   def self.world_zoom(x, y)

@@ -9,7 +9,6 @@ class EventBuildingUp < ActiveRecord::Base
     cell.building_level = cell.building_level + 1
 
     cell.save
-
     e.destroy
     event_building_up.destroy
   end

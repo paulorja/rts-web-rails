@@ -15,21 +15,23 @@
 
 - if building.nil?
   - terrain[:buildings].each do |b|
+    - building = Building.get_building(b)
+
     .build-container
-      .build-icon{class: "#{BUILDING[b][:css_class]}-1"}
+      .build-icon{class: "#{building[:css_class]}-1"}
       .build-label
-        = link_to 'Construir ', build_path(@cell.x, @cell.y, BUILDING[b][:code])
+        = link_to 'Construir ', build_path(@cell.x, @cell.y, building[:code])
       .build-recourses
-        - if BUILDING[b][:levels][1][:wood] and BUILDING[b][:levels][1][:wood].to_i > 0
+        - if building[:levels][1][:wood] and building[:levels][1][:wood].to_i > 0
           = image_tag 'sprites/icons/wood.png', width: 12
-          = BUILDING[b][:levels][1][:wood]
-        - if BUILDING[b][:levels][1][:stone] and BUILDING[b][:levels][1][:stone].to_i > 0
+          = building[:levels][1][:wood]
+        - if building[:levels][1][:stone] and building[:levels][1][:stone].to_i > 0
           = image_tag 'sprites/icons/stone.png', width: 12
-          = BUILDING[b][:levels][1][:stone]
-        - if BUILDING[b][:levels][1][:gold] and BUILDING[b][:levels][1][:gold].to_i > 0
+          = building[:levels][1][:stone]
+        - if building[:levels][1][:gold] and building[:levels][1][:gold].to_i > 0
           = image_tag 'sprites/icons/gold.png', width: 12
-          = BUILDING[b][:levels][1][:gold]
-        - if BUILDING[b][:levels][1][:diamond] and BUILDING[b][:levels][1][:diamond].to_i > 0
+          = building[:levels][1][:gold]
+        - if building[:levels][1][:diamond] and building[:levels][1][:diamond].to_i > 0
           = image_tag 'sprites/icons/diamond.png', width: 12
-          = BUILDING[b][:levels][1][:diamond]
-        = "Time: #{BUILDING[b][:levels][1][:time]}"
+          = building[:levels][1][:diamond]
+        = "Time: #{building[:levels][1][:time]}"
