@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20160708015800) do
     t.string   "email",      limit: 255
     t.string   "password",   limit: 255
     t.integer  "user_type",  limit: 4
+    t.integer  "castle_x",   limit: 4
+    t.integer  "castle_y",   limit: 4
     t.string   "color",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false

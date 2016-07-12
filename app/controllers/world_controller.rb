@@ -26,8 +26,8 @@ class WorldController < ApplicationController
     building = Building.get_building(building_code.to_i)
     terrain = Terrain.get_terrain(cell.terrain_code)
 
-    recourses_ok = false
-    terrain_ok = false
+    recourses_ok = true
+    terrain_ok = true
     road_ok = true
 
     if road_ok and terrain_ok and recourses_ok

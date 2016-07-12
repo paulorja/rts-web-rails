@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+  helper WorldHelper
+
   def post_login
     @user = User.find_by_login(user_params[:login])
 
@@ -16,10 +18,10 @@ class UserController < ApplicationController
     @user.user_type = User.user_types[:player]
 
     if @user.save
-      @user.create_user_data
+      @user.create_user_data get_user_start_position
 
       session['current_user_id'] = @user.id
-      redirect_to world_path
+      redirect_to world_zoom_c_path(@user.castle_x, @user.castle_y)
     else
       redirect_to root_path
     end

@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    if current_user.nil? or current_user.admin? == false
+    if @current_user.nil? or @current_user.admin? == false
       redirect_to root_path
     end
   end
