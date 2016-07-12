@@ -19,6 +19,6 @@ end
 BUILDING = {
     house: building_config('house'),
     road: building_config('road'),
-    town_center: building_config('town_center'),
+    storage: building_config('storage'),
     castle: building_config('castle')
 }

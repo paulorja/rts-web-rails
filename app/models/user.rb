@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_one :user_data, dependent: :destroy
 
   def create_user_data start_position
-    UserData.create({user_id: self.id, wood: 50000, gold: 4500})
+    UserData.create({user_id: self.id, wood: 2000, gold: 500, storage: 3000})
 
     update_attributes({
         castle_x: start_position[:castle].x,
