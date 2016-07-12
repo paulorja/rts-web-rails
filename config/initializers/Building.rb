@@ -20,5 +20,6 @@ BUILDING = {
     house: building_config('house'),
     road: building_config('road'),
     storage: building_config('storage'),
-    castle: building_config('castle')
+    castle: building_config('castle'),
+    port: building_config('port')
 }
