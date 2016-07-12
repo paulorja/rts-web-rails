@@ -33,7 +33,7 @@ class Cell < ActiveRecord::Base
 
   def terrain_can_build(terrain, building)
     terrain[:buildings].each do |b|
-      true if b == building[:code]
+      return true if b == building[:code]
     end
 
     false
@@ -42,10 +42,10 @@ class Cell < ActiveRecord::Base
   def have_user_road(user_id)
     arredores = arredores(1)
 
-    true if arredores[1].is_road and arredores[1].user_id == user_id
-    true if arredores[3].is_road and arredores[3].user_id == user_id
-    true if arredores[5].is_road and arredores[5].user_id == user_id
-    true if arredores[7].is_road and arredores[7].user_id == user_id
+    return true if arredores[1].is_road and arredores[1].user_id == user_id
+    return true if arredores[3].is_road and arredores[3].user_id == user_id
+    return true if arredores[5].is_road and arredores[5].user_id == user_id
+    return true if arredores[7].is_road and arredores[7].user_id == user_id
 
     false
   end

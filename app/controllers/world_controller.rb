@@ -27,8 +27,9 @@ class WorldController < ApplicationController
     terrain = Terrain.get_terrain(cell.terrain_code)
 
     recourses_ok = @user_data.have_recourses building[:levels][cell.building_level+1]
-    terrain_ok = cell.terrain_can_build terrain building
+    terrain_ok = cell.terrain_can_build(terrain, building)
     road_ok = cell.have_user_road @current_user.id
+
 
     if road_ok and terrain_ok and recourses_ok
       event = Event.new()

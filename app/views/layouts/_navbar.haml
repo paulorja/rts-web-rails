@@ -5,9 +5,9 @@
 
 - if @current_user
   = render 'layouts/navbar_recourse', { amount: @user_data.wood, recourse: :wood, max: @user_data.storage }
-  = render 'layouts/navbar_recourse', { amount: @user_data.gold, recourse: :stone, max: @user_data.storage }
+  = render 'layouts/navbar_recourse', { amount: @user_data.stone, recourse: :stone, max: @user_data.storage }
   = render 'layouts/navbar_recourse', { amount: @user_data.gold, recourse: :gold, max: @user_data.storage }
-  = render 'layouts/navbar_recourse', { amount: @user_data.gold, recourse: :diamond, max: @user_data.storage }
+  = render 'layouts/navbar_recourse', { amount: @user_data.diamond, recourse: :diamond, max: @user_data.storage }
 
 
   .navbar-item{style: 'float:right'}

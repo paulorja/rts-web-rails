@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     if session['current_user_id']
       user = User.includes(:user_data).where('id = ?', session['current_user_id']).first
       @current_user = user
-      @user_data = user.user_data
+      @user_data = user.user_data if @current_user
     end
   end
 

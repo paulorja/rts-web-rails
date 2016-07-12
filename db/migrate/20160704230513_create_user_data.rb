@@ -2,11 +2,11 @@ class CreateUserData < ActiveRecord::Migration
   def change
     create_table :user_data do |t|
       t.references :user, index: true, foreign_key: true
-      t.integer :wood
-      t.integer :gold
-      t.integer :diamond
-      t.integer :stone
-      t.integer :storage
+      t.integer :wood, default: 0
+      t.integer :gold, default: 0
+      t.integer :diamond, default: 0
+      t.integer :stone, default: 0
+      t.integer :storage, default: 0
       t.string :last_update
 
       t.timestamps null: false

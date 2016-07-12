@@ -35,14 +35,14 @@ ActiveRecord::Schema.define(version: 20160708015800) do
 
   create_table "user_data", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
-    t.integer  "wood",        limit: 4
-    t.integer  "gold",        limit: 4
-    t.integer  "diamond",     limit: 4
-    t.integer  "stone",       limit: 4
-    t.integer  "storage",     limit: 4
+    t.integer  "wood",        limit: 4,   default: 0
+    t.integer  "gold",        limit: 4,   default: 0
+    t.integer  "diamond",     limit: 4,   default: 0
+    t.integer  "stone",       limit: 4,   default: 0
+    t.integer  "storage",     limit: 4,   default: 0
     t.string   "last_update", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "user_data", ["user_id"], name: "index_user_data_on_user_id", using: :btree
