@@ -3,7 +3,9 @@ class Event < ActiveRecord::Base
   enum event_type: [:building_up]
 
 
-
+  def wait_time
+    ((Time.now.to_i - end_time) * -1).to_s
+  end
 
 
 

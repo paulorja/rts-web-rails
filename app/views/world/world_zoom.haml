@@ -14,10 +14,17 @@
 
   #cell-layer-1.cell_layer
     - @cells.each do |cell|
-      - if cell.user.nil?
-        .link-sprite{obj_id: cell.id}
-      - else
-        .link-sprite{obj_id: cell.id, style: "border-color: #{cell.user.color}"}
+      - border_style = ''
+      - unless cell.user.nil?
+        - border_style << "border-top-color: #{cell.user.color};" unless cell.top(@cells).user_id == cell.user.id
+        - border_style << "border-left-color: #{cell.user.color};" unless cell.left(@cells).user_id == cell.user.id
+        - border_style << "border-bottom-color: #{cell.user.color};" unless cell.bottom(@cells).user_id == cell.user.id
+        - border_style << "border-right-color: #{cell.user.color};" unless cell.right(@cells).user_id == cell.user.id
+
+      .link-sprite{obj_id: cell.id, style: "#{border_style}"}
+        - if cell.event_building_up
+          .sprite-timer{data_time: cell.event_building_up.event.wait_time}
+            = cell.event_building_up.event.wait_time
 
 #game-content-right
   .content-title Navegar Pelo Mapa

@@ -7,7 +7,7 @@ class WorldController < ApplicationController
   def world_zoom
     set_x_y
 
-    @cells = Cell.includes(:user).world_zoom(@x, @y)
+    @cells = Cell.includes(:user, event_building_up: :event).world_zoom(@x, @y)
 
   end
 
@@ -31,7 +31,9 @@ class WorldController < ApplicationController
     road_ok = cell.have_user_road @current_user.id
 
 
-    if road_ok and terrain_ok and recourses_ok
+    if road_ok and terrain_ok and recourses_ok and cell.building_code == 0
+      @user_data.use_recourses building[:levels][cell.building_level+1]
+
       event = Event.new()
       event.start_time = Time.now.to_i
       event.end_time = Time.now.to_i + building[:levels][1][:time]

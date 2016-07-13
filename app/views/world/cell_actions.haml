@@ -10,17 +10,15 @@
     = '('+@cell.user.login+')'
 
 = 'x: '+@cell.x.to_s+' y: '+@cell.y.to_s
-%br
 
 
-- if building.nil?
+- if building.nil? and @cell.have_user_road @current_user.id
   - terrain[:buildings].each do |b|
     - building = Building.get_building(b)
 
     .build-container
       .build-icon{class: "#{building[:css_class]}-1"}
-      .build-label
-        = link_to 'Construir ', build_path(@cell.x, @cell.y, building[:code])
+
       .build-recourses
         - if building[:levels][1][:wood] and building[:levels][1][:wood].to_i > 0
           = image_tag 'sprites/icons/wood.png', width: 12
@@ -35,3 +33,9 @@
           = image_tag 'sprites/icons/diamond.png', width: 12
           = building[:levels][1][:diamond]
         = "Time: #{building[:levels][1][:time]}"
+
+        .build-label
+          - if @user_data.have_recourses building[:levels][1]
+            = link_to 'Construir ', build_path(@cell.x, @cell.y, building[:code])
+          - else
+            Voce não tem recursos

@@ -1,6 +1,7 @@
 class Cell < ActiveRecord::Base
 
   belongs_to :user
+  has_one :event_building_up
 
 
   def is_road
@@ -37,6 +38,34 @@ class Cell < ActiveRecord::Base
     end
 
     false
+  end
+
+  def top(cells)
+    cells.each do |c|
+      return c if c.x == x and c.y == y-1
+    end
+    Cell.new
+  end
+
+  def left(cells)
+    cells.each do |c|
+      return c if c.x == x-1 and c.y == y
+    end
+    Cell.new
+  end
+
+  def bottom(cells)
+    cells.each do |c|
+      return c if c.x == x and c.y == y+1
+    end
+    Cell.new
+  end
+
+  def right(cells)
+    cells.each do |c|
+      return c if c.x == x+1 and c.y == y
+    end
+    Cell.new
   end
 
   def have_user_road(user_id)

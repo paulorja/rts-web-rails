@@ -1,5 +1,4 @@
-$(function() {
-
+$(document).on('turbolinks:load', function() {
 
     var selected_sprite = null;
     var content_selected_sprite = $('.content-selected-sprite');
@@ -20,4 +19,5 @@ $(function() {
             content_selected_sprite.html(data);
         });
     });
+
 });

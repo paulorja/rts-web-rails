@@ -1,5 +1,4 @@
-$(function(){
-
+$(document).on('turbolinks:load', function() {
     var world = $('#world');
 
     if(world.length) {

@@ -9,7 +9,7 @@
         {
             stone: 150,
             wood: 25,
-            time: 15
+            time: 500
         },
         {
             wood: 150,
