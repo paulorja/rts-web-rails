@@ -40,16 +40,14 @@ class WorldCreation
             map[rx+x+1][ry+y-1] = TERRAIN[:tree][:color]
           elsif chance < 40
             # STONE
-            map[rx+x][ry+y] = TERRAIN[:stone][:color]
+            map[rx+x][ry+y] = TERR
+            AIN[:stone][:color]
             map[rx+x][ry+y+1] = TERRAIN[:stone][:color]
             map[rx+x-1][ry+y] = TERRAIN[:stone][:color]
 
-          elsif chance < 43
+          elsif chance < 45
             # GOLD
             map[rx+x][ry+y] = TERRAIN[:gold][:color]
-          elsif chance < 44
-            # DIAMOND
-            map[rx+x][ry+y] = TERRAIN[:diamond][:color]
           else
             map[rx+x][ry+y] = TERRAIN[:grass][:color]
           end
