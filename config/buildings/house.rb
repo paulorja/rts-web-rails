@@ -8,7 +8,7 @@
         {
             wood: 50,
             gold: 10,
-            time: 10,
+            time: 15,
             population: 4
         },
         {

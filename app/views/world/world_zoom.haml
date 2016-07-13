@@ -1,29 +1,6 @@
 #game-content-left
 
-  #cell-layer-1.cell_layer
-    - @cells.each do |cell|
-      .sprite{class: Terrain.get_terrain(cell.terrain_code)[:css_class]}
-
-  #cell-layer-2.cell_layer
-    - @cells.each do |cell|
-      - building = Building.get_building(cell.building_code)
-      - if building != nil
-        .sprite{class: "#{building[:css_class]}-#{cell.building_level}"}
-      - else
-        .sprite
-
-  #cell-layer-1.cell_layer
-    - @cells.each do |cell|
-      - border_style = ''
-      - unless cell.user.nil?
-        - border_style << "border-top-color: #{cell.user.color};" unless cell.top(@cells).user_id == cell.user.id
-        - border_style << "border-left-color: #{cell.user.color};" unless cell.left(@cells).user_id == cell.user.id
-        - border_style << "border-bottom-color: #{cell.user.color};" unless cell.bottom(@cells).user_id == cell.user.id
-        - border_style << "border-right-color: #{cell.user.color};" unless cell.right(@cells).user_id == cell.user.id
-
-      .link-sprite{obj_id: cell.id, style: "#{border_style}"}
-        - if cell.event_building_up
-          .sprite-timer{data_time: cell.event_building_up.event.wait_time}
+  = Cell.render_layers @cells
 
 #game-content-right
   .content-title Navegar Pelo Mapa

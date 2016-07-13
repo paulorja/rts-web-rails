@@ -8,7 +8,7 @@
         {
             wood: 50,
             stone: 50,
-            time: 4341234,
+            time: 45,
             population: 4,
             recourses: 1000
         },

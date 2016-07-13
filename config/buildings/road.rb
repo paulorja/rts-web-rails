@@ -7,9 +7,9 @@
         {
         },
         {
-            stone: 150,
+            stone: 35,
             wood: 25,
-            time: 500
+            time: 8
         },
         {
             wood: 150,

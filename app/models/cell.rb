@@ -68,6 +68,26 @@ class Cell < ActiveRecord::Base
     Cell.new
   end
 
+  def border_style(cells)
+    border_style = ''
+
+    unless user.nil?
+      #cells.each do |c|
+      #  border_style << "border-top-color: #{user.color};"    if c.x == x and c.y == y-1 and c.user_id != user.id
+      #  border_style << "border-bottom-color: #{user.color};" if c.x == x and c.y == y+1 and c.user_id != user.id
+      #  border_style << "border-left-color: #{user.color};"   if c.x == x+1 and c.y == y and c.user_id != user.id
+      #  border_style << "border-right-color: #{user.color};"  if c.x == x-1 and c.y == y and c.user_id != user.id
+      #end
+
+      border_style << "border-top-color: #{user.color};" unless top(cells).user_id == user.id
+      border_style << "border-left-color: #{user.color};" unless left(cells).user_id == user.id
+      border_style << "border-bottom-color: #{user.color};" unless bottom(cells).user_id == user.id
+      border_style << "border-right-color: #{user.color};" unless right(cells).user_id == user.id
+    end
+
+    border_style
+  end
+
   def have_user_road(user_id)
     arredores = arredores(1)
 
@@ -91,6 +111,52 @@ class Cell < ActiveRecord::Base
     max_y = y+range-1
 
     Cell.where('x > ? and x < ? and y > ? and y < ?', min_x, max_x, min_y, max_y).order('y ASC, x ASC')
+  end
+
+  def self.render_layers(cells)
+    html  = ''
+    sprites_layer_1 = ''
+    sprites_layer_2 = ''
+    sprites_layer_3 = ''
+
+    cells.each do |cell|
+
+      #LAYER 1
+
+      sprites_layer_1 << "<div class='sprite #{Terrain.get_terrain(cell.terrain_code)[:css_class]}'></div>"
+
+      #LAYER 2
+
+      building = Building.get_building(cell.building_code)
+      if building != nil
+        sprites_layer_2 << "<div class='sprite #{building[:css_class]}-#{cell.building_level}'></div>"
+      else
+        sprites_layer_2 << "<div class='sprite'></div>"
+      end
+
+      #LAYER 3
+
+      sprites_layer_3 << "<div class='link-sprite' obj_id='#{cell.id}' style='#{cell.border_style(cells)}'>"
+      if cell.event_building_up
+        sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_up.event.wait_time}'></div>"
+      end
+      sprites_layer_3 << "</div>"
+
+    end
+
+    html << "<div class='cell_layer'>"
+    html << sprites_layer_1
+    html << "</div>"
+
+    html << "<div class='cell_layer'>"
+    html << sprites_layer_2
+    html << "</div>"
+
+    html << "<div class='cell_layer'>"
+    html << sprites_layer_3
+    html << "</div>"
+
+    html.html_safe
   end
 
 end

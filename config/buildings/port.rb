@@ -8,19 +8,20 @@
         {
             wood: 550,
             stone: 50,
-            time: 30,
+            gold: 150,
+            time: 50,
             population: 4,
         },
         {
             wood: 50,
             stone: 50,
-            time: 44,
+            time: 300,
             population: 9,
         },
         {
             wood: 50,
             stone: 50,
-            time: 88,
+            time: 88
         }
     ]
 }
