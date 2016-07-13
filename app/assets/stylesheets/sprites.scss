@@ -25,6 +25,24 @@
   outline: 2px dotted red;
 }
 
+.sprite-timer {
+  background: white;
+  border-radius: 4px;
+  border: solid 1px black;
+  float: left;
+  padding: 1px;
+  margin: 2px;
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+.sprite-timer:hover {
+  opacity: 1;
+  cursor: default;
+  font-size: 12px;
+}
+
+
 /* TERRAINS */
 
 .sprite-grass {
