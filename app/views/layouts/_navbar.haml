@@ -4,6 +4,11 @@
       .navbar-item.world-button
     = link_to("/world_zoom/#{@current_user.castle_x}/#{@current_user.castle_y}") do
       .navbar-item.my-castle-button
+    = link_to("/ranking") do
+      .navbar-item.my-castle-button
+    = link_to("/profile") do
+      .navbar-item.my-castle-button
+
 
 
 - if @current_user

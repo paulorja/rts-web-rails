@@ -1,29 +1,30 @@
 
 .world-button {
-  width: 28px;
+  width: 48px;
   background-image: url('sprites/icons/world.png');
   background-repeat: no-repeat;
-  height: 28px;
+  height: 48px;
   background-size: 100% 100%;
 }
 .my-castle-button {
-  width: 28px;
+  width: 48px;
   background-image: url('sprites/icons/my_castle.png');
   background-repeat: no-repeat;
-  height: 28px;
+  height: 48px;
   background-size: 100% 100%;
+  z-index: 50;
 }
 
 .navbar-links {
-  background: white;
-  border: solid 1px black;
   height: 28px;
+  width: 220px;
+  padding-left: 20px;
 }
 
 /* NAVBAR RECOURSE */
 
 .recourse-container {
-  width: 90px;
+  width: 80px;
   font-size: 12px;
 }
 
@@ -39,7 +40,7 @@
 }
 
 .recourse-label {
-  width: 60px;
+  width: 50px;
   float: right;
   height: 14px;
   padding-top: 4px;
@@ -47,7 +48,7 @@
 }
 
 .recourse-progress-bar {
-  width: 60px;
+  width: 50px;
   height: 4px;
   background: red;
   float: right;

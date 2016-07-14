@@ -12,12 +12,12 @@
 default: &default
   adapter: mysql2
   encoding: utf8
+  username: web-rts
+  password: 123456
   pool: 5
   socket: /var/run/mysqld/mysqld.sock
 
 development:
-  username: web-rts
-  password: 123456
   <<: *default
   database: rts-web_development
   
@@ -51,5 +51,3 @@ test:
 production:
   <<: *default
   database: rts-web_production
-  username: rts-web
-  password: <%= ENV['RTS-WEB_DATABASE_PASSWORD'] %>

@@ -1,10 +1,11 @@
 #game-content-left
-
-  = Cell.render_layers @cells, @current_user
-
-#game-content-right
   .content-title Navegar Pelo Mapa
   = render 'world/world_navigation'
 
   .content-selected-sprite{style: 'display:none;'}
   .content-selected-villager{style: 'display:none;'}
+
+
+#game-content-right
+  = Cell.render_layers @cells, @current_user
+

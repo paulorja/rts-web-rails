@@ -5,15 +5,17 @@ body {
 }
 
 #game-container {
-  background:black;
+  background: #403f3e;
   width: 752px;
   height: 572px;
   margin: 0px auto;
+  padding: 5px;
 }
 
 #game-header {
   height: 30px;
-  background: #d6bc8c;
+  background: #403f3e;
+  color: white
 }
 
 .navbar-item {
@@ -23,19 +25,20 @@ body {
 
 #game-content {
   height: 512px;
-  background: #d6bc8c;
+  background: #7b7a78;
+  color: white
 }
 
 #game-content-left {
   float: left;
-  width: 512px;
-  height: 100%;
-  background: red;
+  width: 240px;
+  padding-top: 25px;
+  height: 487px;
 }
 
 #game-content-right {
   float: left;
-  width: 240px;
+  width: 512px;
   height: 100%;
 }
 
@@ -74,39 +77,34 @@ body {
 .build-container {
   position: relative;
   width: 230px;
-  height: 30px;
-  margin: 5px;
+  height: 36px;
+  margin: 5px 5px 10px 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.build-container a {
+  background: #4d6df8;
+  font-size: 12px;
+  color: white;
+  border-radius: 2px;
+  text-decoration: none;
+  padding: 1px 2px 1px 2px;
 }
 
 .build-icon {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   background-size: 100% 100%;
   z-index: 1;
   float:left;
   padding: 0px;
-  margin: 0px;
   border-radius: 100%;
-  border: solid 2px black;
+  border: solid 1px #ccc;
 }
 
-.build-label {
-  width: 195px;
-  height: 15px;
+.build-title, .build-recourses {
   float: right;
-}
-
-.build-label a {
-  color: #292789;
-  text-decoration: none;
-}
-
-.build-label a:hover {
-  text-decoration: underline;
-}
-
-.build-recourses {
-  height: 15px;
+  height: 18px;
   width: 195px;
-  float: right;
 }
