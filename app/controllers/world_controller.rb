@@ -23,6 +23,19 @@ class WorldController < ApplicationController
     render file: 'world/villager', layout: false
   end
 
+  def villager_action
+    @cell = Cell.find(params[:cell_id])
+    @target_cell = Cell.find(params[:target_cell_id])
+    @villager = params[:villager]
+
+    if @current_user.id == @cell.user_id
+      Cell.move_villager(@cell, @target_cell, @villager)
+    end
+
+    redirect_to :back
+  end
+
+
   def build
     x = params[:x]
     y = params[:y]

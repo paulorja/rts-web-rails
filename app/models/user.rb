@@ -26,7 +26,9 @@ class User < ActiveRecord::Base
     start_position[:castle].save
     img.pixel_color(start_position[:castle].x, start_position[:castle].y, color)
 
-    start_position[:roads].each do |road|
+    start_position[:roads].each_with_index do |road, index|
+      road.villagers = '1;2' if index == 1
+
       road.building_code = BUILDING[:road][:code]
       road.building_level = 1
       road.user_id = id

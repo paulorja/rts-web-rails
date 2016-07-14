@@ -113,7 +113,47 @@ class Cell < ActiveRecord::Base
     Cell.where('x > ? and x < ? and y > ? and y < ?', min_x, max_x, min_y, max_y).order('y ASC, x ASC')
   end
 
-  def self.render_layers(cells)
+  def have_villager(villager)
+    villagers.split(';').each do |v|
+      if v == villager.to_s
+        return true
+      end
+    end
+    false
+  end
+
+  def remove_villager(villager)
+    new_array = villagers.split(';')
+
+    villagers.split(';').each_with_index do |v, index|
+      if v == villager
+          new_array.delete_at(index)
+        break
+      end
+    end
+
+    self.villagers = new_array.join(';')
+    self.save
+  end
+
+  def add_villager(villager)
+    if villagers.nil?
+      self.villagers = villager.to_s
+    else
+      self.villagers = villagers.split(';').append(villager).join(';')
+    end
+
+    self.save
+  end
+
+  def self.move_villager(cell, target_cell, villager)
+    if cell.have_villager villager and cell.id != target_cell.id and cell.user_id == target_cell.user_id
+      cell.remove_villager villager
+      target_cell.add_villager villager
+    end
+  end
+
+  def self.render_layers(cells, current_user)
     html  = ''
     sprites_layer_1 = ''
     sprites_layer_2 = ''
@@ -128,7 +168,12 @@ class Cell < ActiveRecord::Base
       #BUILDINGS
 
       building = Building.get_building(cell.building_code)
+      villager_action = ""
+
       if building != nil
+        if cell.user_id == current_user.id
+          villager_action = "v-action='#{building[:action]}'" if building[:action]
+        end
         sprites_layer_2 << "<div class='sprite #{building[:css_class]}-#{cell.building_level}'></div>"
       else
         sprites_layer_2 << "<div class='sprite'></div>"
@@ -136,7 +181,7 @@ class Cell < ActiveRecord::Base
 
       #SPRITE SELECTION
 
-      sprites_layer_3 << "<div class='link-sprite' obj_id='#{cell.id}' style='#{cell.border_style(cells)}'>"
+      sprites_layer_3 << "<div class='link-sprite' obj_id='#{cell.id}' style='#{cell.border_style(cells)}' #{villager_action}>"
       if cell.event_building_up
         sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_up.event.wait_time}'></div>"
       end

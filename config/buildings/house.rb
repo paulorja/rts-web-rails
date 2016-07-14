@@ -2,6 +2,7 @@
     name: 'Casa',
     code: 1,
     css_class: 'sprite-house',
+    action: 'go',
     levels: [
         {
         },
