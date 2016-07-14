@@ -7,6 +7,8 @@ class CreateUserData < ActiveRecord::Migration
       t.integer :food, default: 0
       t.integer :stone, default: 0
       t.integer :storage, default: 0
+      t.integer :idle_villagers, default: 0
+      t.integer :total_villagers, default: 0
       t.string :last_update
 
       t.timestamps null: false

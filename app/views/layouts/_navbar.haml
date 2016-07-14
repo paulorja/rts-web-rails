@@ -10,6 +10,13 @@
   = render 'layouts/navbar_recourse', { amount: @user_data.food, recourse: :food, max: @user_data.storage }
 
 
+  .navbar-item{style: 'font-size: 12px'}
+    Total de Aldeões:
+    = @user_data[:total_villagers]
+    %br
+    Aldeões Parados:
+    = @user_data[:idle_villagers]
+
   .navbar-item{style: 'float:right'}
 
     = @current_user.login
