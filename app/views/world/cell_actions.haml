@@ -29,9 +29,9 @@
         - if building[:levels][1][:gold] and building[:levels][1][:gold].to_i > 0
           = image_tag 'sprites/icons/gold.png', width: 12
           = building[:levels][1][:gold]
-        - if building[:levels][1][:diamond] and building[:levels][1][:diamond].to_i > 0
-          = image_tag 'sprites/icons/diamond.png', width: 12
-          = building[:levels][1][:diamond]
+        - if building[:levels][1][:food] and building[:levels][1][:food].to_i > 0
+          = image_tag 'sprites/icons/food.png', width: 12
+          = building[:levels][1][:food]
         %label.label-timer
           = building[:levels][1][:time]
 

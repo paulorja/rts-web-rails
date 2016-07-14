@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20160708015800) do
     t.integer  "user_id",     limit: 4
     t.integer  "wood",        limit: 4,   default: 0
     t.integer  "gold",        limit: 4,   default: 0
-    t.integer  "diamond",     limit: 4,   default: 0
+    t.integer  "food",        limit: 4,   default: 0
     t.integer  "stone",       limit: 4,   default: 0
     t.integer  "storage",     limit: 4,   default: 0
     t.string   "last_update", limit: 255
