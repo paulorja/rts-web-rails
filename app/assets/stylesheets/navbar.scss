@@ -1,8 +1,23 @@
 
 .world-button {
-  width:50px;
+  width: 28px;
   background-image: url('sprites/icons/world.png');
   background-repeat: no-repeat;
+  height: 28px;
+  background-size: 100% 100%;
+}
+.my-castle-button {
+  width: 28px;
+  background-image: url('sprites/icons/my_castle.png');
+  background-repeat: no-repeat;
+  height: 28px;
+  background-size: 100% 100%;
+}
+
+.navbar-links {
+  background: white;
+  border: solid 1px black;
+  height: 28px;
 }
 
 /* NAVBAR RECOURSE */

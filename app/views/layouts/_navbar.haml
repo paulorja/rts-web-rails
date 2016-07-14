@@ -1,6 +1,9 @@
 - if @current_user
-  = link_to(world_path) do
-    .navbar-item.world-button
+  .navbar-item.navbar-links
+    = link_to(world_path) do
+      .navbar-item.world-button
+    = link_to("/world_zoom/#{@current_user.castle_x}/#{@current_user.castle_y}") do
+      .navbar-item.my-castle-button
 
 
 - if @current_user
