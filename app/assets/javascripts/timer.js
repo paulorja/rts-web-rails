@@ -15,8 +15,7 @@ function update_timers() {
 
                 $(item).html(($(item).attr('data_time')).toString().toHHMMSS());
             } else {
-                // bad
-                //window.location.reload();
+                Turbolinks.visit(location)
             }
         });
 

@@ -132,7 +132,11 @@ class Cell < ActiveRecord::Base
       end
     end
 
-    self.villagers = new_array.join(';')
+    if new_array.empty?
+      self.villagers = nil
+    else
+      self.villagers = new_array.join(';')
+    end
     self.save
   end
 
@@ -147,7 +151,7 @@ class Cell < ActiveRecord::Base
   end
 
   def self.move_villager(cell, target_cell, villager)
-    if cell.have_villager villager and cell.id != target_cell.id and cell.user_id == target_cell.user_id
+    if cell.have_villager villager and cell.id != target_cell.id and cell.user_id == target_cell.user_id and cell.idle
       cell.remove_villager villager
       target_cell.add_villager villager
     end

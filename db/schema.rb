@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160708015800) do
     t.integer "building_level", limit: 4,   default: 0
     t.integer "user_id",        limit: 4,   default: 0
     t.string  "villagers",      limit: 255
+    t.boolean "idle",                       default: true
   end
 
   create_table "event_building_ups", force: :cascade do |t|

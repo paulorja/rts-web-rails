@@ -7,6 +7,11 @@ class EventBuildingUp < ActiveRecord::Base
     cell = Cell.find(event_building_up.cell_id)
 
     cell.building_level = cell.building_level + 1
+    cell.idle = true
+
+    user_data = UserData.where('user_id = ?', cell.user_id).first
+    user_data.idle_villagers = user_data.idle_villagers + 1
+    user_data.save
 
     cell.save
     e.destroy

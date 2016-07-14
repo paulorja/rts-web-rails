@@ -8,6 +8,7 @@ class CreateCells < ActiveRecord::Migration
       t.integer :building_level, default: 0
       t.integer :user_id, default: 0
       t.string :villagers
+      t.boolean :idle, default: true
     end
   end
 end

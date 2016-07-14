@@ -48,9 +48,9 @@ class WorldController < ApplicationController
     recourses_ok = @user_data.have_recourses building[:levels][cell.building_level+1]
     terrain_ok = cell.terrain_can_build(terrain, building)
     road_ok = cell.have_user_road @current_user.id
+    idle_villager = @user_data.idle_villager
 
-
-    if road_ok and terrain_ok and recourses_ok and cell.building_code == 0
+    if road_ok and terrain_ok and recourses_ok and cell.building_code == 0 and idle_villager
       @user_data.use_recourses building[:levels][cell.building_level+1]
 
       event = Event.new()
@@ -61,7 +61,13 @@ class WorldController < ApplicationController
 
       EventBuildingUp.create({cell_id: cell.id, event_id: event.id})
 
-      cell.update_attributes({building_code: building_code, user_id: @current_user.id})
+      cell.building_code = building_code
+      cell.user_id = @current_user.id
+      cell.add_villager(idle_villager)
+      cell.idle = false
+      cell.save
+
+      @user_data.remove_idle_villager
 
       update_world_pixel(x, y, @current_user.color)
     end

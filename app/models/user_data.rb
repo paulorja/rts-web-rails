@@ -30,4 +30,28 @@ class UserData < ActiveRecord::Base
     end
   end
 
+  def idle_villager
+    begin
+      return Cell.where('idle = ? and villagers IS NOT NULL and user_id = ?', true, user_id).first.villagers.split(';')[0]
+    rescue
+      return nil
+    end
+  end
+
+  def remove_idle_villager
+    self.idle_villagers = idle_villagers-1
+    self.save
+
+    cell = Cell.where('idle = ? and villagers IS NOT NULL and user_id = ?', true, user_id).first
+    new_array = cell.villagers.split(';')
+    new_array.delete_at(0)
+
+    if new_array.empty?
+      cell.villagers = nil
+    else
+      cell.villagers = new_array.join(';')
+    end
+    cell.save
+  end
+
 end
