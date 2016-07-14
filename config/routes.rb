@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get 'world_zoom/:x/:y/build/:building_code', to: 'world#build', as: 'build'
 
 
+  #villager
+
+  get '/villager/:cell_id/:villager', to: 'world#villager'
+
   #terrain
 
   get '/cell_actions/:cell_id', to: 'world#cell_actions'

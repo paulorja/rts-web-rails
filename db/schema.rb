@@ -16,10 +16,11 @@ ActiveRecord::Schema.define(version: 20160708015800) do
   create_table "cells", force: :cascade do |t|
     t.integer "x",              limit: 4
     t.integer "y",              limit: 4
-    t.integer "terrain_code",   limit: 4, default: 0
-    t.integer "building_code",  limit: 4, default: 0
-    t.integer "building_level", limit: 4, default: 0
-    t.integer "user_id",        limit: 4, default: 0
+    t.integer "terrain_code",   limit: 4,   default: 0
+    t.integer "building_code",  limit: 4,   default: 0
+    t.integer "building_level", limit: 4,   default: 0
+    t.integer "user_id",        limit: 4,   default: 0
+    t.string  "villagers",      limit: 255
   end
 
   create_table "event_building_ups", force: :cascade do |t|

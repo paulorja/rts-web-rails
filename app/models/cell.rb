@@ -121,11 +121,11 @@ class Cell < ActiveRecord::Base
 
     cells.each do |cell|
 
-      #LAYER 1
+      #TERRAINS
 
       sprites_layer_1 << "<div class='sprite #{Terrain.get_terrain(cell.terrain_code)[:css_class]}'></div>"
 
-      #LAYER 2
+      #BUILDINGS
 
       building = Building.get_building(cell.building_code)
       if building != nil
@@ -134,27 +134,31 @@ class Cell < ActiveRecord::Base
         sprites_layer_2 << "<div class='sprite'></div>"
       end
 
-      #LAYER 3
+      #SPRITE SELECTION
 
       sprites_layer_3 << "<div class='link-sprite' obj_id='#{cell.id}' style='#{cell.border_style(cells)}'>"
       if cell.event_building_up
         sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_up.event.wait_time}'></div>"
       end
+      if cell.villagers.is_a? String
+        cell.villagers.split(';').each do  |v|
+          sprites_layer_3 << "<div class='sprite-villager sprite-vil-#{v}' obj_id='#{v}'></div>"
+        end
+      end
       sprites_layer_3 << "</div>"
 
     end
 
-    html << "<div class='cell_layer'>"
-    html << sprites_layer_1
-    html << "</div>"
 
-    html << "<div class='cell_layer'>"
-    html << sprites_layer_2
-    html << "</div>"
 
-    html << "<div class='cell_layer'>"
-    html << sprites_layer_3
-    html << "</div>"
+    def self.new_layer(layer)
+      "<div class='cell_layer'>#{layer}</div>"
+    end
+
+    html << new_layer(sprites_layer_1)
+    html << new_layer(sprites_layer_2)
+    html << new_layer(sprites_layer_3)
+
 
     html.html_safe
   end

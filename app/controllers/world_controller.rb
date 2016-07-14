@@ -17,6 +17,12 @@ class WorldController < ApplicationController
     render file: 'world/cell_actions', layout: false
   end
 
+  def villager
+    @cell = Cell.find(params[:cell_id])
+    @villager = params[:villager]
+    render file: 'world/villager', layout: false
+  end
+
   def build
     x = params[:x]
     y = params[:y]

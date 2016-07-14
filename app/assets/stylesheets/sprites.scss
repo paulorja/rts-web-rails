@@ -42,6 +42,36 @@
   font-size: 12px;
 }
 
+/* VILLAGERS  */
+
+.sprite-villager {
+  z-index: 3;
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin: 3px;
+}
+.sprite-villager:hover {
+  cursor: default;
+}
+.sprite-vil-1 {
+  background-image: url(image_path('sprites/villagers/vil_1.png'));
+}
+.sprite-vil-2 {
+  background-image: url(image_path('sprites/villagers/vil_2.png'));
+}
+.sprite-vil-3 {
+  background-image: url(image_path('sprites/villagers/vil_3.png'));
+}
+.villager-selected {
+  z-index: 2;
+  position: relative;
+  outline: 2px dotted red;
+}
+
+.sprite-grass {
+  background-image: url(image_path('sprites/world/terrain/grass.png'));
+}
 
 /* TERRAINS */
 

@@ -7,6 +7,7 @@ class CreateCells < ActiveRecord::Migration
       t.integer :building_code, default: 0
       t.integer :building_level, default: 0
       t.integer :user_id, default: 0
+      t.string :villagers
     end
   end
 end

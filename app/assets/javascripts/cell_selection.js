@@ -4,6 +4,7 @@ $(document).on('turbolinks:load', function() {
     var content_selected_sprite = $('.content-selected-sprite');
 
     $(".link-sprite").click(function() {
+        clear_selected_villager();
 
         if(selected_sprite != null) {
             selected_sprite.removeClass('sprite-selected');
@@ -21,3 +22,8 @@ $(document).on('turbolinks:load', function() {
     });
 
 });
+
+function clear_selected_villager() {
+    $('.villager-selected').removeClass('villager-selected');
+    $('.content-selected-villager').html('');
+}
