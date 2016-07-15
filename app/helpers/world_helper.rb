@@ -24,7 +24,7 @@ module WorldHelper
         arredores = castle.arredores(1)
 
         arredores.each do |cell|
-          if cell.have_building or cell.is_diamond or cell.is_gold
+          if cell.have_building or cell.is_gold
             castle = nil
             break
           end

@@ -24,10 +24,6 @@ class Cell < ActiveRecord::Base
     true if terrain_code == TERRAIN[:stone][:code]
   end
 
-  def is_diamond
-    true if terrain_code == TERRAIN[:diamond][:code]
-  end
-
   def arredores(range)
     Cell.where('x >= ? and y >= ? and x <= ? and y <= ?', x-range, y-range, x+range, y+range).order('y ASC, x ASC')
   end
@@ -72,13 +68,6 @@ class Cell < ActiveRecord::Base
     border_style = ''
 
     unless user.nil?
-      #cells.each do |c|
-      #  border_style << "border-top-color: #{user.color};"    if c.x == x and c.y == y-1 and c.user_id != user.id
-      #  border_style << "border-bottom-color: #{user.color};" if c.x == x and c.y == y+1 and c.user_id != user.id
-      #  border_style << "border-left-color: #{user.color};"   if c.x == x+1 and c.y == y and c.user_id != user.id
-      #  border_style << "border-right-color: #{user.color};"  if c.x == x-1 and c.y == y and c.user_id != user.id
-      #end
-
       border_style << "border-top-color: #{user.color};" unless top(cells).user_id == user.id
       border_style << "border-left-color: #{user.color};" unless left(cells).user_id == user.id
       border_style << "border-bottom-color: #{user.color};" unless bottom(cells).user_id == user.id

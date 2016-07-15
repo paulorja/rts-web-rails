@@ -58,7 +58,7 @@ $(document).on('turbolinks:load', function() {
         if(selected_villager != null) {
             switch($(this).attr('v-action')) {
                 case 'go':
-                    $('body').css('cursor', 'url(/assets/sprites/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
+                    $('body').css('cursor', 'url(/assets/sprites/world/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
                     break;
                 default:
                     set_default_cursor()

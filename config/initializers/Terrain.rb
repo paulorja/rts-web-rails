@@ -11,7 +11,7 @@ TERRAIN = {
         code: 3,
         color: [62, 143, 51],
         css_class: 'sprite-tree',
-        buildings: []
+        buildings: [8]
     },
     water: {
         name: 'Água',
@@ -25,21 +25,14 @@ TERRAIN = {
         code: 5,
         color: [170, 170, 170],
         css_class: 'sprite-stone',
-        buildings: []
+        buildings: [6]
     },
     gold: {
         name: 'Mina de Ouro',
         code: 6,
         color: [255, 255, 0],
         css_class: 'sprite-gold',
-        buildings: []
-    },
-    diamond: {
-        name: 'Mina de Diamante',
-        code: 7,
-        color: [0, 255, 255],
-        css_class: 'sprite-diamond',
-        buildings: []
+        buildings: [7]
     }
 }
 
@@ -60,7 +53,6 @@ class Terrain
     terrain[:forest]  = Terrain.new('Forest',  [62, 143, 51], '/terrain/forest')
     terrain[:stone]    = Terrain.new('Stone',    [170, 170, 170], '/terrain/stone')
     terrain[:gold]    = Terrain.new('Gold',    [255, 255, 0], '/terrain/gold')
-    terrain[:diamond] = Terrain.new('Diamond', [0, 255, 255], '/terrain/diamond')
     terrain
   end
 

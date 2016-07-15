@@ -21,5 +21,8 @@ BUILDING = {
     road: building_config('road'),
     storage: building_config('storage'),
     castle: building_config('castle'),
-    port: building_config('port')
+    port: building_config('port'),
+    gold_mine: building_config('gold_mine'),
+    lumberjack: building_config('lumberjack'),
+    stone_mine: building_config('stone_mine')
 }

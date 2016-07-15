@@ -34,6 +34,7 @@
   margin: 2px;
   font-size: 10px;
   opacity: 0.5;
+  color:black
 }
 
 .sprite-timer:hover {
@@ -55,13 +56,13 @@
   cursor: default;
 }
 .sprite-vil-1 {
-  background-image: url(image_path('sprites/villagers/vil_1.png'));
+  background-image: url(image_path('sprites/world/villagers/vil_1.png'));
 }
 .sprite-vil-2 {
-  background-image: url(image_path('sprites/villagers/vil_2.png'));
+  background-image: url(image_path('sprites/world/villagers/vil_2.png'));
 }
 .sprite-vil-3 {
-  background-image: url(image_path('sprites/villagers/vil_3.png'));
+  background-image: url(image_path('sprites/world/villagers/vil_3.png'));
 }
 .villager-selected {
   z-index: 2;
@@ -134,4 +135,25 @@
 
 .sprite-castle-1 {
   background-image: url('sprites/world/building/castle/castle_1.png');
+}
+
+.sprite-stone-mine-0 {
+  background-image: url('sprites/world/building/stone_mine/stone_mine_1.png');
+}
+.sprite-stone-mine-1 {
+  background-image: url('sprites/world/building/stone_mine/stone_mine_1.png');
+}
+
+.sprite-gold-mine-0 {
+  background-image: url('sprites/world/building/gold_mine/gold_mine_1.png');
+}
+.sprite-gold-mine-1 {
+  background-image: url('sprites/world/building/gold_mine/gold_mine_1.png');
+}
+
+.sprite-lumberjack-0 {
+  background-image: url('sprites/world/building/lumberjack/lumberjack_1.png');
+}
+.sprite-lumberjack-1 {
+  background-image: url('sprites/world/building/lumberjack/lumberjack_1.png');
 }

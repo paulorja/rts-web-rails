@@ -1,19 +1,17 @@
 #game-content-left
-
-#game-content-right
-  %h4 Login
+  %h4 Bem Vindo
   = form_for :user, url: 'login', html: { class: 'form-user' } do |u|
     = u.label :login
     %br
     = u.text_field :login
     %br
-    = u.label :password
+    = u.label :password, 'Senha'
     %br
     = u.password_field :password
     %br
     = u.submit 'Submit!'
 
-  %h4 Register
+  %h4 Registrar
   = form_for :user, url: 'register', html: { class: 'form-user' } do |u|
     = u.label :login
     %br
@@ -32,3 +30,5 @@
     = u.color_field :color
     %br
     = u.submit 'Submit!'
+
+#game-content-right
