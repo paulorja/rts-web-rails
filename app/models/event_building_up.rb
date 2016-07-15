@@ -14,7 +14,7 @@ class EventBuildingUp < ActiveRecord::Base
 
     case cell.building_code
       when BUILDING[:storage][:code]
-        user_data.storage += BUILDING[:storage][:levels][cell.building_level][:recourses]
+        user_data.storage += 1000
       else
 
     end

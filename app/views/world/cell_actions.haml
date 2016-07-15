@@ -32,9 +32,17 @@
 
     - if @cell.building_code == BUILDING[:house][:code]
       %div
-        Capacidade de aldeões:
+        Cada nível aumenta 1 no limite de aldeões.
       %div
-        Próximo nível:
+        Limite de aldeõs:
+        = @user_data.max_villagers.to_s
+
+    - if @cell.building_code == BUILDING[:storage][:code]
+      %div
+        Cada nível aumenta 1000 no limite de recursos.
+      %div
+        Capacidade atual:
+        = @user_data.storage.to_s
 
     = render 'building_up', { building: Building.get_building(@cell.building_code), building_level: @cell.building_level+1 }
   - else

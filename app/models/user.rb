@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                         stone: 500,
                         gold: 350,
                         food: 350,
-                        storage: 1500,
+                        storage: 2000,
                         idle_villagers: 2,
                         total_villagers: 2,
                         max_villagers: 2,
