@@ -12,13 +12,14 @@ class User < ActiveRecord::Base
   def create_user_data start_position
     UserData.create({
                         user_id: self.id,
-                        wood: 2000,
+                        wood: 1200,
                         stone: 500,
                         gold: 350,
                         food: 350,
-                        storage: 3000,
+                        storage: 1500,
                         idle_villagers: 2,
                         total_villagers: 2,
+                        max_villagers: 2,
                         total_roads: 3,
                         max_roads: BUILDING[:castle][:levels][1][:roads]
                     })
@@ -29,7 +30,7 @@ class User < ActiveRecord::Base
     })
 
     require 'rmagick'
-    img = Magick::Image.read('app/assets/images/world.bmp')[0]
+    img = Magick::Image.read('public/world.bmp')[0]
 
     start_position[:castle].building_code = BUILDING[:castle][:code]
     start_position[:castle].building_level = 1
@@ -47,6 +48,6 @@ class User < ActiveRecord::Base
       img.pixel_color(road.x, road.y, color)
     end
 
-    img.write('app/assets/images/world.bmp')
+    img.write('public/world.bmp')
   end
 end

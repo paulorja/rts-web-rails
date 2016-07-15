@@ -15,6 +15,7 @@ class CreateUserData < ActiveRecord::Migration
       t.integer :max_roads, default: 0
       t.integer :idle_villagers, default: 0
       t.integer :total_villagers, default: 0
+      t.integer :max_villagers, default: 0
       t.string :last_update
 
       t.timestamps null: false

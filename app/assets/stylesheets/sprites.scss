@@ -56,13 +56,13 @@
   cursor: default;
 }
 .sprite-vil-1 {
-  background-image: url(image_path('sprites/world/villagers/vil_1.png'));
+  background-image: asset-url('sprites/world/villagers/vil_1.png');
 }
 .sprite-vil-2 {
-  background-image: url(image_path('sprites/world/villagers/vil_2.png'));
+  background-image: asset-url('sprites/world/villagers/vil_2.png');
 }
 .sprite-vil-3 {
-  background-image: url(image_path('sprites/world/villagers/vil_3.png'));
+  background-image: asset-url('sprites/world/villagers/vil_3.png');
 }
 .villager-selected {
   z-index: 2;
@@ -71,89 +71,89 @@
 }
 
 .sprite-grass {
-  background-image: url(image_path('sprites/world/terrain/grass.png'));
+  background-image: asset-url('sprites/world/terrain/grass.png');
 }
 
 /* TERRAINS */
 
 .sprite-grass {
-  background-image: url(image_path('sprites/world/terrain/grass.png'));
+  background-image: asset-url('sprites/world/terrain/grass.png');
 }
 
 .sprite-water {
-  background-image: url(image_path('sprites/world/terrain/water.png'));
+  background-image: asset-url('sprites/world/terrain/water.png');
 }
 
 .sprite-tree {
-  background-image: url(image_path('sprites/world/terrain/tree.png'));
+  background-image: asset-url('sprites/world/terrain/tree.png');
 }
 
 .sprite-stone {
-  background-image: url(image_path('sprites/world/terrain/stone.png'));
+  background-image: asset-url('sprites/world/terrain/stone.png');
 }
 
 .sprite-gold {
-  background-image: url(image_path('sprites/world/terrain/gold.png'));
+  background-image: asset-url('sprites/world/terrain/gold.png');
 }
 
 .sprite-diamond {
-  background-image: url(image_path('sprites/world/terrain/diamond.png'));
+  background-image: asset-url('sprites/world/terrain/diamond.png');
 }
 
 /* BUILDINGS */
 
 .sprite-house-0 {
-  background-image: url('sprites/world/building/house/house_0.png');
+  background-image: asset-url('sprites/world/building/house/house_0.png');
 }
 .sprite-house-1 {
-  background-image: url('sprites/world/building/house/house_1.png');
+  background-image: asset-url('sprites/world/building/house/house_1.png');
 }
 .sprite-house-2 {
-  background-image: url('sprites/world/building/house/house_2.png');
+  background-image: asset-url('sprites/world/building/house/house_2.png');
 }
 
 .sprite-road-0 {
-  background-image: url('sprites/world/building/road/road_0.png');
+  background-image: asset-url('sprites/world/building/road/road_0.png');
 }
 .sprite-road-1 {
-  background-image: url('sprites/world/building/road/road_1.png');
+  background-image: asset-url('sprites/world/building/road/road_1.png');
 }
 
 .sprite-storage-0 {
-  background-image: url('sprites/world/building/storage/storage_0.png');
+  background-image: asset-url('sprites/world/building/storage/storage_0.png');
 }
 .sprite-storage-1 {
-  background-image: url('sprites/world/building/storage/storage_1.png');
+  background-image: asset-url('sprites/world/building/storage/storage_1.png');
 }
 
 .sprite-port-0 {
-  background-image: url('sprites/world/building/port/port_0.png');
+  background-image: asset-url('sprites/world/building/port/port_0.png');
 }
 .sprite-port-1 {
-  background-image: url('sprites/world/building/port/port_1.png');
+  background-image: asset-url('sprites/world/building/port/port_1.png');
 }
 
 .sprite-castle-1 {
-  background-image: url('sprites/world/building/castle/castle_1.png');
+  background-image: asset-url('sprites/world/building/castle/castle_1.png');
 }
 
 .sprite-stone-mine-0 {
-  background-image: url('sprites/world/building/stone_mine/stone_mine_1.png');
+  background-image: asset-url('sprites/world/building/stone_mine/stone_mine_1.png');
 }
 .sprite-stone-mine-1 {
-  background-image: url('sprites/world/building/stone_mine/stone_mine_1.png');
+  background-image: asset-url('sprites/world/building/stone_mine/stone_mine_1.png');
 }
 
 .sprite-gold-mine-0 {
-  background-image: url('sprites/world/building/gold_mine/gold_mine_1.png');
+  background-image: asset-url('sprites/world/building/gold_mine/gold_mine_1.png');
 }
 .sprite-gold-mine-1 {
-  background-image: url('sprites/world/building/gold_mine/gold_mine_1.png');
+  background-image: asset-url('sprites/world/building/gold_mine/gold_mine_1.png');
 }
 
 .sprite-lumberjack-0 {
-  background-image: url('sprites/world/building/lumberjack/lumberjack_1.png');
+  background-image: asset-url('sprites/world/building/lumberjack/lumberjack_1.png');
 }
 .sprite-lumberjack-1 {
-  background-image: url('sprites/world/building/lumberjack/lumberjack_1.png');
+  background-image: asset-url('sprites/world/building/lumberjack/lumberjack_1.png');
 }

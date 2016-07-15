@@ -94,7 +94,7 @@ class WorldCreation
         end
       end
     end
-    img.write('app/assets/images/world.bmp')
+    img.write('public/world.bmp')
 
     query_terrains << terrain_values.join(', ')+';'
 

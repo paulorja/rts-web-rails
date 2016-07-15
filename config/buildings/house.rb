@@ -7,8 +7,8 @@
         {
         },
         {
-            wood: 50,
-            food: 50,
+            wood: 300,
+            food: 100,
             time: 15,
             population: 1
         },

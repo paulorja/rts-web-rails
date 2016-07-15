@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160708015800) do
     t.integer  "max_roads",       limit: 4,   default: 0
     t.integer  "idle_villagers",  limit: 4,   default: 0
     t.integer  "total_villagers", limit: 4,   default: 0
+    t.integer  "max_villagers",   limit: 4,   default: 0
     t.string   "last_update",     limit: 255
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false

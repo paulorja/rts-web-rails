@@ -18,6 +18,7 @@
   height: 512px;
   background-position:center center;
   background-repeat:no-repeat;
-  background-image:url(/assets/world.bmp);
+  background-image:asset-url("/world.bmp");
+  background-size: 100%;
 
 }

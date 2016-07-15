@@ -240,9 +240,9 @@ class Cell < ActiveRecord::Base
       user_data.remove_idle_villager
 
       require 'rmagick'
-      img = Magick::Image.read('app/assets/images/world.bmp')[0]
+      img = Magick::Image.read('public/world.bmp')[0]
       img.pixel_color(x, y, current_user.color)
-      img.write('app/assets/images/world.bmp')
+      img.write('public/world.bmp')
     end
   end
 

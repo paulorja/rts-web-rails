@@ -1,14 +1,14 @@
 
 .world-button {
   width: 48px;
-  background-image: url('sprites/icons/world.png');
+  background-image: asset-url("sprites/icons/world.png");
   background-repeat: no-repeat;
   height: 48px;
   background-size: 100% 100%;
 }
 .my-castle-button {
   width: 48px;
-  background-image: url('sprites/icons/my_castle.png');
+  background-image: asset-url("sprites/icons/my_castle.png");
   background-repeat: no-repeat;
   height: 48px;
   background-size: 100% 100%;
