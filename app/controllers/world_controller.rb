@@ -50,12 +50,12 @@ class WorldController < ApplicationController
     road_ok = cell.have_user_road @current_user.id
     idle_villager = @user_data.idle_villager
 
-    if road_ok and terrain_ok and recourses_ok and cell.building_code == 0 and idle_villager
+    if road_ok and terrain_ok and recourses_ok and idle_villager and cell.idle
       @user_data.use_recourses building[:levels][cell.building_level+1]
 
       event = Event.new()
       event.start_time = Time.now.to_i
-      event.end_time = Time.now.to_i + building[:levels][1][:time]
+      event.end_time = Time.now.to_i + building[:levels][cell.building_level+1][:time]
       event.event_type = :building_up
       event.save
 

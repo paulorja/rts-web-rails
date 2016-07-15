@@ -14,28 +14,13 @@
 
 - if building.nil? and @cell.have_user_road @current_user.id
   - terrain[:buildings].each do |b|
-    - building = Building.get_building(b)
+    = render 'building_up', { building: Building.get_building(b), building_level: 1}
 
-    .build-container
-      .build-icon{class: "#{building[:css_class]}-1"}
-      .build-title
-        = building[:name]
-        = link_to 'Construir ', build_path(@cell.x, @cell.y, building[:code])
-      .build-recourses
-        - if building[:levels][1][:wood] and building[:levels][1][:wood].to_i > 0
-          = image_tag 'sprites/icons/wood.png', width: 12
-          = building[:levels][1][:wood]
-        - if building[:levels][1][:stone] and building[:levels][1][:stone].to_i > 0
-          = image_tag 'sprites/icons/stone.png', width: 12
-          = building[:levels][1][:stone]
-        - if building[:levels][1][:gold] and building[:levels][1][:gold].to_i > 0
-          = image_tag 'sprites/icons/gold.png', width: 12
-          = building[:levels][1][:gold]
-        - if building[:levels][1][:food] and building[:levels][1][:food].to_i > 0
-          = image_tag 'sprites/icons/food.png', width: 12
-          = building[:levels][1][:food]
-        %label.label-timer
-          = building[:levels][1][:time]
+- if @cell.user_id == @current_user.id
+  - if @cell.idle
+    = render 'building_up', { building: Building.get_building(@cell.building_code), building_level: @cell.building_level+1 }
+  - else
+    = 'construindo...'
 
 :javascript
   refresh_label_timers();

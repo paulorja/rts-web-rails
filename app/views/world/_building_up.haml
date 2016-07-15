@@ -1,0 +1,29 @@
+- if building_level == 1
+  - link_label = 'Construir'
+- else
+  - link_label = 'Melhorar'
+
+- if building[:levels][building_level]
+  .build-container
+    .build-icon{class: "#{building[:css_class]}-1"}
+    .build-title
+      = building[:name]
+      = link_to link_label, build_path(@cell.x, @cell.y, building[:code])
+    .build-recourses
+      - if building[:levels][building_level][:wood] and building[:levels][building_level][:wood].to_i > 0
+        = image_tag 'sprites/icons/wood.png', width: 12
+        = building[:levels][building_level][:wood]
+      - if building[:levels][building_level][:stone] and building[:levels][building_level][:stone].to_i > 0
+        = image_tag 'sprites/icons/stone.png', width: 12
+        = building[:levels][building_level][:stone]
+      - if building[:levels][building_level][:gold] and building[:levels][building_level][:gold].to_i > 0
+        = image_tag 'sprites/icons/gold.png', width: 12
+        = building[:levels][building_level][:gold]
+      - if building[:levels][building_level][:food] and building[:levels][building_level][:food].to_i > 0
+        = image_tag 'sprites/icons/food.png', width: 12
+        = building[:levels][building_level][:food]
+      %label.label-timer
+        = building[:levels][building_level][:time]
+- else
+  .build-container
+    Totalmente evoluído

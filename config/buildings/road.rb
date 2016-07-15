@@ -10,15 +10,7 @@
         {
             stone: 35,
             wood: 25,
-            time: 8
-        },
-        {
-            wood: 150,
-            gold: 50
-        },
-        {
-            wood: 320,
-            gold: 90
+            time: 17
         }
     ]
 }
