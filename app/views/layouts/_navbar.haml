@@ -12,10 +12,10 @@
 
 
 - if @current_user
-  = render 'layouts/navbar_recourse', { amount: @user_data.wood, recourse: :wood, max: @user_data.storage }
-  = render 'layouts/navbar_recourse', { amount: @user_data.stone, recourse: :stone, max: @user_data.storage }
-  = render 'layouts/navbar_recourse', { amount: @user_data.gold, recourse: :gold, max: @user_data.storage }
-  = render 'layouts/navbar_recourse', { amount: @user_data.food, recourse: :food, max: @user_data.storage }
+  = render 'layouts/navbar_recourse', { amount: @user_data.wood, recourse: :wood,   max: @user_data.storage, villagers: @user_data.wood_villagers }
+  = render 'layouts/navbar_recourse', { amount: @user_data.stone, recourse: :stone, max: @user_data.storage, villagers: @user_data.stone_villagers }
+  = render 'layouts/navbar_recourse', { amount: @user_data.gold, recourse: :gold,   max: @user_data.storage, villagers: @user_data.gold_villagers }
+  = render 'layouts/navbar_recourse', { amount: @user_data.food, recourse: :food,   max: @user_data.storage, villagers: @user_data.food_villagers }
 
 
   .navbar-item{style: 'font-size: 12px'}

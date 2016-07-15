@@ -20,6 +20,7 @@
     = image_tag "sprites#{sprite}"
   .recourse-label
     = amount.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1 ")
+    = "(#{villagers})"
   .recourse-progress-bar
     - width = amount.to_f/max.to_f*100
     - width = 100 if width>100

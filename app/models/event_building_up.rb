@@ -9,7 +9,16 @@ class EventBuildingUp < ActiveRecord::Base
     cell.building_level = cell.building_level + 1
     cell.idle = true
 
+
     user_data = UserData.where('user_id = ?', cell.user_id).first
+
+    case cell.building_code
+      when BUILDING[:storage][:code]
+        user_data.storage += BUILDING[:storage][:levels][cell.building_level][:recourses]
+      else
+
+    end
+
     user_data.idle_villagers = user_data.idle_villagers + 1
     user_data.save
 

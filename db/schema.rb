@@ -41,6 +41,10 @@ ActiveRecord::Schema.define(version: 20160708015800) do
     t.integer  "gold",            limit: 4,   default: 0
     t.integer  "food",            limit: 4,   default: 0
     t.integer  "stone",           limit: 4,   default: 0
+    t.integer  "wood_villagers",  limit: 4,   default: 0
+    t.integer  "gold_villagers",  limit: 4,   default: 0
+    t.integer  "food_villagers",  limit: 4,   default: 0
+    t.integer  "stone_villagers", limit: 4,   default: 0
     t.integer  "storage",         limit: 4,   default: 0
     t.integer  "idle_villagers",  limit: 4,   default: 0
     t.integer  "total_villagers", limit: 4,   default: 0
