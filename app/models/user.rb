@@ -18,7 +18,9 @@ class User < ActiveRecord::Base
                         food: 350,
                         storage: 3000,
                         idle_villagers: 2,
-                        total_villagers: 2
+                        total_villagers: 2,
+                        total_roads: 3,
+                        max_roads: BUILDING[:castle][:levels][1][:roads]
                     })
 
     update_attributes({

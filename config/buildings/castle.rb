@@ -15,13 +15,13 @@
             wood: 300,
             stone: 300,
             time: 150,
-            roads: 11
+            roads: 4
         },
         {
             wood: 320,
             gold: 90,
             time: 350,
-            roads: 15
+            roads: 4
         }
     ]
 }

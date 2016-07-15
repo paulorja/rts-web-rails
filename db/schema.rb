@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20160708015800) do
     t.integer  "food_villagers",  limit: 4,   default: 0
     t.integer  "stone_villagers", limit: 4,   default: 0
     t.integer  "storage",         limit: 4,   default: 0
+    t.integer  "total_roads",     limit: 4,   default: 0
+    t.integer  "max_roads",       limit: 4,   default: 0
     t.integer  "idle_villagers",  limit: 4,   default: 0
     t.integer  "total_villagers", limit: 4,   default: 0
     t.string   "last_update",     limit: 255

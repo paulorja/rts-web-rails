@@ -18,6 +18,17 @@
 
 - if @cell.user_id == @current_user.id
   - if @cell.idle
+    - if @cell.building_code == BUILDING[:castle][:code]
+      %div
+        Estradas utilizadas:
+        = @user_data.total_roads
+      %div
+        Limite de estradas:
+        = @user_data.max_roads
+      %div
+        Próximo nível:
+        = (@user_data.max_roads+BUILDING[:castle][:levels][@cell.building_level+1][:roads]).to_s
+
     = render 'building_up', { building: Building.get_building(@cell.building_code), building_level: @cell.building_level+1 }
   - else
     = 'construindo...'
