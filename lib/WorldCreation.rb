@@ -8,8 +8,8 @@ class WorldCreation
     require 'rmagick'
     t = Terrain::get_terrains
 
-    map = Array.new(WorldCreation::SIZE) do
-      Array.new(WorldCreation::SIZE) do
+    map = Array.new(WorldCreation::SIZE+555) do
+      Array.new(WorldCreation::SIZE+555) do
         t[:water].color
       end
     end
