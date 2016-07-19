@@ -204,46 +204,48 @@ class Cell < ActiveRecord::Base
     building = Building.get_building(building_code.to_i)
     terrain = Terrain.get_terrain(terrain_code)
 
-    recourses_ok = user_data.have_recourses building[:levels][building_level+1]
-    terrain_ok = terrain_can_build(terrain, building)
-    road_ok = have_user_road current_user.id
+    #validations
+    return 'Você não possui recursos' unless user_data.have_recourses building[:levels][building_level+1]
+    return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)
+    return 'Suas estradas não chegam até aqui' unless have_user_road current_user.id
     idle_villager = user_data.idle_villager
+    return 'Você não possui aldões disponíveis' if idle_villager.nil?
 
-    new_road_ok = true
     if building_code == BUILDING[:road][:code].to_s
       if user_data.max_roads > user_data.total_roads
         user_data.total_roads += 1
         user_data.save
       else
-        new_road_ok = false
+        return 'Limite de estradas atingido. Evolua o castelo. '
       end
     end
 
 
-    if road_ok and terrain_ok and recourses_ok and idle_villager and idle and new_road_ok
-      user_data.use_recourses building[:levels][building_level+1]
+    #start build
+    user_data.use_recourses building[:levels][building_level+1]
 
-      event = Event.new()
-      event.start_time = Time.now.to_i
-      event.end_time = Time.now.to_i + building[:levels][building_level+1][:time]
-      event.event_type = :building_up
-      event.save
+    event = Event.new()
+    event.start_time = Time.now.to_i
+    event.end_time = Time.now.to_i + building[:levels][building_level+1][:time]
+    event.event_type = :building_up
+    event.save
 
-      EventBuildingUp.create({cell_id: id, event_id: event.id})
+    EventBuildingUp.create({cell_id: id, event_id: event.id})
 
-      self.building_code = building_code
-      self.user_id = current_user.id
-      self.add_villager(idle_villager)
-      self.idle = false
-      self.save
+    self.building_code = building_code
+    self.user_id = current_user.id
+    self.add_villager(idle_villager)
+    self.idle = false
+    self.save
 
-      user_data.remove_idle_villager
+    user_data.remove_idle_villager
 
-      require 'rmagick'
-      img = Magick::Image.read('public/world.bmp')[0]
-      img.pixel_color(x, y, current_user.color)
-      img.write('public/world.bmp')
-    end
+    require 'rmagick'
+    img = Magick::Image.read('public/world.bmp')[0]
+    img.pixel_color(x, y, current_user.color)
+    img.write('public/world.bmp')
+
+    true
   end
 
 end

@@ -41,7 +41,11 @@ class WorldController < ApplicationController
     y = params[:y]
     building_code = params[:building_code]
 
-    Cell.where('x = ? and y = ?', x, y).first.build(@user_data, @current_user, building_code)
+    build = Cell.where('x = ? and y = ?', x, y).first.build(@user_data, @current_user, building_code)
+
+    if build.is_a? String
+      flash['alert'] = build
+    end
 
     redirect_to :back
   end
