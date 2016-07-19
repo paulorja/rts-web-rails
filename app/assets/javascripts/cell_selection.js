@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
 
     $(".link-sprite").click(function() {
         if(selected_villager != null && $(this).attr('v-action')) {
-            window.location = '/villager/'+selected_villager.parent().attr('obj_id')+'/'+selected_villager.attr('obj_id')+'/'+$(this).attr('obj_id');
+            Turbolinks.visit('/villager/'+selected_villager.parent().attr('obj_id')+'/'+selected_villager.attr('obj_id')+'/'+$(this).attr('obj_id'));
         } else {
             selected_villager = null;
             clear_selected_villager();
