@@ -32,7 +32,14 @@
 
       %hr
       %div
-        = link_to 'Comprar Aldeão', new_villager_path, class: 'btn-build'
+        .build-container
+          .build-icon{class: 'sprite-vil-1'}
+          .build-title
+            = 'Aldeão'
+            = link_to 'Comprar Aldeão', new_villager_path, class: 'btn-build'
+          .build-recourses
+            = image_tag 'sprites/icons/food.png', width: 12
+            = 100
 
     - if @cell.building_code == BUILDING[:house][:code]
       %div
