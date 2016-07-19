@@ -13,9 +13,11 @@ class EventBuildingUp < ActiveRecord::Base
     user_data = UserData.where('user_id = ?', cell.user_id).first
 
     case cell.building_code
-      when BUILDING[:storage][:code]
-        user_data.storage += 1000
-      else
+    when BUILDING[:storage][:code]
+      user_data.storage += 1000
+    when BUILDING[:house][:code]
+      user_data.max_villagers += 1
+    else
 
     end
 
