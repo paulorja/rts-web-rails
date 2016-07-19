@@ -34,4 +34,10 @@ Rails.application.routes.draw do
   get '/admin/reset_world', to: 'admin#reset_world'
 
 
+  #ranking
+
+  get 'ranking/general'
+  get 'ranking', to: 'ranking#general'
+
+
 end

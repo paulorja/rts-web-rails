@@ -3,7 +3,7 @@ class EventBuildingUp < ActiveRecord::Base
   belongs_to :cell
 
   def self.resolve(e)
-    event_building_up = EventBuildingUp.where('event_id = ?', e.id).first
+    event_building_up = EventBuildingUp.where('event_id = ?', e.id).limit(500).first
     cell = Cell.find(event_building_up.cell_id)
 
     cell.building_level = cell.building_level + 1
@@ -21,6 +21,7 @@ class EventBuildingUp < ActiveRecord::Base
 
     end
 
+    user_data.total_territories += 1
     user_data.idle_villagers = user_data.idle_villagers + 1
     user_data.save
 

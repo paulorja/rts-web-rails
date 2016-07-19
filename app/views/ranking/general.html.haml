@@ -1,0 +1,20 @@
+
+
+#game-content-left
+  %h1 Ranking
+  %ul{style: 'background: #ccc; list-style-type: none;'}
+    %li= link_to('General', ranking_path)
+
+#game-content-right
+  %table{border: '1', width: '100%'}
+    %thead
+      %tr
+        %th Pos.
+        %th Player
+        %th Total Territories
+    %tbody
+      - @users.each_with_index do |u, i|
+        %tr
+          %td= (i+1).to_s
+          %td= u.login
+          %td= u.user_data.total_territories

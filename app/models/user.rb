@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
                         storage: 2000,
                         idle_villagers: 2,
                         total_villagers: 2,
+                        total_territories: 4,
                         max_villagers: 2,
                         total_roads: 3,
                         max_roads: BUILDING[:castle][:levels][1][:roads]
