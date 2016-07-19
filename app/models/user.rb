@@ -38,4 +38,8 @@ class User < ActiveRecord::Base
 
     img.write('public/world.bmp')
   end
+
+  def castle
+    Cell.where('x = ? and y = ?', castle_x, castle_y).first
+  end
 end

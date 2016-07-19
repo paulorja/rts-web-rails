@@ -10,7 +10,7 @@
         {
             stone: 35,
             wood: 25,
-            time: 17
+            time: 5
         }
     ]
 }

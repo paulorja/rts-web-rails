@@ -9,7 +9,6 @@ class EventBuildingUp < ActiveRecord::Base
     cell.building_level = cell.building_level + 1
     cell.idle = true
 
-
     user_data = UserData.where('user_id = ?', cell.user_id).first
 
     case cell.building_code
@@ -22,10 +21,12 @@ class EventBuildingUp < ActiveRecord::Base
     end
 
     user_data.total_territories += 1
-    user_data.idle_villagers = user_data.idle_villagers + 1
-    user_data.save
+    user_data.idle_villagers += 1
+    Cell.move_villager(cell, user_data.user.castle, cell.villagers)
 
+    user_data.save
     cell.save
+
     e.destroy
     event_building_up.destroy
   end
