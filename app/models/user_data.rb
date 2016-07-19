@@ -65,6 +65,7 @@ class UserData < ActiveRecord::Base
 
     self.food -= 100
     self.total_villagers += 1
+    self.idle_villagers += 1
     self.save
     true
   end
