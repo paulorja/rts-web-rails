@@ -8,7 +8,7 @@
     .build-icon{class: "#{building[:css_class]}-1"}
     .build-title
       = building[:name]
-      = link_to link_label, build_path(@cell.x, @cell.y, building[:code])
+      = link_to link_label, build_path(@cell.x, @cell.y, building[:code]), class: 'btn-build'
     .build-recourses
       - if building[:levels][building_level][:wood] and building[:levels][building_level][:wood].to_i > 0
         = image_tag 'sprites/icons/wood.png', width: 12
