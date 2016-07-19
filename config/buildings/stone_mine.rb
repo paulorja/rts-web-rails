@@ -3,6 +3,7 @@
     code: 6,
     css_class: 'sprite-stone-mine',
     terrain: :stone,
+    action: 'mine',
     levels: [
         {
         },

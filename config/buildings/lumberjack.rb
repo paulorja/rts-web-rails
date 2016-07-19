@@ -3,6 +3,7 @@
     code: 8,
     css_class: 'sprite-lumberjack',
     terrain: :tree,
+    action: 'lumber',
     levels: [
         {
         },

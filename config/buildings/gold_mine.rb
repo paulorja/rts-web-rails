@@ -3,6 +3,7 @@
     code: 7,
     css_class: 'sprite-gold-mine',
     terrain: :gold,
+    action: 'mine',
     levels: [
         {
         },

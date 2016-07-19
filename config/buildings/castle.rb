@@ -6,9 +6,6 @@
         {
         },
         {
-            wood: 50,
-            stone: 10,
-            time: 50,
             roads: 7
         },
         {

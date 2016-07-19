@@ -10,6 +10,7 @@ $(document).on('turbolinks:load', function() {
     $(".link-sprite").click(function() {
         if(selected_villager != null && $(this).attr('v-action')) {
             Turbolinks.visit('/villager/'+selected_villager.parent().attr('obj_id')+'/'+selected_villager.attr('obj_id')+'/'+$(this).attr('obj_id'));
+            $(".link-sprite").off();
         } else {
             selected_villager = null;
             clear_selected_villager();
@@ -58,6 +59,12 @@ $(document).on('turbolinks:load', function() {
         if(selected_villager != null) {
             switch($(this).attr('v-action')) {
                 case 'go':
+                    $('body').css('cursor', 'url(/assets/sprites/world/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
+                    break;
+                case 'lumber':
+                    $('body').css('cursor', 'url(/assets/sprites/world/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
+                    break;
+                case 'mine':
                     $('body').css('cursor', 'url(/assets/sprites/world/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
                     break;
                 default:
