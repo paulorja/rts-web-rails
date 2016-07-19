@@ -34,6 +34,14 @@ class UserController < ApplicationController
     redirect_to root_path
   end
 
+  def profile
+    @user = User.joins(:user_data).where('login = ?', params[:user_login]).first
+
+    if @user.nil?
+      redirect_to root_path
+    end
+  end
+
 
   private
     def user_params

@@ -16,5 +16,5 @@
       - @users.each_with_index do |u, i|
         %tr
           %td= (i+1).to_s
-          %td= u.login
+          %td= link_to(u.login, user_profile_path(u.login))
           %td= u.user_data.total_territories

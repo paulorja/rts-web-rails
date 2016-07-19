@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   match '/register', to: 'user#post_register', via: :post
   match '/login', to: 'user#post_login', via: :post
   match '/logout', to: 'user#logout', via: :get
+  match '/player/:user_login', to: 'user#profile', via: :get, as: 'user_profile'
+
 
   #world
 

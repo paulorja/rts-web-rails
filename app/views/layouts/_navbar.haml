@@ -29,5 +29,5 @@
 
   .navbar-item{style: 'float:right'}
 
-    = @current_user.login
+    = link_to @current_user.login, user_profile_path(@current_user.login)
     = link_to('X', '/logout')
