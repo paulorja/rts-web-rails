@@ -10,20 +10,7 @@ class User < ActiveRecord::Base
   has_one :user_data, dependent: :destroy
 
   def create_user_data start_position
-    UserData.create({
-                        user_id: self.id,
-                        wood: 1200,
-                        stone: 500,
-                        gold: 350,
-                        food: 350,
-                        storage: 2000,
-                        idle_villagers: 2,
-                        total_villagers: 2,
-                        total_territories: 4,
-                        max_villagers: 2,
-                        total_roads: 3,
-                        max_roads: BUILDING[:castle][:levels][1][:roads]
-                    })
+    UserData.start_user_data(self.id)
 
     update_attributes({
         castle_x: start_position[:castle].x,

@@ -54,7 +54,6 @@ class UserData < ActiveRecord::Base
     cell.save
   end
 
-
   def new_villager(user)
     #validate
     return 'Vocẽ não possui comida' if food < 100
@@ -69,4 +68,22 @@ class UserData < ActiveRecord::Base
     self.save
     true
   end
+
+  def self.start_user_data(user_id)
+    UserData.create(
+      user_id: user_id,
+      wood: 1200,
+      stone: 500,
+      gold: 350,
+      food: 350,
+      storage: 2000,
+      idle_villagers: 2,
+      total_villagers: 2,
+      total_territories: 4,
+      max_villagers: 2,
+      total_roads: 3,
+      max_roads: BUILDING[:castle][:levels][1][:roads]
+    )
+  end
+
 end
