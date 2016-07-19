@@ -35,7 +35,28 @@ class WorldController < ApplicationController
     @villager = params[:villager]
 
     if @current_user.id == @cell.user_id
-      Cell.move_villager(@cell, @target_cell, @villager)
+      if Cell.move_villager(@cell, @target_cell, @villager)
+        if @target_cell.is_recourse_building
+          @user_data.wood_villagers += 1 if @target_cell.is_lumberjack
+          @user_data.gold_villagers += 1 if @target_cell.is_gold_mine
+          @user_data.stone_villagers += 1 if @target_cell.is_stone_mine
+
+          if @cell.is_recourse_building
+            @user_data.wood_villagers -= 1 if @cell.is_lumberjack and @user_data.wood_villagers > 0
+            @user_data.gold_villagers -= 1 if @cell.is_gold_mine and @user_data.gold_villagers > 0
+            @user_data.stone_villagers -= 1 if @cell.is_stone_mine and @user_data.stone_villagers > 0
+          end
+
+        end
+
+        if @cell.is_recourse_building
+          @user_data.wood_villagers -= 1 if @cell.is_lumberjack and @user_data.wood_villagers > 0
+          @user_data.gold_villagers -= 1 if @cell.is_gold_mine and @user_data.gold_villagers > 0
+          @user_data.stone_villagers -= 1 if @cell.is_stone_mine and @user_data.stone_villagers > 0
+        end
+
+        @user_data.save
+      end
     end
 
     redirect_to :back

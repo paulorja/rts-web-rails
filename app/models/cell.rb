@@ -7,6 +7,22 @@ class Cell < ActiveRecord::Base
     true if building_code == BUILDING[:road][:code]
   end
 
+  def is_recourse_building
+    true if is_lumberjack or is_gold_mine or is_stone_mine
+  end
+
+  def is_lumberjack
+    true if building_code == BUILDING[:lumberjack][:code]
+  end
+
+  def is_gold_mine
+    true if building_code == BUILDING[:gold_mine][:code]
+  end
+
+  def is_stone_mine
+    true if building_code == BUILDING[:stone_mine][:code]
+  end
+
   def have_building
     true if building_code != 0
   end
@@ -28,6 +44,7 @@ class Cell < ActiveRecord::Base
   end
 
   def terrain_can_build(terrain, building)
+    return true if building[:code] == BUILDING[:castle][:code] and building_level > 0
     terrain[:buildings].each do |b|
       return true if b == building[:code]
     end
@@ -142,7 +159,9 @@ class Cell < ActiveRecord::Base
     if cell.have_villager villager and cell.id != target_cell.id and cell.user_id == target_cell.user_id and cell.idle and target_cell.idle
       cell.remove_villager villager
       target_cell.add_villager villager
+      return true
     end
+    false
   end
 
   def self.render_layers(cells, current_user)
