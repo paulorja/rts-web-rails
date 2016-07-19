@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   get '/villager/:cell_id/:villager', to: 'world#villager'
   get '/villager/:cell_id/:villager/:target_cell_id', to: 'world#villager_action'
+  get '/villager/new', to: 'world#new_villager', as: 'new_villager'
 
   #terrain
 

@@ -30,6 +30,10 @@
         Próximo nível:
         = (@user_data.max_roads+BUILDING[:castle][:levels][@cell.building_level+1][:roads]).to_s
 
+      %hr
+      %div
+        = link_to 'Comprar Aldeão', new_villager_path, class: 'btn-build'
+
     - if @cell.building_code == BUILDING[:house][:code]
       %div
         Cada nível aumenta 1 no limite de aldeões.
@@ -44,6 +48,7 @@
         Capacidade atual:
         = @user_data.storage.to_s
 
+    %hr
     = render 'building_up', { building: Building.get_building(@cell.building_code), building_level: @cell.building_level+1 }
   - else
     = 'construindo...'

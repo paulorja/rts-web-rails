@@ -35,7 +35,6 @@ class WorldController < ApplicationController
     redirect_to :back
   end
 
-
   def build
     x = params[:x]
     y = params[:y]
@@ -45,6 +44,16 @@ class WorldController < ApplicationController
 
     if build.is_a? String
       flash['alert'] = build
+    end
+
+    redirect_to :back
+  end
+
+  def new_villager
+    new_villager = @user_data.new_villager @current_user
+
+    if new_villager.is_a? String
+      flash['alert'] = new_villager
     end
 
     redirect_to :back
