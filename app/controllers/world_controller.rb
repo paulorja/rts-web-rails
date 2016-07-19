@@ -7,6 +7,12 @@ class WorldController < ApplicationController
   def world_zoom
     set_x_y
 
+    @x = '4' if @x.to_i < 4
+    @y = '4' if @y.to_i < 4
+    @x = '252' if @x.to_i > 252
+    @y = '252' if @y.to_i > 252
+
+
     @cells = Cell.includes(:user, event_building_up: :event).world_zoom(@x, @y)
 
   end
