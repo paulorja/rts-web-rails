@@ -32,7 +32,17 @@ class UserData < ActiveRecord::Base
 
   def idle_villager
     begin
-      return Cell.where('idle = ? and villagers IS NOT NULL and user_id = ?', true, user_id).first.villagers.split(';')[0]
+      return Cell.where('idle = ? and
+                        villagers IS NOT NULL and
+                        building_code != ? and
+                        building_code != ? and
+                        building_code != ? and
+                        user_id = ?',
+                        true,
+                        BUILDING[:stone_mine][:code],
+                        BUILDING[:gold_mine][:code],
+                        BUILDING[:lumberjack][:code],
+                        user_id).first.villagers.split(';')[0]
     rescue
       return nil
     end
@@ -68,6 +78,48 @@ class UserData < ActiveRecord::Base
     self.idle_villagers += 1
     self.save
     true
+  end
+
+  def add_wood_villager(cell)
+    if cell.is_lumberjack
+      self.wood_villagers += 1
+      self.idle_villagers -= 1
+    end
+  end
+
+  def add_stone_villager(cell)
+    if cell.is_stone_mine
+      self.stone_villagers += 1
+      self.idle_villagers -= 1
+    end
+  end
+
+  def add_gold_villager(cell)
+    if cell.is_gold_mine
+      self.gold_villagers += 1
+      self.idle_villagers -= 1
+    end
+  end
+
+  def remove_wood_villager(cell)
+    if cell.is_lumberjack and self.wood_villagers > 0
+      self.wood_villagers -= 1
+      self.idle_villagers += 1
+    end
+  end
+
+  def remove_gold_villager(cell)
+    if cell.is_gold_mine and self.gold_villagers > 0
+      self.gold_villagers -= 1
+      self.idle_villagers += 1
+    end
+  end
+
+  def remove_stone_villager(cell)
+    if cell.is_stone_mine and self.stone_villagers > 0
+      self.stone_villagers -= 1
+      self.idle_villagers += 1
+    end
   end
 
   def self.start_user_data(user_id)

@@ -17,7 +17,7 @@
 
 .recourse-container.navbar-item
   .recourse-icon
-    = image_tag "sprites#{sprite}"
+    = image_tag "sprites#{sprite}", width: 20
   .recourse-label
     = amount.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1 ")
     = "(#{villagers})"

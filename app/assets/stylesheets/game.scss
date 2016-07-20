@@ -1,7 +1,7 @@
 body {
   margin: 0px auto;
   background: #000000;
-  font-family: sans-serif;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
 
 a {
@@ -13,7 +13,7 @@ a {
   width: 752px;
   height: 572px;
   margin: 0px auto;
-  padding: 5px;
+  padding: 5px 5px 5px 0px;
 }
 
 #game-header {
@@ -35,7 +35,7 @@ a {
 #game-content-left {
   float: left;
   width: 240px;
-  padding-top: 25px;
+  padding-top: 30px;
   height: 487px;
 }
 
@@ -70,11 +70,12 @@ a {
 }
 
 .content-title {
-  background: saddlebrown;
-  color: white;
+  background: #003b6e;
   padding: 5px;
   text-align: center;
-  font-family: "Helvetica Neue", "Arial", sans-serif;
+  border: double 3px black;
+  border-left: none;
+  width: 90%;
 }
 
 

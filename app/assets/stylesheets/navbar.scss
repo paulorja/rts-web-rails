@@ -26,13 +26,13 @@
 
 .recourse-container {
   width: 80px;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .recourse-icon {
   float: left;
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
 }
 
 .recourse-icon img {
@@ -41,7 +41,7 @@
 }
 
 .recourse-label {
-  width: 50px;
+  width: 55px;
   float: right;
   height: 14px;
   padding-top: 4px;
@@ -49,14 +49,14 @@
 }
 
 .recourse-progress-bar {
-  width: 50px;
-  height: 4px;
+  width: 55px;
+  height: 3px;
   background: red;
   float: right;
 }
 
 .recourse-progress-bar-completed {
-  height: 4px;
+  height: 3px;
   background: green;
   float: left;
 }

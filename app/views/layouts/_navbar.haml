@@ -20,14 +20,14 @@
   = render 'layouts/navbar_recourse', { amount: @user_data.food, recourse: :food,   max: @user_data.storage, villagers: @user_data.food_villagers }
 
 
-  .navbar-item{style: 'font-size: 12px'}
+  .navbar-item{style: 'font-size: 11px'}
     Total de Aldeões:
     = @user_data[:total_villagers]
     %br
     Aldeões Parados:
     = @user_data[:idle_villagers]
 
-  .navbar-item{style: 'float:right'}
+  .navbar-item{style: 'float:right; font-size: 11px'}
 
     = link_to @current_user.login, user_profile_path(@current_user.login)
     = link_to('X', '/logout')

@@ -37,22 +37,15 @@ class WorldController < ApplicationController
     if @current_user.id == @cell.user_id
       if Cell.move_villager(@cell, @target_cell, @villager)
         if @target_cell.is_recourse_building
-          @user_data.wood_villagers += 1 if @target_cell.is_lumberjack
-          @user_data.gold_villagers += 1 if @target_cell.is_gold_mine
-          @user_data.stone_villagers += 1 if @target_cell.is_stone_mine
-
-          if @cell.is_recourse_building
-            @user_data.wood_villagers -= 1 if @cell.is_lumberjack and @user_data.wood_villagers > 0
-            @user_data.gold_villagers -= 1 if @cell.is_gold_mine and @user_data.gold_villagers > 0
-            @user_data.stone_villagers -= 1 if @cell.is_stone_mine and @user_data.stone_villagers > 0
-          end
-
+          @user_data.add_wood_villager @target_cell
+          @user_data.add_gold_villager @target_cell
+          @user_data.add_stone_villager @target_cell
         end
 
         if @cell.is_recourse_building
-          @user_data.wood_villagers -= 1 if @cell.is_lumberjack and @user_data.wood_villagers > 0
-          @user_data.gold_villagers -= 1 if @cell.is_gold_mine and @user_data.gold_villagers > 0
-          @user_data.stone_villagers -= 1 if @cell.is_stone_mine and @user_data.stone_villagers > 0
+          @user_data.remove_wood_villager @cell
+          @user_data.remove_gold_villager @cell
+          @user_data.remove_stone_villager @cell
         end
 
         @user_data.save

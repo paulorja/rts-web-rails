@@ -1,16 +1,19 @@
 .world_navigation {
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   margin: 0px auto;
   border: solid 1px black;
+  background-image: asset-url('sprites/icons/map_nav.png');
+  background-size: 100%;
 }
 
 .world_navigation_item {
   float: left;
-  width: 20px;
-  height: 20px;
+  width: 21px;
+  height: 21px;
 }
 
 .world_navigation_item:hover {
   background: #ccc;
+  opacity: 0.5;
 }

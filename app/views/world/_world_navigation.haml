@@ -1,11 +1,11 @@
 
 .world_navigation
-  = link_to 'o', world_zoom_c_path(@x.to_i-1, @y.to_i-1), class: 'world_navigation_item'
-  = link_to 'o', world_zoom_c_path(@x, @y.to_i-1), class: 'world_navigation_item'
-  = link_to 'o', world_zoom_c_path(@x.to_i+1, @y.to_i-1), class: 'world_navigation_item'
-  = link_to 'o', world_zoom_c_path(@x.to_i-1, @y), class: 'world_navigation_item'
+  = link_to ' ', world_zoom_c_path(@x.to_i-1, @y.to_i-1), class: 'world_navigation_item'
+  = link_to ' ', world_zoom_c_path(@x, @y.to_i-1), class: 'world_navigation_item'
+  = link_to ' ', world_zoom_c_path(@x.to_i+1, @y.to_i-1), class: 'world_navigation_item'
+  = link_to ' ', world_zoom_c_path(@x.to_i-1, @y), class: 'world_navigation_item'
   .world_navigation_item
-  = link_to 'o', world_zoom_c_path(@x.to_i+1, @y), class: 'world_navigation_item'
-  = link_to 'o', world_zoom_c_path(@x.to_i-1, @y.to_i+1), class: 'world_navigation_item'
-  = link_to 'o', world_zoom_c_path(@x, @y.to_i+1), class: 'world_navigation_item'
-  = link_to 'o', world_zoom_c_path(@x.to_i+1, @y.to_i+1), class: 'world_navigation_item'
+  = link_to ' ', world_zoom_c_path(@x.to_i+1, @y), class: 'world_navigation_item'
+  = link_to ' ', world_zoom_c_path(@x.to_i-1, @y.to_i+1), class: 'world_navigation_item'
+  = link_to ' ', world_zoom_c_path(@x, @y.to_i+1), class: 'world_navigation_item'
+  = link_to ' ', world_zoom_c_path(@x.to_i+1, @y.to_i+1), class: 'world_navigation_item'
