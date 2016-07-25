@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20160708015800) do
 
   create_table "user_data", force: :cascade do |t|
     t.integer  "user_id",           limit: 4
-    t.integer  "wood",              limit: 4,   default: 0
-    t.integer  "gold",              limit: 4,   default: 0
-    t.integer  "food",              limit: 4,   default: 0
-    t.integer  "stone",             limit: 4,   default: 0
+    t.float    "wood",              limit: 24,  default: 0.0
+    t.float    "gold",              limit: 24,  default: 0.0
+    t.float    "food",              limit: 24,  default: 0.0
+    t.float    "stone",             limit: 24,  default: 0.0
     t.integer  "wood_villagers",    limit: 4,   default: 0
     t.integer  "gold_villagers",    limit: 4,   default: 0
     t.integer  "food_villagers",    limit: 4,   default: 0
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 20160708015800) do
     t.integer  "max_villagers",     limit: 4,   default: 0
     t.integer  "total_territories", limit: 4,   default: 0
     t.string   "last_update",       limit: 255
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   add_index "user_data", ["user_id"], name: "index_user_data_on_user_id", using: :btree

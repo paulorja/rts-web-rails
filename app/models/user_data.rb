@@ -139,4 +139,34 @@ class UserData < ActiveRecord::Base
     )
   end
 
+  def wood_per_hour
+    wood_villagers * 10
+  end
+
+  def stone_per_hour
+    stone_villagers * 10
+  end
+
+  def gold_per_hour
+    gold_villagers * 10
+  end
+
+  def food_per_hour
+    food_villagers * 10
+  end
+
+  def update_recourses
+    now = Time.now.to_i
+
+    update_ratio = (now - last_update.to_i).to_f / 3600
+
+    self.wood += wood_per_hour * update_ratio
+    self.stone += stone_per_hour * update_ratio
+    self.gold += gold_per_hour * update_ratio
+    self.food += food_per_hour * update_ratio
+
+    self.last_update = now
+    self.save
+  end
+
 end

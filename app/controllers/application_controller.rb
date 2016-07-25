@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :resolve_events
-  before_action :set_current_user
+  before_action :set_current_user, :update_recourses, :resolve_events
+  include WorldHelper
 
   def set_current_user
     if session['current_user_id']
@@ -25,10 +25,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  include WorldHelper
 
   def resolve_events
     Event.resolve_events
+  end
+
+  def update_recourses
+    unless @current_user.nil?
+      @current_user.user_data.update_recourses
+    end
   end
 
 end
