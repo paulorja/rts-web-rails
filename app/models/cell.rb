@@ -182,6 +182,25 @@ class Cell < ActiveRecord::Base
     false
   end
 
+  def next_road
+    arredores = arredores(1)
+
+    if arredores[1].is_road and arredores[1].user_id == self.user_id
+      return arredores[1]
+    elsif arredores[3].is_road and arredores[3].user_id == self.user_id
+      return arredores[3]
+    elsif arredores[5].is_road and arredores[5].user_id == self.user_id
+      return arredores[5]
+    elsif arredores[7].is_road and arredores[7].user_id == self.user_id
+      return arredores[7]
+    end
+    nil
+  end
+
+  def move_to_next_road
+    Cell.move_villager(self, next_road, self.villagers)
+  end
+
   def self.render_layers(cells, current_user)
     html  = ''
     sprites_layer_1 = ''

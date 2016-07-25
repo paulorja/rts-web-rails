@@ -77,7 +77,7 @@ class UserData < ActiveRecord::Base
 
     #add villager
     castle = Cell.where('x = ? and y = ?', user.castle_x, user.castle_y).first
-    castle.add_villager('1')
+    castle.next_road.add_villager('1')
 
     self.food -= 100
     self.total_villagers += 1

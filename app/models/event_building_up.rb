@@ -23,7 +23,7 @@ class EventBuildingUp < ActiveRecord::Base
 
     user_data.total_territories += 1
     user_data.idle_villagers += 1
-    Cell.move_villager(cell, user_data.user.castle, cell.villagers)
+    cell.move_to_next_road
 
     user_data.save
     cell.save
