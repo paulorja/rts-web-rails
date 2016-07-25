@@ -26,9 +26,10 @@
       %div
         Limite de estradas:
         = @user_data.max_roads
-      %div
-        Próximo nível:
-        = (@user_data.max_roads+BUILDING[:castle][:levels][@cell.building_level+1][:roads]).to_s
+      - if BUILDING[:castle][:levels][@cell.building_level+1]
+        %div
+          Próximo nível:
+          = (@user_data.max_roads+BUILDING[:castle][:levels][@cell.building_level+1][:roads]).to_s
 
       %hr
       %div
