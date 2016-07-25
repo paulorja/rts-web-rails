@@ -123,6 +123,8 @@ class Cell < ActiveRecord::Base
   end
 
   def have_villager(villager)
+    return false if villagers.nil?
+
     villagers.split(';').each do |v|
       if v == villager.to_s
         return true
@@ -140,7 +142,11 @@ class Cell < ActiveRecord::Base
   end
 
   def remove_villager(villager)
-    new_array = villagers.split(';')
+    new_array = []
+
+    unless villagers.nil?
+      new_array = villagers.split(';').to_a
+    end
 
     villagers.split(';').each_with_index do |v, index|
       if v == villager
