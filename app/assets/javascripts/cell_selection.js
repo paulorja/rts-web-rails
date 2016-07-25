@@ -67,6 +67,9 @@ $(document).on('turbolinks:load', function() {
                 case 'mine':
                     $('body').css('cursor', 'url(/assets/sprites/world/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
                     break;
+                case 'farm':
+                    $('body').css('cursor', 'url(/assets/sprites/world/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
+                    break;
                 default:
                     set_default_cursor()
                     break;

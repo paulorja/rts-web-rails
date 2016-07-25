@@ -8,7 +8,7 @@ class Cell < ActiveRecord::Base
   end
 
   def is_recourse_building
-    true if is_lumberjack or is_gold_mine or is_stone_mine
+    true if is_lumberjack or is_gold_mine or is_stone_mine or is_farm
   end
 
   def is_lumberjack
@@ -21,6 +21,10 @@ class Cell < ActiveRecord::Base
 
   def is_stone_mine
     true if building_code == BUILDING[:stone_mine][:code]
+  end
+
+  def is_farm
+    true if building_code == BUILDING[:farm][:code]
   end
 
   def have_building

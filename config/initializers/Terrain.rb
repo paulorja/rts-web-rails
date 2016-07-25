@@ -4,7 +4,7 @@ TERRAIN = {
         code: 2,
         color: [119, 232, 104],
         css_class: 'sprite-grass',
-        buildings: [1, 2, 3]
+        buildings: [1, 2, 3, 9]
     },
     tree: {
         name: 'Floresta',

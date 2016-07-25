@@ -24,5 +24,6 @@ BUILDING = {
     port: building_config('port'),
     gold_mine: building_config('gold_mine'),
     lumberjack: building_config('lumberjack'),
-    stone_mine: building_config('stone_mine')
+    stone_mine: building_config('stone_mine'),
+    farm: building_config('farm')
 }

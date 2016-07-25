@@ -40,12 +40,14 @@ class WorldController < ApplicationController
           @user_data.add_wood_villager @target_cell
           @user_data.add_gold_villager @target_cell
           @user_data.add_stone_villager @target_cell
+          @user_data.add_farm_villager @target_cell
         end
 
         if @cell.is_recourse_building
           @user_data.remove_wood_villager @cell
           @user_data.remove_gold_villager @cell
           @user_data.remove_stone_villager @cell
+          @user_data.remove_farm_villager @cell
         end
 
         @user_data.save

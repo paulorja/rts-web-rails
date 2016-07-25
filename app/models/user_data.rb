@@ -36,11 +36,13 @@ class UserData < ActiveRecord::Base
                 building_code != ? and
                 building_code != ? and
                 building_code != ? and
+                building_code != ? and
                 user_id = ?',
                 true,
                 BUILDING[:stone_mine][:code],
                 BUILDING[:gold_mine][:code],
                 BUILDING[:lumberjack][:code],
+                BUILDING[:farm][:code],
                 user_id).first
   end
 
@@ -105,6 +107,13 @@ class UserData < ActiveRecord::Base
     end
   end
 
+  def add_farm_villager(cell)
+    if cell.is_farm
+      self.food_villagers += 1
+      self.idle_villagers -= 1
+    end
+  end
+
   def remove_wood_villager(cell)
     if cell.is_lumberjack and self.wood_villagers > 0
       self.wood_villagers -= 1
@@ -122,6 +131,13 @@ class UserData < ActiveRecord::Base
   def remove_stone_villager(cell)
     if cell.is_stone_mine and self.stone_villagers > 0
       self.stone_villagers -= 1
+      self.idle_villagers += 1
+    end
+  end
+
+  def remove_farm_villager(cell)
+    if cell.is_farm and self.food_villagers > 0
+      self.food_villagers -= 1
       self.idle_villagers += 1
     end
   end
