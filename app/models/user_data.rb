@@ -30,19 +30,23 @@ class UserData < ActiveRecord::Base
     end
   end
 
+  def idle_villager_cell
+    Cell.where('idle = ? and
+                villagers IS NOT NULL and
+                building_code != ? and
+                building_code != ? and
+                building_code != ? and
+                user_id = ?',
+                true,
+                BUILDING[:stone_mine][:code],
+                BUILDING[:gold_mine][:code],
+                BUILDING[:lumberjack][:code],
+                user_id).first
+  end
+
   def idle_villager
     begin
-      return Cell.where('idle = ? and
-                        villagers IS NOT NULL and
-                        building_code != ? and
-                        building_code != ? and
-                        building_code != ? and
-                        user_id = ?',
-                        true,
-                        BUILDING[:stone_mine][:code],
-                        BUILDING[:gold_mine][:code],
-                        BUILDING[:lumberjack][:code],
-                        user_id).first.villagers.split(';')[0]
+      return idle_villager_cell.villagers.split(';')[0]
     rescue
       return nil
     end
@@ -52,7 +56,7 @@ class UserData < ActiveRecord::Base
     self.idle_villagers = idle_villagers-1
     self.save
 
-    cell = Cell.where('idle = ? and villagers IS NOT NULL and user_id = ?', true, user_id).first
+    cell = idle_villager_cell
     new_array = cell.villagers.split(';')
     new_array.delete_at(0)
 
