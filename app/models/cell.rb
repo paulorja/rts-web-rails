@@ -131,6 +131,14 @@ class Cell < ActiveRecord::Base
     false
   end
 
+  def villager_number
+    if villagers.nil?
+      0
+    else
+      villagers.split(';').size
+    end
+  end
+
   def remove_villager(villager)
     new_array = villagers.split(';')
 

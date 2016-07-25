@@ -160,19 +160,19 @@ class UserData < ActiveRecord::Base
   end
 
   def wood_per_hour
-    wood_villagers * 10
+    wood_villagers * 50
   end
 
   def stone_per_hour
-    stone_villagers * 10
+    stone_villagers * 50
   end
 
   def gold_per_hour
-    gold_villagers * 10
+    gold_villagers * 50
   end
 
   def food_per_hour
-    food_villagers * 10
+    food_villagers * 50
   end
 
   def update_recourses

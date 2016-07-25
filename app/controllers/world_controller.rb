@@ -34,7 +34,11 @@ class WorldController < ApplicationController
     @target_cell = Cell.find(params[:target_cell_id])
     @villager = params[:villager]
 
-    if @current_user.id == @cell.user_id
+
+    if @target_cell.is_recourse_building and @target_cell.villager_number != 0
+      flash['alert'] = 'Apenas 1 aldeão pode coletar recursos!'
+    elsif @current_user.id == @cell.user_id
+
       if Cell.move_villager(@cell, @target_cell, @villager)
         if @target_cell.is_recourse_building
           @user_data.add_wood_villager @target_cell
@@ -42,16 +46,15 @@ class WorldController < ApplicationController
           @user_data.add_stone_villager @target_cell
           @user_data.add_farm_villager @target_cell
         end
-
         if @cell.is_recourse_building
           @user_data.remove_wood_villager @cell
           @user_data.remove_gold_villager @cell
           @user_data.remove_stone_villager @cell
           @user_data.remove_farm_villager @cell
         end
-
         @user_data.save
       end
+
     end
 
     redirect_to :back
