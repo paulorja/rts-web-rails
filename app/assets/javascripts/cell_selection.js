@@ -62,13 +62,13 @@ $(document).on('turbolinks:load', function() {
                     $('body').css('cursor', 'url(/assets/sprites/world/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
                     break;
                 case 'lumber':
-                    $('body').css('cursor', 'url(/assets/sprites/world/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
+                    $('body').css('cursor', 'url(/assets/sprites/icons/axe), pointer');
                     break;
                 case 'mine':
-                    $('body').css('cursor', 'url(/assets/sprites/world/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
+                    $('body').css('cursor', 'url(/assets/sprites/icons/pick), pointer');
                     break;
                 case 'farm':
-                    $('body').css('cursor', 'url(/assets/sprites/world/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
+                    $('body').css('cursor', 'url(/assets/sprites/icons/hoe), pointer');
                     break;
                 default:
                     set_default_cursor()
