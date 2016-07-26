@@ -35,8 +35,8 @@ class WorldController < ApplicationController
     @villager = params[:villager]
 
 
-    if @target_cell.is_recourse_building and @target_cell.villager_number != 0
-      flash['alert'] = 'Apenas 1 aldeão pode coletar recursos!'
+    if @target_cell.is_recourse_building and @target_cell.villager_number == @target_cell.building_level
+      flash['alert'] = "Apenas #{@target_cell.building_level} aldeão pode coletar recursos aqui!"
     elsif @current_user.id == @cell.user_id
 
       if Cell.move_villager(@cell, @target_cell, @villager)
