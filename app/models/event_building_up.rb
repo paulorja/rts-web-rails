@@ -21,7 +21,7 @@ class EventBuildingUp < ActiveRecord::Base
     else
     end
 
-    user_data.total_territories += 1
+    user_data.total_territories += 1 if cell.building_level == 1
     user_data.idle_villagers += 1
     cell.move_to_next_road
 
