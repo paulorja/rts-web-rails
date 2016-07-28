@@ -281,6 +281,8 @@ class Cell < ActiveRecord::Base
     terrain = Terrain.get_terrain(terrain_code)
 
     #validations
+    return 'Já está evoluindo' unless idle?
+    return 'Nível máximo atingido' if building[:levels][building_level+1].nil?
     return 'Você não possui recursos' unless user_data.have_recourses building[:levels][building_level+1]
     return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)
     return 'Suas estradas não chegam até aqui' unless have_user_road current_user.id
