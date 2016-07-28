@@ -11,14 +11,27 @@
 
 = 'x: '+@cell.x.to_s+' y: '+@cell.y.to_s
 
-
+/ SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
 - if building.nil? and @cell.have_user_road @current_user.id
   - terrain[:buildings].each do |b|
     = render 'building_up', { building: Building.get_building(b), building_level: 1}
 
+  - if @cell.is_tree
+    .build-container
+      .build-icon{class: 'sprite-vil-1'}
+      .build-title
+        = link_to 'Remover Árvore', new_villager_path, class: 'btn-build'
+      .build-recourses
+        .recourse-up-icon.icon-wood
+        .recourse-up-label= 1500
+        .recourse-up-icon.icon-timer
+        .recourse-up-label.label-timer= 300
+
+/ SE A CONSTRUÇÃO É DO USUÁRIO
 - if @cell.user_id == @current_user.id
   - if @cell.idle
 
+    / SE CASTELO
     - if @cell.building_code == BUILDING[:castle][:code]
       %div
         Estradas utilizadas:
@@ -39,9 +52,10 @@
             = 'Aldeão'
             = link_to 'Comprar Aldeão', new_villager_path, class: 'btn-build'
           .build-recourses
-            = image_tag 'sprites/icons/food.png', width: 12
-            = 100
+            .recourse-up-icon.icon-food
+            .recourse-up-label= 100
 
+    / SE CASA
     - if @cell.building_code == BUILDING[:house][:code]
       %div
         Cada nível aumenta 1 no limite de aldeões.
@@ -49,6 +63,7 @@
         Limite de aldeõs:
         = @user_data.max_villagers.to_s
 
+    / SE ARMAZEM
     - if @cell.building_code == BUILDING[:storage][:code]
       %div
         Cada nível aumenta 1000 no limite de recursos.
@@ -57,8 +72,11 @@
         = @user_data.storage.to_s
 
     %hr
+
+    / EVOLUIR EDIFICIO
     = render 'building_up', { building: Building.get_building(@cell.building_code), building_level: @cell.building_level+1 }
   - else
+    / SE EDIFICIO OCUPADO
     = 'construindo...'
 
 :javascript

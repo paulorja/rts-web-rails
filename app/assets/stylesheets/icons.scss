@@ -6,3 +6,37 @@
 .icon-my-castle {
   background-image: asset-url("sprites/icons/my_castle.png");
 }
+
+.recourse-up-icon {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 12px;
+  height: 12px;
+  float: left;
+  margin-left:4px;
+}
+
+.recourse-up-label {
+  float: left;
+  margin-left: 2px;
+}
+
+.icon-wood {
+  background-image: asset-url("sprites/icons/wood.png");
+}
+
+.icon-food {
+  background-image: asset-url("sprites/icons/food.png");
+}
+
+.icon-stone {
+  background-image: asset-url("sprites/icons/stone.png");
+}
+
+.icon-gold {
+  background-image: asset-url("sprites/icons/gold.png");
+}
+
+.icon-timer {
+  background-image: asset-url("sprites/icons/timer.png");
+}

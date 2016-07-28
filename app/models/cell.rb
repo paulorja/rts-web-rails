@@ -35,6 +35,10 @@ class Cell < ActiveRecord::Base
     true if terrain_code == TERRAIN[:grass][:code]
   end
 
+  def is_tree
+    true if terrain_code == TERRAIN[:tree][:code]
+  end
+
   def is_gold
     true if terrain_code == TERRAIN[:gold][:code]
   end

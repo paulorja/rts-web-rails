@@ -11,19 +11,19 @@
       = link_to link_label, build_path(@cell.x, @cell.y, building[:code]), class: 'btn-build'
     .build-recourses
       - if building[:levels][building_level][:wood] and building[:levels][building_level][:wood].to_i > 0
-        = image_tag 'sprites/icons/wood.png', width: 12
-        = building[:levels][building_level][:wood]
+        .recourse-up-icon.icon-wood
+        .recourse-up-label= building[:levels][building_level][:wood]
       - if building[:levels][building_level][:stone] and building[:levels][building_level][:stone].to_i > 0
-        = image_tag 'sprites/icons/stone.png', width: 12
-        = building[:levels][building_level][:stone]
+        .recourse-up-icon.icon-stone
+        .recourse-up-label= building[:levels][building_level][:stone]
       - if building[:levels][building_level][:gold] and building[:levels][building_level][:gold].to_i > 0
-        = image_tag 'sprites/icons/gold.png', width: 12
-        = building[:levels][building_level][:gold]
+        .recourse-up-icon.icon-gold
+        .recourse-up-label= building[:levels][building_level][:gold]
       - if building[:levels][building_level][:food] and building[:levels][building_level][:food].to_i > 0
-        = image_tag 'sprites/icons/food.png', width: 12
-        = building[:levels][building_level][:food]
-      %label.label-timer
-        = building[:levels][building_level][:time]
+        .recourse-up-icon.icon-food
+        .recourse-up-label= building[:levels][building_level][:food]
+      .recourse-up-icon.icon-timer
+      .recourse-up-label.label-timer= building[:levels][building_level][:time]
 - else
   .build-container
     Totalmente evoluído
