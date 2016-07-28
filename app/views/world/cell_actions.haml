@@ -18,14 +18,24 @@
 
   - if @cell.is_tree
     .build-container
-      .build-icon{class: 'sprite-vil-1'}
+      .build-icon.icon-x
       .build-title
-        = link_to 'Remover Árvore', new_villager_path, class: 'btn-build'
+        = link_to 'Remover Árvore', to_grass_path(@cell.x, @cell.y), class: 'btn-build'
       .build-recourses
         .recourse-up-icon.icon-wood
-        .recourse-up-label= 1500
+        .recourse-up-label= TO_GRASS[:tree][:wood]
         .recourse-up-icon.icon-timer
-        .recourse-up-label.label-timer= 300
+        .recourse-up-label.label-timer= TO_GRASS[:tree][:time]
+  - if @cell.is_stone
+    .build-container
+      .build-icon.icon-x
+      .build-title
+        = link_to 'Remover Pedra', to_grass_path(@cell.x, @cell.y), class: 'btn-build'
+      .build-recourses
+        .recourse-up-icon.icon-stone
+        .recourse-up-label= TO_GRASS[:stone][:stone]
+        .recourse-up-icon.icon-timer
+        .recourse-up-label.label-timer= TO_GRASS[:stone][:time]
 
 / SE A CONSTRUÇÃO É DO USUÁRIO
 - if @cell.user_id == @current_user.id

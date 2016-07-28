@@ -14,7 +14,6 @@ class WorldController < ApplicationController
 
 
     @cells = Cell.includes(:user, event_building_up: :event).world_zoom(@x, @y)
-
   end
 
   def cell_actions
@@ -79,6 +78,18 @@ class WorldController < ApplicationController
 
     if new_villager.is_a? String
       flash['alert'] = new_villager
+    end
+
+    redirect_to :back
+  end
+
+  def to_grass
+    x = params[:x]
+    y = params[:y]
+
+    event = EventToGrass.start_event(x, y, @current_user)
+    if event.is_a? String
+      flash['alert'] = build
     end
 
     redirect_to :back
