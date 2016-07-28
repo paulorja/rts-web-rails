@@ -54,24 +54,26 @@ $(document).on('turbolinks:load', function() {
 
     });
 
+    var body = $('body');
+
     $(".link-sprite").hover(function() {
 
         if(selected_villager != null) {
             switch($(this).attr('v-action')) {
                 case 'go':
-                    $('body').css('cursor', 'url(/assets/sprites/world/villagers/vil_'+selected_villager.attr('obj_id')+'), pointer');
+                    body.addClass('cursor-vil-'+selected_villager.attr('obj_id')+'');
                     break;
                 case 'lumber':
-                    $('body').css('cursor', 'url(/assets/sprites/icons/axe), pointer');
+                    body.addClass('icon-axe');
                     break;
                 case 'mine':
-                    $('body').css('cursor', 'url(/assets/sprites/icons/pick), pointer');
+                    body.addClass('icon-pick');
                     break;
                 case 'farm':
-                    $('body').css('cursor', 'url(/assets/sprites/icons/hoe), pointer');
+                    body.addClass('icon-hoe');
                     break;
                 default:
-                    set_default_cursor()
+                    body.attr('class', ''); // remove all class
                     break;
             }
         }
@@ -88,8 +90,4 @@ function clear_selected_villager() {
 function clear_selected_sprite() {
     $('.sprite-selected').removeClass('sprite-selected');
     $('.content-selected-sprite').html('');
-}
-
-function set_default_cursor() {
-    $('body').css('cursor', 'default');
 }

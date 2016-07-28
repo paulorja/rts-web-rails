@@ -1,5 +1,7 @@
 #game-content-left
-  %h4 Bem Vindo
+  %h3= 'Bem-vindo'
+
+  %h4 Entrar
   = form_for :user, url: 'login', html: { class: 'form-user' } do |u|
     = u.label :login
     %br
