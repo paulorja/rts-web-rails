@@ -18,7 +18,7 @@
         },
         {
             wood: 420,
-            gold: 200,
+            stone: 200,
             time: 88,
             population: 1
         }
