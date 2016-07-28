@@ -85,6 +85,16 @@
 
     / EVOLUIR EDIFICIO
     = render 'building_up', { building: Building.get_building(@cell.building_code), building_level: @cell.building_level+1 }
+
+    / DESTRUIR EDIFICIO
+    - unless @cell.is_castle or @cell.is_road
+      .build-container
+        .build-icon.icon-x
+        .build-title
+          = link_to 'Destruir Edifício', building_destroy_path(@cell.x, @cell.y), class: 'btn-build'
+        .build-recourses
+          .recourse-up-icon.icon-timer
+          .recourse-up-label.label-timer= 300
   - else
     / SE EDIFICIO OCUPADO
     = 'construindo...'

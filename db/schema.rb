@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728024647) do
+ActiveRecord::Schema.define(version: 20160728040325) do
 
   create_table "cells", force: :cascade do |t|
     t.integer "x",              limit: 4
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 20160728024647) do
     t.integer "user_id",        limit: 4,   default: 0
     t.string  "villagers",      limit: 255
     t.boolean "idle",                       default: true
+  end
+
+  create_table "event_building_destroys", force: :cascade do |t|
+    t.integer "event_id", limit: 4
+    t.integer "cell_id",  limit: 4
   end
 
   create_table "event_building_ups", force: :cascade do |t|

@@ -3,9 +3,14 @@ class Cell < ActiveRecord::Base
   belongs_to :user
   has_one :event_building_up
   has_one :event_to_grass
+  has_one :event_building_destroy
 
   def is_road
     true if building_code == BUILDING[:road][:code]
+  end
+
+  def is_castle
+    true if building_code == BUILDING[:castle][:code]
   end
 
   def is_recourse_building
@@ -240,6 +245,9 @@ class Cell < ActiveRecord::Base
       end
       if cell.event_to_grass
         sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_to_grass.event.wait_time}'></div>"
+      end
+      if cell.event_building_destroy
+        sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_destroy.event.wait_time}'></div>"
       end
       if cell.villagers.is_a? String
         cell.villagers.split(';').each do  |v|

@@ -38,6 +38,8 @@ class EventToGrass < ActiveRecord::Base
     end
 
     #validations
+    return 'É preciso remover primeiro o edifício' if cell.building_code != 0
+    return 'Este edifício possui dono' if cell.user_id != nil
     return 'Você não possui recursos' unless user.user_data.have_recourses TO_GRASS[obj]
     return 'Suas estradas não chegam até aqui' unless cell.have_user_road user.id
     idle_villager = user.user_data.idle_villager

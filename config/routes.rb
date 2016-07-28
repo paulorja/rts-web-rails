@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   get 'world_zoom/:x/:y/build/:building_code', to: 'world#build', as: 'build'
   get 'world_zoom/:x/:y/to_grass/', to: 'world#to_grass', as: 'to_grass'
-  get 'world_zoom/:x/:y/destroy_building/', to: 'world#destroy_building', as: 'destroy_building'
+  get 'world_zoom/:x/:y/building_destroy/', to: 'world#building_destroy', as: 'building_destroy'
 
   #villager
 

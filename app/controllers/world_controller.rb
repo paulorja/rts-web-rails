@@ -84,12 +84,18 @@ class WorldController < ApplicationController
   end
 
   def to_grass
-    x = params[:x]
-    y = params[:y]
-
-    event = EventToGrass.start_event(x, y, @current_user)
+    event = EventToGrass.start_event(params[:x], params[:y], @current_user)
     if event.is_a? String
-      flash['alert'] = build
+      flash['alert'] = event
+    end
+
+    redirect_to :back
+  end
+
+  def building_destroy
+    event = EventBuildingDestroy.start_event(params[:x], params[:y], @current_user)
+    if event.is_a? String
+      flash['alert'] = event
     end
 
     redirect_to :back
