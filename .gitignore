@@ -16,5 +16,6 @@
 !/log/.keep
 /tmp
 
+public/world.bmp
 
 /.idea/*
