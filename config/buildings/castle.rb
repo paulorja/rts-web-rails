@@ -19,6 +19,24 @@
             gold: 90,
             time: 350,
             roads: 4
+        },
+        {
+            wood: 550,
+            gold: 400,
+            time: 750,
+            roads: 4
+        },
+        {
+            wood: 1220,
+            gold: 1490,
+            time: 1350,
+            roads: 4
+        },
+        {
+            wood: 2380,
+            gold: 4150,
+            time: 2400,
+            roads: 4
         }
     ]
 }
