@@ -8,10 +8,10 @@ class EventToGrass < ActiveRecord::Base
     cell = Cell.find(event_to_grass.cell_id)
     user_data = UserData.where('user_id = ?', cell.user_id).first
 
-    cell.terrain_code = TERRAIN[:grass][:code]
-    cell.move_to_next_road
-    cell.user_id = nil
     cell.idle = true
+    cell.move_to_next_road
+    cell.terrain_code = TERRAIN[:grass][:code]
+    cell.user_id = nil
 
     user_data.idle_villagers += 1
 

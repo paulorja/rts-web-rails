@@ -8,7 +8,6 @@
         {
         },
         {
-            stone: 35,
             wood: 25,
             time: 5
         }

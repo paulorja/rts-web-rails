@@ -6,7 +6,7 @@
         {
         },
         {
-            roads: 7
+            roads: 12
         },
         {
             wood: 300,
