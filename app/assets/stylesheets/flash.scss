@@ -1,0 +1,12 @@
+
+.flash-notice {
+  background: lightgreen;
+  border: darkgreen 2px solid;
+  z-index:999;
+}
+
+.flash-alert {
+  background: indianred;
+  border: darkred 2px solid;
+  z-index:999;
+}
