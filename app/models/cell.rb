@@ -94,6 +94,10 @@ class Cell < ActiveRecord::Base
     Cell.new
   end
 
+  def have_user
+    true if user_id.to_i > 0
+  end
+
   def border_style(cells)
     border_style = ''
 
