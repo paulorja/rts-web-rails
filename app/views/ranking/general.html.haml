@@ -11,10 +11,14 @@
       %tr
         %th Pos.
         %th Player
-        %th Total Territories
+        %th{style: 'width: 20px;'}
+        %th Territories
     %tbody
       - @users.each_with_index do |u, i|
         %tr
           %td= (i+1).to_s
           %td= link_to(u.login, user_profile_path(u.login))
+          %td{style: "background-color: #{u.color}"}
+            = link_to(u.castle_path) do
+              %div.icon-my-castle.icon-no-repeat{style: 'width: 20px; height: 20px;'}
           %td= u.user_data.total_territories

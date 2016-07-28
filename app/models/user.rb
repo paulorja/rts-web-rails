@@ -42,4 +42,8 @@ class User < ActiveRecord::Base
   def castle
     Cell.where('x = ? and y = ?', castle_x, castle_y).first
   end
+
+  def castle_path
+    "/world_zoom/#{castle_x}/#{castle_y}"
+  end
 end
