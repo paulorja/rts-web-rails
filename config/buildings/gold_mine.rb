@@ -13,12 +13,14 @@
             time: 8
         },
         {
-            wood: 150,
-            gold: 50
+            wood: 350,
+            gold: 320,
+            time: 28
         },
         {
             wood: 320,
-            gold: 90
+            gold: 420,
+            time: 48
         }
     ]
 }
