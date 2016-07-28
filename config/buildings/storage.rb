@@ -11,14 +11,14 @@
             time: 45,
         },
         {
-            wood: 50,
-            stone: 50,
-            time: 44,
+            wood: 250,
+            stone: 250,
+            time: 145,
         },
         {
-            wood: 50,
-            stone: 50,
-            time: 88,
+            wood: 500,
+            stone: 500,
+            time: 288,
         }
     ]
 }
