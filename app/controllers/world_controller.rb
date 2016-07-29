@@ -13,10 +13,12 @@ class WorldController < ApplicationController
     @y = '252' if @y.to_i > 252
 
 
-    @cells = Cell.includes(:user, event_building_up: :event).world_zoom(@x, @y)
+    @cells = Cell.includes(:user, event_building_up: :event, event_building_destroy: :event, event_to_grass: :event).world_zoom(@x, @y)
   end
 
   def cell_actions
+    set_x_y
+
     @cell = Cell.find(params[:cell_id])
 
     render file: 'world/cell_actions', layout: false
@@ -101,18 +103,4 @@ class WorldController < ApplicationController
     redirect_to :back
   end
 
-  private
-    def set_x_y
-      if params[:x]
-        @x = params[:x]
-      else
-        @x = 0
-      end
-
-      if params[:x]
-        @y = params[:y]
-      else
-        @y = 0
-      end
-    end
 end
