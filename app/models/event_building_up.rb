@@ -15,7 +15,7 @@ class EventBuildingUp < ActiveRecord::Base
     when BUILDING[:storage][:code]
       user_data.storage += 1000
     when BUILDING[:house][:code]
-      user_data.max_villagers += 1
+      user_data.max_villagers += BUILDING[:house][:levels][cell.building_level][:population]
     when BUILDING[:castle][:code]
       user_data.max_roads += BUILDING[:castle][:levels][cell.building_level][:roads]
     else

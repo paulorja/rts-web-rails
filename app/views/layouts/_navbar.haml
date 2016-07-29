@@ -1,3 +1,4 @@
+
 - if @current_user
   .navbar-item.navbar-links
     = link_to(world_path) do
@@ -6,28 +7,75 @@
       .navbar-item.my-castle-button
     = link_to("/ranking") do
       .navbar-item.trophy-button
-    = link_to("#", 'data-confirm': 'Em construção!') do
+    = link_to("/reports") do
       .navbar-item.reports-button
 
+  - @user_data.reload
 
-
-- if @current_user
-  .navbar-item{style: 'width: 220px;'}
+  .navbar-item{style: 'width: 220px; margin-left:20px'}
 
   = render 'layouts/navbar_recourse', { amount: @user_data.wood.to_i, recourse: :wood,   max: @user_data.storage, villagers: @user_data.wood_villagers }
   = render 'layouts/navbar_recourse', { amount: @user_data.stone.to_i, recourse: :stone, max: @user_data.storage, villagers: @user_data.stone_villagers }
   = render 'layouts/navbar_recourse', { amount: @user_data.gold.to_i, recourse: :gold,   max: @user_data.storage, villagers: @user_data.gold_villagers }
   = render 'layouts/navbar_recourse', { amount: @user_data.food.to_i, recourse: :food,   max: @user_data.storage, villagers: @user_data.food_villagers }
+  = render 'layouts/navbar_recourse', { amount: @user_data.total_villagers.to_i, recourse: :villager,   max: @user_data.max_villagers }
 
 
-  .navbar-item{style: 'font-size: 11px'}
-    Total de Aldeões:
-    = @user_data[:total_villagers]
-    %br
-    Aldeões Parados:
-    = @user_data[:idle_villagers]
+  .navbar-item.user-data-toggle-component-btn.icon-toggle-btn.icon-no-repeat
 
   .navbar-item{style: 'float:right; font-size: 11px'}
 
     = link_to @current_user.login, user_profile_path(@current_user.login)
     = link_to('X', '/logout')
+
+
+
+
+  .user-data-toggle-component
+    %strong Recursos
+    %table
+      %tr
+        %td
+          %table{border: '1'}
+            %thead
+              %tr
+                %th{width: 24}
+                %th Qtd.
+                %th Máx.
+                %th.icon-vil-1.icon-no-repeat{width: 20}
+                %th Produção
+              %tr
+                %td.icon-wood.icon-no-repeat
+                %td.text-right= @user_data.wood.to_i
+                %td.text-right= @user_data.storage
+                %td.text-right= @user_data.wood_villagers
+                %td.text-right= "#{@user_data.wood_per_hour}/hora"
+              %tr
+                %td.icon-stone.icon-no-repeat
+                %td.text-right= @user_data.stone.to_i
+                %td.text-right= @user_data.storage
+                %td.text-right= @user_data.stone_villagers
+                %td.text-right= "#{@user_data.stone_per_hour}/hora"
+              %tr
+                %td.icon-gold.icon-no-repeat
+                %td.text-right= @user_data.gold.to_i
+                %td.text-right= @user_data.storage
+                %td.text-right= @user_data.gold_villagers
+                %td.text-right= "#{@user_data.gold_per_hour}/hora"
+              %tr
+                %td.icon-food.icon-no-repeat
+                %td.text-right= @user_data.food.to_i
+                %td.text-right= @user_data.storage
+                %td.text-right= @user_data.food_villagers
+                %td.text-right= "#{@user_data.food_per_hour}/hora"
+    %strong Aldeões
+    %br
+    %span= "Total: #{@user_data.total_villagers}"
+    %span= " Limite: #{@user_data.max_villagers}"
+    %span= " Trabalhando: #{@user_data.max_villagers - @user_data.total_villagers}"
+    %br
+    %strong Estradas
+    %br
+    %span= "Total: #{@user_data.total_roads}"
+    %span= "Limite #{@user_data.max_roads}"
+

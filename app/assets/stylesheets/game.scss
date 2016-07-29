@@ -8,12 +8,21 @@ a {
   color: #2baaff;
 }
 
+.flip-Y {
+  transform: scaleY(-1);
+}
+
+.text-right {
+  text-align: right;
+}
+
 #game-container {
   background: #403f3e;
   width: 752px;
   height: 572px;
   margin: 0px auto;
   padding: 5px 5px 5px 0px;
+  position: relative;
 }
 
 #game-header {

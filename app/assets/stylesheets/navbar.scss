@@ -41,7 +41,7 @@
 /* NAVBAR RECOURSE */
 
 .recourse-container {
-  width: 80px;
+  width: 70px;
   font-size: 10px;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .recourse-label {
-  width: 55px;
+  width: 45px;
   float: right;
   height: 14px;
   padding-top: 4px;
@@ -65,7 +65,7 @@
 }
 
 .recourse-progress-bar {
-  width: 55px;
+  width: 45px;
   height: 3px;
   background: red;
   float: right;
@@ -75,4 +75,32 @@
   height: 3px;
   background: green;
   float: left;
+}
+
+
+.user-data-toggle-component-btn {
+  width: 24px;
+  height:24px;
+  margin-left:5px;
+}
+
+.user-data-toggle-component-btn:hover {
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+}
+
+.user-data-toggle-component {
+  position: absolute;
+  background-color: #454545;
+  left:240px;
+  top:0px;
+  width:334px;
+  height:220px;
+  z-index: 4;
+  padding: 5px;
+  display: none;
+  border-bottom: 3px groove white;
+  border-left: 3px groove white;
+  border-right: 3px groove white;
 }

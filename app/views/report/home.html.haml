@@ -1,0 +1,45 @@
+
+#game-content-left
+  .content-title Relatórios
+  %ul{style: 'background: #ccc; list-style-type: none;'}
+    %li= link_to('Resumo', reports_path)
+
+#game-content-right
+  %table
+    %tr
+      %td Recursos:
+
+      %td
+        %table{border: '1'}
+          %thead
+            %tr
+              %th{width: 24}
+              %th Qtd.
+              %th Máx.
+              %th.icon-vil-1.icon-no-repeat{width: 20}
+              %th Produção
+            %tr
+              %td.icon-wood.icon-no-repeat
+              %td.text-right= @user_data.wood.to_i
+              %td.text-right= @user_data.storage
+              %td.text-right= @user_data.wood_villagers
+              %td.text-right= "#{@user_data.wood_per_hour}/hora"
+            %tr
+              %td.icon-stone.icon-no-repeat
+              %td.text-right= @user_data.stone.to_i
+              %td.text-right= @user_data.storage
+              %td.text-right= @user_data.stone_villagers
+              %td.text-right= "#{@user_data.stone_per_hour}/hora"
+            %tr
+              %td.icon-gold.icon-no-repeat
+              %td.text-right= @user_data.gold.to_i
+              %td.text-right= @user_data.storage
+              %td.text-right= @user_data.gold_villagers
+              %td.text-right= "#{@user_data.gold_per_hour}/hora"
+            %tr
+              %td.icon-food.icon-no-repeat
+              %td.text-right= @user_data.food.to_i
+              %td.text-right= @user_data.storage
+              %td.text-right= @user_data.food_villagers
+              %td.text-right= "#{@user_data.food_per_hour}/hora"
+      %td
