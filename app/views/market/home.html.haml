@@ -3,4 +3,80 @@
   = link_to 'Voltar ao mapa', world_zoom_c_path(@x, @y), class: 'btn-build'
 
 #game-content-right
-  MERCADO
+  %div{style: 'border-bottom: solid black 2px;'}
+    = form_tag(create_offer_path, method: :post) do
+      %h4 Criar Oferta
+      %div
+        Ofereço:
+        %input{type: 'number', min: '0', max: @user_data.storage, name: 'offer_amount', required: 'required', value: 0}
+        %label
+          %span.icon-no-repeat.icon-small.icon-wood
+          = radio_button_tag :offer_radio, 'wood', html: {required: 'required'}
+        %label
+          %span.icon-no-repeat.icon-small.icon-stone
+          = radio_button_tag :offer_radio, 'stone'
+        %label
+          %span.icon-no-repeat.icon-small.icon-gold
+          = radio_button_tag :offer_radio, 'gold'
+        %label
+          %span.icon-no-repeat.icon-small.icon-food
+          = radio_button_tag :offer_radio, 'food'
+      %div
+        Procuro:
+        %input{type: 'number', min: '0', max: @user_data.storage, name: 'return_amount', required: 'required', value: 0}
+        %label
+          %span.icon-no-repeat.icon-small.icon-wood
+          = radio_button_tag :return_radio, 'wood'
+        %label
+          %span.icon-no-repeat.icon-small.icon-stone
+          = radio_button_tag :return_radio, 'stone', html: {required: 'required'}
+        %label
+          %span.icon-no-repeat.icon-small.icon-gold
+          = radio_button_tag :return_radio, 'gold'
+        %label
+          %span.icon-no-repeat.icon-small.icon-food
+          = radio_button_tag :return_radio, 'food'
+      = submit_tag 'Criar oferta!'
+  %div{style: 'border-bottom: solid black 2px;'}
+    %h4 Suas Ofertas
+
+    %table.table{border: 1}
+      %thead
+        %tr
+          %th Oferece
+          %th Procura
+          %th
+      %tbody
+        - @my_offers.each do |o|
+          %tr
+            %td
+              %span.icon-no-repeat.icon-small{class: "icon-#{o.offer_recourse}"}
+              = o.offer_amount
+            %td
+              %span.icon-no-repeat.icon-small{class: "icon-#{o.return_recourse}"}
+              = o.return_amount
+            %td
+              = link_to 'Remover', delete_offer_path(o.id)
+
+  %div{style: 'border-bottom: solid black 2px;'}
+    %h4 Ofertas de Outros Jogadores
+    %table.table{border: 1}
+      %thead
+        %tr
+          %th Jogador
+          %th Oferece
+          %th Procura
+          %th Distancia
+          %th
+      %tbody
+        - @offers.each do |o|
+          %tr
+            %td= o.user.login
+            %td
+              %span.icon-no-repeat.icon-small{class: "icon-#{o.offer_recourse}"}
+              = o.offer_amount
+            %td
+              %span.icon-no-repeat.icon-small{class: "icon-#{o.return_recourse}"}
+              = o.return_amount
+            %td= Cell.point_distance(o.user.castle_x, o.user.castle_y, @current_user.castle_x, @current_user.castle_y)
+            %td= link_to 'Aceitar'

@@ -1,6 +1,8 @@
 - terrain = Terrain.get_terrain(@cell.terrain_code)
 - building = Building.get_building(@cell.building_code)
 
+
+
 .content-title
   - if building.nil?
     = terrain[:name]
@@ -9,7 +11,8 @@
     = " nível #{@cell.building_level}"
     = '('+@cell.user.login+')'
 
-= 'x: '+@cell.x.to_s+' y: '+@cell.y.to_s
+%div.text-center{style: 'font-size:12px'}
+  = '(X: '+@cell.x.to_s+' X: '+@cell.y.to_s+')'
 
 / SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
 - if building.nil? and @cell.have_user_road @current_user.id
@@ -36,6 +39,11 @@
 / SE A CONSTRUÇÃO É DO USUÁRIO
 - if @cell.user_id == @current_user.id
   - if @cell.idle
+
+    / SE MERCADO
+    - if @cell.building_code == BUILDING[:market][:code]
+      %div
+        = link_to 'Para o Mercado', market_path(@cell.x, @cell.y), class: 'btn-build'
 
     / SE CASTELO
     - if @cell.building_code == BUILDING[:castle][:code]

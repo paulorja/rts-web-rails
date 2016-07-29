@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  offer_recourse: MyString
+  return_recourse: MyString
+  offer_amount: 1
+  return_amount: 1
+
+two:
+  user_id: 
+  offer_recourse: MyString
+  return_recourse: MyString
+  offer_amount: 1
+  return_amount: 1

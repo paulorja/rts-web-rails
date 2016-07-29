@@ -122,6 +122,12 @@ class Cell < ActiveRecord::Base
     false
   end
 
+  def self.point_distance(x1, y1, x2, y2)
+    distance = Math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
+
+    '%.1f' % distance
+  end
+
   def self.world_zoom(x, y)
     x = x.to_i
     y = y.to_i
@@ -297,7 +303,6 @@ class Cell < ActiveRecord::Base
         return 'Limite de estradas atingido. Evolua o castelo. '
       end
     end
-
 
     #start build
     user_data.use_recourses building[:levels][building_level+1]
