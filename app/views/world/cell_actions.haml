@@ -22,8 +22,6 @@
       .build-title
         = link_to 'Remover Árvore', to_grass_path(@cell.x, @cell.y), class: 'btn-build'
       .build-recourses
-        .recourse-up-icon.icon-wood
-        .recourse-up-label= TO_GRASS[:tree][:wood]
         .recourse-up-icon.icon-timer
         .recourse-up-label.label-timer= TO_GRASS[:tree][:time]
   - if @cell.is_stone
@@ -32,8 +30,6 @@
       .build-title
         = link_to 'Remover Pedra', to_grass_path(@cell.x, @cell.y), class: 'btn-build'
       .build-recourses
-        .recourse-up-icon.icon-stone
-        .recourse-up-label= TO_GRASS[:stone][:stone]
         .recourse-up-icon.icon-timer
         .recourse-up-label.label-timer= TO_GRASS[:stone][:time]
 

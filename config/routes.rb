@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'visitors#home'
 
   #user
@@ -41,6 +42,10 @@ Rails.application.routes.draw do
 
   get 'ranking/general'
   get 'ranking', to: 'ranking#general'
+
+  #reports
+
+  get '/reports', to: 'report#home'
 
 
 end
