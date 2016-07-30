@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
 
+  get 'market/home'
+
+  get 'market/new'
+
+  get 'market/create'
+
+  get 'market/delete'
+
   root 'visitors#home'
 
   #user
@@ -21,6 +29,13 @@ Rails.application.routes.draw do
   get 'world_zoom/:x/:y/build/:building_code', to: 'world#build', as: 'build'
   get 'world_zoom/:x/:y/to_grass/', to: 'world#to_grass', as: 'to_grass'
   get 'world_zoom/:x/:y/building_destroy/', to: 'world#building_destroy', as: 'building_destroy'
+
+
+  #market
+
+  get 'world_zoom/:x/:y/market/', to: 'market#home', as: 'market'
+  match 'market/create_offer/', to: 'market#create', as: 'create_offer', via: :post
+  get 'market/delete_offer/:id', to: 'market#delete', as: 'delete_offer'
 
   #villager
 
