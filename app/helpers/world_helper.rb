@@ -11,16 +11,29 @@ module WorldHelper
   end
 
   def get_user_start_position
-    roads = nil
-    castle = nil
+    roads = castle = recourses = nil
 
-    while roads.nil? or castle.nil?
+    while roads.nil? or castle.nil? or recourses.nil?
       roads = nil
+      recourses = nil
 
       ActiveRecord::Base.connection.clear_query_cache
       castle = Cell.where('terrain_code = ?', 2).order('RAND()').first
 
-      if castle.x > 0 and castle.x < 255 and castle.y > 0 and castle.x < 255
+      if castle.x > 5 and castle.x < 250 and castle.y > 5 and castle.x < 250
+
+        arredores3 = castle.arredores(3)
+        wood = gold = stone = nil
+        arredores3.each do |cell|
+          wood = true if cell.is_tree
+          stone = true if cell.is_stone
+          gold = true if cell.is_gold
+
+          recourses = true if wood and gold and stone
+          break if recourses
+        end
+
+
         arredores = castle.arredores(1)
 
         arredores.each do |cell|
