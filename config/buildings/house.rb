@@ -11,14 +11,14 @@
             population: 2
         },
         {
-            wood: 180,
-            stone: 50,
+            wood: 480,
+            stone: 300,
             time: 44,
             population: 1
         },
         {
-            wood: 420,
-            stone: 200,
+            wood: 1500,
+            stone: 950,
             time: 88,
             population: 1
         }

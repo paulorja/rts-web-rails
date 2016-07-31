@@ -1,5 +1,4 @@
 #game-content-left
-  %h3= 'Bem-vindo'
 
   %h4 Entrar
   = form_for :user, url: 'login', html: { class: 'form-user' } do |u|
@@ -34,3 +33,11 @@
     = u.submit 'Submit!'
 
 #game-content-right
+  %h2= 'Bem-vindo'
+  %h3 Últimas Atualizações
+  %h4 0.1 Alpha
+  %ul
+    %li Mercado
+    %li Ferreiro
+    %li Mais minas de pedra e ouro nos mapas
+    %li Equilíbrio nos custos dos edifícios

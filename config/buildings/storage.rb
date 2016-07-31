@@ -11,13 +11,13 @@
             time: 45,
         },
         {
-            wood: 250,
-            stone: 250,
+            wood: 750,
+            stone: 750,
             time: 145,
         },
         {
-            wood: 500,
-            stone: 500,
+            wood: 1500,
+            stone: 1500,
             time: 288,
         }
     ]
