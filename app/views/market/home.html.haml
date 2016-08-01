@@ -79,4 +79,4 @@
               %span.icon-no-repeat.icon-small{class: "icon-#{o.return_recourse}"}
               = o.return_amount
             %td= Cell.point_distance(o.user.castle_x, o.user.castle_y, @current_user.castle_x, @current_user.castle_y)
-            %td= link_to 'Aceitar'
+            %td= link_to 'Aceitar', accept_offer_path(o.id)

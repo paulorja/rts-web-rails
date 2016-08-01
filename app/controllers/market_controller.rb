@@ -46,4 +46,12 @@ class MarketController < ApplicationController
 
     redirect_to :back
   end
+
+  def accept_offer
+    event = EventOfferBegin.start_event(params[:id], @current_user)
+
+    flash[:notice] = event if event.is_a? String
+
+    redirect_to :back
+  end
 end

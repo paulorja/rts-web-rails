@@ -1,6 +1,10 @@
 class Event < ActiveRecord::Base
 
-  enum event_type: [:building_up, :to_grass, :building_destroy]
+  enum event_type: [:building_up,
+                    :to_grass,
+                    :building_destroy,
+                    :offer_begin,
+                    :offer_end]
 
 
   def wait_time
@@ -20,6 +24,10 @@ class Event < ActiveRecord::Base
           EventToGrass.resolve e
         when 'building_destroy'
           EventBuildingDestroy.resolve e
+        when 'offer_begin'
+          EventOfferBegin.resolve e
+        when 'offer_end'
+          EventOfferENd.resolve e
         else
           raise 'Fodeo'
       end

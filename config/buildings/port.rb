@@ -6,8 +6,8 @@
         {
         },
         {
-            wood: 550,
-            stone: 50,
+            wood: 1550,
+            stone: 450,
             gold: 150,
             time: 80,
         }

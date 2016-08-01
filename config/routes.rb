@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'world_zoom/:x/:y/market/', to: 'market#home', as: 'market'
   match 'market/create_offer/', to: 'market#create', as: 'create_offer', via: :post
   get 'market/delete_offer/:id', to: 'market#delete', as: 'delete_offer'
+  get 'market/accept_offer/:id', to: 'market#accept_offer', as: 'accept_offer'
 
   #villager
 

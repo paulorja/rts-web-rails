@@ -16,13 +16,13 @@
         },
         {
             stone: 600,
-            gold: 90,
+            gold: 75,
             time: 350,
             roads: 4
         },
         {
             stone: 1150,
-            gold: 300,
+            gold: 180,
             time: 750,
             roads: 4
         },

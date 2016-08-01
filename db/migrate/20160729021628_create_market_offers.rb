@@ -6,6 +6,7 @@ class CreateMarketOffers < ActiveRecord::Migration
       t.string :return_recourse
       t.integer :offer_amount
       t.integer :return_amount
+      t.integer :status
 
       t.timestamps null: false
     end

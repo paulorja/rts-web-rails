@@ -14,12 +14,12 @@
         {
             wood: 250,
             stone: 150,
-            time: 38
+            time: 118
         },
         {
-            wood: 420,
-            stone: 210,
-            time: 88
+            wood: 1200,
+            stone: 950,
+            time: 885
         }
     ]
 }
