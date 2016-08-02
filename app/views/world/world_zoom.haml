@@ -6,6 +6,39 @@
   .content-selected-villager{style: 'display:none;'}
 
 
-#game-content-right
-  = Cell.render_layers @cells, @current_user
+#game-content-right.sprite-searching
+  #cell-container
+    = Cell.render_layers @cells, @current_user
 
+:javascript
+  var cell_container = $('#cell-container');
+
+  var x = #{params[:x]};
+  var y = #{params[:y]};
+
+  var default_top = cell_container.position().top;
+  var default_left = cell_container.position().left;
+
+  $(document).ready(function() {
+    cell_container.draggable({
+      stop: function(event, ui) {
+        var final_top = (cell_container.position().top-default_top)/64
+        var final_left = (cell_container.position().left-default_left)/64
+
+        if(final_top != 0 || final_left != 0) {
+          var url = '/world_zoom/';
+          url += (x-final_left).toString();
+          url += '/'
+          url += (y-final_top).toString();
+
+          Turbolinks.visit(url);
+        }
+      },
+      grid: [64, 64]
+    });
+  });
+
+:css
+  #game-content-right {
+    overflow: hidden;
+  }

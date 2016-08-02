@@ -229,14 +229,14 @@ class Cell < ActiveRecord::Base
 
     cells.each do |cell|
 
-      #TERRAINS
+      # TERRAINS
 
       sprites_layer_1 << "<div class='sprite #{Terrain.get_terrain(cell.terrain_code)[:css_class]}'></div>"
 
-      #BUILDINGS
+      # BUILDINGS
 
       building = Building.get_building(cell.building_code)
-      villager_action = ""
+      villager_action = ''
 
       if building != nil
         if cell.user_id == current_user.id
@@ -247,18 +247,14 @@ class Cell < ActiveRecord::Base
         sprites_layer_2 << "<div class='sprite'></div>"
       end
 
-      #SPRITE SELECTION
+      # SPRITE SELECTION
 
       sprites_layer_3 << "<div class='link-sprite' obj_id='#{cell.id}' style='#{cell.border_style(cells)}' #{villager_action}>"
-      if cell.event_building_up
-        sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_up.event.wait_time}'></div>"
-      end
-      if cell.event_to_grass
-        sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_to_grass.event.wait_time}'></div>"
-      end
-      if cell.event_building_destroy
-        sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_destroy.event.wait_time}'></div>"
-      end
+
+      sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_up.event.wait_time}'></div>" if cell.event_building_up
+      sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_to_grass.event.wait_time}'></div>" if cell.event_to_grass
+      sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_destroy.event.wait_time}'></div>" if cell.event_building_destroy
+
       if cell.villagers.is_a? String
         cell.villagers.split(';').each do  |v|
           sprites_layer_3 << "<div class='sprite-villager sprite-vil-#{v}' obj_id='#{v}'></div>"
@@ -286,7 +282,6 @@ class Cell < ActiveRecord::Base
     building = Building.get_building(building_code.to_i)
     terrain = Terrain.get_terrain(terrain_code)
 
-    #validations
     return 'Já está evoluindo' unless idle?
     return 'Nível máximo atingido' if building[:levels][building_level+1].nil?
     return 'Você não possui recursos' unless user_data.have_recourses building[:levels][building_level+1]

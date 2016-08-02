@@ -3,7 +3,7 @@ class MarketController < ApplicationController
     set_x_y
 
     @my_offers = MarketOffer.includes(:user).where('user_id = ?', @current_user.id)
-    @offers = MarketOffer.includes(:user).where('user_id != ?', @current_user.id)
+    @offers = MarketOffer.includes(:user).where('user_id != ? and status = 0', @current_user.id)
   end
 
   def create
@@ -28,7 +28,8 @@ class MarketController < ApplicationController
                              offer_recourse: offer_recourse,
                              return_recourse: return_recourse,
                              offer_amount: offer_amount,
-                             return_amount: return_amount
+                             return_amount: return_amount,
+                             status: 0
                          }
       )
     end

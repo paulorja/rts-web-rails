@@ -37,6 +37,10 @@
   color:black
 }
 
+.sprite-searching {
+  background-image: asset-url('sprites/world/sprite-searching.png');
+}
+
 .sprite-timer:hover {
   opacity: 1;
   cursor: default;

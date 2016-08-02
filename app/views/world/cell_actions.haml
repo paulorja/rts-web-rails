@@ -42,8 +42,9 @@
 
     / SE MERCADO
     - if @cell.building_code == BUILDING[:market][:code]
+      %hr
       %div
-        = link_to 'Para o Mercado', market_path(@cell.x, @cell.y), class: 'btn-build'
+        = link_to 'Para o Mercado', market_path(@cell.x, @cell.y), class: 'btn-lg'
 
     / SE CASTELO
     - if @cell.building_code == BUILDING[:castle][:code]

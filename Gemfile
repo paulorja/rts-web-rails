@@ -51,3 +51,7 @@ gem 'rmagick'
 
 gem 'haml'
 
+gem 'jquery-ui-rails'
+gem 'touchpunch-rails'
+
+

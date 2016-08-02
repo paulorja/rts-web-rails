@@ -12,7 +12,6 @@ class Event < ActiveRecord::Base
   end
 
 
-
   def self.resolve_events
     events = Event.where('end_time < ?', Time.now.to_i).order('end_time ASC')
     events.each do |e|
