@@ -2,6 +2,7 @@ body {
   margin: 0px auto;
   background: #000000;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  color: white;
 }
 
 a {
@@ -24,17 +25,16 @@ a {
 
 #game-container {
   background: #403f3e;
-  width: 752px;
+  width: 800px;
   height: 572px;
   margin: 0px auto;
-  padding: 5px 5px 5px 0px;
+  padding: 0px 5px 5px 0px;
   position: relative;
 }
 
 #game-header {
   height: 30px;
   background: #403f3e;
-  color: white;
 }
 
 .navbar-item {
@@ -44,14 +44,14 @@ a {
 
 #game-content {
   height: 512px;
-  color: white
 }
 
 #game-content-left {
   float: left;
-  width: 240px;
+  width: 287px;
   padding-top: 30px;
   height: 487px;
+  border-right:1px solid #ccc;
 }
 
 #game-content-right {
@@ -81,6 +81,7 @@ a {
   border: double 3px black;
   border-left: none;
   width: 90%;
+  margin: 7px 0px;
 }
 
 

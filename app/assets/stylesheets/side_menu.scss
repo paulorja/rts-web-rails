@@ -1,7 +1,29 @@
 .side-menu {
-  padding: 4px
 }
 
-.side-menu-item {
+.side-menu-item a {
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding:11px 8px;
+  font-size: 14px;
+}
 
+.side-menu-item:hover {
+  cursor: default;
+  background: #909090;
+}
+
+.side-menu-item a:hover {
+  cursor: default;
+}
+
+.side-menu-item:active {
+  background: #696969;
+}
+
+.side-menu-item-selected a {
+  color: #0083ee;
 }

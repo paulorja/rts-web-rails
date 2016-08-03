@@ -1,14 +1,19 @@
 .btn-lg {
-  background: #4d6df8;
+  background: #003b6e;
   color: white;
-  padding:5px;
+  padding: 10px 20px;
   margin: 5px;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 2px;
   text-decoration:none;
-  border: solid 1px #000000;
+  text-transform: uppercase;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
 .btn-lg:hover {
-  background: #2f96ff;
+  background: #005295;
+}
+
+.btn-lg:active {
+  opacity: 0.6;
 }

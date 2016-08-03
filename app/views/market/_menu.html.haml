@@ -1,4 +1,7 @@
 .side-menu
-  .side-menu-item Ofertas dos Jogadores
-  .side-menu-item Criar Oferta
-  .side-menu-item Minhas Ofertas
+
+  .side-menu-item= link_to 'Voltar ao mapa', world_zoom_c_path(@x, @y)
+  .side-menu-item.side-menu-item-selected= link_to 'Ofertas dos Jogadores', '#'
+  .side-menu-item= link_to 'Movimentações', '#'
+  .side-menu-item= link_to 'Criar Oferta', '#'
+  .side-menu-item= link_to 'Minhas Ofertas', '#'

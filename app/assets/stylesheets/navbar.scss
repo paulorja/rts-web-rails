@@ -1,40 +1,48 @@
 
-.world-button {
+.navbar-links-item {
+  float: left;
+  background: center center no-repeat;
   width: 48px;
-  background-image: asset-url("sprites/icons/world.png");
-  background-repeat: no-repeat;
   height: 48px;
-  background-size: 100% 100%;
+  padding-bottom: 10px;
+}
+
+.navbar-links-item a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.navbar-links-item-active {
+  border-bottom: 3px solid #0083ee;
+  background-color: #525252;
+}
+
+.navbar-links-item:hover {
+  background-color: #868686;
+  border-bottom: 3px solid #ccc;
+}
+
+.navbar-links-item:active {
+  opacity:0.6;
+}
+
+.world-button {
+  background-image: asset-url("sprites/icons/world.png");
 }
 .my-castle-button {
-  width: 48px;
   background-image: asset-url("sprites/icons/my_castle.png");
-  background-repeat: no-repeat;
-  height: 48px;
-  background-size: 100% 100%;
-  z-index: 50;
 }
 .trophy-button {
-  width: 48px;
   background-image: asset-url("sprites/icons/trophy.png");
-  background-repeat: no-repeat;
-  height: 48px;
-  background-size: 100% 100%;
-  z-index: 50;
 }
 .reports-button {
-  width: 48px;
   background-image: asset-url("sprites/icons/reports.png");
-  background-repeat: no-repeat;
-  height: 48px;
-  background-size: 100% 100%;
-  z-index: 50;
 }
 
 .navbar-links {
   height: 28px;
-  width: 220px;
-  padding-left: 20px;
+  width: 280px;
   position: absolute;
 }
 
