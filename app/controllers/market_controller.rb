@@ -39,6 +39,18 @@ class MarketController < ApplicationController
     redirect_to :back
   end
 
+  def offers
+    @offers = MarketOffer.includes(:user).where('user_id != ? and status = 0', @current_user.id)
+  end
+
+  def my_offers
+    @my_offers = MarketOffer.includes(:user).where('user_id = ?', @current_user.id)
+  end
+
+  def moves
+
+  end
+
   def delete
     m_offer = MarketOffer.find(params[:id])
 

@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
 
 
-  get 'market/home'
-
-  get 'market/new'
-
-  get 'market/create'
-
-  get 'market/delete'
-
   root 'visitors#home'
 
   #user
@@ -37,6 +29,13 @@ Rails.application.routes.draw do
   match 'market/create_offer/', to: 'market#create', as: 'create_offer', via: :post
   get 'market/delete_offer/:id', to: 'market#delete', as: 'delete_offer'
   get 'market/accept_offer/:id', to: 'market#accept_offer', as: 'accept_offer'
+
+  get 'market/offers', to: 'market#offers'
+  get 'market/new_offer', to: 'market#new_offer'
+  get 'market/my_offers', to: 'market#my_offers'
+  get 'market/moves', to: 'market#moves'
+
+
 
   #villager
 

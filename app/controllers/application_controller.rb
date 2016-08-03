@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :set_current_user, :update_recourses, :resolve_events
+  before_action :set_current_user, :update_recourses, :resolve_events, :set_last_xy
   include WorldHelper
 
   def set_current_user
@@ -47,6 +47,13 @@ class ApplicationController < ActionController::Base
       @y = params[:y]
     else
       @y = 0
+    end
+  end
+
+  def set_last_xy
+    if params[:x] and params[:y]
+      session['last_x'] = params[:x]
+      session['last_y']  = params[:y]
     end
   end
 

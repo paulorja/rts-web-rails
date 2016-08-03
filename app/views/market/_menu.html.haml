@@ -1,7 +1,9 @@
 .side-menu
 
-  .side-menu-item= link_to 'Voltar ao mapa', world_zoom_c_path(@x, @y)
-  .side-menu-item.side-menu-item-selected= link_to 'Ofertas dos Jogadores', '#'
-  .side-menu-item= link_to 'Movimentações', '#'
-  .side-menu-item= link_to 'Criar Oferta', '#'
-  .side-menu-item= link_to 'Minhas Ofertas', '#'
+  .side-menu-item= link_to 'Voltar ao mapa', world_zoom_c_path(session['last_x'], session['last_y'])
+  .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'market' and action_name == 'offers')}
+    = link_to 'Ofertas dos Jogadores', '/market/offers'
+  .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'market' and action_name == 'moves')}
+    = link_to 'Movimentações', '/market/moves'
+  .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'market' and action_name == 'my_offers')}
+    = link_to 'Minhas Ofertas', '/market/my_offers'
