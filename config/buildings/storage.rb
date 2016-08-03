@@ -11,8 +11,8 @@
             time: 45,
         },
         {
-            wood: 1250,
-            stone: 1250,
+            wood: 750,
+            stone: 750,
             time: 445,
         },
         {

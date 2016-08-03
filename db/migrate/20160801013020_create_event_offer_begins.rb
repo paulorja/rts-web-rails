@@ -5,7 +5,6 @@ class CreateEventOfferBegins < ActiveRecord::Migration
       t.references :user
       t.references :market_offer
 
-      t.timestamps null: false
     end
   end
 end

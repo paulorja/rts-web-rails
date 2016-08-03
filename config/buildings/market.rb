@@ -6,9 +6,9 @@
         {
         },
         {
-            wood: 1500,
-            stone: 1250,
-            time: 300,
+            wood: 150,
+            stone: 125,
+            time: 100,
             population: 2
         }
     ]

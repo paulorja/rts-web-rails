@@ -77,7 +77,7 @@ class UserData < ActiveRecord::Base
 
     #add villager
     castle = Cell.where('x = ? and y = ?', user.castle_x, user.castle_y).first
-    castle.next_road.add_villager('1')
+    castle.next_road.add_villager((rand(3)+1).to_s)
 
     self.food -= 100
     self.total_villagers += 1
@@ -145,11 +145,11 @@ class UserData < ActiveRecord::Base
   def self.start_user_data(user_id)
     UserData.create(
       user_id: user_id,
-      wood: 1200,
+      wood: 800,
       stone: 500,
       gold: 350,
       food: 350,
-      storage: 2000,
+      storage: 1000,
       idle_villagers: 2,
       total_villagers: 2,
       total_territories: 4,
@@ -186,6 +186,16 @@ class UserData < ActiveRecord::Base
     self.food += food_per_hour * update_ratio
 
     self.last_update = now
+    self.save
+  end
+
+  def give_recourses(recourses)
+    self.wood += recourses[:wood] unless recourses[:wood].nil?
+    self.stone += recourses[:stone] unless recourses[:stone].nil?
+    self.gold += recourses[:gold] unless recourses[:gold].nil?
+    self.food += recourses[:food] unless recourses[:food].nil?
+
+    self.last_update = Time.now.to_i
     self.save
   end
 

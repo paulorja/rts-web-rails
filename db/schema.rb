@@ -35,19 +35,15 @@ ActiveRecord::Schema.define(version: 20160801013213) do
   end
 
   create_table "event_offer_begins", force: :cascade do |t|
-    t.integer  "event_id",        limit: 4
-    t.integer  "user_id",         limit: 4
-    t.integer  "market_offer_id", limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer "event_id",        limit: 4
+    t.integer "user_id",         limit: 4
+    t.integer "market_offer_id", limit: 4
   end
 
   create_table "event_offer_ends", force: :cascade do |t|
-    t.integer  "event_id",        limit: 4
-    t.integer  "user_id",         limit: 4
-    t.integer  "market_offer_id", limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer "event_id",        limit: 4
+    t.integer "user_id",         limit: 4
+    t.integer "market_offer_id", limit: 4
   end
 
   create_table "event_to_grasses", force: :cascade do |t|

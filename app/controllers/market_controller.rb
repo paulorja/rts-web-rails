@@ -18,7 +18,9 @@ class MarketController < ApplicationController
     error = 'Selecione recursos diferentes!' if offer_recourse == return_recourse
     error = 'Engraçadinho!' unless offer_recourse == 'wood' or offer_recourse == 'gold' or offer_recourse == 'food' or offer_recourse == 'stone'
     error = 'Engraçadinho!' unless return_recourse == 'wood' or return_recourse == 'gold' or return_recourse == 'food' or return_recourse == 'stone'
+    error = 'Você não tem recursos' unless @user_data.have_recourses({offer_recourse.to_sym => offer_amount})
 
+    @user_data.use_recourses({offer_recourse.to_sym => offer_amount})
 
     if error.is_a? String
       flash[:alert] = error
@@ -42,6 +44,7 @@ class MarketController < ApplicationController
 
     if m_offer and @current_user.id == m_offer.user_id
       flash[:notice] = 'Oferta excluída'
+      @user_data.give_recourses({m_offer.offer_recourse.to_sym => m_offer.offer_amount})
       m_offer.destroy
     end
 
