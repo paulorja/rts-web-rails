@@ -15,7 +15,10 @@ function update_timers() {
 
                 $(item).html(($(item).attr('data_time')).toString().toHHMMSS());
             } else {
-                Turbolinks.visit(location)
+                $(item).html('TERMINAR');
+                $(item).click(function() {
+                    Turbolinks.visit(location);
+                });
             }
         });
 

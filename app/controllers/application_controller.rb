@@ -52,8 +52,8 @@ class ApplicationController < ActionController::Base
 
   def set_last_xy
     if params[:x] and params[:y]
-      session['last_x'] = params[:x]
-      session['last_y']  = params[:y]
+      cookies['last_x'] = params[:x]
+      cookies['last_y'] = params[:y]
     end
   end
 

@@ -1,6 +1,6 @@
 .side-menu
 
-  .side-menu-item= link_to 'Voltar ao mapa', world_zoom_c_path(session['last_x'], session['last_y'])
+  .side-menu-item= link_to 'Voltar ao mapa', world_zoom_c_path(cookies['last_x'], cookies['last_y'])
   .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'market' and action_name == 'offers')}
     = link_to 'Ofertas dos Jogadores', '/market/offers'
   .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'market' and action_name == 'moves')}
