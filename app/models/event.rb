@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
         when 'building_destroy'
           EventBuildingDestroy.resolve e
         when 'offer_begin'
-          EventOfferBegin.resolve e
+          EventMarketOffer.resolve e
         else
           raise 'Fodeo'
       end

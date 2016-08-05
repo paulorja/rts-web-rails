@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EventOfferBeginTest < ActiveSupport::TestCase
+class EventMarketOfferTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -48,7 +48,7 @@ class MarketController < ApplicationController
   end
 
   def moves
-    @moves = EventOfferBegin.includes(market_offer: :user).includes(:event).where('user_id = ?', @current_user.id)
+    @moves = EventMarketOffer.includes(market_offer: :user).includes(:event).where('user_id = ?', @current_user.id)
   end
 
   def delete
@@ -64,7 +64,7 @@ class MarketController < ApplicationController
   end
 
   def accept_offer
-    event = EventOfferBegin.start_event(params[:id], @current_user)
+    event = EventMarketOffer.start_event(params[:id], @current_user)
 
     flash[:alert] = event if event.is_a? String
 

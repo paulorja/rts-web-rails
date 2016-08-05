@@ -1,4 +1,4 @@
-class EventOfferBegin < ActiveRecord::Base
+class EventMarketOffer < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
   belongs_to :market_offer
@@ -25,7 +25,7 @@ class EventOfferBegin < ActiveRecord::Base
     event.event_type = :offer_begin
     event.save
 
-    EventOfferBegin.create({
+    EventMarketOffer.create({
         user_id: current_user.id,
         market_offer_id: offer.id,
         event_id: event.id
@@ -33,7 +33,7 @@ class EventOfferBegin < ActiveRecord::Base
   end
 
   def self.resolve(e)
-    event_offer_begin = EventOfferBegin.includes(:market_offer).where('event_id = ?', e.id).first
+    event_offer_begin = EventMarketOffer.includes(:market_offer).where('event_id = ?', e.id).first
     user_data = UserData.where('user_id = ?', event_offer_begin.user_id).first
     m_offer = event_offer_begin.market_offer
 

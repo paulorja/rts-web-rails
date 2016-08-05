@@ -1,6 +1,6 @@
-class CreateEventOfferBegins < ActiveRecord::Migration
+class CreateEventMarketOffer < ActiveRecord::Migration
   def change
-    create_table :event_offer_begins do |t|
+    create_table :event_market_offers do |t|
       t.references :event
       t.references :user
       t.references :market_offer
