@@ -34,8 +34,6 @@ $(document).on('turbolinks:load', function() {
         });
     }
 
-
-
     refresh_label_timers();
 });
 

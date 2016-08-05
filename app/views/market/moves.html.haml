@@ -1,3 +1,19 @@
 #game-content-left
   .content-title Mercado
   = render 'menu'
+
+#game-content-right
+  %h4 Recursos Chegando
+  %table.table
+    %thead
+      %tr
+        %th Jogador
+        %th Tempo de Chegada
+        %th Recurso
+    %tbody
+      - @moves.each do |move|
+        %tr
+          %td.text-center= move.market_offer.user.login
+          %td.text-center.label-timer= move.event.wait_time
+          %td
+
