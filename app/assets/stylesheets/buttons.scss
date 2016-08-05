@@ -1,6 +1,8 @@
+@import 'colors';
+
 .btn-lg {
-  background: #003b6e;
-  color: white;
+  background: $blue-1;
+  color: $white;
   padding: 10px 20px;
   margin: 5px;
   display: inline-block;
@@ -19,8 +21,8 @@
 }
 
 .btn-sm {
-  background: #003b6e;
-  color: white;
+  background: $blue-1;
+  color: $white;
   padding: 2px 2px 0px 2px;
   display: inline-block;
   border-radius: 2px;

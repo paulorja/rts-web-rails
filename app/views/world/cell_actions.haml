@@ -22,19 +22,23 @@
   - if @cell.is_tree
     .build-container
       .build-icon.icon-x
-      .build-title
-        = link_to 'Remover Árvore', to_grass_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
-      .build-recourses
-        .recourse-up-icon.icon-timer
-        .recourse-up-label.label-timer= TO_GRASS[:tree][:time]
+      .build-content
+        .build-content-line.font-sm Remover Árvore
+        .build-content-line.font-sm
+          %span.recourse-up-icon.icon-timer
+          %span.recourse-up-label= TO_GRASS[:tree][:time]
+        .build-content-line
+          = link_to 'Remover', to_grass_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
   - if @cell.is_stone
     .build-container
       .build-icon.icon-x
-      .build-title
-        = link_to 'Remover Pedra', to_grass_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
-      .build-recourses
-        .recourse-up-icon.icon-timer
-        .recourse-up-label.label-timer= TO_GRASS[:stone][:time]
+      .build-content
+        .build-content-line.font-sm Remover Pedra
+        .build-content-line.font-sm
+          %span.recourse-up-icon.icon-timer
+          %span.recourse-up-label= TO_GRASS[:stone][:time]
+        .build-content-line
+          = link_to 'Remover', to_grass_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
 
 / SE A CONSTRUÇÃO É DO USUÁRIO
 - if @cell.user_id == @current_user.id
@@ -59,16 +63,17 @@
           Próximo nível:
           = (@user_data.max_roads+BUILDING[:castle][:levels][@cell.building_level+1][:roads]).to_s
 
-      %hr
       %div
         .build-container
           .build-icon{class: 'sprite-vil-1'}
-          .build-title
-            = 'Aldeão'
-            = link_to 'Comprar Aldeão', new_villager_path, class: 'btn-build btn-sm'
-          .build-recourses
-            .recourse-up-icon.icon-food
-            .recourse-up-label= 100
+          .build-content
+            .build-content-line.font-sm
+              = 'Aldeão'
+            .build-content-line.font-sm
+              %span.recourse-up-icon.icon-food
+              %span.recourse-up-label= 100
+            .build-content-line
+              = link_to 'Comprar Aldeão', new_villager_path, class: 'btn-build btn-sm'
 
     / SE CASA
     - if @cell.building_code == BUILDING[:house][:code]
@@ -93,11 +98,14 @@
     - unless @cell.is_castle or @cell.is_road
       .build-container
         .build-icon.icon-x
-        .build-title
-          = link_to 'Destruir Edifício', building_destroy_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
-        .build-recourses
-          .recourse-up-icon.icon-timer
-          .recourse-up-label.label-timer= 300
+        .build-content
+          .build-content-line.font-sm
+            Destruir Edifício
+          .build-content-line.font-sm
+            %span.recourse-up-icon.icon-timer
+            %span.recourse-up-label.label-timer= 300
+          .build-content-line
+            = link_to 'Destruir', building_destroy_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
   - else
     / SE EDIFICIO OCUPADO
     = 'construindo...'
