@@ -23,7 +23,7 @@
     .build-container
       .build-icon.icon-x
       .build-title
-        = link_to 'Remover Árvore', to_grass_path(@cell.x, @cell.y), class: 'btn-build'
+        = link_to 'Remover Árvore', to_grass_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
       .build-recourses
         .recourse-up-icon.icon-timer
         .recourse-up-label.label-timer= TO_GRASS[:tree][:time]
@@ -31,7 +31,7 @@
     .build-container
       .build-icon.icon-x
       .build-title
-        = link_to 'Remover Pedra', to_grass_path(@cell.x, @cell.y), class: 'btn-build'
+        = link_to 'Remover Pedra', to_grass_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
       .build-recourses
         .recourse-up-icon.icon-timer
         .recourse-up-label.label-timer= TO_GRASS[:stone][:time]
@@ -65,7 +65,7 @@
           .build-icon{class: 'sprite-vil-1'}
           .build-title
             = 'Aldeão'
-            = link_to 'Comprar Aldeão', new_villager_path, class: 'btn-build'
+            = link_to 'Comprar Aldeão', new_villager_path, class: 'btn-build btn-sm'
           .build-recourses
             .recourse-up-icon.icon-food
             .recourse-up-label= 100
@@ -94,7 +94,7 @@
       .build-container
         .build-icon.icon-x
         .build-title
-          = link_to 'Destruir Edifício', building_destroy_path(@cell.x, @cell.y), class: 'btn-build'
+          = link_to 'Destruir Edifício', building_destroy_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
         .build-recourses
           .recourse-up-icon.icon-timer
           .recourse-up-label.label-timer= 300
