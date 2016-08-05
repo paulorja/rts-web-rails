@@ -38,8 +38,7 @@ class EventOfferBegin < ActiveRecord::Base
     m_offer = event_offer_begin.market_offer
 
     user_data.give_recourses({m_offer.offer_recourse.to_sym => m_offer.offer_amount})
-
-
+    m_offer.user.user_data.give_recourses({m_offer.return_recourse.to_sym => m_offer.return_amount})
 
     user_data.save
 

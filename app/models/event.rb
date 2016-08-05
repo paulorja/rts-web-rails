@@ -25,8 +25,6 @@ class Event < ActiveRecord::Base
           EventBuildingDestroy.resolve e
         when 'offer_begin'
           EventOfferBegin.resolve e
-        when 'offer_end'
-          EventOfferENd.resolve e
         else
           raise 'Fodeo'
       end
