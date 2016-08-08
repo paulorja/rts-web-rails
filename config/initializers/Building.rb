@@ -26,5 +26,6 @@ BUILDING = {
     lumberjack: building_config('lumberjack'),
     stone_mine: building_config('stone_mine'),
     farm: building_config('farm'),
-    market: building_config('market')
+    market: building_config('market'),
+    blacksmith: building_config('blacksmith')
 }

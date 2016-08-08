@@ -18,7 +18,6 @@
   border: solid 2px transparent;
 }
 
-
 .sprite-selected {
   z-index: 2;
   position: relative;
@@ -48,7 +47,6 @@
 }
 
 /* VILLAGERS  */
-
 .sprite-villager {
   z-index: 3;
   width: 20px;
@@ -59,171 +57,82 @@
 .sprite-villager:hover {
   cursor: default;
 }
-.sprite-vil-1 {
-  background-image: asset-url('sprites/world/villagers/vil_1.png');
-}
-.sprite-vil-2 {
-  background-image: asset-url('sprites/world/villagers/vil_2.png');
-}
-.sprite-vil-3 {
-  background-image: asset-url('sprites/world/villagers/vil_3.png');
-}
 .villager-selected {
   z-index: 2;
   position: relative;
   outline: 2px dotted red;
 }
 
-.sprite-grass {
-  background-image: asset-url('sprites/world/terrain/grass.png');
-}
+.sprite-vil-1 { background-image: asset-url('sprites/world/villagers/vil_1.png'); }
+.sprite-vil-2 { background-image: asset-url('sprites/world/villagers/vil_2.png'); }
+.sprite-vil-3 { background-image: asset-url('sprites/world/villagers/vil_3.png'); }
+
 
 /* TERRAINS */
-
-.sprite-grass {
-  background-image: asset-url('sprites/world/terrain/grass.png');
-}
-
-.sprite-water {
-  background-image: asset-url('sprites/world/terrain/water.png');
-}
-
-.sprite-tree {
-  background-image: asset-url('sprites/world/terrain/tree.png');
-}
-
-.sprite-stone {
-  background-image: asset-url('sprites/world/terrain/stone.png');
-}
-
-.sprite-gold {
-  background-image: asset-url('sprites/world/terrain/gold.png');
-}
-
-.sprite-diamond {
-  background-image: asset-url('sprites/world/terrain/diamond.png');
-}
-
-/* BUILDINGS */
-
-.sprite-house-0 {
-  background-image: asset-url('sprites/world/building/house/house_0.png');
-}
-.sprite-house-1 {
-  background-image: asset-url('sprites/world/building/house/house_1.png');
-}
-.sprite-house-2 {
-  background-image: asset-url('sprites/world/building/house/house_2.png');
-}
-.sprite-house-3 {
-  background-image: asset-url('sprites/world/building/house/house_3.png');
-}
-
-.sprite-road-0 {
-  background-image: asset-url('sprites/world/building/road/road_0.png');
-}
-.sprite-road-1 {
-  background-image: asset-url('sprites/world/building/road/road_1.png');
-}
-
-.sprite-storage-0 {
-  background-image: asset-url('sprites/world/building/storage/storage_0.png');
-}
-.sprite-storage-1 {
-  background-image: asset-url('sprites/world/building/storage/storage_1.png');
-}
-.sprite-storage-2 {
-  background-image: asset-url('sprites/world/building/storage/storage_1.png');
-}
-.sprite-storage-3 {
-  background-image: asset-url('sprites/world/building/storage/storage_1.png');
-}
-
-.sprite-port-0 {
-  background-image: asset-url('sprites/world/building/port/port_0.png');
-}
-.sprite-port-1 {
-  background-image: asset-url('sprites/world/building/port/port_1.png');
-}
-
-.sprite-castle-1 {
-  background-image: asset-url('sprites/world/building/castle/castle_1.png');
-}
-.sprite-castle-2 {
-  background-image: asset-url('sprites/world/building/castle/castle_2.png');
-}
-.sprite-castle-3 {
-  background-image: asset-url('sprites/world/building/castle/castle_2.png');
-}
-.sprite-castle-4 {
-  background-image: asset-url('sprites/world/building/castle/castle_2.png');
-}
-
-.sprite-castle-5 {
-  background-image: asset-url('sprites/world/building/castle/castle_2.png');
-}
-
-.sprite-castle-6 {
-  background-image: asset-url('sprites/world/building/castle/castle_2.png');
-}
+.sprite-grass   { background-image: asset-url('sprites/world/terrain/grass.png'); }
+.sprite-water   { background-image: asset-url('sprites/world/terrain/water.png'); }
+.sprite-tree    { background-image: asset-url('sprites/world/terrain/tree.png'); }
+.sprite-stone   { background-image: asset-url('sprites/world/terrain/stone.png'); }
+.sprite-gold    { background-image: asset-url('sprites/world/terrain/gold.png'); }
+.sprite-diamond { background-image: asset-url('sprites/world/terrain/diamond.png'); }
 
 
-.sprite-stone-mine-0 {
-  background-image: asset-url('sprites/world/building/stone_mine/stone_mine_1.png');
-}
-.sprite-stone-mine-1 {
-  background-image: asset-url('sprites/world/building/stone_mine/stone_mine_1.png');
-}
-.sprite-stone-mine-2 {
-  background-image: asset-url('sprites/world/building/stone_mine/stone_mine_1.png');
-}
-.sprite-stone-mine-3 {
-  background-image: asset-url('sprites/world/building/stone_mine/stone_mine_1.png');
-}
+/* HOUSE */
+.sprite-house-0 { background-image: asset-url('sprites/world/building/house/house_0.png'); }
+.sprite-house-1 { background-image: asset-url('sprites/world/building/house/house_1.png'); }
+.sprite-house-2 { background-image: asset-url('sprites/world/building/house/house_2.png'); }
+.sprite-house-3 { background-image: asset-url('sprites/world/building/house/house_3.png'); }
 
+/* ROAD */
+.sprite-road-0 { background-image: asset-url('sprites/world/building/road/road_0.png'); }
+.sprite-road-1 { background-image: asset-url('sprites/world/building/road/road_1.png'); }
 
-.sprite-gold-mine-0 {
-  background-image: asset-url('sprites/world/building/gold_mine/gold_mine_1.png');
-}
-.sprite-gold-mine-1 {
-  background-image: asset-url('sprites/world/building/gold_mine/gold_mine_1.png');
-}
-.sprite-gold-mine-2 {
-  background-image: asset-url('sprites/world/building/gold_mine/gold_mine_1.png');
-}
-.sprite-gold-mine-3 {
-  background-image: asset-url('sprites/world/building/gold_mine/gold_mine_1.png');
-}
+/* STORAGE */
+.sprite-storage-0 { background-image: asset-url('sprites/world/building/storage/storage_0.png'); }
+.sprite-storage-1 { background-image: asset-url('sprites/world/building/storage/storage_1.png'); }
+.sprite-storage-2 { background-image: asset-url('sprites/world/building/storage/storage_1.png'); }
+.sprite-storage-3 { background-image: asset-url('sprites/world/building/storage/storage_1.png'); }
 
-.sprite-lumberjack-0 {
-  background-image: asset-url('sprites/world/building/lumberjack/lumberjack_1.png');
-}
-.sprite-lumberjack-1 {
-  background-image: asset-url('sprites/world/building/lumberjack/lumberjack_1.png');
-}
-.sprite-lumberjack-2 {
-  background-image: asset-url('sprites/world/building/lumberjack/lumberjack_1.png');
-}
-.sprite-lumberjack-3 {
-  background-image: asset-url('sprites/world/building/lumberjack/lumberjack_1.png');
-}
+/* PORT */
+.sprite-port-0 { background-image: asset-url('sprites/world/building/port/port_0.png'); }
+.sprite-port-1 { background-image: asset-url('sprites/world/building/port/port_1.png'); }
 
-.sprite-farm-0 {
-  background-image: asset-url('sprites/world/building/farm/farm_0.png');
-}
-.sprite-farm-1 {
-  background-image: asset-url('sprites/world/building/farm/farm_1.png');
-}
-.sprite-farm-2 {
-  background-image: asset-url('sprites/world/building/farm/farm_1.png');
-}
-.sprite-farm-3 {
-  background-image: asset-url('sprites/world/building/farm/farm_1.png');
-}
+/* CASTLE */
+.sprite-castle-1 { background-image: asset-url('sprites/world/building/castle/castle_1.png'); }
+.sprite-castle-2 { background-image: asset-url('sprites/world/building/castle/castle_2.png'); }
+.sprite-castle-3 { background-image: asset-url('sprites/world/building/castle/castle_2.png'); }
+.sprite-castle-4 { background-image: asset-url('sprites/world/building/castle/castle_2.png'); }
+.sprite-castle-5 { background-image: asset-url('sprites/world/building/castle/castle_2.png'); }
+.sprite-castle-6 { background-image: asset-url('sprites/world/building/castle/castle_2.png'); }
 
-.sprite-market-0 {
-  background-image: asset-url('sprites/world/building/market/market_0.png');
-}
-.sprite-market-1 {
-  background-image: asset-url('sprites/world/building/market/market_1.png');
-}
+/* STONE MINE */
+.sprite-stone-mine-0 { background-image: asset-url('sprites/world/building/stone_mine/stone_mine_1.png'); }
+.sprite-stone-mine-1 { background-image: asset-url('sprites/world/building/stone_mine/stone_mine_1.png'); }
+.sprite-stone-mine-2 { background-image: asset-url('sprites/world/building/stone_mine/stone_mine_1.png'); }
+.sprite-stone-mine-3 { background-image: asset-url('sprites/world/building/stone_mine/stone_mine_1.png'); }
+
+/* GOLD MINE */
+.sprite-gold-mine-0 { background-image: asset-url('sprites/world/building/gold_mine/gold_mine_1.png'); }
+.sprite-gold-mine-1 { background-image: asset-url('sprites/world/building/gold_mine/gold_mine_1.png'); }
+.sprite-gold-mine-2 { background-image: asset-url('sprites/world/building/gold_mine/gold_mine_1.png'); }
+.sprite-gold-mine-3 { background-image: asset-url('sprites/world/building/gold_mine/gold_mine_1.png'); }
+
+/* LUMBERJACK */
+.sprite-lumberjack-0 { background-image: asset-url('sprites/world/building/lumberjack/lumberjack_1.png'); }
+.sprite-lumberjack-1 { background-image: asset-url('sprites/world/building/lumberjack/lumberjack_1.png'); }
+.sprite-lumberjack-2 { background-image: asset-url('sprites/world/building/lumberjack/lumberjack_1.png'); }
+.sprite-lumberjack-3 { background-image: asset-url('sprites/world/building/lumberjack/lumberjack_1.png'); }
+
+/* GOLD FARM */
+.sprite-farm-0 { background-image: asset-url('sprites/world/building/farm/farm_0.png'); }
+.sprite-farm-1 { background-image: asset-url('sprites/world/building/farm/farm_1.png'); }
+.sprite-farm-2 { background-image: asset-url('sprites/world/building/farm/farm_1.png'); }
+.sprite-farm-3 { background-image: asset-url('sprites/world/building/farm/farm_1.png'); }
+
+/* GOLD MARKET */
+.sprite-market-0 { background-image: asset-url('sprites/world/building/market/market_0.png'); }
+.sprite-market-1 { background-image: asset-url('sprites/world/building/market/market_1.png'); }
+
+/* BLACKSMITH */
+.sprite-blacksmith-0 { background-image: asset-url('sprites/world/building/blacksmith/blacksmith_0.png'); }
+.sprite-blacksmith-1 { background-image: asset-url('sprites/world/building/blacksmith/blacksmith_1.png'); }

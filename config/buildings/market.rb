@@ -8,8 +8,7 @@
         {
             wood: 150,
             stone: 125,
-            time: 100,
-            population: 2
+            time: 100
         }
     ]
 }
