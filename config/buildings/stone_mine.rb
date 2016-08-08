@@ -9,17 +9,20 @@
         },
         {
             wood: 60,
-            time: 8
+            time: 8,
+            score: 0
         },
         {
             wood: 480,
             stone: 150,
-            time: 118
+            time: 118,
+            score: 1
         },
         {
             wood: 1200,
             stone: 950,
-            time: 885
+            time: 885,
+            score: 1
         }
     ]
 }

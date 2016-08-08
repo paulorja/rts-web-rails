@@ -9,7 +9,8 @@
             wood: 150,
             stone: 125,
             time: 100,
-            castle_level: 2
+            castle_level: 2,
+            score: 4
         }
     ]
 }

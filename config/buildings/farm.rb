@@ -9,15 +9,18 @@
         },
         {
             wood: 50,
-            time: 7
+            time: 7,
+            score: 0
         },
         {
             wood: 250,
-            time: 170
+            time: 170,
+            score: 1
         },
         {
             wood: 550,
-            time: 470
+            time: 470,
+            score: 1
         }
     ]
 }

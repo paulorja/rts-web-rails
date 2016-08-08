@@ -5,6 +5,7 @@ class EventBuildingUp < ActiveRecord::Base
   def self.resolve(e)
     event_building_up = EventBuildingUp.where('event_id = ?', e.id).first
     cell = Cell.find(event_building_up.cell_id)
+    building = Building.get_building(cell.building_code)
 
     cell.building_level = cell.building_level + 1
     cell.idle = true
@@ -21,6 +22,7 @@ class EventBuildingUp < ActiveRecord::Base
     else
     end
 
+    user_data.score += building[:levels][cell.building_level][:score].to_i
     user_data.total_territories += 1 if cell.building_level == 1
     user_data.idle_villagers += 1
     cell.move_to_next_road

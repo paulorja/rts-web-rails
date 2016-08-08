@@ -10,17 +10,20 @@
         {
             stone: 80,
             wood: 80,
-            time: 8
+            time: 8,
+            score: 1
         },
         {
             wood: 850,
             stone: 850
-            time: 280
+            time: 280,
+            score: 1
         },
         {
             wood: 3850,
             stone: 3850
-            time: 1248
+            time: 1248,
+            score: 1
         }
     ]
 }

@@ -17,6 +17,7 @@ class CreateUserData < ActiveRecord::Migration
       t.integer :total_villagers, default: 0
       t.integer :max_villagers, default: 0
       t.integer :total_territories, default: 0
+      t.integer :score, default: 0
       t.string :last_update
 
       t.timestamps null: false
