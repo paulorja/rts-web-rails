@@ -10,6 +10,7 @@
             stone: 450,
             gold: 150,
             time: 80,
+            castle_level: 5
         }
     ]
 }

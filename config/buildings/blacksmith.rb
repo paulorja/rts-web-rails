@@ -9,7 +9,8 @@
             wood: 400,
             stone: 500,
             gold: 300,
-            time: 700
+            time: 700,
+            castle_level: 3
         }
     ]
 }

@@ -8,7 +8,8 @@
         {
             wood: 150,
             stone: 125,
-            time: 100
+            time: 100,
+            castle_level: 2
         }
     ]
 }
