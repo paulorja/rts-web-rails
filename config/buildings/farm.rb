@@ -12,12 +12,12 @@
             time: 7
         },
         {
-            wood: 150,
-            time: 17
+            wood: 250,
+            time: 170
         },
         {
-            wood: 350,
-            time: 37
+            wood: 550,
+            time: 470
         }
     ]
 }

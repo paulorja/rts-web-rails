@@ -7,12 +7,10 @@
   - if building.nil?
     = terrain[:name]
   - else
-    = building[:name]
-    = " nível #{@cell.building_level}"
-    = '('+@cell.user.login+')'
+    = "#{building[:name]} nível #{@cell.building_level} (#{@cell.user.login})" 
 
 %div.text-center{style: 'font-size:12px'}
-  = '(X: '+@cell.x.to_s+' X: '+@cell.y.to_s+')'
+  = "(X: #{@cell.x} Y: #{@cell.y}"
 
 / SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
 - if building.nil? and @cell.have_user_road @current_user.id
@@ -44,50 +42,11 @@
 - if @cell.user_id == @current_user.id
   - if @cell.idle
 
-    / SE MERCADO
-    - if @cell.building_code == BUILDING[:market][:code]
-      %hr
-      %div
-        = link_to 'Para o Mercado', '/market/offers', class: 'btn-lg'
-
-    / SE CASTELO
-    - if @cell.building_code == BUILDING[:castle][:code]
-      %div
-        Estradas utilizadas:
-        = @user_data.total_roads
-      %div
-        Limite de estradas:
-        = @user_data.max_roads
-      - if BUILDING[:castle][:levels][@cell.building_level+1]
-        %div
-          Próximo nível:
-          = (@user_data.max_roads+BUILDING[:castle][:levels][@cell.building_level+1][:roads]).to_s
-
-      %div
-        .build-container
-          .build-icon{class: 'sprite-vil-1'}
-          .build-content
-            .build-content-line.font-sm
-              = 'Aldeão'
-            .build-content-line.font-sm
-              %span.recourse-up-icon.icon-food
-              %span.recourse-up-label= 100
-            .build-content-line
-              = link_to 'Comprar Aldeão', new_villager_path, class: 'btn-build btn-sm'
-
-    / SE CASA
-    - if @cell.building_code == BUILDING[:house][:code]
-      %div
-        Capacidade de suas casas:
-        = @user_data.max_villagers.to_s
-
-    / SE ARMAZEM
-    - if @cell.building_code == BUILDING[:storage][:code]
-      %div
-        Cada nível aumenta 1000 no limite de recursos.
-      %div
-        Capacidade atual:
-        = @user_data.storage.to_s
+    = render 'buildings/market'     if @cell.is_market
+    = render 'buildings/blacksmith' if @cell.is_blacksmith
+    = render 'buildings/castle'     if @cell.is_castle
+    = render 'buildings/house'      if @cell.is_house
+    = render 'buildings/storage'    if @cell.is_storage      
 
     %hr
 
@@ -95,17 +54,8 @@
     = render 'building_up', { building: Building.get_building(@cell.building_code), building_level: @cell.building_level+1 }
 
     / DESTRUIR EDIFICIO
-    - unless @cell.is_castle or @cell.is_road
-      .build-container
-        .build-icon.icon-x
-        .build-content
-          .build-content-line.font-sm
-            Destruir Edifício
-          .build-content-line.font-sm
-            %span.recourse-up-icon.icon-timer
-            %span.recourse-up-label.label-timer= 300
-          .build-content-line
-            = link_to 'Destruir', building_destroy_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
+    = render 'building_destroy'
+    
   - else
     / SE EDIFICIO OCUPADO
     = 'construindo...'

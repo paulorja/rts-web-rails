@@ -1,0 +1,23 @@
+%div
+  Estradas utilizadas:
+  = @user_data.total_roads
+  
+%div
+  Limite de estradas:
+  = @user_data.max_roads
+- if BUILDING[:castle][:levels][@cell.building_level+1]
+  %div
+    Próximo nível:
+    = (@user_data.max_roads+BUILDING[:castle][:levels][@cell.building_level+1][:roads]).to_s
+
+%div
+  .build-container
+    .build-icon{class: 'sprite-vil-1'}
+    .build-content
+      .build-content-line.font-sm
+        = 'Aldeão'
+      .build-content-line.font-sm
+        %span.recourse-up-icon.icon-food
+        %span.recourse-up-label= 100
+      .build-content-line
+        = link_to 'Comprar Aldeão', new_villager_path, class: 'btn-build btn-sm'

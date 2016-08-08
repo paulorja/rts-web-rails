@@ -12,7 +12,7 @@
             time: 8
         },
         {
-            wood: 250,
+            wood: 480,
             stone: 150,
             time: 118
         },

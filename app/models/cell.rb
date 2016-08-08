@@ -13,6 +13,22 @@ class Cell < ActiveRecord::Base
     true if building_code == BUILDING[:castle][:code]
   end
 
+  def is_market
+    true if building_code == BUILDING[:market][:code]
+  end
+
+  def is_blacksmith
+    true if building_code == BUILDING[:blacksmith][:code]
+  end
+
+  def is_house
+    true if building_code == BUILDING[:house][:code]
+  end
+
+  def is_storage
+    true if building_code == BUILDING[:storage][:code]
+  end
+
   def is_recourse_building
     true if is_lumberjack or is_gold_mine or is_stone_mine or is_farm
   end
@@ -285,6 +301,7 @@ class Cell < ActiveRecord::Base
     return 'Já está evoluindo' unless idle?
     return 'Nível máximo atingido' if building[:levels][building_level+1].nil?
     return 'Você não possui recursos' unless user_data.have_recourses building[:levels][building_level+1]
+    return "Requer castelo nível #{building[:levels][building_level+1][:castle_level]}" if building[:levels][building_level+1][:castle_level]
     return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)
     return 'Suas estradas não chegam até aqui' unless have_user_road current_user.id
     idle_villager = user_data.idle_villager

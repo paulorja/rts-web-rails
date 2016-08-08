@@ -27,21 +27,39 @@
             roads: 4
         },
         {
-            stone: 1220,
+            stone: 1950,
             gold: 780,
             time: 1350,
             roads: 4
         },
         {
-            stone: 2380,
+            stone: 4150,
             gold: 1500,
             time: 2400,
             roads: 4
         },
         {
-            stone: 5820,
+            stone: 7800,
             gold: 3500,
             time: 3600,
+            roads: 4
+        },
+        {
+            stone: 11000,
+            gold: 5500,
+            time: 7400,
+            roads: 4
+        },
+        {
+            stone: 19500,
+            gold: 9000,
+            time: 13400,
+            roads: 4
+        },
+        {
+            stone: 35500,
+            gold: 14500,
+            time: 23100,
             roads: 4
         }
     ]

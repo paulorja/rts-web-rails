@@ -8,20 +8,18 @@
         {
         },
         {
-            stone: 35,
-            wood: 25,
+            stone: 80,
+            wood: 80,
             time: 8
         },
         {
-            wood: 1350,
-            stone: 1350,
-            gold: 200,
+            wood: 850,
+            stone: 850
             time: 280
         },
         {
-            wood: 5350,
-            stone: 5350,
-            gold: 800,
+            wood: 3850,
+            stone: 3850
             time: 1248
         }
     ]

@@ -1,0 +1,11 @@
+- unless @cell.is_castle or @cell.is_road
+  .build-container
+    .build-icon.icon-x
+    .build-content
+      .build-content-line.font-sm
+        Destruir Edifício
+      .build-content-line.font-sm
+        %span.recourse-up-icon.icon-timer
+        %span.recourse-up-label.label-timer= 300
+      .build-content-line
+        = link_to 'Destruir', building_destroy_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
