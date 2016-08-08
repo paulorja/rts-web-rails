@@ -35,15 +35,17 @@
       %label
         %span.icon-no-repeat.icon-small.icon-food
         = radio_button_tag :return_radio, 'food'
-    = submit_tag 'Criar oferta!'
+    = submit_tag 'Criar oferta!', class: 'btn-lg'
+
+  %hr
 
   %h4 Minhas Ofertas
 
   %table.table{border: 1}
     %thead
       %tr
-        %th Oferece
-        %th Procura
+        %th Ofereço
+        %th Procuro
         %th
     %tbody
       - @my_offers.each do |o|

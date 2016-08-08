@@ -1,40 +1,37 @@
 @import 'colors';
 
-.btn-lg {
+.btn-lg, .btn-sm {
   background: $blue-1;
   color: $white;
-  padding: 10px 20px;
-  margin: 5px;
   display: inline-block;
   border-radius: 2px;
   text-decoration:none;
   text-transform: uppercase;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  border: none;
 }
 
-.btn-lg:hover {
+.btn-lg:hover, .btn-sm:hover {
   background: #005295;
+  cursor: pointer;
 }
 
-.btn-lg:active {
+.btn-lg:active, .btn-sm:active {
   opacity: 0.6;
 }
+
+
+.btn-lg {
+  padding: 10px 20px;
+  margin: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  font-size:16px;
+}
+
 
 .btn-sm {
   background: $blue-1;
-  color: $white;
-  padding: 2px 2px 0px 2px;
-  display: inline-block;
-  border-radius: 2px;
-  text-decoration:none;
-  text-transform: uppercase;
+  padding: 4px 4px 2px 4px;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  font-size:14px;
 }
 
-.btn-sm:hover {
-  background: #005295;
-}
-
-.btn-sm:active {
-  opacity: 0.6;
-}
