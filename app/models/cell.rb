@@ -301,7 +301,7 @@ class Cell < ActiveRecord::Base
     return 'Já está evoluindo' unless idle?
     return 'Nível máximo atingido' if building[:levels][building_level+1].nil?
     return 'Você não possui recursos' unless user_data.have_recourses building[:levels][building_level+1]
-    return "Requer castelo nível #{building[:levels][building_level+1][:castle_level]}" if building[:levels][building_level+1][:castle_level]
+    return "Requer castelo nível #{building[:levels][building_level+1][:castle_level].to_i}" unless current_user.castle.building_level >= building[:levels][building_level+1][:castle_level].to_i
     return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)
     return 'Suas estradas não chegam até aqui' unless have_user_road current_user.id
     idle_villager = user_data.idle_villager

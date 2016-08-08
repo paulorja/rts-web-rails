@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160801013020) do
     t.integer  "total_villagers",   limit: 4,   default: 0
     t.integer  "max_villagers",     limit: 4,   default: 0
     t.integer  "total_territories", limit: 4,   default: 0
+    t.integer  "score",             limit: 4,   default: 0
     t.string   "last_update",       limit: 255
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false

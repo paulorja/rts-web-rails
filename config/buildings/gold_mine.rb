@@ -15,13 +15,13 @@
         },
         {
             wood: 850,
-            stone: 850
+            stone: 850,
             time: 280,
             score: 1
         },
         {
             wood: 3850,
-            stone: 3850
+            stone: 3850,
             time: 1248,
             score: 1
         }
