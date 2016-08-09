@@ -1,5 +1,4 @@
 
-
 #game-content-left
   .content-title Ranking
   = render 'menu'
@@ -11,7 +10,7 @@
         %th Pos.
         %th Player
         %th{style: 'width: 20px;'}
-        %th Pontos
+        %th Territories
     %tbody
       - @users.each_with_index do |u, i|
         %tr
@@ -20,4 +19,4 @@
           %td{style: "background-color: #{u.color}"}
             = link_to(u.castle_path) do
               %div.icon-my-castle.icon-no-repeat{style: 'width: 20px; height: 20px;'}
-          %td= u.user_data.score
+          %td= u.user_data.total_territories

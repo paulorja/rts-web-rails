@@ -1,0 +1,2 @@
+module BlacksmithHelper
+end

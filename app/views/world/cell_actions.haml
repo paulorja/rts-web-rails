@@ -9,7 +9,7 @@
     = "#{building[:name]} nível #{@cell.building_level} (#{@cell.user.login})" 
 
 %div.text-center{style: 'font-size:12px'}
-  = "(X: #{@cell.x} Y: #{@cell.y}"
+  = "(X: #{@cell.x} Y: #{@cell.y})"
 
 / SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
 - if building.nil? and @cell.have_user_road @current_user.id

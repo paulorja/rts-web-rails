@@ -4,7 +4,7 @@
 
 #game-content-right
   %h4 Recursos Chegando
-  %table.table
+  %table.table{border: 1}
     %thead
       %tr
         %th Jogador
@@ -14,6 +14,7 @@
       - @moves.each do |move|
         %tr
           %td.text-center= move.market_offer.user.login
-          %td.text-center.label-timer= move.event.wait_time
+          %td.text-center
+            .chronometer{data_time: move.event.wait_time}
           %td
 

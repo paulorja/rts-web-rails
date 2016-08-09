@@ -267,9 +267,9 @@ class Cell < ActiveRecord::Base
 
       sprites_layer_3 << "<div class='link-sprite' obj_id='#{cell.id}' style='#{cell.border_style(cells)}' #{villager_action}>"
 
-      sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_up.event.wait_time}'></div>" if cell.event_building_up
-      sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_to_grass.event.wait_time}'></div>" if cell.event_to_grass
-      sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_destroy.event.wait_time}'></div>" if cell.event_building_destroy
+      sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_building_up.event.wait_time}'></div>" if cell.event_building_up
+      sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_to_grass.event.wait_time}'></div>" if cell.event_to_grass
+      sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_building_destroy.event.wait_time}'></div>" if cell.event_building_destroy
 
       if cell.villagers.is_a? String
         cell.villagers.split(';').each do  |v|
