@@ -30,6 +30,7 @@ class EventMarketOffer < ActiveRecord::Base
         market_offer_id: offer.id,
         event_id: event.id
                            })
+
   end
 
   def self.resolve(e)
@@ -39,6 +40,9 @@ class EventMarketOffer < ActiveRecord::Base
 
     user_data.give_recourses({m_offer.offer_recourse.to_sym => m_offer.offer_amount})
     m_offer.user.user_data.give_recourses({m_offer.return_recourse.to_sym => m_offer.return_amount})
+
+    m_offer.status = 'complete'
+    m_offer.save
 
     user_data.save
 

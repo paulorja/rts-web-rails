@@ -3,5 +3,5 @@ class MarketOffer < ActiveRecord::Base
 
   enum status: [:waiting,
                 :going,
-                :returning]
+                :complete]
 end

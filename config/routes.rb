@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   #reports
 
   get '/reports', to: 'report#home'
+  get '/reports/market', to: 'report#market'
 
 
 end
