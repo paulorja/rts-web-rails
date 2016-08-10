@@ -11,10 +11,17 @@
         %th Tempo de Chegada
         %th Recurso
     %tbody
-      - @moves.each do |move|
-        %tr
-          %td.text-center= move.market_offer.user.login
-          %td.text-center
-            .chronometer{data_time: move.event.wait_time}
-          %td
+      - @offers.each do |offer|
+        - if offer.user_id == @current_user.id
+          %tr
+            %td.text-center= offer.return_user.login
+            %td.text-center
+              .chronometer{data_time: offer.wait_time}
+            %td
+        - else
+          %tr
+            %td.text-center= offer.user.login
+            %td.text-center
+              .chronometer{data_time: offer.wait_time}
+            %td
 

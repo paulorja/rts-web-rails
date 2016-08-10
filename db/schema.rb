@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20160809154805) do
 
   create_table "event_market_offers", force: :cascade do |t|
     t.integer "event_id",        limit: 4
-    t.integer "user_id",         limit: 4
     t.integer "market_offer_id", limit: 4
   end
 
@@ -53,11 +52,13 @@ ActiveRecord::Schema.define(version: 20160809154805) do
 
   create_table "market_offers", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
+    t.integer  "return_user_id",  limit: 4
     t.string   "offer_recourse",  limit: 255
     t.string   "return_recourse", limit: 255
     t.integer  "offer_amount",    limit: 4
     t.integer  "return_amount",   limit: 4
     t.integer  "status",          limit: 4
+    t.integer  "arrivet_at",      limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
@@ -73,11 +74,10 @@ ActiveRecord::Schema.define(version: 20160809154805) do
   create_table "reports", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
     t.integer  "report_type", limit: 4
+    t.boolean  "read"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
-
-  add_index "reports", ["user_id"], name: "index_reports_on_user_id", using: :btree
 
   create_table "user_data", force: :cascade do |t|
     t.integer  "user_id",           limit: 4
@@ -116,6 +116,5 @@ ActiveRecord::Schema.define(version: 20160809154805) do
     t.datetime "updated_at",             null: false
   end
 
-  add_foreign_key "reports", "users"
   add_foreign_key "user_data", "users"
 end

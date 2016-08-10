@@ -3,6 +3,7 @@ class CreateReports < ActiveRecord::Migration
     create_table :reports do |t|
       t.references :user
       t.integer :report_type
+      t.boolean :read
 
       t.timestamps null: false
     end

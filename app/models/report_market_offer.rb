@@ -4,7 +4,7 @@ class ReportMarketOffer < ActiveRecord::Base
 
   enum report_type: [
       :user_accept_offer,
-      :recourses_arrived
+      :user_recourses_arrived
   ]
 
 end

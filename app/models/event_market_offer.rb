@@ -1,6 +1,5 @@
 class EventMarketOffer < ActiveRecord::Base
   belongs_to :event
-  belongs_to :user
   belongs_to :market_offer
 
   def self.start_event(offer_id, current_user)
@@ -16,7 +15,9 @@ class EventMarketOffer < ActiveRecord::Base
 
     users_distance = User.user_distance(current_user, user_offer)
 
+    offer.return_user_id = current_user.id
     offer.status = 'going'
+    offer.arrivet_at = Time.now.to_i + users_distance.to_i*10
     offer.save
 
     event = Event.new
@@ -26,7 +27,6 @@ class EventMarketOffer < ActiveRecord::Base
     event.save
 
     EventMarketOffer.create({
-        user_id: current_user.id,
         market_offer_id: offer.id,
         event_id: event.id
                            })
@@ -43,6 +43,13 @@ class EventMarketOffer < ActiveRecord::Base
 
     m_offer.status = 'complete'
     m_offer.save
+
+
+    Report.create({user_id: m_offer.user.id,   report_type: 0})
+    Report.create({user_id: user_data.user.id, report_type: 0})
+
+    ReportMarketOffer.create({user_id: m_offer.user.id,   report_type: 1})
+    ReportMarketOffer.create({user_id: user_data.user.id, report_type: 1})
 
     user_data.save
 
