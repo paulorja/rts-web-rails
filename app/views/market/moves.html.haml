@@ -4,16 +4,28 @@
 
 #game-content-right
   %h4 Recursos Chegando
-  %table.table
+  %table.table{border: 1}
     %thead
       %tr
         %th Jogador
         %th Tempo de Chegada
         %th Recurso
     %tbody
-      - @moves.each do |move|
-        %tr
-          %td.text-center= move.market_offer.user.login
-          %td.text-center.label-timer= move.event.wait_time
-          %td
+      - @offers.each do |offer|
+        - if offer.user_id == @current_user.id
+          %tr
+            %td.text-center= offer.return_user.login
+            %td.text-center
+              .chronometer{data_time: offer.wait_time}
+            %td
+              %span.icon-no-repeat.icon-small{class: "icon-#{offer.return_recourse}"}
+              = offer.return_amount
+        - else
+          %tr
+            %td.text-center= offer.user.login
+            %td.text-center
+              .chronometer{data_time: offer.wait_time}
+            %td
+              %span.icon-no-repeat.icon-small{class: "icon-#{offer.offer_recourse}"}
+              = offer.offer_amount
 

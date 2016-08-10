@@ -55,12 +55,13 @@ Rails.application.routes.draw do
 
   #ranking
 
-  get 'ranking/general'
   get 'ranking', to: 'ranking#general'
+  get 'ranking/territories', to: 'ranking#territories'
 
   #reports
 
   get '/reports', to: 'report#home'
+  get '/reports/market', to: 'report#market'
 
 
 end

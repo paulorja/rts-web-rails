@@ -153,6 +153,7 @@ class UserData < ActiveRecord::Base
       idle_villagers: 2,
       total_villagers: 2,
       total_territories: 4,
+      score: BUILDING[:castle][:levels][1][:score],
       max_villagers: 2,
       total_roads: 3,
       max_roads: BUILDING[:castle][:levels][1][:roads]
@@ -185,6 +186,11 @@ class UserData < ActiveRecord::Base
     self.gold += gold_per_hour * update_ratio
     self.food += food_per_hour * update_ratio
 
+    self.wood = storage if self.wood > storage
+    self.stone = storage if self.stone > storage
+    self.gold = storage if self.gold > storage
+    self.food = storage if self.food > storage
+
     self.last_update = now
     self.save
   end
@@ -194,6 +200,11 @@ class UserData < ActiveRecord::Base
     self.stone += recourses[:stone] unless recourses[:stone].nil?
     self.gold += recourses[:gold] unless recourses[:gold].nil?
     self.food += recourses[:food] unless recourses[:food].nil?
+
+    self.wood = storage if self.wood > storage
+    self.stone = storage if self.stone > storage
+    self.gold = storage if self.gold > storage
+    self.food = storage if self.food > storage
 
     self.last_update = Time.now.to_i
     self.save

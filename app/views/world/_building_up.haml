@@ -29,7 +29,7 @@
           = link_to link_label, build_path(@cell.x, @cell.y, building[:code]), class: 'btn-build btn-sm'
       - else
         .build-content-line.font-sm
-          = "Requer castelo nível: #{building[:levels][building_level][:castle_level]}"
+          = "Requer castelo nível #{building[:levels][building_level][:castle_level]}"
 - else
   .build-container
     Totalmente evoluído

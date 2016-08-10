@@ -267,9 +267,9 @@ class Cell < ActiveRecord::Base
 
       sprites_layer_3 << "<div class='link-sprite' obj_id='#{cell.id}' style='#{cell.border_style(cells)}' #{villager_action}>"
 
-      sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_up.event.wait_time}'></div>" if cell.event_building_up
-      sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_to_grass.event.wait_time}'></div>" if cell.event_to_grass
-      sprites_layer_3 << "<div class='sprite-timer' data_time='#{cell.event_building_destroy.event.wait_time}'></div>" if cell.event_building_destroy
+      sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_building_up.event.wait_time}'></div>" if cell.event_building_up
+      sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_to_grass.event.wait_time}'></div>" if cell.event_to_grass
+      sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_building_destroy.event.wait_time}'></div>" if cell.event_building_destroy
 
       if cell.villagers.is_a? String
         cell.villagers.split(';').each do  |v|
@@ -301,7 +301,7 @@ class Cell < ActiveRecord::Base
     return 'Já está evoluindo' unless idle?
     return 'Nível máximo atingido' if building[:levels][building_level+1].nil?
     return 'Você não possui recursos' unless user_data.have_recourses building[:levels][building_level+1]
-    return "Requer castelo nível #{building[:levels][building_level+1][:castle_level]}" if building[:levels][building_level+1][:castle_level]
+    return "Requer castelo nível #{building[:levels][building_level+1][:castle_level].to_i}" unless current_user.castle.building_level >= building[:levels][building_level+1][:castle_level].to_i
     return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)
     return 'Suas estradas não chegam até aqui' unless have_user_road current_user.id
     idle_villager = user_data.idle_villager

@@ -1,14 +1,14 @@
 
 window.setInterval(function() {
-    update_timers();
+    update_chronometer();
 }, 1000);
 
-function update_timers() {
-    var sprite_timers = $('.sprite-timer');
+function update_chronometer() {
+    var chronometer = $('.chronometer');
 
-    if(sprite_timers.length) {
+    if(chronometer.length) {
 
-        $.each(sprite_timers, function(index, item) {
+        $.each(chronometer, function(index, item) {
             if ($(item).attr('data_time') > 0) {
 
                 $(item).attr('data_time', $(item).attr('data_time')-1)
@@ -26,10 +26,10 @@ function update_timers() {
 }
 
 $(document).on('turbolinks:load', function() {
-    var sprite_timers = $('.sprite-timer');
+    var chronometer = $('.chronometer');
 
-    if(sprite_timers.length) {
-        $.each(sprite_timers, function(index, item) {
+    if(chronometer.length) {
+        $.each(chronometer, function(index, item) {
             $(item).html(($(item).attr('data_time')).toString().toHHMMSS());
         });
     }
@@ -47,3 +47,4 @@ function refresh_label_timers() {
         });
     }
 }
+

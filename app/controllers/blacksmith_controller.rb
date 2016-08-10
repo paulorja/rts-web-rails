@@ -1,0 +1,2 @@
+class BlacksmithController < ApplicationController
+end

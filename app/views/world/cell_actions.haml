@@ -9,26 +9,26 @@
     = "#{building[:name]} nível #{@cell.building_level} (#{@cell.user.login})" 
 
 %div.text-center{style: 'font-size:12px'}
-  = "(X: #{@cell.x} Y: #{@cell.y}"
+  = "(X: #{@cell.x} Y: #{@cell.y})"
 
 / SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
 - if building.nil? and @cell.have_user_road @current_user.id
   - terrain[:buildings].each do |b|
     = render 'building_up', { building: Building.get_building(b), building_level: 1}
 
-  = render 'terrains/tree'  if @cell.is_tree
-  = render 'terrains/stone' if @cell.is_stone
+  = render 'world/terrains/tree'  if @cell.is_tree
+  = render 'world/terrains/stone' if @cell.is_stone
 
 
 / SE A CONSTRUÇÃO É DO USUÁRIO
 - if @cell.user_id == @current_user.id
   - if @cell.idle
 
-    = render 'buildings/market'     if @cell.is_market
-    = render 'buildings/blacksmith' if @cell.is_blacksmith
-    = render 'buildings/castle'     if @cell.is_castle
-    = render 'buildings/house'      if @cell.is_house
-    = render 'buildings/storage'    if @cell.is_storage      
+    = render 'world/buildings/market'     if @cell.is_market
+    = render 'world/buildings/blacksmith' if @cell.is_blacksmith
+    = render 'world/buildings/castle'     if @cell.is_castle
+    = render 'world/buildings/house'      if @cell.is_house
+    = render 'world/buildings/storage'    if @cell.is_storage
 
     %hr
 

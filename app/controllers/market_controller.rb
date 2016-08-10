@@ -44,11 +44,11 @@ class MarketController < ApplicationController
   end
 
   def my_offers
-    @my_offers = MarketOffer.includes(:user).where('user_id = ?', @current_user.id)
+    @my_offers = MarketOffer.includes(:user).where('user_id = ? and status = 0', @current_user.id)
   end
 
   def moves
-    @moves = EventMarketOffer.includes(market_offer: :user).includes(:event).where('user_id = ?', @current_user.id)
+    @offers = MarketOffer.where('(user_id = ? or return_user_id = ?) and status = 1', @current_user.id, @current_user.id)
   end
 
   def delete

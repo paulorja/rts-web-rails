@@ -5,7 +5,7 @@
       = link_to('', world_path)
     .navbar-links-item.my-castle-button{class: ('navbar-links-item-active' if action_name == 'world_zoom')}
       = link_to('', "/world_zoom/#{@current_user.castle_x}/#{@current_user.castle_y}")
-    .navbar-links-item.trophy-button{class: ('navbar-links-item-active' if action_name == 'general')}
+    .navbar-links-item.trophy-button{class: ('navbar-links-item-active' if controller_name == 'ranking')}
       = link_to('', "/ranking")
     .navbar-links-item.reports-button{class: ('navbar-links-item-active' if controller_name == 'report' )}
       = link_to('', "/reports")
