@@ -43,11 +43,25 @@ class EventMarketOffer < ActiveRecord::Base
     m_offer.status = 'complete'
     m_offer.save
 
-    Report.create({user_id: m_offer.user.id,   report_type: 0})
-    Report.create({user_id: m_offer.return_user.id, report_type: 0})
+    report_user = Report.create({
+      user_id: m_offer.user.id,
+      user_2_id: m_offer.return_user.id,
+      report_type: 1
+    })
+    report_return_user = Report.create({
+       user_id: m_offer.return_user.id,
+       user_2_id: m_offer.user.id,
+       report_type: 1
+     })
 
-    #ReportMarketOffer.create({user_id: m_offer.user.id,   report_type: 1})
-    #ReportMarketOffer.create({user_id: m_offer.return_user.id, report_type: 1})
+    ReportMarketOffer.create({
+      report_id: report_user.id,
+      market_offer_id: m_offer.id,
+    })
+    ReportMarketOffer.create({
+      report_id: report_return_user.id,
+      market_offer_id: m_offer.id,
+    })
 
     e.destroy
     event_offer_begin.destroy

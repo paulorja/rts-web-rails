@@ -11,6 +11,10 @@ a {
   color: $blue-1;
 }
 
+.hover-pointer:hover {
+  cursor: pointer;
+}
+
 .flip-Y {
   transform: scaleY(-1);
 }

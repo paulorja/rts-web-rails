@@ -3,13 +3,13 @@
   = render 'menu'
 
 #game-content-right
-  %table{border: '1', width: '100%'}
+  %table.table
     %thead
       %tr
         %th Pos.
-        %th Player
+        %th Jogador
         %th{style: 'width: 20px;'}
-        %th Territories
+        %th Territórios
     %tbody
       - @users.each_with_index do |u, i|
         %tr

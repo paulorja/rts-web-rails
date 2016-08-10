@@ -66,13 +66,13 @@ ActiveRecord::Schema.define(version: 20160809154805) do
   create_table "report_market_offers", force: :cascade do |t|
     t.integer  "report_id",       limit: 4
     t.integer  "market_offer_id", limit: 4
-    t.integer  "report_type",     limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
 
   create_table "reports", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
+    t.integer  "user_2_id",   limit: 4
     t.integer  "report_type", limit: 4
     t.boolean  "read"
     t.datetime "created_at",            null: false

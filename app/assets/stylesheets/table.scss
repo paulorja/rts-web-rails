@@ -1,4 +1,22 @@
+@import 'colors';
+
 .table {
   width:100%;
+  border-collapse: collapse;
 }
 
+.table thead tr th {
+  border-bottom: solid 1px #727272;
+  padding: 10px;
+  font-weight: bolder;
+}
+
+.table tr td {
+  border-bottom: solid 1px #727272;
+  padding: 10px;
+}
+
+.table-hover tbody tr:hover {
+  cursor: pointer;
+  background: #818181;
+}

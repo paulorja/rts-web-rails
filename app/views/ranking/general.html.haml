@@ -4,11 +4,11 @@
   = render 'menu'
 
 #game-content-right
-  %table{border: '1', width: '100%'}
+  %table.table
     %thead
       %tr
         %th Pos.
-        %th Player
+        %th Jogador
         %th{style: 'width: 20px;'}
         %th Pontos
     %tbody
@@ -16,7 +16,6 @@
         %tr
           %td= (i+1).to_s
           %td= link_to(u.login, user_profile_path(u.login))
-          %td{style: "background-color: #{u.color}"}
-            = link_to(u.castle_path) do
-              %div.icon-my-castle.icon-no-repeat{style: 'width: 20px; height: 20px;'}
+          %td.hover-pointer{style: "background-color: #{u.color}", onclick: "Turbolinks.visit('#{u.castle_path}')"}
+            %div.icon-my-castle.icon-no-repeat{style: 'width: 20px; height: 20px;'}
           %td= u.user_data.score
