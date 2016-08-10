@@ -18,10 +18,14 @@
             %td.text-center
               .chronometer{data_time: offer.wait_time}
             %td
+              %span.icon-no-repeat.icon-small{class: "icon-#{offer.return_recourse}"}
+              = offer.return_amount
         - else
           %tr
             %td.text-center= offer.user.login
             %td.text-center
               .chronometer{data_time: offer.wait_time}
             %td
+              %span.icon-no-repeat.icon-small{class: "icon-#{offer.offer_recourse}"}
+              = offer.offer_amount
 
