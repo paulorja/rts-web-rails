@@ -6,7 +6,7 @@
   .content-selected-villager{style: 'display:none;'}
 
 
-#game-content-right.sprite-searching
+#world_zoom_container.sprite-searching
   #cell-container
     = Cell.render_layers @cells, @current_user
 
@@ -24,7 +24,8 @@
   var final_top = 0;
   var final_left = 0;
 
-  $(document).ready(function() {
+  $(document).on('turbolinks:load', function() {
+
     cell_container.draggable({
       stop: function(event, ui) {
         final_top = (cell_container.position().top-default_top)/64
@@ -42,8 +43,3 @@
       grid: [64, 64]
     });
   });
-
-:css
-  #game-content-right {
-    overflow: hidden;
-  }

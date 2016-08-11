@@ -31,6 +31,17 @@ class EventMarketOffer < ActiveRecord::Base
         event_id: event.id
                            })
 
+    report_user = Report.create({
+                                    user_id: offer.user.id,
+                                    user_2_id: offer.return_user.id,
+                                    report_type: 0
+                                })
+    ReportMarketOffer.create({
+                                 report_id: report_user.id,
+                                 market_offer_id: offer.id,
+                             })
+
+
   end
 
   def self.resolve(e)
