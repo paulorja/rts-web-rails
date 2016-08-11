@@ -17,11 +17,13 @@ $(document).on('turbolinks:load', function() {
 
             if(selected_sprite != null) {
                 selected_sprite.removeClass('sprite-selected');
+                content_selected_sprite.removeClass('animated slideInLeft');
                 content_selected_sprite.hide();
             }
 
             selected_sprite = $(this);
             selected_sprite.addClass('sprite-selected');
+            content_selected_sprite.addClass('animated slideInLeft');
 
             content_selected_sprite.show();
 

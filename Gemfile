@@ -53,5 +53,7 @@ gem 'haml'
 
 gem 'jquery-ui-rails'
 gem 'touchpunch-rails'
+gem 'animate-rails'
+
 
 
