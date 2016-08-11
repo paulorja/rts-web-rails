@@ -30,7 +30,6 @@
     = render 'world/buildings/house'      if @cell.is_house
     = render 'world/buildings/storage'    if @cell.is_storage
 
-    %hr
 
     / EVOLUIR EDIFICIO
     = render 'building_up', { building: Building.get_building(@cell.building_code), building_level: @cell.building_level+1 }

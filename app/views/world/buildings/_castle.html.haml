@@ -1,15 +1,6 @@
-%div
-  Estradas utilizadas:
-  = @user_data.total_roads
-  
-%div
-  Limite de estradas:
-  = @user_data.max_roads
-- if BUILDING[:castle][:levels][@cell.building_level+1]
-  %div
-    Próximo nível:
-    = (@user_data.max_roads+BUILDING[:castle][:levels][@cell.building_level+1][:roads]).to_s
-
+%div.text-center
+  %h2{style: 'margin-bottom: 4px;'}= "#{@user_data.total_roads}/#{@user_data.max_roads}"
+  Estradas
 %div
   .build-container
     .build-icon{class: 'sprite-vil-1'}

@@ -1,6 +1,4 @@
 - if @cell.building_code == BUILDING[:storage][:code]
-  %div
-    Cada nível aumenta limite de recursos.
-  %div
-    Capacidade atual:
-    = @user_data.storage.to_s
+  %div.text-center
+    %h2{style: 'margin-bottom: 4px;'}= @user_data.storage.to_s
+    Limite de Recursos
