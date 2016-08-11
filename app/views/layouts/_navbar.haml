@@ -8,8 +8,9 @@
     .navbar-links-item.trophy-button{class: ('navbar-links-item-active' if controller_name == 'ranking')}
       = link_to('', "/ranking")
     .navbar-links-item.reports-button{class: ('navbar-links-item-active' if controller_name == 'report' )}
+      - if @user_data.new_reports != 0
+        %div.text-center{style: 'background: orange; border-radius: 100%; width: 16px;'}= @user_data.new_reports
       = link_to('', "/reports")
-
   - @user_data.reload
 
   .navbar-item{style: 'width: 268px; margin-left:20px'}

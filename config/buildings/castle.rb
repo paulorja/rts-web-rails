@@ -10,15 +10,15 @@
             score: 1
         },
         {
-            stone: 300,
-            gold: 30,
+            stone: 180,
+            gold: 35,
             time: 150,
             roads: 4,
             score: 2
         },
         {
-            stone: 600,
-            gold: 75,
+            stone: 450,
+            gold: 60,
             time: 350,
             roads: 4,
             score: 2

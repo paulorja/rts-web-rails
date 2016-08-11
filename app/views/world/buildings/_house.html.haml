@@ -1,4 +1,4 @@
 - if @cell.building_code == BUILDING[:house][:code]
   %div.text-center
-    %h2{style: 'margin-bottom: 4px;'}= @user_data.max_villagers.to_s
-    Limite de População
+    %h2{style: 'margin-bottom: 4px;'}=  "#{@user_data.total_villagers.to_s}/#{@user_data.max_villagers.to_s}"
+    População

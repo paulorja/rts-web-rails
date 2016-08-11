@@ -7,4 +7,13 @@ class Report < ActiveRecord::Base
       :user_recourses_arrived
   ]
 
+  def self.report_detail(report_id, user_data)
+    report = Report.find(report_id.to_i)
+
+    unless report.read.trust
+      report.update_attribute(:read, true)
+      user_data.update_attribute(:new_reports, user_data.new_reports-1)
+    end
+  end
+
 end

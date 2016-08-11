@@ -9,22 +9,22 @@
     .build-content
       .build-content-line.font-sm
         = building[:name]
+      .build-content-line.font-sm
+        - if building[:levels][building_level][:wood] and building[:levels][building_level][:wood].to_i > 0
+          %span.recourse-up-icon.icon-wood
+          %span.recourse-up-label= building[:levels][building_level][:wood]
+        - if building[:levels][building_level][:stone] and building[:levels][building_level][:stone].to_i > 0
+          %span.recourse-up-icon.icon-stone
+          %span.recourse-up-label= building[:levels][building_level][:stone]
+        - if building[:levels][building_level][:gold] and building[:levels][building_level][:gold].to_i > 0
+          %span.recourse-up-icon.icon-gold
+          %span.recourse-up-label= building[:levels][building_level][:gold]
+        - if building[:levels][building_level][:food] and building[:levels][building_level][:food].to_i > 0
+          %span.recourse-up-icon.icon-food
+          %span.recourse-up-label= building[:levels][building_level][:food]
+        %span.recourse-up-icon.icon-timer
+        %span.recourse-up-label.label-timer= building[:levels][building_level][:time]
       - if @current_user.castle.building_level >= building[:levels][building_level][:castle_level].to_i
-        .build-content-line.font-sm
-          - if building[:levels][building_level][:wood] and building[:levels][building_level][:wood].to_i > 0
-            %span.recourse-up-icon.icon-wood
-            %span.recourse-up-label= building[:levels][building_level][:wood]
-          - if building[:levels][building_level][:stone] and building[:levels][building_level][:stone].to_i > 0
-            %span.recourse-up-icon.icon-stone
-            %span.recourse-up-label= building[:levels][building_level][:stone]
-          - if building[:levels][building_level][:gold] and building[:levels][building_level][:gold].to_i > 0
-            %span.recourse-up-icon.icon-gold
-            %span.recourse-up-label= building[:levels][building_level][:gold]
-          - if building[:levels][building_level][:food] and building[:levels][building_level][:food].to_i > 0
-            %span.recourse-up-icon.icon-food
-            %span.recourse-up-label= building[:levels][building_level][:food]
-          %span.recourse-up-icon.icon-timer
-          %span.recourse-up-label.label-timer= building[:levels][building_level][:time]
         .build-content-line
           = link_to link_label, build_path(@cell.x, @cell.y, building[:code]), class: 'btn-build btn-sm'
       - else

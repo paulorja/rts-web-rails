@@ -15,7 +15,8 @@
             wood: 900,
             time: 250,
             population: 1,
-            score: 2
+            score: 2,
+            castle_level: 2
         },
         {
             wood: 3400,

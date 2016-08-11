@@ -20,6 +20,9 @@ class EventMarketOffer < ActiveRecord::Base
     offer.arrivet_at = Time.now.to_i + users_distance.to_i*10
     offer.save
 
+    offer.user.user_data.new_reports += 1
+    offer.user.user_data.save
+
     event = Event.new
     event.start_time = Time.now.to_i
     event.end_time = Time.now.to_i + users_distance.to_i*10
@@ -53,6 +56,11 @@ class EventMarketOffer < ActiveRecord::Base
 
     m_offer.status = 'complete'
     m_offer.save
+
+    m_offer.user.user_data.new_reports += 1
+    m_offer.user.user_data.save
+    m_offer.return_user.user_data.new_reports += 1
+    m_offer.return_user.user_data.save
 
     report_user = Report.create({
       user_id: m_offer.user.id,

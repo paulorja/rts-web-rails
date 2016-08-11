@@ -9,7 +9,7 @@
         %th Data
     %tbody
       - @reports.each do |r|
-        %tr{onclick: "Turbolinks.visit('/report_detail/#{r.id}')"}
+        %tr{onclick: "Turbolinks.visit('/report_detail/#{r.id}')", style: ('color: orange' unless r.read.trust)}
           - if r.report_type == 'user_recourses_arrived'
             %td= "Chegaram recursos de #{r.user_2.login}"
           - if r.report_type == 'user_accept_offer'
