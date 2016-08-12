@@ -1,3 +1,12 @@
-// Place all the styles related to the blacksmith controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.upgrade-tools-component{
+  border-collapse: collapse;
+  margin: 0px auto;
+}
+
+.upgrade-tools-component tr td{
+  border:solid 1px black;
+  width: 40px;
+  height: 40px;
+}

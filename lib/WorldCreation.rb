@@ -82,15 +82,17 @@ class WorldCreation
 
     img = Magick::Image.new(WorldCreation::SIZE, WorldCreation::SIZE)
 
-    query_terrains = 'INSERT INTO cells (x, y, terrain_code) VALUES'
+    query_terrains = 'INSERT INTO cells (id, x, y, terrain_code) VALUES'
     terrain_values = Array.new
+    cell_id = 0
 
     map.each_with_index do |row, row_index|
       row.each_with_index do |color, column_index|
         if row_index>=0 and row_index<WorldCreation::SIZE and column_index>=0 and column_index<WorldCreation::SIZE
           img.pixel_color(row_index, column_index, "rgb(#{color.join(', ')})")
 
-          terrain_values.push "(#{row_index}, #{column_index}, #{Terrain.color_to_code(color)})"
+          cell_id += 1
+          terrain_values.push "(#{cell_id}, #{row_index}, #{column_index}, #{Terrain.color_to_code(color)})"
         end
       end
     end

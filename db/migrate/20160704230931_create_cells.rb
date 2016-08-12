@@ -1,6 +1,6 @@
 class CreateCells < ActiveRecord::Migration
   def change
-    create_table :cells, {id: false} do |t|
+    create_table :cells do |t|
       t.integer :x
       t.integer :y
       t.integer :terrain_code, default: 0
@@ -10,6 +10,6 @@ class CreateCells < ActiveRecord::Migration
       t.string :villagers
       t.boolean :idle, default: true
     end
-    execute "ALTER TABLE cells ADD PRIMARY KEY (x, y);"
+    execute 'ALTER TABLE cells ADD INDEX (x, y)'
   end
 end

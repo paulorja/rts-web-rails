@@ -1,0 +1,5 @@
+.side-menu
+
+  .side-menu-item= link_to 'Voltar ao mapa', world_zoom_c_path(cookies['last_x'], cookies['last_y'])
+  .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'blacksmith' and action_name == 'home')}
+    = link_to 'Ferreiro', '/blacksmith'

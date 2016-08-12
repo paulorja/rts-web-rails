@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20160809154805) do
     t.boolean "idle",                       default: true
   end
 
+  add_index "cells", ["x", "y"], name: "x", using: :btree
+
   create_table "event_building_destroys", force: :cascade do |t|
     t.integer "event_id", limit: 4
     t.integer "cell_id",  limit: 4
@@ -98,6 +100,9 @@ ActiveRecord::Schema.define(version: 20160809154805) do
     t.integer  "total_territories", limit: 4,   default: 0
     t.integer  "score",             limit: 4,   default: 0
     t.integer  "new_reports",       limit: 4,   default: 0
+    t.integer  "blacksmith_hoe",    limit: 4,   default: 0
+    t.integer  "blacksmith_axe",    limit: 4,   default: 0
+    t.integer  "blacksmith_pick",   limit: 4,   default: 0
     t.string   "last_update",       limit: 255
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false

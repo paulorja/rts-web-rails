@@ -56,4 +56,3 @@ gem 'touchpunch-rails'
 gem 'animate-rails'
 
 
-

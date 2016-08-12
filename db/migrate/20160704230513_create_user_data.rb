@@ -19,6 +19,9 @@ class CreateUserData < ActiveRecord::Migration
       t.integer :total_territories, default: 0
       t.integer :score, default: 0
       t.integer :new_reports, default: 0
+      t.integer :blacksmith_hoe, default: 0
+      t.integer :blacksmith_axe, default: 0
+      t.integer :blacksmith_pick, default: 0
       t.string :last_update
 
       t.timestamps null: false
