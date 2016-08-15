@@ -66,6 +66,8 @@ Rails.application.routes.draw do
 
   # blacksmith
   get '/blacksmith', to: 'blacksmith#home'
+  get '/blacksmith/:up_column', to: 'blacksmith#up_item'
+
 
 
 

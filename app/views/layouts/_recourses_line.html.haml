@@ -1,0 +1,16 @@
+%div
+  - if recourses[:wood] and recourses[:wood] > 0
+    %span.recourse-up-icon.icon-wood
+    %span.recourse-up-label= recourses[:wood]
+  - if recourses[:stone] and recourses[:stone] > 0
+    %span.recourse-up-icon.icon-stone
+    %span.recourse-up-label= recourses[:stone]
+  - if recourses[:gold] and recourses[:gold] > 0
+    %span.recourse-up-icon.icon-gold
+    %span.recourse-up-label= recourses[:gold]
+  - if recourses[:food] and recourses[:food] > 0
+    %span.recourse-up-icon.icon-food
+    %span.recourse-up-label= recourses[:food]
+  - if recourses[:time] and recourses[:time] > 0
+    %span.recourse-up-icon.icon-timer
+    %span.recourse-up-label.label-timer= recourses[:time]

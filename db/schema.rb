@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809154805) do
+ActiveRecord::Schema.define(version: 20160815223258) do
 
   create_table "cells", force: :cascade do |t|
     t.integer "x",              limit: 4
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20160809154805) do
   end
 
   add_index "cells", ["x", "y"], name: "x", using: :btree
+
+  create_table "event_blacksmiths", force: :cascade do |t|
+    t.integer "event_id",  limit: 4
+    t.integer "user_id",   limit: 4
+    t.string  "up_column", limit: 255
+  end
 
   create_table "event_building_destroys", force: :cascade do |t|
     t.integer "event_id", limit: 4

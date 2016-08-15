@@ -1,22 +1,9 @@
 #game-content-left
   = render 'menu'
-#game-content-right.text-center
+#game-content-right.text-center.simplebar
 
-  %h2.text-center Enchada
-  %table.upgrade-tools-component
-    %tr
-      - 10.times do
-        %td
-  = link_to 'Melhorar', '/teste', class: 'btn-lg'
-  %h2.text-center Picareta
-  %table.upgrade-tools-component
-    %tr
-      - 10.times do
-        %td
-  = link_to 'Melhorar', '/teste', class: 'btn-lg'
-  %h2.text-center Machado
-  %table.upgrade-tools-component
-    %tr
-      - 10.times do
-        %td
-  = link_to 'Melhorar', '/teste', class: 'btn-lg'
+
+
+  = render 'bs_table', {item: BLACKSMITH[:pick], level: @user_data.blacksmith_pick}
+  = render 'bs_table', {item: BLACKSMITH[:axe], level: @user_data.blacksmith_axe}
+  = render 'bs_table', {item: BLACKSMITH[:hoe], level: @user_data.blacksmith_hoe}

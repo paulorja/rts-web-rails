@@ -161,19 +161,19 @@ class UserData < ActiveRecord::Base
   end
 
   def wood_per_hour
-    wood_villagers * 50
+    wood_villagers * (50 + (blacksmith_axe*5).to_i)
   end
 
   def stone_per_hour
-    stone_villagers * 50
+    stone_villagers * (50 + (blacksmith_pick*5).to_i)
   end
 
   def gold_per_hour
-    gold_villagers * 50
+    gold_villagers * (50 + (blacksmith_pick*5).to_i)
   end
 
   def food_per_hour
-    food_villagers * 50
+    food_villagers * (50 + (blacksmith_hoe*5).to_i)
   end
 
   def update_recourses
