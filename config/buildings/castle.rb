@@ -49,63 +49,63 @@
             gold: 3500,
             time: 3600,
             roads: 4,
-            score: 2
+            score: 3
         },
         {
             stone: 11000,
             gold: 5500,
             time: 7400,
             roads: 4,
-            score: 2
+            score: 3
         },
         {
             stone: 19500,
             gold: 9000,
             time: 13400,
             roads: 4,
-            score: 2
+            score: 3
         },
         {
             stone: 35500,
             gold: 14500,
             time: 23100,
             roads: 4,
-            score: 2
+            score: 3
         },
         {
             stone: 55500,
             gold: 34500,
             time: 33100,
             roads: 4,
-            score: 2
+            score: 3
         },
         {
             stone: 185500,
             gold: 144500,
             time: 43100,
             roads: 4,
-            score: 2
+            score: 3
         },
         {
             stone: 285500,
             gold: 244500,
             time: 43100,
             roads: 4,
-            score: 2
+            score: 4
         },
         {
             stone: 385500,
             gold: 344500,
             time: 43100,
             roads: 4,
-            score: 2
+            score: 4
         },
         {
             stone: 485500,
             gold: 444500,
             time: 43100,
             roads: 4,
-            score: 2
+            score: 4
         }
     ]
 }
