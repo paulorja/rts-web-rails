@@ -71,6 +71,41 @@
             time: 23100,
             roads: 4,
             score: 2
+        },
+        {
+            stone: 55500,
+            gold: 34500,
+            time: 33100,
+            roads: 4,
+            score: 2
+        },
+        {
+            stone: 185500,
+            gold: 144500,
+            time: 43100,
+            roads: 4,
+            score: 2
+        },
+        {
+            stone: 285500,
+            gold: 244500,
+            time: 43100,
+            roads: 4,
+            score: 2
+        },
+        {
+            stone: 385500,
+            gold: 344500,
+            time: 43100,
+            roads: 4,
+            score: 2
+        },
+        {
+            stone: 485500,
+            gold: 444500,
+            time: 43100,
+            roads: 4,
+            score: 2
         }
     ]
 }
