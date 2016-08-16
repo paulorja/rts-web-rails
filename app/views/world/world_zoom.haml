@@ -38,6 +38,8 @@
           url += (y-final_top).toString();
 
           Turbolinks.visit(url);
+        } else {
+          document.elementFromPoint(event.clientX, event.clientY).click();
         }
       },
       grid: [64, 64]
