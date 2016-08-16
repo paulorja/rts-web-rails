@@ -138,6 +138,20 @@ class Cell < ActiveRecord::Base
     false
   end
 
+  def have_user_road_in_cells(user_id, cells)
+    top_cell = top(cells)
+    left_cell = left(cells)
+    bottom_cell = bottom(cells)
+    right_cell = right(cells)
+
+    return true if top_cell.user_id == user_id and top_cell.is_road
+    return true if left_cell.user_id == user_id and left_cell.is_road
+    return true if bottom_cell.user_id == user_id and bottom_cell.is_road
+    return true if right_cell.user_id == user_id and right_cell.is_road
+
+    false
+  end
+
   def self.point_distance(x1, y1, x2, y2)
     distance = Math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
 
@@ -260,7 +274,11 @@ class Cell < ActiveRecord::Base
         end
         sprites_layer_2 << "<div class='sprite #{building[:css_class]}-#{cell.building_level}'></div>"
       else
-        sprites_layer_2 << "<div class='sprite'></div>"
+        if cell.have_user_road_in_cells(current_user.id, cells)
+          sprites_layer_2 << "<div class='sprite sprite-can-build'></div>"
+        else
+          sprites_layer_2 << "<div class='sprite'></div>"
+        end
       end
 
       # SPRITE SELECTION
@@ -279,7 +297,6 @@ class Cell < ActiveRecord::Base
       sprites_layer_3 << "</div>"
 
     end
-
 
 
     def self.new_layer(layer)
