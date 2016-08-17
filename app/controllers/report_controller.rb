@@ -10,7 +10,8 @@ class ReportController < ApplicationController
   def report_detail
     @report = Report.report_detail(params[:report_id], @user_data)
 
-
-
+    if @report.nil?
+      redirect_to '/reports'
+    end
   end
 end

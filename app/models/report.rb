@@ -10,9 +10,24 @@ class Report < ActiveRecord::Base
   def self.report_detail(report_id, user_data)
     report = Report.find(report_id.to_i)
 
-    unless report.read.trust
-      report.update_attribute(:read, true)
-      user_data.update_attribute(:new_reports, user_data.new_reports-1)
+    if report.user_id == user_data.user.id
+      unless report.read.trust
+        report.update_attribute(:read, true)
+        user_data.update_attribute(:new_reports, user_data.new_reports-1)
+      end
+
+      report
+    end
+  end
+
+  def title
+    case report_type
+      when 'user_recourses_arrived'
+        return "Chegaram recursos de #{user_2.login}"
+      when 'user_accept_offer'
+        return "#{user_2.login} aceitou sua oferta"
+      else
+        return 'OPS'
     end
   end
 
