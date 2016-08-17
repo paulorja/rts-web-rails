@@ -13,17 +13,12 @@
 }
 
 .sprite-can-build {
-  background:blue;
+  background:black;
   opacity: 0.25;
   border-radius: 100%;
   margin: 2px;
   width: 60px;
   height: 60px;
-}
-
-.sprite-can-build:hover {
-  cursor: pointer;
-  opacity: 0.5;
 }
 
 .link-sprite {
