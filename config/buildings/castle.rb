@@ -2,6 +2,7 @@
     name: 'Castelo',
     code: 4,
     css_class: 'sprite-castle',
+    units: [1],
     levels: [
         {
         },
