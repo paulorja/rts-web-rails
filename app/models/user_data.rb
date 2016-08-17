@@ -55,7 +55,6 @@ class UserData < ActiveRecord::Base
   end
 
   def remove_idle_villager
-    self.idle_villagers = idle_villagers-1
     self.save
 
     cell = idle_villager_cell
@@ -81,7 +80,6 @@ class UserData < ActiveRecord::Base
 
     self.food -= 100
     self.total_villagers += 1
-    self.idle_villagers += 1
     self.save
     true
   end
@@ -89,56 +87,48 @@ class UserData < ActiveRecord::Base
   def add_wood_villager(cell)
     if cell.is_lumberjack
       self.wood_villagers += 1
-      self.idle_villagers -= 1
     end
   end
 
   def add_stone_villager(cell)
     if cell.is_stone_mine
       self.stone_villagers += 1
-      self.idle_villagers -= 1
     end
   end
 
   def add_gold_villager(cell)
     if cell.is_gold_mine
       self.gold_villagers += 1
-      self.idle_villagers -= 1
     end
   end
 
   def add_farm_villager(cell)
     if cell.is_farm
       self.food_villagers += 1
-      self.idle_villagers -= 1
     end
   end
 
   def remove_wood_villager(cell)
     if cell.is_lumberjack and self.wood_villagers > 0
       self.wood_villagers -= 1
-      self.idle_villagers += 1
     end
   end
 
   def remove_gold_villager(cell)
     if cell.is_gold_mine and self.gold_villagers > 0
       self.gold_villagers -= 1
-      self.idle_villagers += 1
     end
   end
 
   def remove_stone_villager(cell)
     if cell.is_stone_mine and self.stone_villagers > 0
       self.stone_villagers -= 1
-      self.idle_villagers += 1
     end
   end
 
   def remove_farm_villager(cell)
     if cell.is_farm and self.food_villagers > 0
       self.food_villagers -= 1
-      self.idle_villagers += 1
     end
   end
 
@@ -150,7 +140,6 @@ class UserData < ActiveRecord::Base
       gold: 350,
       food: 350,
       storage: 1000,
-      idle_villagers: 2,
       total_villagers: 2,
       total_territories: 4,
       score: BUILDING[:castle][:levels][1][:score],
