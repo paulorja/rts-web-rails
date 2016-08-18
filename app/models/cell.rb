@@ -175,12 +175,8 @@ class Cell < ActiveRecord::Base
   end
 
   def self.move_unit(cell, target_cell, villager)
-    if cell.id != target_cell.id and cell.user_id == target_cell.user_id and cell.idle and target_cell.idle
-      villager.cell_id = target_cell.id
-      villager.save
-      return true
-    end
-    false
+    villager.cell_id = target_cell.id
+    villager.save
   end
 
   def next_road
@@ -198,7 +194,7 @@ class Cell < ActiveRecord::Base
     nil
   end
 
-  def move_to_next_road
+  def move_units_to_next_road
     cell_units.update_all(cell_id: next_road.id)
   end
 

@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   get '/villager/:cell_id/:villager/:target_cell_id', to: 'world#villager_action'
   get '/villager/new', to: 'world#new_villager', as: 'new_villager'
 
+  get '/units/new/:unit/:cell/:amount', to: 'world#new_unit', as: 'new_unit'
+
   #terrain
 
   get '/cell_actions/:cell_id', to: 'world#cell_actions'

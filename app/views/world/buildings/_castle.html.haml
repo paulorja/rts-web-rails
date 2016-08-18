@@ -1,14 +1,3 @@
 %div.text-center
   %h2{style: 'margin-bottom: 4px;'}= "#{@user_data.total_roads}/#{@user_data.max_roads}"
   Estradas
-%div
-  .build-container
-    .build-icon{class: 'sprite-vil-1'}
-    .build-content
-      .build-content-line.font-sm
-        = 'Aldeão'
-      .build-content-line.font-sm
-        %span.recourse-up-icon.icon-food
-        %span.recourse-up-label= 100
-      .build-content-line
-        = link_to 'Comprar Aldeão', new_villager_path, class: 'btn-build btn-sm'

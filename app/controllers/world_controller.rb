@@ -75,11 +75,10 @@ class WorldController < ApplicationController
     redirect_to :back
   end
 
-  def new_villager
-    new_villager = @user_data.new_villager @current_user
-
-    if new_villager.is_a? String
-      flash['alert'] = new_villager
+  def new_unit
+    event = EventNewUnit.start_event(params[:unit].to_i, Cell.find(params[:cell]), params[:amount].to_i, @current_user)
+    if event.is_a? String
+      flash['alert'] = event
     end
 
     redirect_to :back

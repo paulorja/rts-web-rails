@@ -22,7 +22,11 @@
 
 / SE A CONSTRUÇÃO É DO USUÁRIO
 - if @cell.user_id == @current_user.id
+
   - if @cell.idle
+
+    / EVOLUIR EDIFICIO
+    = render 'building_up', { building: Building.get_building(@cell.building_code), building_level: @cell.building_level+1 }
 
     = render 'world/buildings/market'     if @cell.is_market
     = render 'world/buildings/blacksmith' if @cell.is_blacksmith
@@ -30,16 +34,27 @@
     = render 'world/buildings/house'      if @cell.is_house
     = render 'world/buildings/storage'    if @cell.is_storage
 
-
-    / EVOLUIR EDIFICIO
-    = render 'building_up', { building: Building.get_building(@cell.building_code), building_level: @cell.building_level+1 }
-
     / DESTRUIR EDIFICIO
     = render 'building_destroy'
 
   - else
     / SE EDIFICIO OCUPADO
     = 'construindo...'
+
+  - if building[:units].is_a? Array and building[:units].size > 0
+    %hr
+    - building[:units].each do |u|
+      - unit = Unit.get_unit(u)
+      %div
+      .build-container
+        .build-icon{class: 'sprite-vil-1'}
+        .build-content
+          .build-content-line.font-sm
+            = unit[:name]
+          .build-content-line.font-sm
+            = render 'layouts/recourses_line', {recourses: unit[:pricing]}
+          .build-content-line
+            = link_to 'Comprar Aldeão', new_unit_path(unit[:code], @cell.id, 1), class: 'btn-build btn-sm'
 
 :javascript
   refresh_label_timers();

@@ -31,7 +31,7 @@ class EventBuildingUp < ActiveRecord::Base
       user_data.stone_villagers += 1 if cell.is_stone
       user_data.gold_villagers += 1 if cell.is_gold
     else
-      cell.move_to_next_road
+      cell.move_units_to_next_road
     end
 
     user_data.save

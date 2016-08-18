@@ -30,21 +30,6 @@ class UserData < ActiveRecord::Base
     end
   end
 
-  def new_villager(user)
-    #validate
-    return 'Vocẽ não possui comida' if food < 100
-    return 'Construa mais casas' if total_villagers == max_villagers
-
-    #add villager
-    castle = Cell.where('x = ? and y = ?', user.castle_x, user.castle_y).first
-    castle.next_road.add_villager((rand(3)+1).to_s)
-
-    self.food -= 100
-    self.total_villagers += 1
-    self.save
-    true
-  end
-
   def add_wood_villager(cell)
     if cell.is_lumberjack
       self.wood_villagers += 1
