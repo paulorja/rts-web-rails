@@ -27,7 +27,10 @@ class User < ActiveRecord::Base
     img.pixel_color(start_position[:castle].x, start_position[:castle].y, color)
 
     start_position[:roads].each_with_index do |road, index|
-      road.villagers = '1;2' if index == 1
+      if index == 1
+        road.cell_units.create({unit: 1, user_id: id})
+        road.cell_units.create({unit: 1, user_id: id})
+      end
 
       road.building_code = BUILDING[:road][:code]
       road.building_level = 1
@@ -38,6 +41,11 @@ class User < ActiveRecord::Base
 
     img.write('public/world.bmp')
   end
+
+  def idle_villager
+    CellUnit.joins(:cell).where('cells.building_code = ?', BUILDING[:road][:code]).first
+  end
+
 
   def castle
     Cell.where('x = ? and y = ?', castle_x, castle_y).first

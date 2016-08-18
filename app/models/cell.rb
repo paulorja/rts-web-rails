@@ -4,6 +4,8 @@ class Cell < ActiveRecord::Base
   has_one :event_building_up
   has_one :event_to_grass
   has_one :event_building_destroy
+  has_many :cell_units
+
 
   def is_road
     true if building_code == BUILDING[:road][:code]
@@ -172,61 +174,10 @@ class Cell < ActiveRecord::Base
     Cell.where('x > ? and x < ? and y > ? and y < ?', min_x, max_x, min_y, max_y).order('y ASC, x ASC')
   end
 
-  def have_villager(villager)
-    return false if villagers.nil?
-
-    villagers.split(';').each do |v|
-      if v == villager.to_s
-        return true
-      end
-    end
-    false
-  end
-
-  def villager_number
-    if villagers.nil?
-      0
-    else
-      villagers.split(';').size
-    end
-  end
-
-  def remove_villager(villager)
-    new_array = []
-
-    unless villagers.nil?
-      new_array = villagers.split(';').to_a
-    end
-
-    villagers.split(';').each_with_index do |v, index|
-      if v == villager
-          new_array.delete_at(index)
-        break
-      end
-    end
-
-    if new_array.empty?
-      self.villagers = nil
-    else
-      self.villagers = new_array.join(';')
-    end
-    self.save
-  end
-
-  def add_villager(villager)
-    if villagers.nil?
-      self.villagers = villager.to_s
-    else
-      self.villagers = villagers.split(';').append(villager).join(';')
-    end
-
-    self.save
-  end
-
-  def self.move_villager(cell, target_cell, villager)
-    if cell.have_villager villager and cell.id != target_cell.id and cell.user_id == target_cell.user_id and cell.idle and target_cell.idle
-      cell.remove_villager villager
-      target_cell.add_villager villager
+  def self.move_unit(cell, target_cell, villager)
+    if cell.id != target_cell.id and cell.user_id == target_cell.user_id and cell.idle and target_cell.idle
+      villager.cell_id = target_cell.id
+      villager.save
       return true
     end
     false
@@ -248,7 +199,7 @@ class Cell < ActiveRecord::Base
   end
 
   def move_to_next_road
-    Cell.move_villager(self, next_road, self.villagers)
+    cell_units.update_all(cell_id: next_road.id)
   end
 
   def self.render_layers(cells, current_user)
@@ -294,6 +245,19 @@ class Cell < ActiveRecord::Base
           sprites_layer_3 << "<div class='sprite-villager sprite-vil-#{v}' obj_id='#{v}'></div>"
         end
       end
+
+      cell.cell_units.each do |u|
+        unity = Unit.get_unit(u.unit)
+
+        sprites_layer_3 << "<div class='sprite-villager sprite-vil-#{unity[:code]}' obj_id='#{u.id}'></div>"
+      end
+
+      if cell.is_recourse_building
+        (0..cell.building_level-cell.cell_units.size-1).each do
+          sprites_layer_3 << "<div class='sprite-unit-space'></div>"
+        end
+      end
+
       sprites_layer_3 << "</div>"
 
     end
@@ -321,7 +285,7 @@ class Cell < ActiveRecord::Base
     return "Requer castelo nível #{building[:levels][building_level+1][:castle_level].to_i}" unless current_user.castle.building_level >= building[:levels][building_level+1][:castle_level].to_i
     return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)
     return 'Suas estradas não chegam até aqui' unless have_user_road current_user.id
-    idle_villager = user_data.idle_villager
+    idle_villager = current_user.idle_villager
     return 'Você não possui aldões disponíveis' if idle_villager.nil?
 
     if building_code == BUILDING[:road][:code].to_s
@@ -336,7 +300,7 @@ class Cell < ActiveRecord::Base
     #start build
     user_data.use_recourses building[:levels][building_level+1]
 
-    event = Event.new()
+    event = Event.new
     event.start_time = Time.now.to_i
     event.end_time = Time.now.to_i + building[:levels][building_level+1][:time]
     event.event_type = :building_up
@@ -346,11 +310,9 @@ class Cell < ActiveRecord::Base
 
     self.building_code = building_code
     self.user_id = current_user.id
-    self.add_villager(idle_villager)
+    Cell.move_unit(idle_villager.cell, self, idle_villager)
     self.idle = false
     self.save
-
-    user_data.remove_idle_villager
 
     require 'rmagick'
     img = Magick::Image.read('public/world.bmp')[0]

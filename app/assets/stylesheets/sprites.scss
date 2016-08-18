@@ -55,13 +55,22 @@
   font-size: 12px;
 }
 
+.sprite-unit-space {
+  z-index: 3;
+  width: 20px;
+  height: 20px;
+  float: left;
+  background:black;
+  opacity: 0.25;
+  border-radius:100%;
+}
+
 /* VILLAGERS  */
 .sprite-villager {
   z-index: 3;
   width: 20px;
   height: 20px;
   float: left;
-  margin: 3px;
 }
 .sprite-villager:hover {
   cursor: default;

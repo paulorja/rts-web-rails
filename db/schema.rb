@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815223258) do
+ActiveRecord::Schema.define(version: 20160817161455) do
+
+  create_table "cell_units", force: :cascade do |t|
+    t.integer "cell_id", limit: 4
+    t.integer "user_id", limit: 4
+    t.integer "unit",    limit: 4
+  end
 
   create_table "cells", force: :cascade do |t|
     t.integer "x",              limit: 4
@@ -100,9 +106,8 @@ ActiveRecord::Schema.define(version: 20160815223258) do
     t.integer  "storage",           limit: 4,   default: 0
     t.integer  "total_roads",       limit: 4,   default: 0
     t.integer  "max_roads",         limit: 4,   default: 0
-    t.integer  "idle_villagers",    limit: 4,   default: 0
-    t.integer  "total_villagers",   limit: 4,   default: 0
-    t.integer  "max_villagers",     limit: 4,   default: 0
+    t.integer  "total_pop",         limit: 4,   default: 0
+    t.integer  "max_pop",           limit: 4,   default: 0
     t.integer  "total_territories", limit: 4,   default: 0
     t.integer  "score",             limit: 4,   default: 0
     t.integer  "new_reports",       limit: 4,   default: 0

@@ -11,8 +11,8 @@
   - when :stone
     - title = 'Stone'
     - sprite = '/icons/stone.png'
-  - when :villager
-    - title = 'Villager'
+  - when :population
+    - title = 'Population'
     - sprite = '/world/villagers/vil_1.png'
   -else
     - title = 'fuck'
@@ -23,9 +23,6 @@
     = image_tag "sprites#{sprite}", width: 20
   .recourse-label
     = amount.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1 ")
-    /
-      - if defined? villagers
-        = "(#{villagers})"
   .recourse-progress-bar
     - width = amount.to_f/max.to_f*100
     - width = 100 if width>100

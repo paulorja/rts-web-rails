@@ -30,45 +30,6 @@ class UserData < ActiveRecord::Base
     end
   end
 
-  def idle_villager_cell
-    Cell.where('idle = ? and
-                villagers IS NOT NULL and
-                building_code != ? and
-                building_code != ? and
-                building_code != ? and
-                building_code != ? and
-                user_id = ?',
-                true,
-                BUILDING[:stone_mine][:code],
-                BUILDING[:gold_mine][:code],
-                BUILDING[:lumberjack][:code],
-                BUILDING[:farm][:code],
-                user_id).first
-  end
-
-  def idle_villager
-    begin
-      return idle_villager_cell.villagers.split(';')[0]
-    rescue
-      return nil
-    end
-  end
-
-  def remove_idle_villager
-    self.save
-
-    cell = idle_villager_cell
-    new_array = cell.villagers.split(';')
-    new_array.delete_at(0)
-
-    if new_array.empty?
-      cell.villagers = nil
-    else
-      cell.villagers = new_array.join(';')
-    end
-    cell.save
-  end
-
   def new_villager(user)
     #validate
     return 'Vocẽ não possui comida' if food < 100
@@ -140,10 +101,10 @@ class UserData < ActiveRecord::Base
       gold: 350,
       food: 350,
       storage: 1000,
-      total_villagers: 2,
+      total_pop: 2,
       total_territories: 4,
       score: BUILDING[:castle][:levels][1][:score],
-      max_villagers: 2,
+      max_pop: 2,
       total_roads: 3,
       max_roads: BUILDING[:castle][:levels][1][:roads]
     )
