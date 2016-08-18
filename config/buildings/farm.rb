@@ -8,7 +8,7 @@
         {
         },
         {
-            wood: 50,
+            wood: 120,
             time: 7,
             score: 0
         },

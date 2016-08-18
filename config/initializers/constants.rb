@@ -1,11 +1,11 @@
 TO_GRASS = {
     tree: {
-        time: 50
+        time: 16
     },
     gold: {
-        time: 50
+        time: 16
     },
     stone: {
-        time: 50
+        time: 16
     }
 }

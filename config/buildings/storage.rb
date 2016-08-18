@@ -6,8 +6,8 @@
         {
         },
         {
-            wood: 50,
-            stone: 50,
+            wood: 100,
+            stone: 100,
             time: 45,
             storage: 1000,
             score: 1

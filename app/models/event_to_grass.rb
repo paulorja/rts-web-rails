@@ -9,11 +9,9 @@ class EventToGrass < ActiveRecord::Base
     user_data = UserData.where('user_id = ?', cell.user_id).first
 
     cell.idle = true
-    cell.move_to_next_road
+    cell.move_units_to_next_road
     cell.terrain_code = TERRAIN[:grass][:code]
     cell.user_id = nil
-
-    user_data.idle_villagers += 1
 
 
     cell.save
@@ -42,16 +40,15 @@ class EventToGrass < ActiveRecord::Base
     return 'Este edifício possui dono' if cell.have_user
     return 'Você não possui recursos' unless user.user_data.have_recourses TO_GRASS[obj]
     return 'Suas estradas não chegam até aqui' unless cell.have_user_road user.id
-    idle_villager = user.user_data.idle_villager
+    idle_villager = user.idle_villager
     return 'Você não possui aldões disponíveis' if idle_villager.nil?
 
 
-    cell.add_villager(idle_villager)
     cell.user_id = user.id
+    idle_villager.move(cell, user.user_data)
     cell.idle = false
 
     user.user_data.use_recourses TO_GRASS[obj]
-    user.user_data.remove_idle_villager
 
     event = Event.new
     event.start_time = Time.now.to_i

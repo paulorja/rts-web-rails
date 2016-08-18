@@ -175,8 +175,9 @@ class Cell < ActiveRecord::Base
   end
 
   def self.move_unit(cell, target_cell, villager)
-    villager.cell_id = target_cell.id
-    villager.save
+    if cell.user_id == target_cell.user_id and cell.idle and target_cell.idle
+      villager.update_attributes(cell_id: target_cell.id)
+    end
   end
 
   def next_road
@@ -306,7 +307,7 @@ class Cell < ActiveRecord::Base
 
     self.building_code = building_code
     self.user_id = current_user.id
-    Cell.move_unit(idle_villager.cell, self, idle_villager)
+    idle_villager.move(self, user_data)
     self.idle = false
     self.save
 

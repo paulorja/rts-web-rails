@@ -12,7 +12,7 @@ class EventNewUnit < ActiveRecord::Base
     return 'você só pode treinar um de cada vez' if amount != 1
     return 'você não pode treinar esta unidade' unless building[:units].include? unit[:code]
     return 'Você não possui recursos' unless user_data.have_recourses unit[:pricing]
-    return 'Construa mais casas!' unless user_data.max_pop >= user_data.total_pop
+    return 'Construa mais casas!' unless user_data.max_pop > user_data.total_pop
 
     user_data.use_recourses unit[:pricing]
     user_data.total_pop += 1

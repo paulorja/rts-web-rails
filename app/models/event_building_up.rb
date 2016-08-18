@@ -25,14 +25,11 @@ class EventBuildingUp < ActiveRecord::Base
     user_data.score += building[:levels][cell.building_level][:score].to_i
     user_data.total_territories += 1 if cell.building_level == 1
 
-    if cell.is_recourse_building
-      user_data.food_villagers += 1 if cell.is_farm
-      user_data.wood_villagers += 1 if cell.is_tree
-      user_data.stone_villagers += 1 if cell.is_stone
-      user_data.gold_villagers += 1 if cell.is_gold
-    else
-      cell.move_units_to_next_road
-    end
+    cell.move_units_to_next_road
+    #pegar recurso automaticamente
+    #if cell.is_recourse_building
+      #user_data.user.idle_villager.move(cell, user_data)
+    #end
 
     user_data.save
     cell.save

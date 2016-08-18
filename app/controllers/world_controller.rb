@@ -39,23 +39,7 @@ class WorldController < ApplicationController
     if @target_cell.is_recourse_building and @target_cell.cell_units.size == @target_cell.building_level
       flash['alert'] = "Apenas #{@target_cell.building_level} aldeão pode coletar recursos aqui!"
     elsif @current_user.id == @cell.user_id
-
-      if Cell.move_unit(@cell, @target_cell, @villager)
-        if @target_cell.is_recourse_building
-          @user_data.add_wood_villager @target_cell
-          @user_data.add_gold_villager @target_cell
-          @user_data.add_stone_villager @target_cell
-          @user_data.add_farm_villager @target_cell
-        end
-        if @cell.is_recourse_building
-          @user_data.remove_wood_villager @cell
-          @user_data.remove_gold_villager @cell
-          @user_data.remove_stone_villager @cell
-          @user_data.remove_farm_villager @cell
-        end
-        @user_data.save
-      end
-
+      @villager.move(@target_cell, @user_data)
     end
 
     redirect_to :back
