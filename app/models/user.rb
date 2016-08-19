@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def idle_villager
-    CellUnit.joins(:cell).where('cells.idle = true and cells.building_code = ? and cell_units.user_id = ?', BUILDING[:road][:code], id).first
+    CellUnit.joins(:cell).where('cells.idle = true and cells.building_code = ? and cell_units.user_id = ? and cell_units.unit = 1', BUILDING[:road][:code], id).first
   end
 
 

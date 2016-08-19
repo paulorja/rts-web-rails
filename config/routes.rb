@@ -39,9 +39,8 @@ Rails.application.routes.draw do
 
   #villager
 
-  get '/villager/:cell_id/:villager', to: 'world#villager'
+  get '/unit/:unit_id', to: 'world#unit'
   get '/villager/:cell_id/:villager/:target_cell_id', to: 'world#villager_action'
-  get '/villager/new', to: 'world#new_villager', as: 'new_villager'
 
   get '/units/new/:unit/:cell/:amount', to: 'world#new_unit', as: 'new_unit'
 

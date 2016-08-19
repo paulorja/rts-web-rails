@@ -237,16 +237,10 @@ class Cell < ActiveRecord::Base
       sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_to_grass.event.wait_time}'></div>" if cell.event_to_grass
       sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_building_destroy.event.wait_time}'></div>" if cell.event_building_destroy
 
-      if cell.villagers.is_a? String
-        cell.villagers.split(';').each do  |v|
-          sprites_layer_3 << "<div class='sprite-villager sprite-vil-#{v}' obj_id='#{v}'></div>"
-        end
-      end
-
       cell.cell_units.each do |u|
         unity = Unit.get_unit(u.unit)
 
-        sprites_layer_3 << "<div class='sprite-villager sprite-vil-#{unity[:code]}' obj_id='#{u.id}'></div>"
+        sprites_layer_3 << "<div class='sprite-unit #{unity[:css_class]}' obj_id='#{u.id}'></div>"
       end
 
       if cell.is_recourse_building

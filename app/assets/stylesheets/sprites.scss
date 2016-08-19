@@ -65,25 +65,26 @@
   border-radius:100%;
 }
 
-/* VILLAGERS  */
-.sprite-villager {
+/* UNITS  */
+.sprite-unit {
   z-index: 3;
   width: 20px;
   height: 20px;
   float: left;
 }
-.sprite-villager:hover {
+.sprite-unit:hover {
   cursor: default;
 }
-.villager-selected {
+.unit-selected {
   z-index: 2;
   position: relative;
   outline: 2px dotted red;
 }
 
-.sprite-vil-1 { background-image: asset-url('sprites/world/villagers/vil_1.png'); }
-.sprite-vil-2 { background-image: asset-url('sprites/world/villagers/vil_2.png'); }
-.sprite-vil-3 { background-image: asset-url('sprites/world/villagers/vil_3.png'); }
+.sprite-villager { background-image: asset-url('sprites/world/unit/villager/villager.png'); }
+.sprite-lancer { background-image: asset-url('sprites/world/unit/lancer/lancer.png'); }
+.sprite-swordsman { background-image: asset-url('sprites/world/unit/swordsman/swordsman.png'); }
+.sprite-archer { background-image: asset-url('sprites/world/unit/archer/archer.png'); }
 
 
 /* TERRAINS */

@@ -1,4 +1,6 @@
-.content-title
-  Aldeão
 
-.sprite{class: "sprite-vil-#{@villager}"}
+- unit = Unit.get_unit(@unit.unit)
+.content-title
+  = unit[:name]
+
+.sprite{class: "#{unit[:css_class]}"}

@@ -47,14 +47,14 @@
       - unit = Unit.get_unit(u)
       %div
       .build-container
-        .build-icon{class: 'sprite-vil-1'}
+        .build-icon{class: unit[:css_class]}
         .build-content
           .build-content-line.font-sm
             = unit[:name]
           .build-content-line.font-sm
             = render 'layouts/recourses_line', {recourses: unit[:pricing]}
           .build-content-line
-            = link_to 'Comprar Aldeão', new_unit_path(unit[:code], @cell.id, 1), class: 'btn-build btn-sm'
+            = link_to "Comprar #{unit[:name]}", new_unit_path(unit[:code], @cell.id, 1), class: 'btn-build btn-sm'
 
 :javascript
   refresh_label_timers();

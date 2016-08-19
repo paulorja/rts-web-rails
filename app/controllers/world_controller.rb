@@ -24,10 +24,9 @@ class WorldController < ApplicationController
     render file: 'world/cell_actions', layout: false
   end
 
-  def villager
-    @cell = Cell.find(params[:cell_id])
-    @villager = params[:villager]
-    render file: 'world/villager', layout: false
+  def unit
+    @unit = CellUnit.find(params[:unit_id])
+    render file: 'world/unit', layout: false
   end
 
   def villager_action
