@@ -55,7 +55,12 @@ class User < ActiveRecord::Base
     "/world_zoom/#{castle_x}/#{castle_y}"
   end
 
+  def have_building(code)
+    true unless Cell.where('building_code = ? and user_id = ?', code, self.id).first.nil?
+  end
+
   def self.user_distance(u1, u2)
     Cell.point_distance(u1.castle_x, u1.castle_y, u2.castle_x, u2.castle_y)
   end
+
 end

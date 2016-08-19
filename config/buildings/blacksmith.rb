@@ -2,6 +2,7 @@
     name: 'Ferreiro',
     code: 11,
     css_class: 'sprite-blacksmith',
+    unique: true,
     levels: [
         {
         },

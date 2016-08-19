@@ -2,6 +2,7 @@
     name: 'Mercado',
     code: 10,
     css_class: 'sprite-market',
+    unique: true,
     levels: [
         {
         },

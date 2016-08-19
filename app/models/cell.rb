@@ -270,6 +270,10 @@ class Cell < ActiveRecord::Base
     building = Building.get_building(building_code.to_i)
     terrain = Terrain.get_terrain(terrain_code)
 
+    if building[:unique] and current_user.have_building(building[:code])
+      return 'Você só pode construir uma vez esta construcao'
+    end
+
     return 'Já está evoluindo' unless idle?
     return 'Nível máximo atingido' if building[:levels][building_level+1].nil?
     return 'Você não possui recursos' unless user_data.have_recourses building[:levels][building_level+1]

@@ -14,7 +14,9 @@
 / SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
 - if building.nil? and @cell.have_user_road @current_user.id
   - terrain[:buildings].each do |b|
-    = render 'building_up', { building: Building.get_building(b), building_level: 1}
+    - t_building = Building.get_building(b)
+    - unless t_building[:unique] and @current_user.have_building(t_building[:code])
+      = render 'building_up', { building: t_building, building_level: 1}
 
   = render 'world/terrains/tree'  if @cell.is_tree
   = render 'world/terrains/stone' if @cell.is_stone
