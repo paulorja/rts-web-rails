@@ -16,9 +16,9 @@ $(document).on('turbolinks:load', function() {
 
                 if(final_top != 0 || final_left != 0) {
                     var url = '/world_zoom/';
-                    url += (x-final_left).toString();
+                    url += parseInt((x-final_left)).toString();
                     url += '/'
-                    url += (y-final_top).toString();
+                    url += parseInt((y-final_top)).toString();
 
                     Turbolinks.visit(url);
                 } else {

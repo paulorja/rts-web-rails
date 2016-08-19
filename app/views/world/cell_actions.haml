@@ -43,6 +43,15 @@
 
   - if building[:units].is_a? Array and building[:units].size > 0
     %hr
+    %div
+      Em treino:
+      %table
+        - EventNewUnit.includes(:event).where('cell_id = ?', @cell.id).each do |u|
+          - unit = Unit.get_unit(u.unit)
+          %tr
+            %td= unit[:name]
+            %td.chronometer{data_time: u.event.wait_time}= u.event.wait_time
+    %hr
     - building[:units].each do |u|
       - unit = Unit.get_unit(u)
       %div
