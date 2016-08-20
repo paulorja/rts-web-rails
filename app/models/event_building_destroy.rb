@@ -3,19 +3,10 @@ class EventBuildingDestroy < ActiveRecord::Base
   belongs_to :cell
 
   def self.resolve(e)
-
     event_building_destroy = EventBuildingDestroy.where('event_id = ?', e.id).first
     cell = Cell.find(event_building_destroy.cell_id)
-    user_data = UserData.where('user_id = ?', cell.user_id).first
 
-    cell.idle = true
-    cell.move_units_to_next_road
-    cell.building_level = 0
-    cell.building_code = 0
-    cell.user_id = nil
-
-    cell.save
-    user_data.save
+    cell.destroy_building
 
     e.destroy
     event_building_destroy.destroy

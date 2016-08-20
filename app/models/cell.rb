@@ -199,6 +199,31 @@ class Cell < ActiveRecord::Base
     cell_units.update_all(cell_id: next_road.id)
   end
 
+  def destroy_building
+    building = Building.get_building(building_code)
+    user_data = UserData.find_by_user_id(user_id)
+
+    decrement_house = decrement_score = decrement_storage = 0
+    (0..building_level).each do |b|
+      decrement_score += building[:levels][b][:score].to_i
+      decrement_storage += building[:levels][b][:storage].to_i
+      decrement_house += building[:levels][b][:population].to_i
+    end
+
+    user_data.storage -= decrement_storage
+    user_data.score -= decrement_score
+    user_data.max_pop -= decrement_house
+    user_data.save
+
+
+    self.idle = true
+    self.move_units_to_next_road
+    self.building_level = 0
+    self.building_code = 0
+    self.user_id = nil
+    self.save
+  end
+
   def self.render_layers(cells, current_user)
     html  = ''
     sprites_layer_1 = ''
