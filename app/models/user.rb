@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
 
     start_position[:roads].each_with_index do |road, index|
       if index == 1
-        road.cell_units.create({unit: 1, user_id: id})
-        road.cell_units.create({unit: 1, user_id: id})
+        road.cell_units.create({unit: 1, user_id: id, name: CellUnit.random_name})
+        road.cell_units.create({unit: 1, user_id: id, name: CellUnit.random_name})
       end
 
       road.building_code = BUILDING[:road][:code]
@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def idle_villager
-    CellUnit.joins(:cell).where('cells.idle = true and cells.building_code = ? and cell_units.user_id = ? and cell_units.unit = 1', BUILDING[:road][:code], id).first
+    CellUnit.joins(:cell).where('cells.idle = true and cells.building_code = ? and cell_units.user_id = ? and cell_units.unit = 1 and cell_units.hurt = false', BUILDING[:road][:code], id).first
   end
 
 

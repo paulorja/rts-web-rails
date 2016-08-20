@@ -7,7 +7,7 @@
         },
         {
             wood: 90,
-            time: 8,
+            time: 15,
             population: 2,
             score: 1
         },

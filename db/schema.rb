@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20160818031941) do
     t.integer "cell_id", limit: 4
     t.integer "user_id", limit: 4
     t.integer "unit",    limit: 4
+    t.boolean "hurt",                default: false
+    t.string  "name",    limit: 255
   end
 
   create_table "cells", force: :cascade do |t|

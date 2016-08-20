@@ -30,8 +30,13 @@ class CellUnit < ActiveRecord::Base
         update_attributes(cell_id: target_cell.id)
         user_data.save
       end
-
-
     end
+  end
+
+  def self.random_name
+    first_names = ['João', 'Alberto', 'Francisco', 'James', 'Johnny']
+    last_names  = ['da Silva', 'Cunha', 'dos Santos', 'Santos']
+
+    return "#{first_names.sample} #{last_names.sample}"
   end
 end

@@ -9,7 +9,7 @@
         },
         {
             wood: 120,
-            time: 7,
+            time: 20,
             score: 0
         },
         {

@@ -4,6 +4,8 @@ class CreateCellUnits < ActiveRecord::Migration
       t.references :cell
       t.references :user
       t.integer :unit
+      t.boolean :hurt, default: false
+      t.string :name
     end
   end
 end

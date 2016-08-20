@@ -11,7 +11,7 @@
             stone: 500,
             gold: 300,
             time: 700,
-            castle_level: 3,
+            castle_level: 5,
             score: 1
         },
         {

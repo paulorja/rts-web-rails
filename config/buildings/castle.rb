@@ -11,7 +11,14 @@
             score: 1
         },
         {
-            stone: 180,
+            stone: 120,
+            gold: 15,
+            time: 15,
+            roads: 4,
+            score: 1
+        },
+        {
+            stone: 280,
             gold: 35,
             time: 150,
             roads: 4,

@@ -82,9 +82,9 @@ class UserData < ActiveRecord::Base
     UserData.create(
       user_id: user_id,
       wood: 800,
-      stone: 500,
-      gold: 350,
-      food: 350,
+      stone: 800,
+      gold: 500,
+      food: 500,
       storage: 1000,
       total_pop: 2,
       total_territories: 4,

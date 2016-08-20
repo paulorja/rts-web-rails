@@ -240,7 +240,12 @@ class Cell < ActiveRecord::Base
       cell.cell_units.each do |u|
         unity = Unit.get_unit(u.unit)
 
-        sprites_layer_3 << "<div class='sprite-unit #{unity[:css_class]}' obj_id='#{u.id}'></div>"
+
+        sprites_layer_3 << "<div class='sprite-unit #{unity[:css_class]}' obj_id='#{u.id}'>"
+        if u.hurt
+          sprites_layer_3 << "<div class='sprite-unit-hurt'></div>"
+        end
+        sprites_layer_3 << "</div>"
       end
 
       if cell.is_recourse_building
