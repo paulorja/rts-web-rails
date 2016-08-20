@@ -28,5 +28,7 @@ BUILDING = {
     farm: building_config('farm'),
     market: building_config('market'),
     blacksmith: building_config('blacksmith'),
-    barrack: building_config('barrack')
+    barrack: building_config('barrack'),
+    hospital: building_config('hospital'),
+    tower: building_config('tower')
 }

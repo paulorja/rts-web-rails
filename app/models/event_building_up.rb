@@ -18,12 +18,11 @@ class EventBuildingUp < ActiveRecord::Base
     when BUILDING[:house][:code]
       user_data.max_pop += BUILDING[:house][:levels][cell.building_level][:population]
     when BUILDING[:castle][:code]
-      user_data.max_roads += BUILDING[:castle][:levels][cell.building_level][:roads]
+      user_data.max_territories += BUILDING[:castle][:levels][cell.building_level][:territories]
     else
     end
 
     user_data.score += building[:levels][cell.building_level][:score].to_i
-    user_data.total_territories += 1 if cell.building_level == 1
 
     cell.move_units_to_next_road
     #pegar recurso automaticamente

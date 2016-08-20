@@ -9,14 +9,15 @@
         },
         {
             wood: 35,
-            time: 8,
-            score: 0
+            time: 18,
+            score: 0,
         },
         {
             wood: 480,
             stone: 150,
-            time: 118,
-            score: 1
+            time: 180,
+            score: 1,
+            castle_level: 2
         },
         {
             wood: 1200,
