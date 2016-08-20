@@ -36,7 +36,7 @@ div.textLanguagePos{
 	width: 98.5%;
 }
 
-div.register{
+div.login{
 	color: #D5D5D5;
 	font-family: verdana;
 	text-align: center;
@@ -47,24 +47,25 @@ div.register{
 	width: 30%;
 }
 
-div.formRegister{
+div.formLogin{
 	position: absolute;
-	top: 25%;
-	left: 28%;
+	top: 22%;
+	left: 29%;
 	width: 44%;
 	height: 44%;
 }
 
-div.formRegisterAlign{
+div.formLoginAlign{
+	color: #D5D5D5;
 	height: 0%;
 	width: 0%;
 	margin-top: 2.5%;
 	margin-left: 7%;
 }
 
-div.login{
+div.register{
 	font-family: verdana;
-	color: #31D810;
+	color: #3ADB12;
 	text-align: center;
 	position: absolute;
 	top: 45%;
@@ -77,25 +78,28 @@ div.login{
 	width: 34%;
 }
 
-div.formLogin{
+div.formRegister{
 	position: absolute;
-	top: 25%;
-	left: 28%;
-	width: 44%;
-	height: 44%;
+	top: 20%;
+	left: 31%;
+	width: 38%;
+	height: 72%;
 }
 
-div.logTitleAlign{
-	width: 60%;
-	text-align: center;
-}
-
-div.formLoginAlign{
+div.formRegisterAlign{
 	color: #D5D5D5;
 	height: 0%;
 	width: 0%;
 	margin-top: 2.5%;
 	margin-left: 7%;
+}
+
+div.inputDoneAlign{
+	position: absolute;
+	top: 68%;
+	left: 63%;
+	width: 0%;
+	height: 0%;
 }
 
 div.infoLog{
@@ -109,6 +113,11 @@ div.infoLog{
 	width: 30.6%;
 }
 
+div.logTitleAlign{
+	width: 60%;
+	text-align: center;
+}
+
 div.logList{
 	text-align: left;
 	color: #D5D5D5;
@@ -118,7 +127,7 @@ div.logList{
 	margin-left: 5%;
 }
 
-.fontLi{
+.fontLogLi{
 	font-size: 12px;
 }
 
