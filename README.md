@@ -58,7 +58,7 @@
 * FIM
 
 ### Containers ###
-* ter docker instalado
+* ter docker instalado (https://docs.docker.com/engine/installation/)
 
 ### dockerfile mysql 
 
