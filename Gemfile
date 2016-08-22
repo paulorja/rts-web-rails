@@ -50,6 +50,7 @@ gem 'puma'
 gem 'rmagick'
 
 gem 'haml'
+gem 'haml-rails'
 
 gem 'jquery-ui-rails'
 gem 'touchpunch-rails'
