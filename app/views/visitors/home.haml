@@ -9,7 +9,7 @@
     %br
     = u.password_field :password
     %br
-    = u.submit 'Submit!'
+    = u.submit 'Enviar!'
 
   %h4 Registrar
   = form_for :user, url: 'register', html: { class: 'form-user' } do |u|
@@ -17,19 +17,19 @@
     %br
     = u.text_field :login
     %br
-    = u.label :password
+    = u.label :password, 'Senha'
     %br
     = u.password_field :password
     %br
-    = u.label :password_confirmation
+    = u.label :password_confirmation, 'Confirmação de Senha'
     %br
     = u.password_field :password_confirmation
     %br
-    = u.label :color
+    = u.label :color, 'Cor'
     %br
     = u.color_field :color
     %br
-    = u.submit 'Submit!'
+    = u.submit 'Enviar!'
 
 #game-content-right
   %h2= 'Bem-vindo'
