@@ -32,7 +32,9 @@
 ### Mysql
 
 * sudo apt-get install mysql-server mysql-client libmysqlclient-dev
-
+* Criar usuário mysql com all roles:
+* username: rts-web
+* password: 123456
 
 ### Pra rodar o projeto ###
 
