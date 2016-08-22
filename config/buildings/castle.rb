@@ -88,15 +88,15 @@
             score: 3
         },
         {
-            stone: 185500,
-            gold: 144500,
+            stone: 85500,
+            gold: 44500,
             time: 43100,
             territories: 10,
             score: 3
         },
         {
-            stone: 285500,
-            gold: 244500,
+            stone: 125555,
+            gold: 84500,
             time: 43100,
             territories: 10,
             score: 4
