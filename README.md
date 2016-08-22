@@ -1,6 +1,3 @@
-# README #
-
-
 ## Setup ##
 
 ### Ruby ###
@@ -35,3 +32,19 @@
 ### Mysql
 
 * sudo apt-get install mysql-server mysql-client libmysqlclient-dev
+
+
+### Pra rodar o projeto ###
+
+* sudo apt-get install imagemagick libmagickwand-dev
+* cd rts-web
+* bundle install
+* rake db:create db:migrate db:seed RAILS_ENV=development
+* rails server
+
+### Projeto rodando ###
+
+* Entrar com admin (admin, 1234)
+* Acessar a url localhost:3000/admin
+* clicar em RESET WORLD
+* FIM
