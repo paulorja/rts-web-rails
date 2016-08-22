@@ -13,7 +13,7 @@
         },
         {
             wood: 450,
-            stone: 120
+            stone: 120,
             time: 120,
             population: 1,
             score: 1,
