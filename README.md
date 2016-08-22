@@ -59,7 +59,9 @@
 
 ### Containers ###
 * ter docker instalado
+
 ### dockerfile mysql ### 
+
 * cd container/mysql 
 * docker build nome_container .
 * docker run nome_container
