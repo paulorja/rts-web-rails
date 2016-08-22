@@ -309,7 +309,7 @@ class Cell < ActiveRecord::Base
     return 'Suas estradas não chegam até aqui' unless have_user_road current_user.id
     idle_villager = current_user.idle_villager
     return 'Você não possui aldões disponíveis' if idle_villager.nil?
-    return 'Limite de territórios atingido. Evolua o castelo. ' if user_data.max_territories < user_data.total_territories and self.building_code == 0
+    return 'Limite de territórios atingido. Evolua o castelo. ' if user_data.max_territories <= user_data.total_territories and self.building_code == 0
 
     #start build
     user_data.use_recourses building[:levels][building_level+1]
