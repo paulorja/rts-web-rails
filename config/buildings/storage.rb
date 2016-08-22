@@ -20,15 +20,15 @@
             score: 1
         },
         {
-            wood: 2500,
-            stone: 2500,
+            wood: 1500,
+            stone: 1500,
             time: 1288,
             storage: 10000,
             score: 2
         },
         {
-            wood: 6500,
-            stone: 6500,
+            wood: 3500,
+            stone: 3500,
             time: 3288,
             storage: 20000,
             score: 2

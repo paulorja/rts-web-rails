@@ -6,6 +6,6 @@
 	pricing: {
 		food: 150,
 		wood: 200,
-		time: 40
+		time: 30
 	}
 }

@@ -6,7 +6,9 @@ class CellUnit < ActiveRecord::Base
     true if unit == UNIT[:villager][:code]
   end
 
-  def move(target_cell, user_data)
+  def move(target_cell)
+    user_data = UserData.find_by_user_id(user_id)
+
     if cell.user_id == target_cell.user_id and cell.idle and target_cell.idle
 
       if is_villager

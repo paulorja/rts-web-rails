@@ -7,13 +7,13 @@
         },
         {
             wood: 90,
-            time: 15,
+            time: 10,
             population: 2,
             score: 1
         },
         {
             wood: 850,
-            time: 250,
+            time: 120,
             population: 1,
             score: 2,
             castle_level: 2

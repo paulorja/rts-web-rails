@@ -174,12 +174,6 @@ class Cell < ActiveRecord::Base
     Cell.where('x > ? and x < ? and y > ? and y < ?', min_x, max_x, min_y, max_y).order('y ASC, x ASC')
   end
 
-  def self.move_unit(cell, target_cell, villager)
-    if cell.user_id == target_cell.user_id and cell.idle and target_cell.idle
-      villager.update_attributes(cell_id: target_cell.id)
-    end
-  end
-
   def next_road
     arredores = arredores(1)
 
@@ -196,7 +190,9 @@ class Cell < ActiveRecord::Base
   end
 
   def move_units_to_next_road
-    cell_units.update_all(cell_id: next_road.id)
+    cell_units.each do |u|
+      u.move(next_road)
+    end
   end
 
   def destroy_building
@@ -318,6 +314,7 @@ class Cell < ActiveRecord::Base
     #start build
     user_data.use_recourses building[:levels][building_level+1]
     user_data.total_territories += 1 if self.building_code == 0
+    user_data.save
 
     event = Event.new
     event.start_time = Time.now.to_i
@@ -329,7 +326,7 @@ class Cell < ActiveRecord::Base
 
     self.building_code = building_code
     self.user_id = current_user.id
-    idle_villager.move(self, user_data)
+    idle_villager.move(self)
     self.idle = false
     self.save
 

@@ -45,7 +45,7 @@ class EventToGrass < ActiveRecord::Base
 
 
     cell.user_id = user.id
-    idle_villager.move(cell, user.user_data)
+    idle_villager.move(cell)
     cell.idle = false
 
     user.user_data.use_recourses TO_GRASS[obj]
