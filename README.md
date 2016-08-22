@@ -29,6 +29,12 @@
 * gem install rails -v 4.2.6
 * rbenv rehash
 
+## Git ##
+
+* git config --global color.ui true
+* git config --global user.name "YOUR NAME"
+* git config --global user.email "YOUR@EMAIL.com"
+
 ### Mysql
 
 * sudo apt-get install mysql-server mysql-client libmysqlclient-dev
