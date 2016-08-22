@@ -1,0 +1,20 @@
+- next_level = level.to_i+1
+
+%h2.text-center= item[:title]
+%table.upgrade-tools-component
+  %tr
+    - 10.times do |i|
+      - item_class = 'upgrade-tools-off'
+      - item_class = 'upgrade-tools-on' if level > i
+      %td{class: item_class}
+
+- if !@event_blacksmith.nil?
+  - if @event_blacksmith.up_column == item[:up_column]
+    %h4.chronometer{data_time: @event_blacksmith.event.wait_time}
+  - else
+    %h4 Ferreiro Ocupado
+- elsif !item[:levels][next_level].nil?
+  = render 'layouts/recourses_line', {recourses: item[:levels][next_level]}
+  = link_to 'Melhorar', "/blacksmith/#{item[:up_column]}", class: 'btn-lg'
+- else
+  %h4 Completamente Evoluído

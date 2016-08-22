@@ -2,14 +2,15 @@
     name: 'Mercado',
     code: 10,
     css_class: 'sprite-market',
+    unique: true,
     levels: [
         {
         },
         {
-            wood: 150,
-            stone: 125,
-            time: 100,
-            castle_level: 2,
+            wood: 350,
+            stone: 325,
+            time: 120,
+            castle_level: 3,
             score: 4
         }
     ]

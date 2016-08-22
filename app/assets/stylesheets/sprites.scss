@@ -12,6 +12,15 @@
   z-index: 0;
 }
 
+.sprite-can-build {
+  background:black;
+  opacity: 0.25;
+  border-radius: 100%;
+  margin: 2px;
+  width: 60px;
+  height: 60px;
+}
+
 .link-sprite {
   width: 60px;
   height: 60px;
@@ -46,26 +55,45 @@
   font-size: 12px;
 }
 
-/* VILLAGERS  */
-.sprite-villager {
+.sprite-unit-space {
   z-index: 3;
   width: 20px;
   height: 20px;
   float: left;
-  margin: 3px;
+  background:black;
+  opacity: 0.25;
+  border-radius:100%;
 }
-.sprite-villager:hover {
+
+/* UNITS  */
+.sprite-unit {
+  z-index: 3;
+  width: 20px;
+  height: 20px;
+  float: left;
+}
+
+.sprite-unit-hurt {
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  opacity: 0.5;
+}
+
+.sprite-unit:hover {
   cursor: default;
 }
-.villager-selected {
+.unit-selected {
   z-index: 2;
   position: relative;
   outline: 2px dotted red;
 }
 
-.sprite-vil-1 { background-image: asset-url('sprites/world/villagers/vil_1.png'); }
-.sprite-vil-2 { background-image: asset-url('sprites/world/villagers/vil_2.png'); }
-.sprite-vil-3 { background-image: asset-url('sprites/world/villagers/vil_3.png'); }
+.sprite-villager { background-image: asset-url('sprites/world/unit/villager/villager.png'); }
+.sprite-lancer { background-image: asset-url('sprites/world/unit/lancer/lancer.png'); }
+.sprite-swordsman { background-image: asset-url('sprites/world/unit/swordsman/swordsman.png'); }
+.sprite-archer { background-image: asset-url('sprites/world/unit/archer/archer.png'); }
 
 
 /* TERRAINS */
@@ -82,6 +110,7 @@
 .sprite-house-1 { background-image: asset-url('sprites/world/building/house/house_1.png'); }
 .sprite-house-2 { background-image: asset-url('sprites/world/building/house/house_2.png'); }
 .sprite-house-3 { background-image: asset-url('sprites/world/building/house/house_3.png'); }
+.sprite-house-4 { background-image: asset-url('sprites/world/building/house/house_3.png'); }
 
 /* ROAD */
 .sprite-road-0 { background-image: asset-url('sprites/world/building/road/road_0.png'); }
@@ -91,8 +120,8 @@
 .sprite-storage-0 { background-image: asset-url('sprites/world/building/storage/storage_0.png'); }
 .sprite-storage-1 { background-image: asset-url('sprites/world/building/storage/storage_1.png'); }
 .sprite-storage-2 { background-image: asset-url('sprites/world/building/storage/storage_2.png'); }
-.sprite-storage-3 { background-image: asset-url('sprites/world/building/storage/storage_3.png'); }
-.sprite-storage-4 { background-image: asset-url('sprites/world/building/storage/storage_3.png'); }
+.sprite-storage-3 { background-image: asset-url('sprites/world/building/storage/storage_2.png'); }
+.sprite-storage-4 { background-image: asset-url('sprites/world/building/storage/storage_2.png'); }
 
 /* PORT */
 .sprite-port-0 { background-image: asset-url('sprites/world/building/port/port_0.png'); }
@@ -150,3 +179,17 @@
 .sprite-blacksmith-8  { background-image: asset-url('sprites/world/building/blacksmith/blacksmith_1.png'); }
 .sprite-blacksmith-9  { background-image: asset-url('sprites/world/building/blacksmith/blacksmith_1.png'); }
 .sprite-blacksmith-10 { background-image: asset-url('sprites/world/building/blacksmith/blacksmith_1.png'); }
+
+/* BARRACK */
+.sprite-barrack-0 { background-image: asset-url('sprites/world/building/barrack/barrack_0.png'); }
+.sprite-barrack-1 { background-image: asset-url('sprites/world/building/barrack/barrack_1.png'); }
+.sprite-barrack-2 { background-image: asset-url('sprites/world/building/barrack/barrack_1.png'); }
+.sprite-barrack-3 { background-image: asset-url('sprites/world/building/barrack/barrack_1.png'); }
+
+/* HOSPITAL */
+.sprite-hospital-0 { background-image: asset-url('sprites/world/building/hospital/hospital_1.png'); }
+.sprite-hospital-1 { background-image: asset-url('sprites/world/building/hospital/hospital_1.png'); }
+
+/* TOWER */
+.sprite-tower-0 { background-image: asset-url('sprites/world/building/tower/tower_1.png'); }
+.sprite-tower-1 { background-image: asset-url('sprites/world/building/tower/tower_1.png'); }

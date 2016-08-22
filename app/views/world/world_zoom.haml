@@ -3,7 +3,7 @@
   = #render 'world/world_navigation'
 
   .content-selected-sprite{style: 'display:none;'}
-  .content-selected-villager{style: 'display:none;'}
+  .content-selected-unit{style: 'display:none;'}
 
 
 #world_zoom_container.sprite-searching
@@ -12,34 +12,5 @@
 
 
 :javascript
-
-  var cell_container = $('#cell-container');
-
   var x = #{params[:x]};
   var y = #{params[:y]};
-
-  var default_top = cell_container.position().top;
-  var default_left = cell_container.position().left;
-
-  var final_top = 0;
-  var final_left = 0;
-
-  $(document).on('turbolinks:load', function() {
-
-    cell_container.draggable({
-      stop: function(event, ui) {
-        final_top = (cell_container.position().top-default_top)/64
-        final_left = (cell_container.position().left-default_left)/64
-
-        if(final_top != 0 || final_left != 0) {
-          var url = '/world_zoom/';
-          url += (x-final_left).toString();
-          url += '/'
-          url += (y-final_top).toString();
-
-          Turbolinks.visit(url);
-        }
-      },
-      grid: [64, 64]
-    });
-  });

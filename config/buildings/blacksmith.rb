@@ -2,15 +2,16 @@
     name: 'Ferreiro',
     code: 11,
     css_class: 'sprite-blacksmith',
+    unique: true,
     levels: [
         {
         },
         {
-            wood: 400,
-            stone: 500,
-            gold: 300,
+            wood: 700,
+            stone: 1000,
+            gold: 600,
             time: 700,
-            castle_level: 3,
+            castle_level: 7,
             score: 1
         },
         {

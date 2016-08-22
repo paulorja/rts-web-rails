@@ -8,8 +8,8 @@
         {
         },
         {
-            wood: 50,
-            time: 7,
+            wood: 120,
+            time: 15,
             score: 0
         },
         {

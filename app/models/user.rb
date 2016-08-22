@@ -27,7 +27,10 @@ class User < ActiveRecord::Base
     img.pixel_color(start_position[:castle].x, start_position[:castle].y, color)
 
     start_position[:roads].each_with_index do |road, index|
-      road.villagers = '1;2' if index == 1
+      if index == 1
+        road.cell_units.create({unit: 1, user_id: id, name: CellUnit.random_name})
+        road.cell_units.create({unit: 1, user_id: id, name: CellUnit.random_name})
+      end
 
       road.building_code = BUILDING[:road][:code]
       road.building_level = 1
@@ -39,6 +42,11 @@ class User < ActiveRecord::Base
     img.write('public/world.bmp')
   end
 
+  def idle_villager
+    CellUnit.joins(:cell).where('cells.idle = true and cells.building_code = ? and cell_units.user_id = ? and cell_units.unit = 1 and cell_units.hurt = false', BUILDING[:road][:code], id).first
+  end
+
+
   def castle
     Cell.where('x = ? and y = ?', castle_x, castle_y).first
   end
@@ -47,7 +55,12 @@ class User < ActiveRecord::Base
     "/world_zoom/#{castle_x}/#{castle_y}"
   end
 
+  def have_building(code)
+    true unless Cell.where('building_code = ? and user_id = ?', code, self.id).first.nil?
+  end
+
   def self.user_distance(u1, u2)
     Cell.point_distance(u1.castle_x, u1.castle_y, u2.castle_x, u2.castle_y)
   end
+
 end

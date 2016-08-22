@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809154805) do
+ActiveRecord::Schema.define(version: 20160818031941) do
+
+  create_table "cell_units", force: :cascade do |t|
+    t.integer "cell_id", limit: 4
+    t.integer "user_id", limit: 4
+    t.integer "unit",    limit: 4
+    t.boolean "hurt",                default: false
+    t.string  "name",    limit: 255
+  end
 
   create_table "cells", force: :cascade do |t|
     t.integer "x",              limit: 4
@@ -26,6 +34,12 @@ ActiveRecord::Schema.define(version: 20160809154805) do
 
   add_index "cells", ["x", "y"], name: "x", using: :btree
 
+  create_table "event_blacksmiths", force: :cascade do |t|
+    t.integer "event_id",  limit: 4
+    t.integer "user_id",   limit: 4
+    t.string  "up_column", limit: 255
+  end
+
   create_table "event_building_destroys", force: :cascade do |t|
     t.integer "event_id", limit: 4
     t.integer "cell_id",  limit: 4
@@ -39,6 +53,13 @@ ActiveRecord::Schema.define(version: 20160809154805) do
   create_table "event_market_offers", force: :cascade do |t|
     t.integer "event_id",        limit: 4
     t.integer "market_offer_id", limit: 4
+  end
+
+  create_table "event_new_units", force: :cascade do |t|
+    t.integer "event_id", limit: 4
+    t.integer "cell_id",  limit: 4
+    t.integer "user_id",  limit: 4
+    t.integer "unit",     limit: 4
   end
 
   create_table "event_to_grasses", force: :cascade do |t|
@@ -92,12 +113,10 @@ ActiveRecord::Schema.define(version: 20160809154805) do
     t.integer  "food_villagers",    limit: 4,   default: 0
     t.integer  "stone_villagers",   limit: 4,   default: 0
     t.integer  "storage",           limit: 4,   default: 0
-    t.integer  "total_roads",       limit: 4,   default: 0
-    t.integer  "max_roads",         limit: 4,   default: 0
-    t.integer  "idle_villagers",    limit: 4,   default: 0
-    t.integer  "total_villagers",   limit: 4,   default: 0
-    t.integer  "max_villagers",     limit: 4,   default: 0
+    t.integer  "total_pop",         limit: 4,   default: 0
+    t.integer  "max_pop",           limit: 4,   default: 0
     t.integer  "total_territories", limit: 4,   default: 0
+    t.integer  "max_territories",   limit: 4,   default: 0
     t.integer  "score",             limit: 4,   default: 0
     t.integer  "new_reports",       limit: 4,   default: 0
     t.integer  "blacksmith_hoe",    limit: 4,   default: 0

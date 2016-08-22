@@ -1,0 +1,56 @@
+#game-content-left
+  %h4 Entrar
+  = form_for :user, url: 'login', html: { class: 'form-user' } do |u|
+    = u.label :login
+    %br
+    = u.text_field :login
+    %br
+    = u.label :password, 'Senha'
+    %br
+    = u.password_field :password
+    %br
+    = u.submit 'Enviar!'
+
+  %h4 Registrar
+  = form_for :user, url: 'register', html: { class: 'form-user' } do |u|
+    = u.label :login
+    %br
+    = u.text_field :login
+    %br
+    = u.label :password, 'Senha'
+    %br
+    = u.password_field :password
+    %br
+    = u.label :password_confirmation, 'Confirmação de Senha'
+    %br
+    = u.password_field :password_confirmation
+    %br
+    = u.label :color, 'Cor'
+    %br
+    = u.color_field :color
+    %br
+    = u.submit 'Enviar!'
+
+#game-content-right
+  %h2= 'Bem-vindo'
+  %h3 Últimas Atualizações
+  %h4 0.2 Alpha - ??/??/2016
+  %ul
+    %li Quartel
+    %li Hospital
+    %li Torre
+    %li Nomes são gerados aleatóriamente para a população
+    %li Mercado e Ferreiro só podem ser construídos uma vez
+    %li Tropas: lanceiro, arqueiro e espadachim
+    %li Fila de treino de unidaides
+    %li Removido limite de estradas. Agora é limite de territórios.
+  %h4 0.1 Alpha - 16/08/2016
+  %ul
+    %li Mercado
+    %li Ferreiro
+    %li Relatórios
+    %li Ranking por pontuação
+    %li Nova navegação de mapa
+    %li Mais ouro e pedra nos mapas
+    %li Servidor no Brasil (São Paulo)
+    %li Melhoria na compatibilidade com celulares

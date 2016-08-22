@@ -19,7 +19,7 @@
   = render 'layouts/navbar_recourse', { amount: @user_data.stone.to_i, recourse: :stone, max: @user_data.storage, villagers: @user_data.stone_villagers }
   = render 'layouts/navbar_recourse', { amount: @user_data.gold.to_i, recourse: :gold,   max: @user_data.storage, villagers: @user_data.gold_villagers }
   = render 'layouts/navbar_recourse', { amount: @user_data.food.to_i, recourse: :food,   max: @user_data.storage, villagers: @user_data.food_villagers }
-  = render 'layouts/navbar_recourse', { amount: @user_data.total_villagers.to_i, recourse: :villager,   max: @user_data.max_villagers }
+  = render 'layouts/navbar_recourse', { amount: @user_data.total_pop.to_i, recourse: :population,   max: @user_data.max_pop}
 
 
   .navbar-item.user-data-toggle-component-btn.icon-toggle-btn.icon-no-repeat
@@ -71,11 +71,11 @@
                 %td.text-right= "#{@user_data.food_per_hour}/hora"
     %strong Aldeões
     %br
-    %span= "Total: #{@user_data.total_villagers}"
-    %span= " Limite: #{@user_data.max_villagers}"
+    %span= "Total: #{@user_data.total_pop}"
+    %span= " Limite: #{@user_data.max_pop}"
     %br
-    %strong Estradas
+    %strong Territórios
     %br
-    %span= "Total: #{@user_data.total_roads}"
-    %span= "Limite #{@user_data.max_roads}"
+    %span= "Total: #{@user_data.total_territories}"
+    %span= "Limite #{@user_data.max_territories}"
 

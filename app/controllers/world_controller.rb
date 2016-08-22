@@ -13,7 +13,7 @@ class WorldController < ApplicationController
     @y = '252' if @y.to_i > 252
 
 
-    @cells = Cell.includes(:user, event_building_up: :event, event_building_destroy: :event, event_to_grass: :event).world_zoom(@x, @y)
+    @cells = Cell.includes(:user, :cell_units,event_building_up: :event, event_building_destroy: :event, event_to_grass: :event).world_zoom(@x, @y)
   end
 
   def cell_actions
@@ -24,38 +24,21 @@ class WorldController < ApplicationController
     render file: 'world/cell_actions', layout: false
   end
 
-  def villager
-    @cell = Cell.find(params[:cell_id])
-    @villager = params[:villager]
-    render file: 'world/villager', layout: false
+  def unit
+    @unit = CellUnit.find(params[:unit_id])
+    render file: 'world/unit', layout: false
   end
 
   def villager_action
     @cell = Cell.find(params[:cell_id])
     @target_cell = Cell.find(params[:target_cell_id])
-    @villager = params[:villager]
+    @villager = CellUnit.find(params[:villager])
 
 
-    if @target_cell.is_recourse_building and @target_cell.villager_number == @target_cell.building_level
+    if @target_cell.is_recourse_building and @target_cell.cell_units.size == @target_cell.building_level
       flash['alert'] = "Apenas #{@target_cell.building_level} aldeão pode coletar recursos aqui!"
     elsif @current_user.id == @cell.user_id
-
-      if Cell.move_villager(@cell, @target_cell, @villager)
-        if @target_cell.is_recourse_building
-          @user_data.add_wood_villager @target_cell
-          @user_data.add_gold_villager @target_cell
-          @user_data.add_stone_villager @target_cell
-          @user_data.add_farm_villager @target_cell
-        end
-        if @cell.is_recourse_building
-          @user_data.remove_wood_villager @cell
-          @user_data.remove_gold_villager @cell
-          @user_data.remove_stone_villager @cell
-          @user_data.remove_farm_villager @cell
-        end
-        @user_data.save
-      end
-
+      @villager.move(@target_cell)
     end
 
     redirect_to :back
@@ -75,11 +58,10 @@ class WorldController < ApplicationController
     redirect_to :back
   end
 
-  def new_villager
-    new_villager = @user_data.new_villager @current_user
-
-    if new_villager.is_a? String
-      flash['alert'] = new_villager
+  def new_unit
+    event = EventNewUnit.start_event(params[:unit].to_i, Cell.find(params[:cell]), params[:amount].to_i, @current_user)
+    if event.is_a? String
+      flash['alert'] = event
     end
 
     redirect_to :back

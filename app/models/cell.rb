@@ -4,6 +4,8 @@ class Cell < ActiveRecord::Base
   has_one :event_building_up
   has_one :event_to_grass
   has_one :event_building_destroy
+  has_many :cell_units
+
 
   def is_road
     true if building_code == BUILDING[:road][:code]
@@ -138,6 +140,20 @@ class Cell < ActiveRecord::Base
     false
   end
 
+  def have_user_road_in_cells(user_id, cells)
+    top_cell = top(cells)
+    left_cell = left(cells)
+    bottom_cell = bottom(cells)
+    right_cell = right(cells)
+
+    return true if top_cell.user_id == user_id and top_cell.is_road
+    return true if left_cell.user_id == user_id and left_cell.is_road
+    return true if bottom_cell.user_id == user_id and bottom_cell.is_road
+    return true if right_cell.user_id == user_id and right_cell.is_road
+
+    false
+  end
+
   def self.point_distance(x1, y1, x2, y2)
     distance = Math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
 
@@ -158,66 +174,6 @@ class Cell < ActiveRecord::Base
     Cell.where('x > ? and x < ? and y > ? and y < ?', min_x, max_x, min_y, max_y).order('y ASC, x ASC')
   end
 
-  def have_villager(villager)
-    return false if villagers.nil?
-
-    villagers.split(';').each do |v|
-      if v == villager.to_s
-        return true
-      end
-    end
-    false
-  end
-
-  def villager_number
-    if villagers.nil?
-      0
-    else
-      villagers.split(';').size
-    end
-  end
-
-  def remove_villager(villager)
-    new_array = []
-
-    unless villagers.nil?
-      new_array = villagers.split(';').to_a
-    end
-
-    villagers.split(';').each_with_index do |v, index|
-      if v == villager
-          new_array.delete_at(index)
-        break
-      end
-    end
-
-    if new_array.empty?
-      self.villagers = nil
-    else
-      self.villagers = new_array.join(';')
-    end
-    self.save
-  end
-
-  def add_villager(villager)
-    if villagers.nil?
-      self.villagers = villager.to_s
-    else
-      self.villagers = villagers.split(';').append(villager).join(';')
-    end
-
-    self.save
-  end
-
-  def self.move_villager(cell, target_cell, villager)
-    if cell.have_villager villager and cell.id != target_cell.id and cell.user_id == target_cell.user_id and cell.idle and target_cell.idle
-      cell.remove_villager villager
-      target_cell.add_villager villager
-      return true
-    end
-    false
-  end
-
   def next_road
     arredores = arredores(1)
 
@@ -233,8 +189,36 @@ class Cell < ActiveRecord::Base
     nil
   end
 
-  def move_to_next_road
-    Cell.move_villager(self, next_road, self.villagers)
+  def move_units_to_next_road
+    cell_units.each do |u|
+      u.move(next_road)
+    end
+  end
+
+  def destroy_building
+    building = Building.get_building(building_code)
+    user_data = UserData.find_by_user_id(user_id)
+
+    decrement_house = decrement_score = decrement_storage = 0
+    (0..building_level).each do |b|
+      decrement_score += building[:levels][b][:score].to_i
+      decrement_storage += building[:levels][b][:storage].to_i
+      decrement_house += building[:levels][b][:population].to_i
+    end
+
+    user_data.storage -= decrement_storage
+    user_data.score -= decrement_score
+    user_data.max_pop -= decrement_house
+    user_data.total_territories -= 1
+    user_data.save
+
+
+    self.idle = true
+    self.move_units_to_next_road
+    self.building_level = 0
+    self.building_code = 0
+    self.user_id = nil
+    self.save
   end
 
   def self.render_layers(cells, current_user)
@@ -260,7 +244,11 @@ class Cell < ActiveRecord::Base
         end
         sprites_layer_2 << "<div class='sprite #{building[:css_class]}-#{cell.building_level}'></div>"
       else
-        sprites_layer_2 << "<div class='sprite'></div>"
+        if cell.have_user_road_in_cells(current_user.id, cells)
+          sprites_layer_2 << "<div class='sprite sprite-can-build'></div>"
+        else
+          sprites_layer_2 << "<div class='sprite'></div>"
+        end
       end
 
       # SPRITE SELECTION
@@ -271,15 +259,26 @@ class Cell < ActiveRecord::Base
       sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_to_grass.event.wait_time}'></div>" if cell.event_to_grass
       sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_building_destroy.event.wait_time}'></div>" if cell.event_building_destroy
 
-      if cell.villagers.is_a? String
-        cell.villagers.split(';').each do  |v|
-          sprites_layer_3 << "<div class='sprite-villager sprite-vil-#{v}' obj_id='#{v}'></div>"
+      cell.cell_units.each do |u|
+        unity = Unit.get_unit(u.unit)
+
+
+        sprites_layer_3 << "<div class='sprite-unit #{unity[:css_class]}' obj_id='#{u.id}'>"
+        if u.hurt
+          sprites_layer_3 << "<div class='sprite-unit-hurt'></div>"
+        end
+        sprites_layer_3 << "</div>"
+      end
+
+      if cell.is_recourse_building
+        (0..cell.building_level-cell.cell_units.size-1).each do
+          sprites_layer_3 << "<div class='sprite-unit-space'></div>"
         end
       end
+
       sprites_layer_3 << "</div>"
 
     end
-
 
 
     def self.new_layer(layer)
@@ -298,28 +297,26 @@ class Cell < ActiveRecord::Base
     building = Building.get_building(building_code.to_i)
     terrain = Terrain.get_terrain(terrain_code)
 
+    if building[:unique] and current_user.have_building(building[:code])
+      return 'Você só pode construir uma vez esta construcao'
+    end
+
     return 'Já está evoluindo' unless idle?
     return 'Nível máximo atingido' if building[:levels][building_level+1].nil?
     return 'Você não possui recursos' unless user_data.have_recourses building[:levels][building_level+1]
     return "Requer castelo nível #{building[:levels][building_level+1][:castle_level].to_i}" unless current_user.castle.building_level >= building[:levels][building_level+1][:castle_level].to_i
     return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)
     return 'Suas estradas não chegam até aqui' unless have_user_road current_user.id
-    idle_villager = user_data.idle_villager
+    idle_villager = current_user.idle_villager
     return 'Você não possui aldões disponíveis' if idle_villager.nil?
-
-    if building_code == BUILDING[:road][:code].to_s
-      if user_data.max_roads > user_data.total_roads
-        user_data.total_roads += 1
-        user_data.save
-      else
-        return 'Limite de estradas atingido. Evolua o castelo. '
-      end
-    end
+    return 'Limite de territórios atingido. Evolua o castelo. ' if user_data.max_territories <= user_data.total_territories and self.building_code == 0
 
     #start build
     user_data.use_recourses building[:levels][building_level+1]
+    user_data.total_territories += 1 if self.building_code == 0
+    user_data.save
 
-    event = Event.new()
+    event = Event.new
     event.start_time = Time.now.to_i
     event.end_time = Time.now.to_i + building[:levels][building_level+1][:time]
     event.event_type = :building_up
@@ -329,11 +326,9 @@ class Cell < ActiveRecord::Base
 
     self.building_code = building_code
     self.user_id = current_user.id
-    self.add_villager(idle_villager)
+    idle_villager.move(self)
     self.idle = false
     self.save
-
-    user_data.remove_idle_villager
 
     require 'rmagick'
     img = Magick::Image.read('public/world.bmp')[0]

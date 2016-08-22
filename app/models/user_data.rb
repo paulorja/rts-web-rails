@@ -30,115 +30,51 @@ class UserData < ActiveRecord::Base
     end
   end
 
-  def idle_villager_cell
-    Cell.where('idle = ? and
-                villagers IS NOT NULL and
-                building_code != ? and
-                building_code != ? and
-                building_code != ? and
-                building_code != ? and
-                user_id = ?',
-                true,
-                BUILDING[:stone_mine][:code],
-                BUILDING[:gold_mine][:code],
-                BUILDING[:lumberjack][:code],
-                BUILDING[:farm][:code],
-                user_id).first
-  end
-
-  def idle_villager
-    begin
-      return idle_villager_cell.villagers.split(';')[0]
-    rescue
-      return nil
-    end
-  end
-
-  def remove_idle_villager
-    self.idle_villagers = idle_villagers-1
-    self.save
-
-    cell = idle_villager_cell
-    new_array = cell.villagers.split(';')
-    new_array.delete_at(0)
-
-    if new_array.empty?
-      cell.villagers = nil
-    else
-      cell.villagers = new_array.join(';')
-    end
-    cell.save
-  end
-
-  def new_villager(user)
-    #validate
-    return 'Vocẽ não possui comida' if food < 100
-    return 'Construa mais casas' if total_villagers == max_villagers
-
-    #add villager
-    castle = Cell.where('x = ? and y = ?', user.castle_x, user.castle_y).first
-    castle.next_road.add_villager((rand(3)+1).to_s)
-
-    self.food -= 100
-    self.total_villagers += 1
-    self.idle_villagers += 1
-    self.save
-    true
-  end
-
   def add_wood_villager(cell)
     if cell.is_lumberjack
       self.wood_villagers += 1
-      self.idle_villagers -= 1
     end
   end
 
   def add_stone_villager(cell)
     if cell.is_stone_mine
       self.stone_villagers += 1
-      self.idle_villagers -= 1
     end
   end
 
   def add_gold_villager(cell)
     if cell.is_gold_mine
       self.gold_villagers += 1
-      self.idle_villagers -= 1
     end
   end
 
   def add_farm_villager(cell)
     if cell.is_farm
       self.food_villagers += 1
-      self.idle_villagers -= 1
     end
   end
 
   def remove_wood_villager(cell)
     if cell.is_lumberjack and self.wood_villagers > 0
       self.wood_villagers -= 1
-      self.idle_villagers += 1
     end
   end
 
   def remove_gold_villager(cell)
     if cell.is_gold_mine and self.gold_villagers > 0
       self.gold_villagers -= 1
-      self.idle_villagers += 1
     end
   end
 
   def remove_stone_villager(cell)
     if cell.is_stone_mine and self.stone_villagers > 0
       self.stone_villagers -= 1
-      self.idle_villagers += 1
     end
   end
 
   def remove_farm_villager(cell)
     if cell.is_farm and self.food_villagers > 0
       self.food_villagers -= 1
-      self.idle_villagers += 1
     end
   end
 
@@ -146,34 +82,32 @@ class UserData < ActiveRecord::Base
     UserData.create(
       user_id: user_id,
       wood: 800,
-      stone: 500,
-      gold: 350,
-      food: 350,
+      stone: 800,
+      gold: 500,
+      food: 500,
       storage: 1000,
-      idle_villagers: 2,
-      total_villagers: 2,
+      total_pop: 2,
       total_territories: 4,
+      max_territories: 20,
       score: BUILDING[:castle][:levels][1][:score],
-      max_villagers: 2,
-      total_roads: 3,
-      max_roads: BUILDING[:castle][:levels][1][:roads]
+      max_pop: 2
     )
   end
 
   def wood_per_hour
-    wood_villagers * 50
+    wood_villagers * (50 + (blacksmith_axe*5).to_i)
   end
 
   def stone_per_hour
-    stone_villagers * 50
+    stone_villagers * (50 + (blacksmith_pick*5).to_i)
   end
 
   def gold_per_hour
-    gold_villagers * 50
+    gold_villagers * (50 + (blacksmith_pick*5).to_i)
   end
 
   def food_per_hour
-    food_villagers * 50
+    food_villagers * (50 + (blacksmith_hoe*5).to_i)
   end
 
   def update_recourses

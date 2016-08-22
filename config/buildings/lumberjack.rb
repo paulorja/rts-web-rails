@@ -9,13 +9,14 @@
         },
         {
             wood: 0,
-            time: 8,
+            time: 15,
             score: 0
         },
         {
             wood: 350,
-            time: 28,
-            score: 0
+            time: 60,
+            score: 0,
+            castle_level: 2
         },
         {
             wood: 1320,

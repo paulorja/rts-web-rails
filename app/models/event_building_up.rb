@@ -16,16 +16,19 @@ class EventBuildingUp < ActiveRecord::Base
     when BUILDING[:storage][:code]
       user_data.storage += BUILDING[:storage][:levels][cell.building_level][:storage]
     when BUILDING[:house][:code]
-      user_data.max_villagers += BUILDING[:house][:levels][cell.building_level][:population]
+      user_data.max_pop += BUILDING[:house][:levels][cell.building_level][:population]
     when BUILDING[:castle][:code]
-      user_data.max_roads += BUILDING[:castle][:levels][cell.building_level][:roads]
+      user_data.max_territories += BUILDING[:castle][:levels][cell.building_level][:territories]
     else
     end
 
     user_data.score += building[:levels][cell.building_level][:score].to_i
-    user_data.total_territories += 1 if cell.building_level == 1
-    user_data.idle_villagers += 1
-    cell.move_to_next_road
+
+    cell.move_units_to_next_road
+    #pegar recurso automaticamente
+    #if cell.is_recourse_building
+      #user_data.user.idle_villager.move(cell, user_data)
+    #end
 
     user_data.save
     cell.save

@@ -1,0 +1,150 @@
+.bkgInicio{
+	background-color: #2F2D2D;
+}
+
+div.topMenu{
+	position:fixed;
+	color: #2F2D2D;
+	font-family: verdana;
+	font-size: 14px;
+	border-bottom: solid #8E8E8E;
+	background-color: #8E8E8E;
+	border-bottom-left-radius: 0.5em;
+	border-width: 1px;
+	top: 0%;
+	left: 0%;
+	right: 0%;
+	width: 100%;
+	height: 2.5%;
+}
+
+div.textLanguagePos{
+	position: absolute;
+	margin-left: 93%;
+	margin-top: -0.1%; 
+	width: 5%;
+	height: 100%;
+}
+
+.gameName{
+	font-size: 85px;
+	font-family: Verdana;
+	position: absolute;
+	color: #FFFFFF;
+	text-align: center;
+	margin-top: 8%;
+	height: 20%;
+	width: 98.5%;
+}
+
+div.login{
+	color: #D5D5D5;
+	font-family: verdana;
+	text-align: center;
+	position: absolute;
+	margin-right:68%;
+	top: 45%;
+	height: 45%;
+	width: 30%;
+}
+
+div.formLogin{
+	position: absolute;
+	top: 21%;
+	left: 29%;
+	width: 44%;
+	height: 44%;
+}
+
+div.formLoginAlign{
+	color: #D5D5D5;
+	height: 0%;
+	width: 0%;
+	margin-top: 2.5%;
+	margin-left: 7%;
+}
+
+div.register{
+	font-family: verdana;
+	color: #3ADB12;
+	text-align: center;
+	position: absolute;
+	top: 45%;
+	border-left: solid #D5D5D5;
+	border-right: solid #D5D5D5;
+	border-width: 1px;
+	margin-left: 32%;
+	margin-right: 32%;
+	height: 45%;
+	width: 34%;
+}
+
+div.formRegister{
+	position: absolute;
+	top: 20%;
+	left: 31%;
+	width: 38%;
+	height: 72%;
+}
+
+div.formRegisterAlign{
+	color: #D5D5D5;
+	height: 0%;
+	width: 0%;
+	margin-top: 2.5%;
+	margin-left: 7%;
+}
+
+div.inputDoneAlign{
+	position: absolute;
+	top: 68%;
+	left: 63%;
+	width: 0%;
+	height: 0%;
+}
+
+div.infoLog{
+	font-family: verdana;
+	color: #D5D5D5;
+	text-align: center;
+	position: absolute;
+	top: 45%;
+	margin-left: 68%;
+	height: 45%;
+	width: 30.6%;
+}
+
+div.logTitleAlign{
+	width: 60%;
+	text-align: center;
+}
+
+div.logList{
+	text-align: left;
+	color: #D5D5D5;
+	position: absolute;
+	width: 94%;
+	top: 15%;
+	margin-left: 5%;
+}
+
+.fontLogLi{
+	font-size: 12px;
+}
+
+div.rodape{
+	color: #2F2D2D;
+	font-size: 13.5px;
+	background-color: #8E8E8E;
+	font-family: verdana;
+	position: fixed;
+	text-align: center;
+	border-top: solid #8E8E8E;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+	bottom: 0%;
+	top: 96.6%;
+	left: 0%;
+	width: 100%;
+	border-width: 1px;
+}
