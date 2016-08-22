@@ -56,3 +56,10 @@
 * Acessar a url localhost:3000/admin
 * clicar em RESET WORLD
 * FIM
+
+### Containers ###
+* ter docker instalado
+### dockerfile mysql ### 
+* cd container/mysql 
+* docker build nome_container .
+* docker run nome_container
