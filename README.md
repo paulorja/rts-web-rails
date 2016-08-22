@@ -1,10 +1,9 @@
 # README #
 
-### How do I get set up? ###
 
-INSTALAÇÃO DO RUBY/RAILS NO UBUNTU
+## Setup ##
 
-Ruby:
+### Ruby ###
 
 * sudo apt-get update
 * sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
@@ -23,4 +22,16 @@ Ruby:
 * rbenv global 2.3.1
 * ruby -v
 
-gem install bundler
+* gem install bundler
+
+### Rails ###
+
+* curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+* sudo apt-get install -y nodejs
+
+* gem install rails -v 4.2.6
+* rbenv rehash
+
+### Mysql
+
+* sudo apt-get install mysql-server mysql-client libmysqlclient-dev
