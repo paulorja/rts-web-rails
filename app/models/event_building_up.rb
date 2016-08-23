@@ -8,6 +8,7 @@ class EventBuildingUp < ActiveRecord::Base
     building = Building.get_building(cell.building_code)
 
     cell.building_level = cell.building_level + 1
+    cell.idle = true
 
     user_data = UserData.where('user_id = ?', cell.user_id).first
 
@@ -24,7 +25,6 @@ class EventBuildingUp < ActiveRecord::Base
     user_data.score += building[:levels][cell.building_level][:score].to_i
 
     cell.move_units_to_next_road
-    cell.idle = true
 
     #pegar recurso automaticamente
     #if cell.is_recourse_building

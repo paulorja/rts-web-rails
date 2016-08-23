@@ -14,16 +14,19 @@
     if cell.user_id != target_cell.user_id
       return "nao foi possível realizar seu movimento"
     end
+    if !target_cell.idle or !cell.idle
+      return "nao foi possível realizar seu movimento 2"
+    end
 
     user_data = UserData.find_by_user_id(user_id)
     if is_villager
-      if target_cell.is_recourse_building and target_cell.building_level > 0 and target_cell.idle
+      if target_cell.is_recourse_building and target_cell.building_level > 0
         user_data.wood_villagers += 1 if target_cell.is_lumberjack
         user_data.stone_villagers += 1 if target_cell.is_stone_mine
         user_data.gold_villagers += 1 if target_cell.is_gold_mine
         user_data.food_villagers += 1 if target_cell.is_farm
       end
-      if cell.is_recourse_building and cell.idle
+      if cell.is_recourse_building
         user_data.wood_villagers -= 1 if cell.is_lumberjack and user_data.wood_villagers > 0
         user_data.gold_villagers -= 1 if cell.is_gold_mine and user_data.gold_villagers > 0
         user_data.stone_villagers -= 1 if cell.is_stone_mine and user_data.stone_villagers > 0
