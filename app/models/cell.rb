@@ -319,8 +319,6 @@ class Cell < ActiveRecord::Base
     event.end_time = Time.now.to_i + building[:levels][building_level+1][:time]
     event.event_type = :building_up
 
-    EventBuildingUp.create({cell_id: id, event_id: event.id})
-
     self.building_code = building_code
     self.user_id = current_user.id
     self.idle = false
@@ -334,6 +332,7 @@ class Cell < ActiveRecord::Base
     
     user_data.save
     event.save
+    EventBuildingUp.create({cell_id: id, event_id: event.id})
     self.save
     idle_villager.save
     
