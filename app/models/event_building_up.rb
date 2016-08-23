@@ -24,7 +24,7 @@ class EventBuildingUp < ActiveRecord::Base
 
     user_data.score += building[:levels][cell.building_level][:score].to_i
 
-    cell.move_units_to_next_road
+    cell.cell_units.update_all({cell_id: cell.next_road.id})
 
     #pegar recurso automaticamente
     #if cell.is_recourse_building
