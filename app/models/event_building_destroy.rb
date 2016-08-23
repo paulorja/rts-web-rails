@@ -24,9 +24,9 @@ class EventBuildingDestroy < ActiveRecord::Base
     idle_villager = user.idle_villager
     return 'Você não possui aldões disponíveis' if idle_villager.nil?
 
+    cell.idle = false
     idle_villager.move(cell)
     cell.user_id = user.id
-    cell.idle = false
 
     event = Event.new
     event.start_time = Time.now.to_i

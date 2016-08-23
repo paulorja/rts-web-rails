@@ -11,19 +11,19 @@
     if target_cell.building_level == target_cell.cell_units.size and target_cell.is_recourse_building and target_cell.building_level > 0
       return "Apenas #{target_cell.building_level} podem coletar recursos aqui"
     end
-    if cell.user_id != target_cell.user_id or !cell.idle or !target_cell.idle
+    if cell.user_id != target_cell.user_id
       return "nao foi possível realizar seu movimento"
     end
 
     user_data = UserData.find_by_user_id(user_id)
     if is_villager
-      if target_cell.is_recourse_building and target_cell.building_level > 0
+      if target_cell.is_recourse_building and target_cell.building_level > 0 and target_cell.idle
         user_data.wood_villagers += 1 if target_cell.is_lumberjack
         user_data.stone_villagers += 1 if target_cell.is_stone_mine
         user_data.gold_villagers += 1 if target_cell.is_gold_mine
         user_data.food_villagers += 1 if target_cell.is_farm
       end
-      if cell.is_recourse_building
+      if cell.is_recourse_building and cell.idle
         user_data.wood_villagers -= 1 if cell.is_lumberjack and user_data.wood_villagers > 0
         user_data.gold_villagers -= 1 if cell.is_gold_mine and user_data.gold_villagers > 0
         user_data.stone_villagers -= 1 if cell.is_stone_mine and user_data.stone_villagers > 0
