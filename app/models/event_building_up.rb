@@ -24,14 +24,14 @@ class EventBuildingUp < ActiveRecord::Base
 
     user_data.score += building[:levels][cell.building_level][:score].to_i
 
+    user_data.save
+    cell.save
+
     cell.move_units_to_next_road
     #pegar recurso automaticamente
     #if cell.is_recourse_building
-      #user_data.user.idle_villager.move(cell, user_data)
+    #user_data.user.idle_villager.move(cell, user_data)
     #end
-
-    user_data.save
-    cell.save
 
     e.destroy
     event_building_up.destroy

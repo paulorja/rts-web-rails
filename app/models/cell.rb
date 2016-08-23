@@ -326,6 +326,7 @@ class Cell < ActiveRecord::Base
 
     self.building_code = building_code
     self.user_id = current_user.id
+
     idle_villager.move(self)
     self.idle = false
     self.save
