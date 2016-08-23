@@ -213,7 +213,7 @@ class Cell < ActiveRecord::Base
     user_data.save
 
     self.idle = true
-    self.move_units_to_next_road
+    self.cell_units.update_all({cell_id: self.next_road.id})
     self.building_level = 0
     self.building_code = 0
     self.user_id = nil
