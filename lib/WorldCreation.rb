@@ -92,7 +92,7 @@ class WorldCreation
           img.pixel_color(row_index, column_index, "rgb(#{color.join(', ')})")
 
           cell_id += 1
-          terrain_values.push "(#{cell_id}, #{row_index}, #{column_index}, #{Terrain.color_to_code(color)}, #{Terrain.color_to_sprite(color)})"
+          terrain_values.push "(#{cell_id}, #{row_index}, #{column_index}, #{Terrain.color_to_code(color)}, '#{Terrain.color_to_sprite(color)}')"
         end
       end
     end
