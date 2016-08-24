@@ -11,10 +11,11 @@ class CreateUserData < ActiveRecord::Migration
       t.integer :food_villagers, default: 0
       t.integer :stone_villagers, default: 0
       t.integer :storage, default: 0
+      t.integer :total_roads, default: 0
+      t.integer :max_roads, default: 0
       t.integer :total_pop, default: 0
       t.integer :max_pop, default: 0
       t.integer :total_territories, default: 0
-      t.integer :max_territories, default: 0
       t.integer :score, default: 0
       t.integer :new_reports, default: 0
       t.integer :blacksmith_hoe, default: 0

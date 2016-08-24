@@ -87,10 +87,11 @@ class UserData < ActiveRecord::Base
       food: 500,
       storage: 1000,
       total_pop: 2,
-      total_territories: 4,
-      max_territories: 20,
-      score: BUILDING[:castle][:levels][1][:score],
       max_pop: 2
+      total_territories: 4,
+      total_roads: 3,
+      max_roads: BUILDING[:castle][:levels][1][:roads]
+      score: BUILDING[:castle][:levels][1][:score],
     )
   end
 
