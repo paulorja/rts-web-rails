@@ -39,6 +39,8 @@ function dependeces_ubuntu {
     apt-cache policy docker-engine
     apt-get install docker-engine
     service docker start
+    groupadd docker
+    usermod -aG docker $USER
 }
 
 if [[ "$(docker --version 2> /dev/null)" != "" ]]; then message_install_docker; fi
