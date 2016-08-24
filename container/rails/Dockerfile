@@ -1,5 +1,12 @@
 FROM ubuntu:14.04
 
+ENV PATH /root/.rbenv/plugins/ruby-build/bin:/root/.rbenv/shims\
+:/root/.rbenv/bin:/root/.rbenv/shims:/root/.rbenv/bin:/root/.rbenv/shims\
+:/root/.rbenv/bin:/root/.rbenv/shims:/root/.rbenv/bin:/root/.rbenv/shims\
+:/root/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
+
+ENV RAILS_ENV development
+
 RUN \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y git-core \
@@ -11,13 +18,6 @@ RUN \
     echo 'eval "$(rbenv init -)"' >> ~/.bashrc && \
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build && \
     exec $SHELL 
-
-ENV PATH /root/.rbenv/plugins/ruby-build/bin:/root/.rbenv/shims\
-:/root/.rbenv/bin:/root/.rbenv/shims:/root/.rbenv/bin:/root/.rbenv/shims\
-:/root/.rbenv/bin:/root/.rbenv/shims:/root/.rbenv/bin:/root/.rbenv/shims\
-:/root/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
-
-ENV RAILS_ENV development
 
 RUN \
     rbenv install 2.3.1 && \
