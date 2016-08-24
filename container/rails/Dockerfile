@@ -1,9 +1,11 @@
 FROM ubuntu:14.04
 
-ENV PATH /root/.rbenv/plugins/ruby-build/bin:/root/.rbenv/shims\
-:/root/.rbenv/bin:/root/.rbenv/shims:/root/.rbenv/bin:/root/.rbenv/shims\
-:/root/.rbenv/bin:/root/.rbenv/shims:/root/.rbenv/bin:/root/.rbenv/shims\
-:/root/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
+ENV RBENV_HOME /root/rbenv/
+
+ENV PATH RBENV_HOME/plugins/ruby-build/bin:RBENV_HOME/shims\
+:RBENV_HOME/bin:RBENV_HOME/shims:RBENV_HOME/bin:RBENV_HOME/shims\
+:RBENV_HOME/bin:RBENV_HOME/shims:RBENV_HOME/bin:RBENV_HOME/shims\
+:RBENV_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 
 ENV RAILS_ENV development
 
