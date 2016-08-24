@@ -29,16 +29,14 @@ class WorldController < ApplicationController
     render file: 'world/unit', layout: false
   end
 
-  def villager_action
-    @cell = Cell.find(params[:cell_id])
-    @target_cell = Cell.find(params[:target_cell_id])
-    @villager = CellUnit.find(params[:villager])
+  def move_unit
+    target_cell = Cell.find(params[:target_cell_id])
+    villager = CellUnit.find(params[:villager])
 
+    move = villager.move(target_cell)
 
-    if @target_cell.is_recourse_building and @target_cell.cell_units.size == @target_cell.building_level
-      flash['alert'] = "Apenas #{@target_cell.building_level} aldeão pode coletar recursos aqui!"
-    elsif @current_user.id == @cell.user_id
-      @villager.move(@target_cell)
+    if move.is_a? String
+      flash['alert'] = move
     end
 
     redirect_to :back

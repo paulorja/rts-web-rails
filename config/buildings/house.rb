@@ -12,25 +12,28 @@
             score: 1
         },
         {
-            wood: 850,
+            wood: 450,
+            stone: 120,
             time: 120,
             population: 1,
-            score: 2,
+            score: 1,
             castle_level: 2
         },
         {
-            wood: 1600,
+            wood: 1100,
             stone: 650,
             time: 660,
             population: 1,
-            score: 2
+            score: 2,
+            castle_level: 3
         },
         {
             wood: 3400,
             stone: 1350,
             time: 2050,
             population: 1,
-            score: 3
+            score: 3,
+            castle_level: 4
         }
     ]
 }

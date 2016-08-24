@@ -212,9 +212,8 @@ class Cell < ActiveRecord::Base
     user_data.total_territories -= 1
     user_data.save
 
-
     self.idle = true
-    self.move_units_to_next_road
+    self.cell_units.update_all({cell_id: self.next_road.id})
     self.building_level = 0
     self.building_code = 0
     self.user_id = nil
@@ -314,27 +313,29 @@ class Cell < ActiveRecord::Base
     #start build
     user_data.use_recourses building[:levels][building_level+1]
     user_data.total_territories += 1 if self.building_code == 0
-    user_data.save
 
     event = Event.new
     event.start_time = Time.now.to_i
     event.end_time = Time.now.to_i + building[:levels][building_level+1][:time]
     event.event_type = :building_up
-    event.save
-
-    EventBuildingUp.create({cell_id: id, event_id: event.id})
 
     self.building_code = building_code
     self.user_id = current_user.id
-    idle_villager.move(self)
     self.idle = false
-    self.save
+
+    idle_villager.cell_id = self.id
 
     require 'rmagick'
     img = Magick::Image.read('public/world.bmp')[0]
     img.pixel_color(x, y, current_user.color)
     img.write('public/world.bmp')
-
+    
+    user_data.save
+    event.save
+    EventBuildingUp.create({cell_id: id, event_id: event.id})
+    self.save
+    idle_villager.save
+    
     true
   end
 
