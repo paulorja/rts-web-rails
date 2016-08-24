@@ -164,7 +164,7 @@ class Cell < ActiveRecord::Base
     x = x.to_i
     y = y.to_i
 
-    range = 5
+    range = 6
 
     min_x = x-range
     max_x = x+range-1
@@ -220,6 +220,31 @@ class Cell < ActiveRecord::Base
     self.save
   end
 
+  def road_css_class(cells)
+    top_cell = top(cells)
+    left_cell = left(cells)
+    bottom_cell = bottom(cells)
+    right_cell = right(cells)
+
+    return 'sprite-road-bt-90'  if right_cell.is_road and !left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
+    return 'sprite-road-bt-90'  if !right_cell.is_road and left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
+    return 'sprite-road-bt-90'  if right_cell.is_road and left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
+
+    return 'sprite-road-br'     if right_cell.is_road and !left_cell.is_road and !top_cell.is_road and bottom_cell.is_road
+    return 'sprite-road-br-90'  if !right_cell.is_road and left_cell.is_road and !top_cell.is_road and bottom_cell.is_road
+    return 'sprite-road-br-180' if !right_cell.is_road and left_cell.is_road and top_cell.is_road and !bottom_cell.is_road
+    return 'sprite-road-br-270' if right_cell.is_road and !left_cell.is_road and top_cell.is_road and !bottom_cell.is_road
+
+    return 'sprite-road-btr'     if right_cell.is_road and !left_cell.is_road and top_cell.is_road and bottom_cell.is_road
+    return 'sprite-road-btr-90'  if right_cell.is_road and left_cell.is_road and !top_cell.is_road and bottom_cell.is_road
+    return 'sprite-road-btr-180' if !right_cell.is_road and left_cell.is_road and top_cell.is_road and bottom_cell.is_road
+    return 'sprite-road-btr-270' if right_cell.is_road and left_cell.is_road and top_cell.is_road and !bottom_cell.is_road
+
+    return 'sprite-road-all'    if right_cell.is_road and left_cell.is_road and top_cell.is_road and bottom_cell.is_road
+
+    'sprite-road-bt-180'
+  end
+
   def self.render_layers(cells, current_user)
     html  = ''
     sprites_layer_1 = ''
@@ -241,7 +266,11 @@ class Cell < ActiveRecord::Base
         if cell.user_id == current_user.id
           villager_action = "v-action='#{building[:action]}'" if building[:action]
         end
-        sprites_layer_2 << "<div class='sprite #{building[:css_class]}-#{cell.building_level}'></div>"
+        if cell.is_road and cell.building_level>0
+          sprites_layer_2 << "<div class='sprite #{cell.road_css_class(cells)}-#{cell.building_level}'></div>"
+        else
+          sprites_layer_2 << "<div class='sprite #{building[:css_class]}-#{cell.building_level}'></div>"
+        end
       else
         if cell.have_user_road_in_cells(current_user.id, cells)
           sprites_layer_2 << "<div class='sprite sprite-can-build'></div>"

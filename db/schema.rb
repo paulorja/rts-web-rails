@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160818031941) do
     t.integer "x",              limit: 4
     t.integer "y",              limit: 4
     t.integer "terrain_code",   limit: 4,   default: 0
+    t.string  "terrain_sprite", limit: 255
     t.integer "building_code",  limit: 4,   default: 0
     t.integer "building_level", limit: 4,   default: 0
     t.integer "user_id",        limit: 4,   default: 0
@@ -113,10 +114,11 @@ ActiveRecord::Schema.define(version: 20160818031941) do
     t.integer  "food_villagers",    limit: 4,   default: 0
     t.integer  "stone_villagers",   limit: 4,   default: 0
     t.integer  "storage",           limit: 4,   default: 0
+    t.integer  "total_roads",       limit: 4,   default: 0
+    t.integer  "max_roads",         limit: 4,   default: 0
     t.integer  "total_pop",         limit: 4,   default: 0
     t.integer  "max_pop",           limit: 4,   default: 0
     t.integer  "total_territories", limit: 4,   default: 0
-    t.integer  "max_territories",   limit: 4,   default: 0
     t.integer  "score",             limit: 4,   default: 0
     t.integer  "new_reports",       limit: 4,   default: 0
     t.integer  "blacksmith_hoe",    limit: 4,   default: 0
