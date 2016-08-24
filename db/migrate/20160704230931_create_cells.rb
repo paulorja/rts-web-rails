@@ -4,6 +4,7 @@ class CreateCells < ActiveRecord::Migration
       t.integer :x
       t.integer :y
       t.integer :terrain_code, default: 0
+      t.string :terrain_sprite
       t.integer :building_code, default: 0
       t.integer :building_level, default: 0
       t.integer :user_id, default: 0

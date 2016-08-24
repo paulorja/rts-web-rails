@@ -82,7 +82,7 @@ class WorldCreation
 
     img = Magick::Image.new(WorldCreation::SIZE, WorldCreation::SIZE)
 
-    query_terrains = 'INSERT INTO cells (id, x, y, terrain_code) VALUES'
+    query_terrains = 'INSERT INTO cells (id, x, y, terrain_code, terrain_sprite) VALUES'
     terrain_values = Array.new
     cell_id = 0
 
@@ -92,7 +92,7 @@ class WorldCreation
           img.pixel_color(row_index, column_index, "rgb(#{color.join(', ')})")
 
           cell_id += 1
-          terrain_values.push "(#{cell_id}, #{row_index}, #{column_index}, #{Terrain.color_to_code(color)})"
+          terrain_values.push "(#{cell_id}, #{row_index}, #{column_index}, #{Terrain.color_to_code(color)}, #{Terrain.color_to_sprite(color)})"
         end
       end
     end

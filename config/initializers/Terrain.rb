@@ -11,6 +11,7 @@ TERRAIN = {
         code: 3,
         color: [62, 143, 51],
         css_class: 'sprite-tree',
+        random_css_class: ['sprite-tree', 'sprite-tree2', 'sprite-tree3']
         buildings: [8]
     },
     water: {
@@ -60,6 +61,20 @@ class Terrain
     TERRAIN.each do |t|
       if t[1][:color] == color
         return t[1][:code]
+      end
+    end
+    raise 'COLOR NOT FIND'
+  end
+
+  def self.color_to_sprite(color)
+    TERRAIN.each do |t|
+      if t[1][:color] == color
+        if t[1][:random_css_class].is_a? Array
+            return t[1][:random_css_class].sample
+        else
+            return t[1][:css_class]
+        end
+
       end
     end
     raise 'COLOR NOT FIND'

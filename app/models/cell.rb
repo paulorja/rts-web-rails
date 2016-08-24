@@ -229,7 +229,7 @@ class Cell < ActiveRecord::Base
 
       # TERRAINS
 
-      sprites_layer_1 << "<div class='sprite #{Terrain.get_terrain(cell.terrain_code)[:css_class]}'></div>"
+      sprites_layer_1 << "<div class='sprite #{cell.terrain_sprite}'></div>"
 
       # BUILDINGS
 
