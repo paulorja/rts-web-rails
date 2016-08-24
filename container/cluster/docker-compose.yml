@@ -1,0 +1,11 @@
+db:
+  image: rts-mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=123456
+
+game:
+  image: rts-rails
+  links:
+    - db:rts-mysql
+  ports:
+    - 80:80
