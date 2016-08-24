@@ -9,6 +9,8 @@ ENV PATH RBENV_HOME/plugins/ruby-build/bin:RBENV_HOME/shims\
 
 ENV RAILS_ENV development
 
+ENV PORT 8080
+
 RUN \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y git-core \
@@ -40,7 +42,8 @@ RUN \
     cd ~/rts-web && \
     bundle install && \
     rake db:create db:migrate db:seed && \
-    rails server 
+    chmod +x start_server.sh && \
+    bash start_server.sh $PORT
 
 # Expose ports.
-EXPOSE 3000
+EXPOSE $PORT
