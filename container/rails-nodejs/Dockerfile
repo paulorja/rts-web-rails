@@ -1,9 +1,5 @@
 FROM ubuntu:14.04
 
-ENV PATH $HOME/.rbenv/plugins/ruby-build/bin:$HOME/.rbenv/bin:$PATH
-
-ENV RAILS_ENV development
-
 RUN \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y git-core \
@@ -12,12 +8,15 @@ RUN \
     libcurl4-openssl-dev python-software-properties libffi-dev \
     imagemagick libmagickwand-dev libmysqlclient-dev && \
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
-    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc && \
     echo 'eval "$(rbenv init -)"' >> ~/.bashrc && \
-    exec $SHELL && \
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build && \
-    echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc && \
-    exec $SHELL && \
+    exec $SHELL 
+
+ENV PATH /root/.rbenv/plugins/ruby-build/bin:/root/.rbenv/bin:$PATH
+
+ENV RAILS_ENV development
+
+RUN \
     rbenv install 2.3.1 && \
     rbenv global 2.3.1 && \
     gem install bundler && \
