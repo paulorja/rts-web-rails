@@ -214,7 +214,6 @@ class Cell < ActiveRecord::Base
 
     self.idle = true
     self.cell_units.update_all({cell_id: self.next_road.id})
-    self.terrain_sprite = Terrain.color_to_sprite(terrain[:color])
     self.building_level = 0
     self.building_code = 0
     self.user_id = nil
