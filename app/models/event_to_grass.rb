@@ -11,7 +11,7 @@ class EventToGrass < ActiveRecord::Base
     cell.idle = true
     cell.move_units_to_next_road
     cell.terrain_code = TERRAIN[:grass][:code]
-    cell.terrain_sprite = Terrain.color_to_sprite(TERRAIN[:grass][:code])
+    cell.terrain_sprite = Terrain.color_to_sprite(TERRAIN[:grass][:color])
     cell.user_id = nil
 
 
