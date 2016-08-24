@@ -9,7 +9,7 @@ div.topMenu{
 	font-size: 14px;
 	border-bottom: solid #8E8E8E;
 	background-color: #8E8E8E;
-	border-bottom-left-radius: 0.5em;
+	border-bottom-left: 0.5em;
 	border-width: 1px;
 	top: 0%;
 	left: 0%;
@@ -27,6 +27,7 @@ div.textLanguagePos{
 }
 
 .gameName{
+	text-shadow: 2px 2px 4px #000000;
 	font-size: 85px;
 	font-family: Verdana;
 	position: absolute;
@@ -38,6 +39,7 @@ div.textLanguagePos{
 }
 
 div.login{
+	text-shadow: 2px 2px 4px #221F1F;
 	color: #D5D5D5;
 	font-family: verdana;
 	text-align: center;
@@ -50,10 +52,10 @@ div.login{
 
 div.formLogin{
 	position: absolute;
-	top: 21%;
-	left: 29%;
-	width: 44%;
-	height: 44%;
+	top: 20%;
+	left: 31%;
+	width: 0%;
+	height: 0%;
 }
 
 div.formLoginAlign{
@@ -65,6 +67,7 @@ div.formLoginAlign{
 }
 
 div.register{
+	text-shadow: 2px 2px 4px #221F1F;
 	font-family: verdana;
 	color: #3ADB12;
 	text-align: center;
@@ -83,8 +86,8 @@ div.formRegister{
 	position: absolute;
 	top: 20%;
 	left: 31%;
-	width: 38%;
-	height: 72%;
+	width: 0%;
+	height: 0%;
 }
 
 div.formRegisterAlign{
@@ -95,15 +98,28 @@ div.formRegisterAlign{
 	margin-left: 7%;
 }
 
+.buttonIn{
+    background-color: #8E8E8E;
+    border: none;
+    color: white;
+    padding: 8px 65px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
 div.inputDoneAlign{
 	position: absolute;
-	top: 68%;
-	left: 63%;
+	top: 67%;
+	bottom: 33%;
+	right: 22%;
+	left: 78%;
 	width: 0%;
 	height: 0%;
 }
 
 div.infoLog{
+	text-shadow: 2px 2px 4px #221F1F;
 	font-family: verdana;
 	color: #D5D5D5;
 	text-align: center;
