@@ -198,6 +198,7 @@ class Cell < ActiveRecord::Base
   def destroy_building
     building = Building.get_building(building_code)
     user_data = UserData.find_by_user_id(user_id)
+    terrain = Terrain.get_terrain(terrain_code)
 
     decrement_house = decrement_score = decrement_storage = 0
     (0..building_level).each do |b|
@@ -213,6 +214,7 @@ class Cell < ActiveRecord::Base
 
     self.idle = true
     self.cell_units.update_all({cell_id: self.next_road.id})
+    self.terrain_sprite = Terrain.color_to_sprite(terrain[:color])
     self.building_level = 0
     self.building_code = 0
     self.user_id = nil
