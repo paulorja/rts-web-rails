@@ -11,7 +11,7 @@ TERRAIN = {
         code: 3,
         color: [62, 143, 51],
         css_class: 'sprite-tree',
-        random_css_class: ['sprite-tree', 'sprite-tree2', 'sprite-tree3']
+        random_css_class: ['sprite-tree', 'sprite-tree2', 'sprite-tree3'],
         buildings: [8]
     },
     water: {
