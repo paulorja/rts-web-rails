@@ -7,6 +7,6 @@
         Destruir Edifício
       .build-content-line.font-sm
         %span.recourse-up-icon.icon-timer
-        %span.recourse-up-label.label-timer= 300
+        %span.recourse-up-label.label-timer= (60*@cell.building_level).to_s
       .build-content-line
         = link_to 'Destruir', building_destroy_path(@cell.x, @cell.y), class: 'btn-build btn-sm'

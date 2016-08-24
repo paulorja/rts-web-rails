@@ -31,7 +31,7 @@ class EventBuildingDestroy < ActiveRecord::Base
 
     event = Event.new
     event.start_time = Time.now.to_i
-    event.end_time = Time.now.to_i + 300
+    event.end_time = Time.now.to_i + (60*cell.building_level)
     event.event_type = :building_destroy
     event.save
 
