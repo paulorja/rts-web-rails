@@ -12,7 +12,10 @@ RUN \
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build && \
     exec $SHELL 
 
-ENV PATH /root/.rbenv/plugins/ruby-build/bin:/root/.rbenv/bin:$PATH
+ENV PATH /root/.rbenv/plugins/ruby-build/bin:/root/.rbenv/shims\
+:/root/.rbenv/bin:/root/.rbenv/shims:/root/.rbenv/bin:/root/.rbenv/shims\
+:/root/.rbenv/bin:/root/.rbenv/shims:/root/.rbenv/bin:/root/.rbenv/shims\
+:/root/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 
 ENV RAILS_ENV development
 
