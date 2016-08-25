@@ -30,5 +30,6 @@ BUILDING = {
     blacksmith: building_config('blacksmith'),
     barrack: building_config('barrack'),
     hospital: building_config('hospital'),
-    tower: building_config('tower')
+    tower: building_config('tower'),
+    wall: building_config('wall')
 }
