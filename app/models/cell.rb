@@ -137,13 +137,31 @@ class Cell < ActiveRecord::Base
     border_style
   end
 
+  def have_user_bridge(user_id)
+    arredores = arredores(1)
+
+    return true if arredores[1].is_bridge and arredores[1].user_id == user_id
+    return true if arredores[3].is_bridge and arredores[3].user_id == user_id
+    return true if arredores[5].is_bridge and arredores[5].user_id == user_id
+    return true if arredores[7].is_bridge and arredores[7].user_id == user_id
+
+    false
+  end
+
   def have_user_road(user_id)
     arredores = arredores(1)
 
-    return true if arredores[1].is_road and arredores[1].user_id == user_id
-    return true if arredores[3].is_road and arredores[3].user_id == user_id
-    return true if arredores[5].is_road and arredores[5].user_id == user_id
-    return true if arredores[7].is_road and arredores[7].user_id == user_id
+    return true if arredores[1].is_road and arredores[1].is_grass and arredores[1].user_id == user_id
+    return true if arredores[3].is_road and arredores[3].is_grass and arredores[3].user_id == user_id
+    return true if arredores[5].is_road and arredores[5].is_grass and arredores[5].user_id == user_id
+    return true if arredores[7].is_road and arredores[7].is_grass and arredores[7].user_id == user_id
+
+    if is_water
+      return true if arredores[1].is_road and arredores[1].is_water and arredores[1].user_id == user_id
+      return true if arredores[3].is_road and arredores[3].is_water and arredores[3].user_id == user_id
+      return true if arredores[5].is_road and arredores[5].is_water and arredores[5].user_id == user_id
+      return true if arredores[7].is_road and arredores[7].is_water and arredores[7].user_id == user_id
+    end
 
     false
   end
@@ -356,7 +374,15 @@ class Cell < ActiveRecord::Base
     return 'Você não possui recursos' unless user_data.have_recourses building[:levels][building_level+1]
     return "Requer castelo nível #{building[:levels][building_level+1][:castle_level].to_i}" unless current_user.castle.building_level >= building[:levels][building_level+1][:castle_level].to_i
     return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)
-    return 'Suas estradas não chegam até aqui' unless have_user_road current_user.id
+
+    unless have_user_road current_user.id
+      if have_user_bridge(current_user.id) and building_code == BUILDING[:road][:code].to_s
+
+      else
+        return 'Suas estradas não chegam até aqui'
+      end
+    end
+
     idle_villager = current_user.idle_villager
     return 'Você não possui aldões disponíveis' if idle_villager.nil?
 
