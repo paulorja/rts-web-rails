@@ -1,16 +1,5 @@
 FROM ubuntu:14.04
 
-ENV RBENV_HOME /root/rbenv/
-
-ENV PATH RBENV_HOME/plugins/ruby-build/bin:RBENV_HOME/shims\
-:RBENV_HOME/bin:RBENV_HOME/shims:RBENV_HOME/bin:RBENV_HOME/shims\
-:RBENV_HOME/bin:RBENV_HOME/shims:RBENV_HOME/bin:RBENV_HOME/shims\
-:RBENV_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
-
-ENV RAILS_ENV development
-
-ENV PORT 8080
-
 RUN \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y git-core \
@@ -19,16 +8,30 @@ RUN \
     libcurl4-openssl-dev python-software-properties libffi-dev \
     imagemagick libmagickwand-dev libmysqlclient-dev && \
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
-    echo 'eval "$(rbenv init -)"' >> ~/.bashrc && \
-    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build && \
-    exec $SHELL 
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build 
+    # exec $SHELL 
+
+
+ENV RAILS_ENV development
+
+ENV HOME /root
+
+ENV RBENV_HOME $HOME/.rbenv
+
+ENV RBENV_PATHS $RBENV_HOME/plugins/ruby-build/bin:$RBENV_HOME/shims:$RBENV_HOME/bin
+
+ENV NVM_PATH $HOME/.nvm
+
+ENV PORT 8080
+
+ENV PATH $RBENV_PATHS:$NVM_PATH:$PATH
 
 RUN \
     rbenv install 2.3.1 && \
     rbenv global 2.3.1 && \
     gem install bundler && \
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
-    sudo apt-get install -y nodejs && \
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.6/install.sh | bash && \
     gem install rails -v 4.2.6 && \
     rbenv rehash && \
     mkdir -p ~/.ssh 
