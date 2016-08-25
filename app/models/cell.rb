@@ -375,7 +375,7 @@ class Cell < ActiveRecord::Base
     return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)
 
     unless have_user_road current_user.id
-      if have_user_bridge(current_user.id) and building_code == BUILDING[:road][:code].to_s
+      if have_user_bridge(current_user.id) and building_code == BUILDING[:road][:code].to_s and is_grass
 
       else
         return 'Suas estradas não chegam até aqui'
