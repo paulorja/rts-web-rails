@@ -92,6 +92,20 @@ class Cell < ActiveRecord::Base
     false
   end
 
+  def top_left(cells)
+    cells.each do |c|
+      return c if c.x == x+1 and c.y == y-1
+    end
+    Cell.new
+  end
+
+  def top_right(cells)
+    cells.each do |c|
+      return c if c.x == x-1 and c.y == y-1
+    end
+    Cell.new
+  end
+
   def top(cells)
     cells.each do |c|
       return c if c.x == x and c.y == y-1
@@ -109,6 +123,20 @@ class Cell < ActiveRecord::Base
   def bottom(cells)
     cells.each do |c|
       return c if c.x == x and c.y == y+1
+    end
+    Cell.new
+  end
+
+  def bottom_right(cells)
+    cells.each do |c|
+      return c if c.x == x+1 and c.y == y+1
+    end
+    Cell.new
+  end
+
+  def bottom_left(cells)
+    cells.each do |c|
+      return c if c.x == x-1 and c.y == y+1
     end
     Cell.new
   end
@@ -148,13 +176,25 @@ class Cell < ActiveRecord::Base
     false
   end
 
+  def can_build_road(user_id)
+    arredores = arredores(1)
+
+    return true if arredores[1].is_road and arredores[1].user_id == user_id
+    return true if arredores[3].is_road and arredores[3].user_id == user_id
+    return true if arredores[5].is_road and arredores[5].user_id == user_id
+    return true if arredores[7].is_road and arredores[7].user_id == user_id
+
+    false
+  end
+
   def have_user_road(user_id)
     arredores = arredores(1)
 
-    return true if arredores[1].is_road and arredores[1].is_grass and arredores[1].user_id == user_id
-    return true if arredores[3].is_road and arredores[3].is_grass and arredores[3].user_id == user_id
-    return true if arredores[5].is_road and arredores[5].is_grass and arredores[5].user_id == user_id
-    return true if arredores[7].is_road and arredores[7].is_grass and arredores[7].user_id == user_id
+    (0..8).each do |i|
+      if i != 4
+        return true if arredores[i].is_road and arredores[i].is_grass and arredores[i].user_id == user_id
+      end
+    end
 
     if is_water
       return true if arredores[1].is_road and arredores[1].is_water and arredores[1].user_id == user_id
@@ -172,11 +212,20 @@ class Cell < ActiveRecord::Base
     bottom_cell = bottom(cells)
     right_cell = right(cells)
 
+    top_left = top_left(cells)
+    top_right = top_right(cells)
+    bottom_left = bottom_left(cells)
+    bottom_right = bottom_right(cells)
 
-    return true if top_cell.user_id == user_id and top_cell.is_road and top_cell.is_grass
-    return true if left_cell.user_id == user_id and left_cell.is_road and left_cell.is_grass
-    return true if bottom_cell.user_id == user_id and bottom_cell.is_road and bottom_cell.is_grass
-    return true if right_cell.user_id == user_id and right_cell.is_road and right_cell.is_grass
+    return true if bottom_left.user_id == user_id and bottom_left.is_road
+    return true if bottom_right.user_id == user_id and bottom_right.is_road
+    return true if top_left.user_id == user_id and top_left.is_road
+    return true if top_right.user_id == user_id and top_right.is_road
+
+    return true if top_cell.user_id == user_id and top_cell.is_road
+    return true if left_cell.user_id == user_id and left_cell.is_road
+    return true if bottom_cell.user_id == user_id and bottom_cell.is_road
+    return true if right_cell.user_id == user_id and right_cell.is_road
 
     false
   end
@@ -204,15 +253,14 @@ class Cell < ActiveRecord::Base
   def next_road
     arredores = arredores(1)
 
-    if arredores[1].is_road and arredores[1].user_id == self.user_id
-      return arredores[1]
-    elsif arredores[3].is_road and arredores[3].user_id == self.user_id
-      return arredores[3]
-    elsif arredores[5].is_road and arredores[5].user_id == self.user_id
-      return arredores[5]
-    elsif arredores[7].is_road and arredores[7].user_id == self.user_id
-      return arredores[7]
+    (0..8).each do |i|
+      if i != 4
+        if arredores[i].is_road and arredores[i].user_id == self.user_id
+          return arredores[i]
+        end
+      end
     end
+
     nil
   end
 
@@ -381,6 +429,11 @@ class Cell < ActiveRecord::Base
         return 'Suas estradas não chegam até aqui'
       end
     end
+
+    if building_code == BUILDING[:road][:code].to_s
+      return 'Você não pode fazer estrada na diagonal' unless can_build_road(current_user.id)
+    end
+
 
     if is_water and building_code == BUILDING[:road][:code].to_s
       return 'Você não possui recursos' unless user_data.have_recourses building[:bridge_levels][building_level+1]
