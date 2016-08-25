@@ -59,6 +59,10 @@ class Cell < ActiveRecord::Base
     true if terrain_code == TERRAIN[:grass][:code]
   end
 
+  def is_water
+    true if terrain_code == TERRAIN[:water][:code]
+  end
+
   def is_tree
     true if terrain_code == TERRAIN[:tree][:code]
   end
@@ -146,10 +150,11 @@ class Cell < ActiveRecord::Base
     bottom_cell = bottom(cells)
     right_cell = right(cells)
 
-    return true if top_cell.user_id == user_id and top_cell.is_road
-    return true if left_cell.user_id == user_id and left_cell.is_road
-    return true if bottom_cell.user_id == user_id and bottom_cell.is_road
-    return true if right_cell.user_id == user_id and right_cell.is_road
+
+    return true if top_cell.user_id == user_id and top_cell.is_road and top_cell.is_grass
+    return true if left_cell.user_id == user_id and left_cell.is_road and left_cell.is_grass
+    return true if bottom_cell.user_id == user_id and bottom_cell.is_road and bottom_cell.is_grass
+    return true if right_cell.user_id == user_id and right_cell.is_road and right_cell.is_grass
 
     false
   end
@@ -226,23 +231,30 @@ class Cell < ActiveRecord::Base
     bottom_cell = bottom(cells)
     right_cell = right(cells)
 
-    return 'sprite-road-bt-90'  if right_cell.is_road and !left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
-    return 'sprite-road-bt-90'  if !right_cell.is_road and left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
-    return 'sprite-road-bt-90'  if right_cell.is_road and left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
+    name = 'bridge'
+    if is_water
+      name = 'bridge'
+    else
+      name = 'road'
+    end
 
-    return 'sprite-road-br'     if right_cell.is_road and !left_cell.is_road and !top_cell.is_road and bottom_cell.is_road
-    return 'sprite-road-br-90'  if !right_cell.is_road and left_cell.is_road and !top_cell.is_road and bottom_cell.is_road
-    return 'sprite-road-br-180' if !right_cell.is_road and left_cell.is_road and top_cell.is_road and !bottom_cell.is_road
-    return 'sprite-road-br-270' if right_cell.is_road and !left_cell.is_road and top_cell.is_road and !bottom_cell.is_road
+    return "sprite-#{name}-bt-90"  if right_cell.is_road and !left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
+    return "sprite-#{name}-bt-90"  if !right_cell.is_road and left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
+    return "sprite-#{name}-bt-90"  if right_cell.is_road and left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
 
-    return 'sprite-road-btr'     if right_cell.is_road and !left_cell.is_road and top_cell.is_road and bottom_cell.is_road
-    return 'sprite-road-btr-90'  if right_cell.is_road and left_cell.is_road and !top_cell.is_road and bottom_cell.is_road
-    return 'sprite-road-btr-180' if !right_cell.is_road and left_cell.is_road and top_cell.is_road and bottom_cell.is_road
-    return 'sprite-road-btr-270' if right_cell.is_road and left_cell.is_road and top_cell.is_road and !bottom_cell.is_road
+    return "sprite-#{name}-br"     if right_cell.is_road and !left_cell.is_road and !top_cell.is_road and bottom_cell.is_road
+    return "sprite-#{name}-br-90"  if !right_cell.is_road and left_cell.is_road and !top_cell.is_road and bottom_cell.is_road
+    return "sprite-#{name}-br-180" if !right_cell.is_road and left_cell.is_road and top_cell.is_road and !bottom_cell.is_road
+    return "sprite-#{name}-br-270" if right_cell.is_road and !left_cell.is_road and top_cell.is_road and !bottom_cell.is_road
 
-    return 'sprite-road-all'    if right_cell.is_road and left_cell.is_road and top_cell.is_road and bottom_cell.is_road
+    return "sprite-#{name}-btr"     if right_cell.is_road and !left_cell.is_road and top_cell.is_road and bottom_cell.is_road
+    return "sprite-#{name}-btr-90"  if right_cell.is_road and left_cell.is_road and !top_cell.is_road and bottom_cell.is_road
+    return "sprite-#{name}-btr-180" if !right_cell.is_road and left_cell.is_road and top_cell.is_road and bottom_cell.is_road
+    return "sprite-#{name}-btr-270" if right_cell.is_road and left_cell.is_road and top_cell.is_road and !bottom_cell.is_road
 
-    'sprite-road-bt-180'
+    return "sprite-#{name}-all"    if right_cell.is_road and left_cell.is_road and top_cell.is_road and bottom_cell.is_road
+
+    "sprite-#{name}-bt-180"
   end
 
   def self.render_layers(cells, current_user)
@@ -266,7 +278,13 @@ class Cell < ActiveRecord::Base
         if cell.user_id == current_user.id
           villager_action = "v-action='#{building[:action]}'" if building[:action]
         end
-        if cell.is_road and cell.building_level>0
+        if cell.is_road and cell.building_level == 0
+          if cell.is_water
+            sprites_layer_2 << "<div class='sprite sprite-bridge-#{cell.building_level}'></div>"
+          else
+            sprites_layer_2 << "<div class='sprite sprite-road-#{cell.building_level}'></div>"
+          end
+        elsif cell.is_road
           sprites_layer_2 << "<div class='sprite #{cell.road_css_class(cells)}-#{cell.building_level}'></div>"
         else
           sprites_layer_2 << "<div class='sprite #{building[:css_class]}-#{cell.building_level}'></div>"

@@ -19,7 +19,7 @@ TERRAIN = {
         code: 4,
         color: [91, 104, 200],
         css_class: 'sprite-water',
-        buildings: [15, 5]
+        buildings: [2, 5]
     },
     stone: {
         name: 'Mina de Pedra',
