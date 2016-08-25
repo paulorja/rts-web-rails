@@ -11,6 +11,10 @@ class Cell < ActiveRecord::Base
     true if building_code == BUILDING[:road][:code]
   end
 
+  def is_bridge
+    true if building_code == BUILDING[:road][:code] and is_water
+  end
+
   def is_castle
     true if building_code == BUILDING[:castle][:code]
   end
@@ -366,7 +370,11 @@ class Cell < ActiveRecord::Base
     end
 
     #start build
-    user_data.use_recourses building[:levels][building_level+1]
+    if is_water and building_code == BUILDING[:road][:code].to_s
+      user_data.use_recourses building[:bridge_levels][building_level+1]
+    else
+      user_data.use_recourses building[:levels][building_level+1]
+    end
 
     event = Event.new
     event.start_time = Time.now.to_i

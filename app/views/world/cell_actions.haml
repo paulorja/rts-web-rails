@@ -5,8 +5,10 @@
 .content-title
   - if building.nil?
     = terrain[:name]
+  - elsif @cell.is_bridge
+    = "#{building[:bridge_name]} nível #{@cell.building_level} (#{@cell.user.login})"
   - else
-    = "#{building[:name]} nível #{@cell.building_level} (#{@cell.user.login})" 
+    = "#{building[:name]} nível #{@cell.building_level} (#{@cell.user.login})"
 
 %div.text-center{style: 'font-size:12px'}
   = "(X: #{@cell.x} Y: #{@cell.y})"
@@ -35,6 +37,7 @@
     = render 'world/buildings/castle'     if @cell.is_castle
     = render 'world/buildings/house'      if @cell.is_house
     = render 'world/buildings/storage'    if @cell.is_storage
+    = render 'world/buildings/road'       if @cell.is_road
 
     / DESTRUIR EDIFICIO
     = render 'building_destroy'
@@ -65,7 +68,7 @@
           .build-content-line.font-sm
             = render 'layouts/recourses_line', {recourses: unit[:pricing]}
           .build-content-line
-            = link_to "Comprar #{unit[:name]}", new_unit_path(unit[:code], @cell.id, 1), class: 'btn-build btn-sm'
+            = link_to "Treinar #{unit[:name]}", new_unit_path(unit[:code], @cell.id, 1), class: 'btn-build btn-sm'
 
 :javascript
   refresh_label_timers();

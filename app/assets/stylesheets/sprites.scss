@@ -115,37 +115,37 @@
 .sprite-house-4 { background-image: asset-url('sprites/world/building/house/house_3.png'); }
 
 /* ROAD */
-.sprite-road-0 { background-image: asset-url('sprites/world/building/road/road_0.png'); }
-.sprite-road-1 { background-image: asset-url('sprites/world/building/road/road_1.png'); }
-.sprite-road-bt-1 { background-image: asset-url('sprites/world/building/road/road_bt_1.png'); }
-.sprite-road-bt-90-1 { background-image: asset-url('sprites/world/building/road/road_bt_1.png'); transform: rotate(90deg);}
-.sprite-road-bt-180-1 { background-image: asset-url('sprites/world/building/road/road_bt_1.png'); transform: rotate(180deg);}
-.sprite-road-bt-270-1 { background-image: asset-url('sprites/world/building/road/road_bt_1.png'); transform: rotate(270deg);}
-.sprite-road-br-1 { background-image: asset-url('sprites/world/building/road/road_br_1.png'); }
-.sprite-road-br-90-1 { background-image: asset-url('sprites/world/building/road/road_br_1.png'); transform: rotate(90deg);}
-.sprite-road-br-180-1 { background-image: asset-url('sprites/world/building/road/road_br_1.png'); transform: rotate(180deg);}
-.sprite-road-br-270-1 { background-image: asset-url('sprites/world/building/road/road_br_1.png'); transform: rotate(270deg);}
-.sprite-road-btr-1 { background-image: asset-url('sprites/world/building/road/road_btr_1.png'); }
-.sprite-road-btr-90-1 { background-image: asset-url('sprites/world/building/road/road_btr_1.png'); transform: rotate(90deg);}
+.sprite-road-0         { background-image: asset-url('sprites/world/building/road/road_0.png'); }
+.sprite-road-1         { background-image: asset-url('sprites/world/building/road/road_1.png'); }
+.sprite-road-bt-1      { background-image: asset-url('sprites/world/building/road/road_bt_1.png'); }
+.sprite-road-bt-90-1   { background-image: asset-url('sprites/world/building/road/road_bt_1.png'); transform: rotate(90deg);}
+.sprite-road-bt-180-1  { background-image: asset-url('sprites/world/building/road/road_bt_1.png'); transform: rotate(180deg);}
+.sprite-road-bt-270-1  { background-image: asset-url('sprites/world/building/road/road_bt_1.png'); transform: rotate(270deg);}
+.sprite-road-br-1      { background-image: asset-url('sprites/world/building/road/road_br_1.png'); }
+.sprite-road-br-90-1   { background-image: asset-url('sprites/world/building/road/road_br_1.png'); transform: rotate(90deg);}
+.sprite-road-br-180-1  { background-image: asset-url('sprites/world/building/road/road_br_1.png'); transform: rotate(180deg);}
+.sprite-road-br-270-1  { background-image: asset-url('sprites/world/building/road/road_br_1.png'); transform: rotate(270deg);}
+.sprite-road-btr-1     { background-image: asset-url('sprites/world/building/road/road_btr_1.png'); }
+.sprite-road-btr-90-1  { background-image: asset-url('sprites/world/building/road/road_btr_1.png'); transform: rotate(90deg);}
 .sprite-road-btr-180-1 { background-image: asset-url('sprites/world/building/road/road_btr_1.png'); transform: rotate(180deg);}
 .sprite-road-btr-270-1 { background-image: asset-url('sprites/world/building/road/road_btr_1.png'); transform: rotate(270deg);}
-.sprite-road-all-1 { background-image: asset-url('sprites/world/building/road/road_all_1.png');   }
+.sprite-road-all-1     { background-image: asset-url('sprites/world/building/road/road_all_1.png');   }
 
 /* BRIDGE */
-.sprite-bridge-0 { background-image: asset-url('sprites/world/building/bridge/bridge_0.png'); }
-.sprite-bridge-1 { background-image: asset-url('sprites/world/building/bridge/bridge_1.png'); }
-.sprite-bridge-bt-90-1 { background-image: asset-url('sprites/world/building/bridge/bridge_bt_1.png'); transform: rotate(90deg);}
-.sprite-bridge-bt-180-1 { background-image: asset-url('sprites/world/building/bridge/bridge_bt_1.png'); transform: rotate(180deg);}
-.sprite-bridge-bt-270-1 { background-image: asset-url('sprites/world/building/bridge/bridge_bt_1.png'); transform: rotate(270deg);}
-.sprite-bridge-br-1 { background-image: asset-url('sprites/world/building/bridge/bridge_br_1.png'); }
-.sprite-bridge-br-90-1 { background-image: asset-url('sprites/world/building/bridge/bridge_br_1.png'); transform: rotate(90deg);}
-.sprite-bridge-br-180-1 { background-image: asset-url('sprites/world/building/bridge/bridge_br_1.png'); transform: rotate(180deg);}
-.sprite-bridge-br-270-1 { background-image: asset-url('sprites/world/building/bridge/bridge_br_1.png'); transform: rotate(270deg);}
-.sprite-bridge-btr-1 { background-image: asset-url('sprites/world/building/bridge/bridge_btr_1.png'); }
-.sprite-bridge-btr-90-1 { background-image: asset-url('sprites/world/building/bridge/bridge_btr_1.png'); transform: rotate(90deg);}
+.sprite-bridge-0         { background-image: asset-url('sprites/world/building/bridge/bridge_0.png'); }
+.sprite-bridge-1         { background-image: asset-url('sprites/world/building/bridge/bridge_bt_1.png'); }
+.sprite-bridge-bt-90-1   { background-image: asset-url('sprites/world/building/bridge/bridge_bt_1.png'); transform: rotate(90deg);}
+.sprite-bridge-bt-180-1  { background-image: asset-url('sprites/world/building/bridge/bridge_bt_1.png'); transform: rotate(180deg);}
+.sprite-bridge-bt-270-1  { background-image: asset-url('sprites/world/building/bridge/bridge_bt_1.png'); transform: rotate(270deg);}
+.sprite-bridge-br-1      { background-image: asset-url('sprites/world/building/bridge/bridge_br_1.png'); }
+.sprite-bridge-br-90-1   { background-image: asset-url('sprites/world/building/bridge/bridge_br_1.png'); transform: rotate(90deg);}
+.sprite-bridge-br-180-1  { background-image: asset-url('sprites/world/building/bridge/bridge_br_1.png'); transform: rotate(180deg);}
+.sprite-bridge-br-270-1  { background-image: asset-url('sprites/world/building/bridge/bridge_br_1.png'); transform: rotate(270deg);}
+.sprite-bridge-btr-1     { background-image: asset-url('sprites/world/building/bridge/bridge_btr_1.png'); }
+.sprite-bridge-btr-90-1  { background-image: asset-url('sprites/world/building/bridge/bridge_btr_1.png'); transform: rotate(90deg);}
 .sprite-bridge-btr-180-1 { background-image: asset-url('sprites/world/building/bridge/bridge_btr_1.png'); transform: rotate(180deg);}
 .sprite-bridge-btr-270-1 { background-image: asset-url('sprites/world/building/bridge/bridge_btr_1.png'); transform: rotate(270deg);}
-.sprite-bridge-all-1 { background-image: asset-url('sprites/world/building/bridge/bridge_all_1.png');   }
+.sprite-bridge-all-1     { background-image: asset-url('sprites/world/building/bridge/bridge_all_1.png');   }
 
 /* STORAGE */
 .sprite-storage-0 { background-image: asset-url('sprites/world/building/storage/storage_0.png'); }
