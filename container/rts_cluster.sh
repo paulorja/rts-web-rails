@@ -49,6 +49,9 @@ case $1 in
     --check-dependences | -c )
         dependeces_ubuntu
     ;;
+    *)
+        echo "comando invalido"
+    ;;
 esac
 
 exit 1

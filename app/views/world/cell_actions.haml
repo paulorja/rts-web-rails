@@ -1,7 +1,7 @@
 - terrain = Terrain.get_terrain(@cell.terrain_code)
 - building = Building.get_building(@cell.building_code)
 
-
+/ TITULO
 .content-title
   - if building.nil?
     = terrain[:name]
@@ -13,6 +13,7 @@
 %div.text-center{style: 'font-size:12px'}
   = "(X: #{@cell.x} Y: #{@cell.y})"
 
+
 / SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
 - if building.nil? and @cell.have_user_road @current_user.id
   - terrain[:buildings].each do |b|
@@ -22,6 +23,9 @@
 
   = render 'world/terrains/tree'  if @cell.is_tree
   = render 'world/terrains/stone' if @cell.is_stone
+- elsif building.nil? and @cell.have_user_bridge @current_user.id and @cell.is_grass
+  - t_building = Building.get_building(2)
+  = render 'building_up', { building: t_building, building_level: 1}
 
 
 / SE A CONSTRUÇÃO É DO USUÁRIO
@@ -46,29 +50,8 @@
     / SE EDIFICIO OCUPADO
     = 'construindo...'
 
-  - if building[:units].is_a? Array and building[:units].size > 0
-    %hr
-    %div
-      Em treino:
-      %table
-        - EventNewUnit.includes(:event).where('cell_id = ?', @cell.id).each do |u|
-          - unit = Unit.get_unit(u.unit)
-          %tr
-            %td= unit[:name]
-            %td.chronometer{data_time: u.event.wait_time}= u.event.wait_time
-    %hr
-    - building[:units].each do |u|
-      - unit = Unit.get_unit(u)
-      %div
-      .build-container
-        .build-icon{class: unit[:css_class]}
-        .build-content
-          .build-content-line.font-sm
-            = unit[:name]
-          .build-content-line.font-sm
-            = render 'layouts/recourses_line', {recourses: unit[:pricing]}
-          .build-content-line
-            = link_to "Treinar #{unit[:name]}", new_unit_path(unit[:code], @cell.id, 1), class: 'btn-build btn-sm'
+  / UNIDADES
+  = render 'world/buildings/units', {building: building}
 
 :javascript
   refresh_label_timers();
