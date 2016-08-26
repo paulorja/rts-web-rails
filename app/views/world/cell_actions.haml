@@ -21,19 +21,16 @@
     - t_building = Building.get_building(b)
     - unless t_building[:unique] and @current_user.have_building(t_building[:code])
       = render 'building_up', { building: t_building, building_level: 1}
-  = render 'world/terrains/tree'  if @cell.is_tree
-  = render 'world/terrains/stone' if @cell.is_stone
-  = render 'world/terrains/gold'  if @cell.is_gold
 - else
   - if building.nil? and @cell.can_build_wall @current_user.id
     - t_building = Building.get_building(15)
     = render 'building_up', { building: t_building, building_level: 1}
-    = render 'world/terrains/tree'  if @cell.is_tree
-    = render 'world/terrains/stone' if @cell.is_stone
-    = render 'world/terrains/gold'  if @cell.is_gold
   - if building.nil? and @cell.have_user_bridge @current_user.id and @cell.is_grass
     - t_building = Building.get_building(2)
     = render 'building_up', { building: t_building, building_level: 1}
+= render 'world/terrains/tree'  if @cell.is_tree
+= render 'world/terrains/stone' if @cell.is_stone
+= render 'world/terrains/gold'  if @cell.is_gold
 
 
 / SE A CONSTRUÇÃO É DO USUÁRIO
