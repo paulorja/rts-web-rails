@@ -203,6 +203,18 @@ class Cell < ActiveRecord::Base
     false
   end
 
+  def can_to_grass(user_id)
+    arredores = arredores(1)
+
+    (0..8).each do |i|
+      if i != 4
+        return true if arredores[i].user_id == user_id and !arredores[i].is_wall and (is_tree or is_stone or is_gold)
+      end
+    end
+
+    false
+  end
+
   def have_user_road(user_id)
     arredores = arredores(1)
 
@@ -218,6 +230,30 @@ class Cell < ActiveRecord::Base
       return true if arredores[5].is_road and arredores[5].is_water and arredores[5].user_id == user_id
       return true if arredores[7].is_road and arredores[7].is_water and arredores[7].user_id == user_id
     end
+
+    false
+  end
+
+  def sprite_can_build_in_cells(user_id, cells)
+    top_cell = top(cells)
+    left_cell = left(cells)
+    bottom_cell = bottom(cells)
+    right_cell = right(cells)
+
+    top_left = top_left(cells)
+    top_right = top_right(cells)
+    bottom_left = bottom_left(cells)
+    bottom_right = bottom_right(cells)
+
+    return true if bottom_left.user_id == user_id and !bottom_left.is_wall
+    return true if bottom_right.user_id == user_id and !bottom_right.is_wall
+    return true if top_left.user_id == user_id and !top_left.is_wall
+    return true if top_right.user_id == user_id and !top_right.is_wall
+
+    return true if top_cell.user_id == user_id and !top_cell.is_wall
+    return true if left_cell.user_id == user_id and !left_cell.is_wall
+    return true if bottom_cell.user_id == user_id and !bottom_cell.is_wall
+    return true if right_cell.user_id == user_id and !right_cell.is_wall
 
     false
   end
@@ -280,6 +316,11 @@ class Cell < ActiveRecord::Base
     return arredores[6] if arredores[6].is_road and arredores[6].user_id == self.user_id
     return arredores[8] if arredores[8].is_road and arredores[8].user_id == self.user_id
 
+    arredores_longe = arredores(2)
+
+    arredores_longe.each do |a|
+      return a if a.is_road and a.user_id == user_id
+    end
     nil
   end
 
@@ -379,7 +420,7 @@ class Cell < ActiveRecord::Base
           sprites_layer_2 << "<div class='sprite #{building[:css_class]}-#{cell.building_level}'></div>"
         end
       else
-        if cell.have_user_road_in_cells(current_user.id, cells)
+        if cell.sprite_can_build_in_cells(current_user.id, cells)
           sprites_layer_2 << "<div class='sprite sprite-can-build'></div>"
         else
           sprites_layer_2 << "<div class='sprite'></div>"

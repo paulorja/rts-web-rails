@@ -1,0 +1,9 @@
+.build-container
+  .build-icon.icon-x
+  .build-content
+    .build-content-line.font-sm Remover Mina de Ouro
+    .build-content-line.font-sm
+      %span.recourse-up-icon.icon-timer
+      %span.recourse-up-label= TO_GRASS[:gold][:time]
+    .build-content-line
+      = link_to 'Remover', to_grass_path(@cell.x, @cell.y), class: 'btn-build btn-sm'
