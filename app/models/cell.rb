@@ -196,7 +196,7 @@ class Cell < ActiveRecord::Base
 
     (0..8).each do |i|
       if i != 4
-        return true if arredores[i].user_id == user_id and !arredores[i].is_wall
+        return true if arredores[i].user_id == user_id and !arredores[i].is_wall and arredores[i].is_grass
       end
     end
 
