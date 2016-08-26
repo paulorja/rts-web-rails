@@ -441,18 +441,21 @@ class Cell < ActiveRecord::Base
     return "Requer castelo nível #{building[:levels][building_level+1][:castle_level].to_i}" unless current_user.castle.building_level >= building[:levels][building_level+1][:castle_level].to_i
     return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)
 
-    unless have_user_road current_user.id
-      if have_user_bridge(current_user.id) and building_code == BUILDING[:road][:code].to_s and is_grass
+    if building_code == BUILDING[:wall][:code]
+      return 'Vocês não pode construir muralha aqui' if !can_build_wall(current_user.id)
+    else
+      unless have_user_road current_user.id
+        if have_user_bridge(current_user.id) and building_code == BUILDING[:road][:code].to_s and is_grass
 
-      else
-        return 'Suas estradas não chegam até aqui'
+        else
+          return 'Suas estradas não chegam até aqui'
+        end
       end
     end
 
     if building_code == BUILDING[:road][:code].to_s
       return 'Você não pode fazer estrada na diagonal' unless can_build_road(current_user.id)
     end
-
 
     if is_water and building_code == BUILDING[:road][:code].to_s
       return 'Você não possui recursos' unless user_data.have_recourses building[:bridge_levels][building_level+1]
