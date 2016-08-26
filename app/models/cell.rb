@@ -19,6 +19,10 @@ class Cell < ActiveRecord::Base
     true if building_code == BUILDING[:castle][:code]
   end
 
+  def is_wall
+    true if building_code == BUILDING[:castle][:wall]
+  end
+
   def is_market
     true if building_code == BUILDING[:market][:code]
   end
@@ -187,6 +191,18 @@ class Cell < ActiveRecord::Base
     false
   end
 
+  def can_build_wall(user_id)
+    arredores = arredores(1)
+
+    (0..8).each do |i|
+      if i != 4
+        return true if arredores[i].user_id == user_id and !arredores[i].is_wall
+      end
+    end
+
+    false
+  end
+
   def have_user_road(user_id)
     arredores = arredores(1)
 
@@ -253,13 +269,16 @@ class Cell < ActiveRecord::Base
   def next_road
     arredores = arredores(1)
 
-    (0..8).each do |i|
-      if i != 4
-        if arredores[i].is_road and arredores[i].user_id == self.user_id
-          return arredores[i]
-        end
-      end
-    end
+    #top left right bottom
+    return arredores[1] if arredores[1].is_road and arredores[1].user_id == self.user_id
+    return arredores[3] if arredores[3].is_road and arredores[3].user_id == self.user_id
+    return arredores[5] if arredores[5].is_road and arredores[5].user_id == self.user_id
+    return arredores[7] if arredores[7].is_road and arredores[7].user_id == self.user_id
+    #diagonais
+    return arredores[0] if arredores[0].is_road and arredores[0].user_id == self.user_id
+    return arredores[2] if arredores[2].is_road and arredores[2].user_id == self.user_id
+    return arredores[6] if arredores[6].is_road and arredores[6].user_id == self.user_id
+    return arredores[8] if arredores[8].is_road and arredores[8].user_id == self.user_id
 
     nil
   end

@@ -13,9 +13,12 @@
 %div.text-center{style: 'font-size:12px'}
   = "(X: #{@cell.x} Y: #{@cell.y})"
 
-
+/ SE TEM CONSTRUÇÃO DO USUÁRIO PODE CONSTRUIR PONTE
+- if building.nil? and @cell.can_build_wall
+  - t_building = Building.get_building(15)
+  = render 'building_up', { building: t_building, building_level: 1}
 / SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
-- if building.nil? and @cell.have_user_road @current_user.id
+- elsif building.nil? and @cell.have_user_road @current_user.id
   - terrain[:buildings].each do |b|
     - t_building = Building.get_building(b)
     - unless t_building[:unique] and @current_user.have_building(t_building[:code])
