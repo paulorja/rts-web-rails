@@ -208,7 +208,7 @@ class Cell < ActiveRecord::Base
 
     (0..8).each do |i|
       if i != 4
-        return true if arredores[i].user_id == user_id and !arredores[i].is_wall and (is_tree or is_stone or is_gold)
+        return true if arredores[i].user_id == user_id and !arredores[i].is_wall and (is_tree or is_stone or is_gold) and idle
       end
     end
 
@@ -477,7 +477,7 @@ class Cell < ActiveRecord::Base
       return 'Você só pode construir uma vez esta construcao'
     end
 
-    return 'Já está evoluindo' unless idle?
+    return 'Ocupado' unless idle?
     return 'Nível máximo atingido' if building[:levels][building_level+1].nil?
     return "Requer castelo nível #{building[:levels][building_level+1][:castle_level].to_i}" unless current_user.castle.building_level >= building[:levels][building_level+1][:castle_level].to_i
     return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)

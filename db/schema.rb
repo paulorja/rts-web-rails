@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160825232739) do
   create_table "event_to_grasses", force: :cascade do |t|
     t.integer "event_id", limit: 4
     t.integer "cell_id",  limit: 4
+    t.integer "user_id",  limit: 4
   end
 
   create_table "events", force: :cascade do |t|

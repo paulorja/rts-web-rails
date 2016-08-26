@@ -6,13 +6,16 @@ class EventToGrass < ActiveRecord::Base
 
     event_to_grass = EventToGrass.where('event_id = ?', e.id).first
     cell = Cell.find(event_to_grass.cell_id)
-    user_data = UserData.where('user_id = ?', cell.user_id).first
+    user_data = UserData.where('user_id = ?', event_to_grass.user_id).first
 
     cell.idle = true
-    cell.move_units_to_next_road
+
+    cell.user_id = event_to_grass.user_id
+    cell.cell_units.update_all({cell_id: cell.next_road.id})
+    cell.user_id = nil
+
     cell.terrain_code = TERRAIN[:grass][:code]
     cell.terrain_sprite = Terrain.color_to_sprite(TERRAIN[:grass][:color])
-    cell.user_id = nil
 
 
     cell.save
@@ -45,8 +48,7 @@ class EventToGrass < ActiveRecord::Base
     return 'Você não possui aldões disponíveis' if idle_villager.nil?
 
 
-    cell.user_id = user.id
-    idle_villager.move(cell)
+    idle_villager.update_attributes(cell_id: cell.id)
     cell.idle = false
 
     user.user_data.use_recourses TO_GRASS[obj]
@@ -59,7 +61,8 @@ class EventToGrass < ActiveRecord::Base
 
     EventToGrass.create({
       event_id: event.id,
-      cell_id: cell.id
+      cell_id: cell.id,
+      user_id: user.id
     })
 
     cell.save
