@@ -20,7 +20,7 @@ class Cell < ActiveRecord::Base
   end
 
   def is_wall
-    true if building_code == BUILDING[:castle][:wall]
+    true if building_code == BUILDING[:wall][:code]
   end
 
   def is_market
@@ -196,7 +196,7 @@ class Cell < ActiveRecord::Base
 
     (0..8).each do |i|
       if i != 4
-        return true if arredores[i].user_id == user_id and !arredores[i].is_wall and arredores[i].is_grass
+        return true if arredores[i].user_id == user_id and !arredores[i].is_wall and is_grass
       end
     end
 
