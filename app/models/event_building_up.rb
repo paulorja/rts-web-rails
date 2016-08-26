@@ -25,7 +25,10 @@ class EventBuildingUp < ActiveRecord::Base
     user_data.score += building[:levels][cell.building_level][:score].to_i
     user_data.total_territories += 1 if cell.building_level == 1
     
-    cell.cell_units.update_all({cell_id: cell.next_road.id})
+    unless cell.is_wall
+      cell.cell_units.update_all({cell_id: cell.next_road.id})
+    end
+
 
     #pegar recurso automaticamente
     #if cell.is_recourse_building
