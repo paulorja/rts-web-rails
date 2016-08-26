@@ -17,7 +17,7 @@
 - if building.nil? and @cell.can_build_wall
   - t_building = Building.get_building(15)
   = render 'building_up', { building: t_building, building_level: 1}
-/ SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
+  / SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
 - elsif building.nil? and @cell.have_user_road @current_user.id
   - terrain[:buildings].each do |b|
     - t_building = Building.get_building(b)
