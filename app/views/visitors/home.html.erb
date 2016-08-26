@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>    
+<head>
+    <style>
+      .body{
+        background-color: #2D2D2D;
+      }
+
+      .title{
+        color: #ffffff;
+        font-size: 72px;
+        font-family: verdana;
+        text-align: center;
+        margin-top: 4%;
+        margin-right: 1%;
+        margin-left: 1%;
+        padding: 15px;
+      }
+
+      .align{
+        margin-top: 10%;
+      }
+
+      .language{
+        background-color: #A0A0A0;
+        position: fixed;
+        top: 0%;
+        height: 3%;
+        width: 100%;
+      }
+
+      .textLanguage{
+        color: #2D2D2D;
+        position: absolute;
+        font-family: verdana;
+        text-align: center;
+        font-size: 13px;
+        margin-right: 3px;
+        top: -40%;
+        right: 1%;
+      }
+
+      .formLogin{
+        text-align: center;
+        font-size: 16px;
+        font-family: verdana;
+        color: #A0A0A0;
+      }
+
+      .formRegister{
+        text-align: center;
+        font-size: 16px;
+        position: absolute;
+        font-family: verdana;
+        color: #A0A0A0;
+      }
+
+
+      .logList{
+        text-align: center;
+        font-size: 16px;
+        position: absolute;
+        font-family: verdana;
+        color: #A0A0A0;
+        margin-bottom: 5%;
+      }
+
+      .ulLiAlign{
+        font-family: verdana;
+        font-size: 12px;
+        text-align: left;
+      }
+
+      .footer{
+        margin-top: 1px;
+        background-color: #A0A0A0;
+        text-align:center;
+        font-size: 14px;
+      }
+    </style>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RTS WEB</title>
+</head>
+<body class="body">
+    <div class="language">
+        <h6 class="textLanguage">
+                <!--Language-->
+        </h6>
+    </div>
+    <h1 class="title">
+        <b>
+             RTS WEB 
+        </b>
+    <h1>
+    <div class="align">
+        <div class="col-sm-4 formLogin form-group">
+            <p><b>LOGIN</b></p>
+            <%= form_for :user, url: 'login', html: { class: 'formL' } do |u| %>
+              <p><%= u.text_field(:login, placeholder: 'Login', class: 'formLenghtLogin') %></p>
+              <p><%= u.password_field(:password, placeholder: 'Senha', class: 'formLenghtLogin') %></p>
+              <p><input class="buttonIn" type="submit" value="Entrar" name="fname"></p>
+            <% end %>
+        </div>
+        <div class="col-sm-4 formRegister">
+            <p style="color: green"><b>REGISTRAR</b></p>
+            <%= form_for :user, url: 'register', html: { class: 'formR' } do |u| %>
+              <p><%= u.text_field(:login, placeholder: 'Login', class: 'formLenghtRegister') %></p>
+              <p><%= u.password_field(:password, placeholder: 'Senha', class: 'formLenghtRegister') %></p>
+              <p><%= u.password_field(:password_confirmation, placeholder: 'Confirmar Senha', class: 'formLenghtRegister') %></p>
+              <p>Cor: <%= u.color_field :color %></p>
+              <p><input class="buttonIn" type="submit" value="Registrar" name="fname"></p>
+            <% end %>
+        </div>
+        <div class="col-sm-4 logList">
+            <h3> Últimas atualizações</h3>
+            <h4>0.2 Alpha - ??/??/2016</h4>
+            <ul class="ulLiAlign">
+              <li>Ponte</li>
+              <li>Quartel</li>
+              <li>Hospital</li>
+              <li>Mensagens</li>
+              <li>Construir nas diagonais</li>
+              <li>Torre</li>
+              <li>Nomes são gerados aleatóriamente para a população</li>
+              <li>Mercado e Ferreiro só podem ser construídos uma vez</li>
+              <li>Tropas: lanceiro, arqueiro e espadachim</li>
+              <li>Fila de treino de unidaides</li>
+            </ul>
+            <h4> 0.1 Alpha - 16/08/2016</h4>
+            <ul class="ulLiAlign">
+              <li>Mercado adicionado.</li>
+              <li>Ferreiro adicionado.</li>
+              <li>Relatórios em funcionamento.</li>
+              <li>Ranking por pontuaçao.</li>
+              <li>Nova navegação de mapa.</li>
+              <li>Quantidade de ouro e pedras maior.</li>
+              <li>Servidor no Brasil (São Paulo).</li>
+              <li>Melhor compatibilidade com celular.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-12 footer navbar-fixed-bottom ">
+        <div class="container">
+            RTS WEB - 2016
+        </div>
+    </div>
+</body>
+</html>
