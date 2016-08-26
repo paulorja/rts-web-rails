@@ -14,18 +14,18 @@
   = "(X: #{@cell.x} Y: #{@cell.y})"
 
 / SE TEM CONSTRUÇÃO DO USUÁRIO PODE CONSTRUIR PONTE
-- if building.nil? and @cell.can_build_wall
-  - t_building = Building.get_building(15)
-  = render 'building_up', { building: t_building, building_level: 1}
-  / SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
-- elsif building.nil? and @cell.have_user_road @current_user.id
+/ SE NÃO TEM CONSTRUÇÃO E POSSUI ESTRADA
+
+- if building.nil? and @cell.have_user_road @current_user.id
   - terrain[:buildings].each do |b|
     - t_building = Building.get_building(b)
     - unless t_building[:unique] and @current_user.have_building(t_building[:code])
       = render 'building_up', { building: t_building, building_level: 1}
-
   = render 'world/terrains/tree'  if @cell.is_tree
   = render 'world/terrains/stone' if @cell.is_stone
+- elsif building.nil? and @cell.can_build_wall @current_user.id
+  - t_building = Building.get_building(15)
+  = render 'building_up', { building: t_building, building_level: 1}
 - elsif building.nil? and @cell.have_user_bridge @current_user.id and @cell.is_grass
   - t_building = Building.get_building(2)
   = render 'building_up', { building: t_building, building_level: 1}
