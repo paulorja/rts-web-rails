@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  body: MyText
+  from_user_id: 
+  to_user_id: 
+  parent_user_message_id: 
+  read: false
+
+two:
+  title: MyString
+  body: MyText
+  from_user_id: 
+  to_user_id: 
+  parent_user_message_id: 
+  read: false

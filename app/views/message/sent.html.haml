@@ -1,0 +1,16 @@
+
+#game-content-left
+  = render 'menu'
+#game-content-right
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Jogador
+        %th Título
+        %th Data
+    %tbody
+      - @messages.each do |m|
+        %tr{onclick: "Turbolinks.visit('/message/detail/#{m.id}')"}
+          %td= m.to_user.login
+          %td= m.title
+          %td= m.created_at

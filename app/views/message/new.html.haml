@@ -1,0 +1,33 @@
+
+#game-content-left
+  = render 'menu'
+#game-content-right
+  = form_tag('/message/new', method: :post) do
+
+    %br
+    %br
+    %br
+    %br
+
+    %label
+      Jogador
+      %br
+      %input{name: 'user_login'}
+
+    %br
+
+    %label
+      Título da Mensagem
+      %br
+      %input{name: 'title'}
+
+    %br
+
+    %label
+      Mensagem
+      %br
+      %textarea{name: 'body'}
+
+    %br
+    %button{type: 'submit'}
+      Enviar

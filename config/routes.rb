@@ -65,10 +65,16 @@ Rails.application.routes.draw do
   get '/reports/market', to: 'report#market'
   get '/report_detail/:report_id', to: 'report#report_detail'
 
-  # blacksmith
+  #blacksmith
   get '/blacksmith', to: 'blacksmith#home'
   get '/blacksmith/:up_column', to: 'blacksmith#up_item'
 
+  #message
+  get '/message', to: 'message#index'
+  get '/message/detail/:id', to: 'message#detail'
+  get '/message/sent', to: 'message#sent'
+  get '/message/new', to: 'message#new'
+  match'/message/new', to: 'message#post_new', via: :post
 
 
 

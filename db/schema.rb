@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818031941) do
+ActiveRecord::Schema.define(version: 20160825232739) do
 
   create_table "cell_units", force: :cascade do |t|
     t.integer "cell_id", limit: 4
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20160818031941) do
     t.integer  "total_territories", limit: 4,   default: 0
     t.integer  "score",             limit: 4,   default: 0
     t.integer  "new_reports",       limit: 4,   default: 0
+    t.integer  "new_message",       limit: 4,   default: 0
     t.integer  "blacksmith_hoe",    limit: 4,   default: 0
     t.integer  "blacksmith_axe",    limit: 4,   default: 0
     t.integer  "blacksmith_pick",   limit: 4,   default: 0
@@ -130,6 +131,16 @@ ActiveRecord::Schema.define(version: 20160818031941) do
   end
 
   add_index "user_data", ["user_id"], name: "index_user_data_on_user_id", using: :btree
+
+  create_table "user_messages", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.text     "body",         limit: 65535
+    t.integer  "from_user_id", limit: 4
+    t.integer  "to_user_id",   limit: 4
+    t.boolean  "read"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "login",      limit: 255

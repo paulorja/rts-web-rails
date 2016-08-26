@@ -1,0 +1,10 @@
+
+.content-title Mensagens
+
+.side-menu
+  .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'message' and action_name == 'index')}
+    = link_to 'Caixa de Entrada', '/message'
+  .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'message' and action_name == 'sent')}
+    = link_to 'Caixa de Saída', '/message/sent'
+  .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'message' and action_name == 'new')}
+    = link_to 'Nova Mensagem', '/message/new'
