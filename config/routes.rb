@@ -76,6 +76,7 @@ Rails.application.routes.draw do
   get '/message/new', to: 'message#new'
   match'/message/new', to: 'message#post_new', via: :post
 
-
+  #battle
+  get '/battle/attack/:cell_id', to: 'battle#attack'
 
 end

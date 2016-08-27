@@ -4,7 +4,9 @@ class Report < ActiveRecord::Base
 
   enum report_type: [
       :user_accept_offer,
-      :user_recourses_arrived
+      :user_recourses_arrived,
+      :battle_start,
+      :battle_end
   ]
 
   def self.report_detail(report_id, user_data)

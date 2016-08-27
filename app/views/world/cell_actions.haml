@@ -60,6 +60,11 @@
   / UNIDADES
   = render 'world/buildings/units', {building: building}
 
+//SE A CONSTRUÇÃO É DE OUTRO USUÁRIO
+- if @cell.user_id != @current_user.id and @cell.user_id != 0 and @cell.user_id != nil
+  = link_to "/battle/attack/#{@cell.id}" do
+    %button.btn-lg{style: 'background: red'} ATACAR!
+
 :javascript
   refresh_label_timers();
 

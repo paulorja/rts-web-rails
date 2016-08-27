@@ -10,6 +10,7 @@ class CreateCells < ActiveRecord::Migration
       t.integer :user_id, default: 0
       t.string :villagers
       t.boolean :idle, default: true
+      t.boolean :battle, default: true
     end
     execute 'ALTER TABLE cells ADD INDEX (x, y)'
   end

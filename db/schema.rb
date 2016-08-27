@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825232739) do
+ActiveRecord::Schema.define(version: 20160827203547) do
+
+  create_table "battles", force: :cascade do |t|
+    t.integer  "user_from_id", limit: 4
+    t.integer  "user_to_id",   limit: 4
+    t.integer  "cell_to_id",   limit: 4
+    t.text     "battle_data",  limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "cell_units", force: :cascade do |t|
     t.integer "cell_id", limit: 4
@@ -31,9 +40,17 @@ ActiveRecord::Schema.define(version: 20160825232739) do
     t.integer "user_id",        limit: 4,   default: 0
     t.string  "villagers",      limit: 255
     t.boolean "idle",                       default: true
+    t.boolean "battle",                     default: true
   end
 
   add_index "cells", ["x", "y"], name: "x", using: :btree
+
+  create_table "event_battles", force: :cascade do |t|
+    t.integer "user_from_id", limit: 4
+    t.integer "user_to_id",   limit: 4
+    t.integer "cell_id",      limit: 4
+    t.integer "battle_id",    limit: 4
+  end
 
   create_table "event_blacksmiths", force: :cascade do |t|
     t.integer "event_id",  limit: 4
@@ -86,6 +103,13 @@ ActiveRecord::Schema.define(version: 20160825232739) do
     t.integer  "arrivet_at",      limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "report_battles", force: :cascade do |t|
+    t.integer  "report_id",  limit: 4
+    t.integer  "battle_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "report_market_offers", force: :cascade do |t|

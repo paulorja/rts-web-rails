@@ -46,4 +46,12 @@
 
     return "#{first_names.sample} #{last_names.sample}"
   end
+
+  def self.all_user_armies(user_id)
+    CellUnit.where('user_id = ? and unit != 1', user_id)
+  end
+
+  def self.user_have_idle_army(user_id)
+    true if CellUnit.where('user_id = ? and unit != 1', user_id).first
+  end
 end
