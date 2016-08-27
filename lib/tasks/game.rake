@@ -16,4 +16,24 @@ namespace :game do
     puts '9999 recourses to all users'
   end
 
+  task :create_map => :environment do
+    require './lib/WorldCreation'
+
+    conn = ActiveRecord::Base.connection
+
+    WorldCreation.new(conn)
+
+    puts 'Create map'
+  end
+
+  task :reset_server => :environment do
+    Rake::Task['db:drop'].invoke
+    Rake::Task['db:create'].invoke
+    Rake::Task['db:migrate'].invoke
+    Rake::Task['db:seed'].invoke
+    Rake::Task['game:create_map'].invoke
+
+    puts 'READY TO PLAY'
+  end
+
 end
