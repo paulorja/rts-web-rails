@@ -23,6 +23,8 @@ class CreateUserData < ActiveRecord::Migration
       t.integer :blacksmith_axe, default: 0
       t.integer :blacksmith_pick, default: 0
       t.string :last_update
+      t.boolean :have_market
+      t.boolean :have_blacksmith
 
       t.timestamps null: false
     end

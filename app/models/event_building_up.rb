@@ -19,6 +19,10 @@ class EventBuildingUp < ActiveRecord::Base
       user_data.max_pop += BUILDING[:house][:levels][cell.building_level][:population]
     when BUILDING[:castle][:code]
       user_data.max_roads += BUILDING[:castle][:levels][cell.building_level][:roads]
+    when BUILDING[:market][:code]
+      user_data.have_market = true
+    when BUILDING[:blacksmith][:code]
+      user_data.have_blacksmith = true
     else
     end
 

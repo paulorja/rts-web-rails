@@ -6,6 +6,7 @@
         {
         },
         {
+            castle_level: 3,
             stone: 50,
             time: 15
         }

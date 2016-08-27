@@ -19,7 +19,9 @@
 - if building.nil? and @cell.have_user_road @current_user.id
   - terrain[:buildings].each do |b|
     - t_building = Building.get_building(b)
-    - unless t_building[:unique] and @current_user.have_building(t_building[:code])
+    - if t_building[:code] == BUILDING[:market][:code] and @user_data.have_market
+    - elsif t_building[:code] == BUILDING[:blacksmith][:code] and @user_data.have_blacksmith
+    - else
       = render 'building_up', { building: t_building, building_level: 1}
 - else
   - if building.nil? and @cell.can_build_wall @current_user.id

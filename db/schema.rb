@@ -127,6 +127,8 @@ ActiveRecord::Schema.define(version: 20160825232739) do
     t.integer  "blacksmith_axe",    limit: 4,   default: 0
     t.integer  "blacksmith_pick",   limit: 4,   default: 0
     t.string   "last_update",       limit: 255
+    t.boolean  "have_market"
+    t.boolean  "have_blacksmith"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
   end
