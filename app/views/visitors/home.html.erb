@@ -111,7 +111,7 @@
               <p><%= u.text_field(:login, placeholder: 'Login', class: 'formLenghtRegister') %></p>
               <p><%= u.password_field(:password, placeholder: 'Senha', class: 'formLenghtRegister') %></p>
               <p><%= u.password_field(:password_confirmation, placeholder: 'Confirmar Senha', class: 'formLenghtRegister') %></p>
-              <p>Cor: <%= u.color_field :color %></p>
+              <p>Cor: <%= u.color_field :color, value: @random_color %></p>
               <p><input class="buttonIn" type="submit" value="Registrar" name="fname"></p>
             <% end %>
         </div>
