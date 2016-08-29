@@ -46,74 +46,74 @@
             score: 2
         },
         {
-            stone: 3250,
+            stone: 2800,
             gold: 1490,
             time: 2400,
             roads: 7,
             score: 2
         },
         {
-            stone: 5900,
-            gold: 3500,
+            stone: 4200,
+            gold: 2235,
             time: 3600,
             roads: 7,
-            score: 3
+            score: 2
+        },
+        {
+            stone: 6300,
+            gold: 3350,
+            time: 5400,
+            roads: 7,
+            score: 2
         },
         {
             stone: 9500,
-            gold: 5500,
-            time: 7400,
+            gold: 5020,
+            time: 8100,
             roads: 7,
             score: 3
         },
         {
-            stone: 16580,
-            gold: 9000,
-            time: 13400,
+            stone: 14200,
+            gold: 7540,
+            time: 12150,
             roads: 7,
             score: 3
         },
         {
-            stone: 31500,
-            gold: 14500,
-            time: 23100,
+            stone: 21200,
+            gold: 11500,
+            time: 18200,
             roads: 7,
             score: 3
         },
         {
-            stone: 52500,
-            gold: 30500,
-            time: 33100,
+            stone: 32000,
+            gold: 16970,
+            time: 27250,
             roads: 7,
             score: 3
         },
         {
-            stone: 85500,
-            gold: 44500,
-            time: 43100,
-            roads: 7,
-            score: 3
-        },
-        {
-            stone: 105555,
-            gold: 74500,
-            time: 53100,
+            stone: 48040,
+            gold: 25450,
+            time: 41000,
             roads: 7,
             score: 4
         },
         {
-            stone: 125500,
-            gold: 104500,
-            time: 63100,
+            stone: 71700,
+            gold: 38180,
+            time: 61500,
             roads: 7,
             score: 4
         },
         {
-            stone: 145000,
-            gold: 120250,
-            time: 83100,
+            stone: 107650,
+            gold: 57280,
+            time: 92250,
             roads: 7,
-            score: 4
+            score: 5
         }
     ]
 }
