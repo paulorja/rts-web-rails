@@ -17,7 +17,7 @@
       = link_to('', "/message")
   - @user_data.reload
 
-  .navbar-item{style: 'width: 268px; margin-left:20px'}
+  .navbar-item{style: 'width: 230px; margin-left:60px;'}
 
   = render 'layouts/navbar_recourse', { amount: @user_data.wood.to_i, recourse: :wood,   max: @user_data.storage, villagers: @user_data.wood_villagers }
   = render 'layouts/navbar_recourse', { amount: @user_data.stone.to_i, recourse: :stone, max: @user_data.storage, villagers: @user_data.stone_villagers }
@@ -28,7 +28,7 @@
 
   .navbar-item.user-data-toggle-component-btn.icon-toggle-btn.icon-no-repeat
 
-  .navbar-item{style: 'float:right; font-size: 11px'}
+  .navbar-item{style: 'float:right; font-size: 11px; font-family: verdana;'}
 
     = link_to @current_user.login, user_profile_path(@current_user.login)
     = link_to('X', '/logout')
@@ -78,7 +78,7 @@
     %span= "Total: #{@user_data.total_pop}"
     %span= " Limite: #{@user_data.max_pop}"
     %br
-    %strong Estadas
+    %strong Estradas
     %br
     %span= "Total: #{@user_data.total_roads}"
     %span= "Limite #{@user_data.max_roads}"

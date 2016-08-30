@@ -54,23 +54,25 @@
 
 /* NAVBAR RECOURSE */
 
-.recourse-container {
+.recourse-container { /*topo, recursos*/
   width: 70px;
   font-size: 10px;
+  font-family: verdana;
 }
 
-.recourse-icon {
+.recourse-icon{ /*fundo desenho recursos do topo*/
   float: left;
-  height: 20px;
+  height: 30px;
   width: 20px;
 }
 
 .recourse-icon img {
   float: left;
   margin: 3px;
+  margin-left: 4px;
 }
 
-.recourse-label {
+.recourse-label {/*fundo imagens topo*/
   width: 45px;
   float: right;
   height: 14px;
@@ -78,27 +80,26 @@
   text-align: center;
 }
 
-.recourse-progress-bar {
+.recourse-progress-bar { /*barra de progresso recursos topo*/
   width: 45px;
-  height: 3px;
+  height: 4px;
   background: red;
   float: right;
 }
 
-.recourse-progress-bar-completed {
-  height: 3px;
+.recourse-progress-bar-completed { /*barra de progresso completa*/
+  height: 4px;
   background: green;
   float: left;
 }
 
-
-.user-data-toggle-component-btn {
+.user-data-toggle-component-btn { /*botão visualizar produção*/
   width: 24px;
   height:24px;
   margin-left:5px;
 }
 
-.user-data-toggle-component-btn:hover {
+.user-data-toggle-component-btn:hover { /*botão produção mouse hover*/
   cursor: pointer;
   width: 26px;
   height: 26px;
@@ -107,12 +108,12 @@
 .user-data-toggle-component {
   position: absolute;
   background-color: #454545;
-  left:240px;
-  top:0px;
-  width:334px;
-  height:270px;
+  left:345px;
+  top:30px;
+  width:235px;
+  height:220px;
   z-index: 4;
-  padding: 5px;
+  padding: 15px;
   display: none;
   border-bottom: 3px groove white;
   border-left: 3px groove white;
