@@ -14,18 +14,32 @@
             castle_level: 2
         },
         {
-            wood: 350,
-            stone: 200,
-            time: 260,
+            wood: 650,
+            stone: 300,
+            time: 280,
             score: 2,
-            castle_level: 2
+            castle_level: 5
         },
         {
-            wood: 450,
-            stone: 400,
+            wood: 1450,
+            stone: 500,
             time: 460,
             score: 2,
-            castle_level: 3
+            castle_level: 6
+        },
+        {
+            wood: 2500,
+            stone: 800,
+            time: 780,
+            score: 2,
+            castle_level: 7
+        },
+        {
+            wood: 4200,
+            stone: 1400,
+            time: 1350,
+            score: 2,
+            castle_level: 8
         }
     ]
 }

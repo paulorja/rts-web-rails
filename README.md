@@ -65,3 +65,11 @@
 * cd container/mysql 
 * docker build nome_container .
 * docker run nome_container
+
+### ------------------------------ ###
+
+### COMANDOS DEV ###
+* **rails s** rodar o game
+* **rake game:reset_server** reseta a base de dados e gera um novo mapa
+* **rake game:rec999** enche os recursos de todos os jogadores
+* **rake game:resolve_events** termina todos os eventos do jogo

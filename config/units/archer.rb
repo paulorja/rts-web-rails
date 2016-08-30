@@ -4,8 +4,8 @@
 	css_class: 'sprite-archer',
 	attack: 8,
 	pricing: {
-		wood: 400,
-		gold: 250,
+		wood: 250,
+		gold: 500,
 		time: 120
 	}
 }
