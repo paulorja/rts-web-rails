@@ -6,7 +6,8 @@ class Event < ActiveRecord::Base
                     :offer_begin,
                     :offer_end,
                     :blacksmith,
-                    :event_new_unit]
+                    :event_new_unit,
+                    :battle]
 
 
   def wait_time
