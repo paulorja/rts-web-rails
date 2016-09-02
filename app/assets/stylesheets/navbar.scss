@@ -10,15 +10,15 @@
   border-bottom: 3px solid $dark-2;
 }
 
-.navbar-links-item a {
+.navbar-links-item a { /*menu superior esquerdo*/
   display: block;
   height: 100%;
   width: 100%;
 }
 
-.navbar-links-item-active {
+.navbar-links-item-active { /*menu superior fundo ao clicar*/
   border-bottom: 3px solid #0083ee;
-  background-color: #525252;
+  background-color: #656565;
 }
 
 .navbar-links-item:hover {
@@ -46,7 +46,7 @@
   background-image: asset-url("sprites/icons/messages.png");
 }
 
-.navbar-links {
+.navbar-links { /*entre-menu*/
   height: 28px;
   width: 280px;
   position: absolute;
@@ -54,23 +54,23 @@
 
 /* NAVBAR RECOURSE */
 
-.recourse-container {
+.recourse-container { /*barra de recursos*/
   width: 70px;
   font-size: 10px;
 }
 
-.recourse-icon {
+.recourse-icon { /*icone dos recursos*/
   float: left;
   height: 20px;
   width: 20px;
 }
 
-.recourse-icon img {
+.recourse-icon img { /*imagem dos icones de recursos*/
   float: left;
   margin: 3px;
 }
 
-.recourse-label {
+.recourse-label { /*contador de recursos com a barra incluida*/
   width: 45px;
   float: right;
   height: 14px;
@@ -78,33 +78,33 @@
   text-align: center;
 }
 
-.recourse-progress-bar {
+.recourse-progress-bar { /*barra de progresso*/
   width: 45px;
   height: 3px;
   background: red;
   float: right;
 }
 
-.recourse-progress-bar-completed {
+.recourse-progress-bar-completed { /*barra de progresso*/
   height: 3px;
   background: green;
   float: left;
 }
 
 
-.user-data-toggle-component-btn {
+.user-data-toggle-component-btn { /*botão de produção/hr, o botão azul*/
   width: 24px;
   height:24px;
   margin-left:5px;
 }
 
-.user-data-toggle-component-btn:hover {
+.user-data-toggle-component-btn:hover { /*hover do botão*/
   cursor: pointer;
   width: 26px;
   height: 26px;
 }
 
-.user-data-toggle-component {
+.user-data-toggle-component{ /*recursos /hr janela*/
   position: absolute;
   background-color: #454545;
   left:240px;
