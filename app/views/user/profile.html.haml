@@ -5,7 +5,7 @@
   %h4= "Pontos: #{@user.user_data.score}"
   %h4= "Territórios: #{@user.user_data.total_territories}"
   %h4= "População: #{@user.user_data.total_pop}"
-  %h4= link_to(@user.castle_path, 'Ver no mapa')
+  %h4= link_to('Ver no mapa', @user.castle_path)
   %h4= "Começou em: #{@user.created_at}"
 
 #game-content-right
