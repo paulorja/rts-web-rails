@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
 
     start_position[:roads].each_with_index do |road, index|
       if index == 1
-        road.cell_units.create({unit: 1, user_id: id, name: CellUnit.random_name})
-        road.cell_units.create({unit: 1, user_id: id, name: CellUnit.random_name})
+        road.cell_units.create({unit: 1, user_id: id, name: CellUnit.random_name, attack: UNIT[:villager][:attack]})
+        road.cell_units.create({unit: 1, user_id: id, name: CellUnit.random_name, attack: UNIT[:villager][:attack]})
       end
 
       road.building_code = BUILDING[:road][:code]
@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
 
   def self.user_distance(u1, u2)
     Cell.point_distance(u1.castle_x, u1.castle_y, u2.castle_x, u2.castle_y)
+  end
+
+  def all_armies
+    CellUnit.where('unit != ?', UNIT[:villager][:code])
   end
 
 end

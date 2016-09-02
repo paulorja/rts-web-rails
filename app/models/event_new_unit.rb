@@ -35,7 +35,9 @@ class EventNewUnit < ActiveRecord::Base
   def self.resolve(e)
     event_new_unit = EventNewUnit.includes(:cell, :user).where('event_id = ?', e.id).first
     next_road = event_new_unit.cell.next_road
-    CellUnit.create(unit: event_new_unit.unit, cell_id: next_road.id, user_id: event_new_unit.user_id, name: CellUnit.random_name)
+    unit = Unit.get_unit(event_new_unit.unit)
+
+    CellUnit.create(unit: event_new_unit.unit, cell_id: next_road.id, user_id: event_new_unit.user_id, name: CellUnit.random_name, attack: unit[:attack])
 
     e.destroy
     event_new_unit.destroy

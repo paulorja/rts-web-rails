@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160827203547) do
   create_table "battles", force: :cascade do |t|
     t.integer  "user_from_id", limit: 4
     t.integer  "user_to_id",   limit: 4
-    t.integer  "cell_to_id",   limit: 4
+    t.integer  "cell_id",      limit: 4
     t.text     "battle_data",  limit: 65535
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20160827203547) do
     t.integer "user_id", limit: 4
     t.integer "unit",    limit: 4
     t.boolean "hurt",                default: false
+    t.boolean "idle",                default: true
+    t.float   "attack",  limit: 24,  default: 0.0
     t.string  "name",    limit: 255
   end
 

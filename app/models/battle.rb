@@ -1,7 +1,7 @@
 class Battle < ActiveRecord::Base
   belongs_to :user_from, class_name: 'User', foreign_key: :user_from_id
   belongs_to :user_to, class_name: 'User', foreign_key: :user_to_id
-  belongs_to :cell_to, class_name: 'Cell', foreign_key: :cell_to_id
+  belongs_to :cell
 
 
   def can_attack

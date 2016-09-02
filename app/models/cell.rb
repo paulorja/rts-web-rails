@@ -469,6 +469,10 @@ class Cell < ActiveRecord::Base
     html.html_safe
   end
 
+  def have_unit
+    true if CellUnit.where('cell_id = ?', id).first.nil?
+  end
+
   def build(user_data, current_user, building_code)
     building = Building.get_building(building_code.to_i)
     terrain = Terrain.get_terrain(terrain_code)
@@ -480,6 +484,8 @@ class Cell < ActiveRecord::Base
     return 'Nível máximo atingido' if building[:levels][building_level+1].nil?
     return "Requer castelo nível #{building[:levels][building_level+1][:castle_level].to_i}" unless current_user.castle.building_level >= building[:levels][building_level+1][:castle_level].to_i
     return 'Você não pode construir neste terreno' unless terrain_can_build(terrain, building)
+    return 'Voce não pode evoluir um edificio com pessoas dentro' unless have_unit
+
 
     if building_code == BUILDING[:wall][:code].to_s
       return 'Vocês não pode construir muralha aqui' if !can_build_wall(current_user.id)
