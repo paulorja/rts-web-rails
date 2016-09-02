@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20160827203547) do
     t.integer "user_id", limit: 4
     t.integer "unit",    limit: 4
     t.boolean "hurt",                default: false
+    t.boolean "idle",                default: true
+    t.float   "attack",  limit: 24,  default: 0.0
     t.string  "name",    limit: 255
   end
 

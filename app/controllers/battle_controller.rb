@@ -2,7 +2,7 @@ class BattleController < ApplicationController
 
 
   def attack
-
+    @armies = @current_user.all_armies
   end
 
   def send_attack

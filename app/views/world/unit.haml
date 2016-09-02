@@ -1,9 +1,10 @@
 
 - unit = Unit.get_unit(@unit.unit)
 .content-title
-  = @unit.name
+  = "#{unit[:name]}"
 
-Funcao:
-= unit[:name]
+%h4= "Nome: #{@unit.name}"
+%h4= "Ataque: #{@unit.attack}"
+
 
 .sprite{class: "#{unit[:css_class]}"}

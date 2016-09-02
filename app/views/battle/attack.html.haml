@@ -2,6 +2,20 @@
   = render 'menu'
 
 #game-content-right.text-center.simplebar
-  %h1 Selecione as tropas que vão para o ataque
+  %h4 Selecione as tropas que vão para o ataque
 
+  %div
+    %table.table
+      - @armies.each do |a|
+        - unit = Unit.get_unit(a.unit)
+        %tr
+          %td
+            %label
+              = check_box_tag('unit[]')
+              = "#{a.name} (#{unit[:name]})"
+              = "Atk: #{a.attack}"
+              %span.sprite-unit{class: unit[:css_class]}
 
+  %div
+    %button.btn-lg
+      Atacar!
