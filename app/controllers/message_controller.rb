@@ -23,7 +23,7 @@ class MessageController < ApplicationController
   end
 
   def new
-
+    @to_user = params[:user].to_s
   end
 
   def post_new
