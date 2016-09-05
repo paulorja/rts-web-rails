@@ -14,13 +14,13 @@ $(document).on('turbolinks:load', function() {
                 final_top = (cell_container.position().top-default_top)/64
                 final_left = (cell_container.position().left-default_left)/64
 
-                if (final_top) < 5 {
+                if (final_top < 5) {
                     final_top = 5;
                 }
                 if (final_top > 251) {
                     final_top = 251;
                 }
-                if (final_left) < 5 {
+                if (final_left < 5) {
                     final_left = 5;
                 }
                 if (final_left > 251) {
