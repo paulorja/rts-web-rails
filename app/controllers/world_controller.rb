@@ -7,10 +7,10 @@ class WorldController < ApplicationController
   def world_zoom
     set_x_y
 
-    @x = '4' if @x.to_i < 4
-    @y = '4' if @y.to_i < 4
-    @x = '252' if @x.to_i > 252
-    @y = '252' if @y.to_i > 252
+    @x = '5' if @x.to_i < 5
+    @y = '5' if @y.to_i < 5
+    @x = '251' if @x.to_i > 251
+    @y = '251' if @y.to_i > 251
 
 
     @cells = Cell.includes(:user, :cell_units, event_battle: :event, event_building_up: :event, event_building_destroy: :event, event_to_grass: :event).world_zoom(@x, @y)
