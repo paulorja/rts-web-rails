@@ -369,6 +369,8 @@ class Cell < ActiveRecord::Base
       name = 'road'
     end
 
+    return "sprite-#{name}" if building_level == 0
+
     return "sprite-#{name}-bt-90"  if right_cell.is_road and !left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
     return "sprite-#{name}-bt-90"  if !right_cell.is_road and left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
     return "sprite-#{name}-bt-90"  if right_cell.is_road and left_cell.is_road and !top_cell.is_road and !bottom_cell.is_road
@@ -386,6 +388,33 @@ class Cell < ActiveRecord::Base
     return "sprite-#{name}-all"    if right_cell.is_road and left_cell.is_road and top_cell.is_road and bottom_cell.is_road
 
     "sprite-#{name}-bt-180"
+  end
+
+  def wall_css_class(cells)
+    top_cell = top(cells)
+    left_cell = left(cells)
+    bottom_cell = bottom(cells)
+    right_cell = right(cells)
+
+    return "sprite-wall" if building_level == 0
+
+    return "sprite-wall-bt-90"  if right_cell.is_wall and !left_cell.is_wall and !top_cell.is_wall and !bottom_cell.is_wall
+    return "sprite-wall-bt-90"  if !right_cell.is_wall and left_cell.is_wall and !top_cell.is_wall and !bottom_cell.is_wall
+    return "sprite-wall-bt-90"  if right_cell.is_wall and left_cell.is_wall and !top_cell.is_wall and !bottom_cell.is_wall
+
+    return "sprite-wall-br"     if right_cell.is_wall and !left_cell.is_wall and !top_cell.is_wall and bottom_cell.is_wall
+    return "sprite-wall-br-90"  if !right_cell.is_wall and left_cell.is_wall and !top_cell.is_wall and bottom_cell.is_wall
+    return "sprite-wall-br-180" if !right_cell.is_wall and left_cell.is_wall and top_cell.is_wall and !bottom_cell.is_wall
+    return "sprite-wall-br-270" if right_cell.is_wall and !left_cell.is_wall and top_cell.is_wall and !bottom_cell.is_wall
+
+    return "sprite-wall-btr"     if right_cell.is_wall and !left_cell.is_wall and top_cell.is_wall and bottom_cell.is_wall
+    return "sprite-wall-btr-90"  if right_cell.is_wall and left_cell.is_wall and !top_cell.is_wall and bottom_cell.is_wall
+    return "sprite-wall-btr-180" if !right_cell.is_wall and left_cell.is_wall and top_cell.is_wall and bottom_cell.is_wall
+    return "sprite-wall-btr-270" if right_cell.is_wall and left_cell.is_wall and top_cell.is_wall and !bottom_cell.is_wall
+
+    return "sprite-wall-all"    if right_cell.is_wall and left_cell.is_wall and top_cell.is_wall and bottom_cell.is_wall
+
+    "sprite-is_wall-bt-180"
   end
 
   def self.render_layers(cells, current_user)
@@ -409,14 +438,10 @@ class Cell < ActiveRecord::Base
         if cell.user_id == current_user.id
           villager_action = "v-action='#{building[:action]}'" if building[:action]
         end
-        if cell.is_road and cell.building_level == 0
-          if cell.is_water
-            sprites_layer_2 << "<div class='sprite sprite-bridge-#{cell.building_level}'></div>"
-          else
-            sprites_layer_2 << "<div class='sprite sprite-road-#{cell.building_level}'></div>"
-          end
-        elsif cell.is_road
+        if cell.is_road
           sprites_layer_2 << "<div class='sprite #{cell.road_css_class(cells)}-#{cell.building_level}'></div>"
+        elsif cell.is_wall
+          sprites_layer_2 << "<div class='sprite #{cell.wall_css_class(cells)}-#{cell.building_level}'></div>"
         else
           sprites_layer_2 << "<div class='sprite #{building[:css_class]}-#{cell.building_level}'></div>"
         end

@@ -10,14 +10,14 @@
         {
         },
         {
-            time: 5
+            time: 7
         }
     ],
     bridge_levels: [
         {
         },
         {
-            time: 55,
+            time: 95,
             wood: 120
         }
     ]
