@@ -14,25 +14,29 @@ $(document).on('turbolinks:load', function() {
                 final_top = (cell_container.position().top-default_top)/64
                 final_left = (cell_container.position().left-default_left)/64
 
-                if (final_top < 5) {
-                    final_top = 5;
+                //ruby set x and y (url params)
+                var final_x = x-final_left;
+                var final_y = y-final_top;
+
+                if (final_x < 5) {
+                    final_x = 5;
                 }
-                if (final_top > 251) {
-                    final_top = 251;
+                if (final_x > 251) {
+                    final_x = 251;
                 }
-                if (final_left < 5) {
-                    final_left = 5;
+                if (final_y < 5) {
+                    final_y = 5;
                 }
-                if (final_left > 251) {
-                    final_left = 251;
+                if (final_y > 251) {
+                    final_y = 251;
                 }
 
 
                 if(final_top != 0 || final_left != 0) {
                     var url = '/world_zoom/';
-                    url += parseInt((x-final_left)).toString();
+                    url += parseInt((final_x)).toString();
                     url += '/'
-                    url += parseInt((y-final_top)).toString();
+                    url += parseInt((final_y)).toString();
 
                     Turbolinks.visit(url);
                 } else {
