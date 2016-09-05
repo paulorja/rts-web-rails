@@ -414,7 +414,7 @@ class Cell < ActiveRecord::Base
 
     return "sprite-wall-all"    if right_cell.is_wall and left_cell.is_wall and top_cell.is_wall and bottom_cell.is_wall
 
-    "sprite-is_wall-bt-180"
+    "sprite-wall-bt-180"
   end
 
   def self.render_layers(cells, current_user)
