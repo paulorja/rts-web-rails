@@ -4,8 +4,8 @@
 	css_class: 'sprite-swordsman',
 	attack: 9,
 	pricing: {
-		food: 2850,
-		gold: 750,
+		food: 2250,
+		gold: 850,
 		time: 480
 	}
 }
