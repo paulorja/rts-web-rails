@@ -3,7 +3,7 @@
 .navbar-links-item {
   float: left;
   background: center center no-repeat;
-  width: 48px;
+  width: 46px;
   height: 48px;
   padding-bottom: 10px;
   background-color: $dark-1;
@@ -44,6 +44,9 @@
 }
 .message-button {
   background-image: asset-url("sprites/icons/messages.png");
+}
+.battles-button {
+  background-image: asset-url("sprites/icons/battles.png");
 }
 
 .navbar-links { /*entre-menu*/

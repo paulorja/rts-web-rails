@@ -31,6 +31,8 @@ class Event < ActiveRecord::Base
           EventBlacksmith.resolve e
         when 'event_new_unit'
           EventNewUnit.resolve e
+        when 'battle'
+          EventBattle.resolve e
         else
           raise 'Fodeo'
       end

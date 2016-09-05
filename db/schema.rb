@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20160827203547) do
     t.integer  "user_to_id",   limit: 4
     t.integer  "cell_id",      limit: 4
     t.text     "battle_data",  limit: 65535
+    t.integer  "step",         limit: 4
+    t.integer  "total_steps",  limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
@@ -48,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160827203547) do
   add_index "cells", ["x", "y"], name: "x", using: :btree
 
   create_table "event_battles", force: :cascade do |t|
+    t.integer "event_id",     limit: 4
     t.integer "user_from_id", limit: 4
     t.integer "user_to_id",   limit: 4
     t.integer "cell_id",      limit: 4

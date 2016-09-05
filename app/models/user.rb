@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
   end
 
   def all_armies
-    CellUnit.where('unit != ?', UNIT[:villager][:code])
+    CellUnit.where('unit != ? and user_id = ? and idle = true', UNIT[:villager][:code], id)
   end
 
 end

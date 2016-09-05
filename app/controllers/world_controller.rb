@@ -13,7 +13,7 @@ class WorldController < ApplicationController
     @y = '252' if @y.to_i > 252
 
 
-    @cells = Cell.includes(:user, :cell_units,event_building_up: :event, event_building_destroy: :event, event_to_grass: :event).world_zoom(@x, @y)
+    @cells = Cell.includes(:user, :cell_units, event_battle: :event, event_building_up: :event, event_building_destroy: :event, event_to_grass: :event).world_zoom(@x, @y)
   end
 
   def cell_actions

@@ -79,5 +79,6 @@ Rails.application.routes.draw do
 
   #battle
   get '/battle/attack/:cell_id', to: 'battle#attack'
+  match '/battle/send_attack', to: 'battle#send_attack', via: :post
 
 end

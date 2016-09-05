@@ -5,6 +5,8 @@ class CreateBattles < ActiveRecord::Migration
       t.references :user_to
       t.references :cell
       t.text :battle_data
+      t.integer :step
+      t.integer :total_steps
 
       t.timestamps null: false
     end

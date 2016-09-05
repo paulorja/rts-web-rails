@@ -4,18 +4,24 @@
 #game-content-right.text-center.simplebar
   %h4 Selecione as tropas que vão para o ataque
 
-  %div
-    %table.table
-      - @armies.each do |a|
-        - unit = Unit.get_unit(a.unit)
-        %tr
-          %td
-            %label
-              = check_box_tag('unit[]')
-              = "#{a.name} (#{unit[:name]})"
-              = "Atk: #{a.attack}"
-              %span.sprite-unit{class: unit[:css_class]}
-
-  %div
-    %button.btn-lg
-      Atacar!
+  = form_tag('/battle/send_attack', method: :post) do
+    = hidden_field_tag(:cell_id, params[:cell_id])
+    %div
+      %table.table
+        - @armies.each do |a|
+          - unit = Unit.get_unit(a.unit)
+          %tr
+            %td
+              %label
+                = check_box_tag('unit[]', a.id)
+                = "#{a.name} (#{unit[:name]})"
+                = "Atk: #{a.attack}"
+                %span.sprite-unit{class: unit[:css_class]}
+    %div
+      %h4 Número de combates
+      - (1..6).each do |i|
+        %label.custom-radio-label
+          = i
+          = radio_button_tag(:total_steps, i, nil, class: "custom-radio #{('custom-radio-checked' if i == 3)}")
+    %div
+      %button.btn-lg{type: 'submit'} Atacar
