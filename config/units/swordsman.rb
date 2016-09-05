@@ -2,10 +2,10 @@
 	name: 'Espadachim',
 	code: 3,
 	css_class: 'sprite-swordsman',
-	attack: 7,
+	attack: 9,
 	pricing: {
-		food: 700,
-		gold: 280,
-		time: 180
+		food: 2850,
+		gold: 750,
+		time: 480
 	}
 }
