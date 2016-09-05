@@ -1,0 +1,2 @@
+module MissionHelper
+end
