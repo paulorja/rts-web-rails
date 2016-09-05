@@ -20,7 +20,7 @@ module WorldHelper
       ActiveRecord::Base.connection.clear_query_cache
       castle = Cell.where('terrain_code = ?', 2).order('RAND()').first
 
-      if castle.x > 5 and castle.x < 250 and castle.y > 5 and castle.x < 250
+      if castle.x > 12 and castle.x < 243 and castle.y > 12 and castle.x < 243
 
         arredores3 = castle.arredores(3)
         wood = gold = stone = nil
