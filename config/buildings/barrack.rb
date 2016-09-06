@@ -7,11 +7,11 @@
         {
         },
         {
-            wood: 250,
-            stone: 100,
+            wood: 350,
+            stone: 225,
             time: 60,
             score: 2,
-            castle_level: 2
+            castle_level: 3
         },
         {
             wood: 650,
