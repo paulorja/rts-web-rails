@@ -9,7 +9,7 @@
         {
             wood: 250,
             stone: 200,
-            time: 120,
+            time: 60,
             castle_level: 2,
             score: 4
         }
