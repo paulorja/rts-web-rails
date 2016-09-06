@@ -12,7 +12,6 @@ class WorldController < ApplicationController
     @x = '251' if @x.to_i > 251
     @y = '251' if @y.to_i > 251
 
-
     @cells = Cell.includes(:user, :cell_units, event_battle: :event, event_building_up: :event, event_building_destroy: :event, event_to_grass: :event).world_zoom(@x, @y)
   end
 

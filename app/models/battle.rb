@@ -14,15 +14,55 @@ class Battle < ActiveRecord::Base
   end
 
   def combat
-    self.step += 1
-
     parse_battle_data = JSON.parse(battle_data)
 
     from_armies = group_armies(parse_battle_data['user_from_armies'])
     to_armies = group_armies(user_to.all_armies)
+    total_towers = count_towers(parse_battle_data['cells'])
+
+    total_atk = 0.0
+    from_armies.each {|f| (total_atk += f[1][:atk].to_f)}
+
+    total_def = 0.0
+    to_armies.each {|t| (total_def += t[1][:atk].to_f)}
+    total_def = total_def * (1+(total_towers.to_f/10))
+
+    if total_atk > total_def
+      pg = total_atk
+      pp = total_def
+
+      deaths_ratio = calculate_deaths_ratio(pp, pg)
+      from_armies.each do |f|
+        f[1][:deaths] = calculate_deaths(f[1][:qtd], deaths_ratio)
+        f[1][:hurts] = calculate_hurts(f[1][:qtd], f[1][:deaths])
+      end
+
+      to_armies.each do |t|
+        t[1][:deaths] = calculate_deaths(t[1][:qtd], 100)
+        t[1][:hurts] = calculate_hurts(t[1][:qtd], t[1][:deaths])
+      end
+    else
+      pp = total_atk
+      pg = total_def
+
+      deaths_ratio = calculate_deaths_ratio(pp, pg)
+      to_armies.each do |t|
+        t[1][:deaths] = calculate_deaths(t[1][:qtd], deaths_ratio)
+      end
+
+      from_armies.each do |f|
+        f[1][:deaths] = calculate_deaths(f[1][:qtd], 100)
+      end
+    end
+
+    #END BATTLE AND START SAVE DATA
+    #atacante
+    step_data = {
+
+    }
 
 
-
+    self.step += 1
     self.save
   end
 
@@ -53,6 +93,30 @@ class Battle < ActiveRecord::Base
       end
 
       group_armies
+    end
+
+    def calculate_deaths_ratio(pp, pg)
+      100*(pp/pg)**1.5
+    end
+
+    def calculate_deaths(qtd, deaths_ratio)
+      ((qtd.to_f * (deaths_ratio/100) * 0.33) + 0.25).to_i
+    end
+
+    def calculate_hurts(qtd, deaths)
+      if deaths == 0
+        ((qtd - deaths).to_f * (rand(60).to_f/100)).to_i
+      else
+        ((qtd - deaths).to_f * (rand(25).to_f/100)).to_i
+      end
+    end
+
+    def count_towers(cells)
+      total_towers = 0
+
+      cells.each {|c| (total_towers += 1 if c['building_code'] == BUILDING[:tower][:code])}
+
+      total_towers
     end
 
 end
