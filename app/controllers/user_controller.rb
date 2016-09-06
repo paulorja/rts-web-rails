@@ -6,6 +6,8 @@ class UserController < ApplicationController
 
     if @user and @user.password == user_params[:password]
       session['current_user_id'] = @user.id
+      session['current_user_login'] = @user.login
+
       redirect_to world_path
     else
       redirect_to root_path
@@ -21,6 +23,8 @@ class UserController < ApplicationController
       @user.create_user_data get_user_start_position
 
       session['current_user_id'] = @user.id
+      session['current_user_login'] = @user.login
+      
       redirect_to world_zoom_c_path(@user.castle_x, @user.castle_y)
     else
       redirect_to root_path

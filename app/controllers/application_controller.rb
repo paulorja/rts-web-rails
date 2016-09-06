@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
       user = User.includes(:user_data).where('id = ?', session['current_user_id']).first
       @current_user = user
       @user_data = user.user_data if @current_user
+
+      reset_session if session['current_user_login'] != @current_user.login      
     end
   end
 
