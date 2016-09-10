@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'world'            => 'world#world'
   get 'world_zoom'       => 'world#world_zoom'
   get 'world_zoom/:x/:y', to: 'world#world_zoom', as: 'world_zoom_c'
+  get 'world_zoom/:x/:y/:preselect_cell', to: 'world#world_zoom', as: 'world_zoom_c_pre'
   get 'world/:id'        => 'world#world_terrian'
 
   get 'world_zoom/:x/:y/build/:building_code', to: 'world#build', as: 'build'

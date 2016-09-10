@@ -1,11 +1,20 @@
 $(document).on('turbolinks:load', function() {
-
     var selected_sprite = null;
     var content_selected_sprite = $('.content-selected-sprite');
 
     var selected_unit = null;
     var content_selected_unit = $('.content-selected-unit');
 
+    if (preselect_cell){
+        selected_sprite = $(".link-sprite[obj_id='"+preselect_cell+"']");
+        selected_sprite.addClass('sprite-selected');
+        content_selected_sprite.addClass('animated slideInLeft');
+
+        $.get('/cell_actions/'+preselect_cell, function(data) {
+            content_selected_sprite.html(data);
+            content_selected_sprite.show();
+        });
+    }
 
     $(".link-sprite").click(function() {
         if(selected_unit != null && $(this).attr('v-action')) {
