@@ -17,7 +17,7 @@ class EventBuildingDestroy < ActiveRecord::Base
 
     #validations
     return 'Você não pode destruir um edifício com unidades' if cell.cell_units.size > 0
-    return 'Você não pode destruir esta estrada' unless cell.can_remove_road(user)
+    return 'Você não pode destruir esta estrada' if !cell.can_remove_road(user) and cell.is_road
     return 'Você não pode destruir seu castelo' if cell.is_castle
     return 'Este edifício não é seu' if cell.user_id != user.id
     return 'Suas estradas não chegam até aqui' unless cell.have_user_road user.id
