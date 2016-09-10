@@ -52,6 +52,8 @@ Rails.application.routes.draw do
 
   get '/admin',             to: 'admin#home'
   get '/admin/reset_world', to: 'admin#reset_world'
+  get '/admin/resolve_events', to: 'admin#resolve_events'
+  get '/admin/recourses', to: 'admin#recourses'
 
 
   #ranking

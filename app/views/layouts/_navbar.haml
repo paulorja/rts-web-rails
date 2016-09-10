@@ -85,3 +85,9 @@
     %span= "Total: #{@user_data.total_roads}"
     %span= "Limite #{@user_data.max_roads}"
 
+
+- if Rails.env.development?
+  %div{style: 'position:fixed; right: 0px; bottom: 0px; background: white;'}
+    %h4{style: 'color: black; margin:2px; padding: 2px;'} Painel de Testes
+    = link_to('Recursos', '/admin/recourses')
+    = link_to('Terminar', '/admin/resolve_events')
