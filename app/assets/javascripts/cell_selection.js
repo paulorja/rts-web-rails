@@ -104,3 +104,7 @@ function clear_selected_sprite() {
     $('.content-selected-sprite').html('');
     $('.content-selected-sprite').removeClass('animated slideInLeft');
 }
+
+function select_cell(cell) {
+
+}

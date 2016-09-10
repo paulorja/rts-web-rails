@@ -13,6 +13,12 @@ class WorldController < ApplicationController
     @y = '251' if @y.to_i > 251
 
     @cells = Cell.includes(:user, :cell_units, event_battle: :event, event_building_up: :event, event_building_destroy: :event, event_to_grass: :event).world_zoom(@x, @y)
+    if params[:preselect_cell]
+      @preselect_cell = params[:preselect_cell]
+    else
+      @preselect_cell = 0
+
+    end
   end
 
   def cell_actions
@@ -61,7 +67,7 @@ class WorldController < ApplicationController
       flash['alert'] = event
     end
 
-    redirect_to :back
+    redirect_to world_zoom_c_pre_path(cookies['last_x'], cookies['last_y'], params[:cell])
   end
 
   def to_grass
