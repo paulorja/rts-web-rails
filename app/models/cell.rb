@@ -348,6 +348,9 @@ class Cell < ActiveRecord::Base
     user_data.max_pop -= decrement_house
     user_data.save
 
+    user_data.have_blacksmith = false if is_blacksmith
+    user_data.market = false if is_market
+
     self.idle = true
     self.cell_units.update_all({cell_id: self.next_road.id})
     self.building_level = 0
