@@ -88,6 +88,118 @@ class Cell < ActiveRecord::Base
     Cell.where('x >= ? and y >= ? and x <= ? and y <= ?', x-range, y-range, x+range, y+range).order('y ASC, x ASC')
   end
 
+  def castle_come_here(user)
+    require './lib/a_star'
+
+    roads = Cell.where('user_id = ? and building_code = ?', user.id, BUILDING[:road][:code]).pluck(:x,  :y)
+
+    map_creator = ""
+    (0..256).each do |x|
+      (0..256).each do |y|
+        if user.castle_x == x and user.castle_y == y
+          map_creator << "@"
+        elsif self.x == x and self.y == y
+          map_creator << "X"
+        elsif roads.include? [x, y]
+          map_creator << "."
+        else
+          map_creator << "~"
+        end
+      end
+      map_creator << "\n"
+    end
+
+    map = Map.new map_creator
+
+    begin
+      map.find_route
+      return true
+    rescue
+      return false
+    end
+  end
+
+  def can_remove_road(user)
+    logger.info "#{Time.now.to_f} START CAN REMOVE ROAD"
+
+    require './lib/a_star'
+
+    roads = Cell.where('user_id = ? and building_code = ? and idle = true', user.id, BUILDING[:road][:code]).pluck(:x,  :y)
+    find = true
+    roads_arredores = []
+    arredores = arredores(1)
+    roads_arredores << arredores[1] if arredores[1].is_road
+    roads_arredores << arredores[3] if arredores[3].is_road
+    roads_arredores << arredores[5] if arredores[5].is_road
+    roads_arredores << arredores[7] if arredores[7].is_road
+
+    #construcoes ao redor
+
+    construcoes_ao_redor = []
+    arredores.each do |c|
+      if c.user_id == user.id and !c.is_road and c.id != self.id
+        construcoes_ao_redor << c
+      end
+    end
+
+    estradas_encontradas = 0
+
+    construcoes_ao_redor.each do |c|
+      c_arredores = c.arredores(1)
+      c_arredores.each do |c_a|
+        if c_a.is_road and c_a.id != self.id
+          estradas_encontradas += 1
+          break
+        end
+      end
+    end
+
+    map_creator = []
+
+    logger.info "#{Time.now.to_f} Start path finding to remove road"
+
+    if roads.include? [self.x, self.y]
+      roads.delete [self.x, self.y]
+
+      roads_arredores.each_with_index do |r, i|
+        map_creator << ""
+        (0..256).each do |x|
+          (0..256).each do |y|
+            if user.castle_x == x and user.castle_y == y
+              map_creator[i] << "@"
+            elsif r.x == x and r.y == y
+              map_creator[i] << "X"
+            elsif roads.include? [x, y]
+              map_creator[i] << "."
+            else
+              map_creator[i] << "~"
+            end
+          end
+          map_creator[i] << "\n"
+        end
+
+        map = Map.new map_creator[i]
+
+        begin
+          map.find_route
+        rescue
+          find = false
+        end
+      end
+    else
+      find = false
+    end
+
+    logger.info "#{Time.now.to_f} End path finding to remove road"
+
+    if find and estradas_encontradas == construcoes_ao_redor.size
+      true
+    else
+      false
+    end
+  end
+
+
   def terrain_can_build(terrain, building)
     return true if building[:code] == BUILDING[:castle][:code] and building_level > 0
     terrain[:buildings].each do |b|
@@ -346,6 +458,7 @@ class Cell < ActiveRecord::Base
     user_data.storage -= decrement_storage
     user_data.score -= decrement_score
     user_data.max_pop -= decrement_house
+    user_data.total_roads -= 1 if is_road
     user_data.save
 
     user_data.have_blacksmith = false if is_blacksmith
