@@ -620,8 +620,8 @@ class Cell < ActiveRecord::Base
     building = Building.get_building(building_code.to_i)
     terrain = Terrain.get_terrain(terrain_code)
 
-    return 'Você já tem um mercado' if user_data.have_market and building_code == BUILDING[:market][:code].to_s
-    return 'Você já tem um ferreiro' if user_data.have_blacksmith and building_code == BUILDING[:blacksmith][:code].to_s
+    return 'Você já tem um mercado' if user_data.have_market and building_code == BUILDING[:market][:code].to_s and building_level == 0
+    return 'Você já tem um ferreiro' if user_data.have_blacksmith and building_code == BUILDING[:blacksmith][:code].to_s and building_level == 0
 
     return 'Ocupado' unless idle?
     return 'Nível máximo atingido' if building[:levels][building_level+1].nil?
