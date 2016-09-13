@@ -337,12 +337,10 @@ class Cell < ActiveRecord::Base
       end
     end
 
-    if is_water
-      return true if arredores[1].is_road and arredores[1].is_water and arredores[1].user_id == user_id
-      return true if arredores[3].is_road and arredores[3].is_water and arredores[3].user_id == user_id
-      return true if arredores[5].is_road and arredores[5].is_water and arredores[5].user_id == user_id
-      return true if arredores[7].is_road and arredores[7].is_water and arredores[7].user_id == user_id
-    end
+    return true if arredores[1].is_road and arredores[1].is_water and arredores[1].user_id == user_id
+    return true if arredores[3].is_road and arredores[3].is_water and arredores[3].user_id == user_id
+    return true if arredores[5].is_road and arredores[5].is_water and arredores[5].user_id == user_id
+    return true if arredores[7].is_road and arredores[7].is_water and arredores[7].user_id == user_id
 
     false
   end
