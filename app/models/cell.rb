@@ -333,14 +333,9 @@ class Cell < ActiveRecord::Base
 
     (0..8).each do |i|
       if i != 4
-        return true if arredores[i].is_road and arredores[i].is_grass and arredores[i].user_id == user_id
+        return true if arredores[i].is_road and arredores[i].user_id == user_id
       end
     end
-
-    return true if arredores[1].is_road and arredores[1].is_water and arredores[1].user_id == user_id
-    return true if arredores[3].is_road and arredores[3].is_water and arredores[3].user_id == user_id
-    return true if arredores[5].is_road and arredores[5].is_water and arredores[5].user_id == user_id
-    return true if arredores[7].is_road and arredores[7].is_water and arredores[7].user_id == user_id
 
     false
   end
