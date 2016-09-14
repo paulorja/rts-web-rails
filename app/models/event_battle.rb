@@ -8,22 +8,18 @@ class EventBattle < ActiveRecord::Base
   BATTLE_TIME = 3600
   MAX_SETPS = 6
 
-  def self.start_event(user_from, cell_id, units, total_steps)
-    total_steps = total_steps.to_i
+  def self.start_event(user_from, cell_id, units)
 
     cell = Cell.find(cell_id)
     battle = Battle.new
     battle.user_from_id = user_from.id
     battle.user_to_id = cell.user_id
     battle.cell_id = cell.id
-    battle.step = 1
-    battle.total_steps = total_steps
 
     user_units = CellUnit.where('user_id = ? and id IN (?) and idle = true', user_from.id, units)
 
     return "Você não selecionou nenhum soldado" if user_units.size < 1
     return "Suas estradas não chegam no alvo" unless cell.have_user_road(user_from.id)
-    return "Seu ligeiro" if total_steps < 1 or total_steps > MAX_SETPS
 
     battle.battle_data = {
         user_from_armies: user_units,
@@ -55,13 +51,8 @@ class EventBattle < ActiveRecord::Base
 
     battle.combat
 
-    if battle.step >= battle.total_steps
-      e.destroy
-      event_battle.destroy
-    else
-      e.end_time += Time.now.to_i + BATTLE_TIME
-      e.save
-    end
+    e.destroy
+    event_battle.destroy
   end
 
 end

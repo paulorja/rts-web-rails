@@ -55,14 +55,8 @@ class Battle < ActiveRecord::Base
       end
     end
 
-    #END BATTLE AND START SAVE DATA
-    #atacante
-    step_data = {
-
-    }
 
 
-    self.step += 1
     self.save
   end
 
