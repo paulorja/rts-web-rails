@@ -10,14 +10,14 @@
             stone: 125,
             time: 45,
             storage: 2000,
-            score: 1
+            score: 0
         },
         {
             wood: 250,
             stone: 250,
             time: 250,
             storage: 4000,
-            score: 1
+            score: 0
         },
         {
             wood: 500,
@@ -38,6 +38,13 @@
             stone: 2000,
             time: 2000,
             storage: 32000,
+            score: 2
+        },
+        {
+            wood: 4000,
+            stone: 4000,
+            time: 4000,
+            storage: 66000,
             score: 2
         }
     ]

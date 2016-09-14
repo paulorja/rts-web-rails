@@ -109,11 +109,39 @@
             score: 4
         },
         {
-            stone: 107650,
-            gold: 57280,
-            time: 92250,
+            stone: 118305,
+            gold: 62997,
+            time: 73800,
             roads: 7,
             score: 5
+        },
+        {
+            stone: 195203,
+            gold: 103945,
+            time: 88560,
+            roads: 7,
+            score: 7
+        },
+        {
+            stone: 322085,
+            gold: 171509,
+            time: 106272,
+            roads: 7,
+            score: 8
+        },
+        {
+            stone: 531440,
+            gold: 282990,
+            time: 127526,
+            roads: 7,
+            score: 9
+        },
+        {
+            stone: 1000000,
+            gold: 500000,
+            time: 153031,
+            roads: 7,
+            score: 10
         }
     ]
 }
