@@ -35,8 +35,13 @@ class WorldMap < ActiveRecord::Base
 
     map = Map.new string_map
 
+    logger.info "#{Time.now.to_f} Start find route"
     begin
-      return map.find_route
+      route = map.find_route
+      logger.info "#{map.print}"
+      logger.info "#{Time.now.to_f} End find route"
+
+      return route
     rescue
       return nil
     end

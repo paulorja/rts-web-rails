@@ -11,7 +11,7 @@ class BattleController < ApplicationController
       @route_img_base64 = Base64.encode64(@route_img.to_blob).gsub(/\n/, "")
     end
 
-
+    teste = 5
   end
 
   def send_attack
