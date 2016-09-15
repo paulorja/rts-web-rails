@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       @current_user = user
       @user_data = user.user_data if @current_user
 
-      reset_session if session['current_user_login'] != @current_user.login      
+      reset_session if @current_user.nil? or session['current_user_login'] != @current_user.login
     end
   end
 

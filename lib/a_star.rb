@@ -39,6 +39,11 @@ POINTS = [
    [0, -1], [0, 1],
    [1, 0]
 ]
+#POINTS = [
+#    [-1, -1], [-1, 0], [-1, 1],
+#    [0, -1], [0, 1],
+#    [1, -1], [1, 0], [1, 1]
+#]
 
 class Tile
    attr_reader :x, :y
@@ -133,6 +138,7 @@ class Map
      end
      puts line
    end
+
 end
 
 

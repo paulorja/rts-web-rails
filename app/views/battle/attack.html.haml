@@ -4,6 +4,8 @@
 #game-content-right.text-center.simplebar
   %h4 Selecione as tropas que vão para o ataque
 
+  %img{alt: 'preview', src: "data:image/jpeg;base64,#{@route_img_base64}"}
+
   = form_tag('/battle/send_attack', method: :post) do
     = hidden_field_tag(:cell_id, params[:cell_id])
     %div
