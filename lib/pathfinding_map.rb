@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'chingu_pathfinding'
+
 class PathfindingMap < Pathfinding
 
   def initialize(blocked_cells)
@@ -8,5 +11,5 @@ class PathfindingMap < Pathfinding
   def blocked?(x,y)
     true if @blocked_cells.include? [x, y]
   end
-  
+
 end
