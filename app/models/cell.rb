@@ -156,14 +156,15 @@ class Cell < ActiveRecord::Base
     logger.info "#{Time.now.to_f} Start path finding to remove road"
 
     user_roads = Cell.where('user_id = ? and building_code = ? and idle = true', user.id, BUILDING[:road][:code]).pluck(:x,  :y)
+    user_roads.delete [self.x, self.y]
 
     blocked_cells = Set.new 
     (0..256).each do |x|
       (0..256).each do |y|
-        if (!user_roads.include? [x, y]) or (x == self.x and y == self.y) or (x != user.castle_x and y != user.castle_y)
-          blocked_cells << [x, y] 
-        else
+        if (user_roads.include? [x, y]) or (x == user.castle_x and y == user.castle_y)
           logger.info "#{Time.now.to_f} XY: #{x}, #{y} Not Blocked"
+        else
+          blocked_cells << [x, y] 
         end
       end
     end    
