@@ -159,7 +159,7 @@ class Cell < ActiveRecord::Base
     blocked_cells = [] 
     (0..256).each do |x|
       (0..256).each do |y|
-        blocked_cells << [x, y] if (!user_roads.include? [x, y]) or (x == self.x and y == self.y)
+        blocked_cells << [x, y] if (!user_roads.include? [x, y]) or (x == self.x and y == self.y) or (x != user.castle_x and y != user.castle_y)
       end
     end    
     logger.info "#{Time.now.to_f} Created blocked cells"
