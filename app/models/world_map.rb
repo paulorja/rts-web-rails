@@ -34,6 +34,7 @@ class WorldMap < ActiveRecord::Base
       end
     end
 
+    logger.info "#{blocked_cells.to_s}"
     map = PathfindingMap.new(blocked_cells)
 
     logger.info "#{Time.now.to_f} Start find route"
