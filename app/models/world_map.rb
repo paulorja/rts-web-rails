@@ -37,13 +37,10 @@ class WorldMap < ActiveRecord::Base
     map = PathfindingMap.new(blocked_cells)
 
     logger.info "#{Time.now.to_f} Start find route"
-    begin
-      route = map.find_path(start_p[:x], start_p[:y], end_p[:x], end_p[:y])
-      logger.info "#{Time.now.to_f} End find route"
-      return route
-    rescue
-      return nil
-    end
+    route = map.find_path(start_p[:x], start_p[:y], end_p[:x], end_p[:y])
+    logger.info "#{Time.now.to_f} End find route"
+    
+    return route
   end
 
   def self.route_to_img(route)
