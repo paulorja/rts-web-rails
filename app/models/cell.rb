@@ -121,6 +121,7 @@ class Cell < ActiveRecord::Base
 
   def new_can_remove_road(user)
     require './lib/pathfinding_map'
+    require 'set'
 
     logger.info "#{Time.now.to_f} START CAN REMOVE ROAD"
 
@@ -156,7 +157,7 @@ class Cell < ActiveRecord::Base
 
     user_roads = Cell.where('user_id = ? and building_code = ? and idle = true', user.id, BUILDING[:road][:code]).pluck(:x,  :y)
 
-    blocked_cells = [] 
+    blocked_cells = Set.new 
     (0..256).each do |x|
       (0..256).each do |y|
         blocked_cells << [x, y] if (!user_roads.include? [x, y]) or (x == self.x and y == self.y) or (x != user.castle_x and y != user.castle_y)
