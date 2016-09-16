@@ -1,7 +1,8 @@
 class WorldMap < ActiveRecord::Base
 
   def self.attack_route(user, cell)
-    require './lib/a_star'
+    require './lib/pathfinding_map'
+    require 'set'
 
     img = Magick::Image.read('public/world.bmp')[0]
     map_pxl = img.get_pixels(0, 0, 256, 256)
@@ -20,27 +21,27 @@ class WorldMap < ActiveRecord::Base
       tree = TERRAIN[:tree][:color]
       stone = TERRAIN[:stone][:color]
 
+      blocked_cells = Set.new 
+
       if cell.x == x and cell.y == y
-        string_map << "X"
+        end_p = {x: x, y: y}
       elsif user.castle_x == x and user.castle_y == y
-        string_map << "@"
+        start_p = {x: x, y: y}
       elsif WorldMap.color_eql(p, grass) or WorldMap.color_eql(p, gold) or WorldMap.color_eql(p, tree) or WorldMap.color_eql(p, stone)
-        string_map << "."
+      
       elsif roads.include? [x, y]
-        string_map << "."
+      
       else
-        string_map << "~"
+        blocked_cells.add([x, y])
       end
     end
 
-    map = Map.new string_map
+    map = PathfindingMap.new(blocked_cells)
 
     logger.info "#{Time.now.to_f} Start find route"
     begin
-      route = map.find_route
-      logger.info "#{map.print}"
+      route = map.find_path(start_p[:x], start_p[:y], end_p[:x], end_p[:y])
       logger.info "#{Time.now.to_f} End find route"
-
       return route
     rescue
       return nil
@@ -53,7 +54,7 @@ class WorldMap < ActiveRecord::Base
     img = Magick::Image.read('public/world.bmp')[0]
 
     route.each_with_index do |r, i|
-      img.pixel_color(r.x, r.y, 'red')
+      img.pixel_color(r[0], r[1], 'red')
     end
 
     img.write('public/worldtest.bmp')
