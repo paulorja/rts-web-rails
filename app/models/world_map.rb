@@ -34,7 +34,6 @@ class WorldMap < ActiveRecord::Base
       end
     end
 
-    logger.info "#{blocked_cells.to_s}"
     map = PathfindingMap.new(blocked_cells)
 
     logger.info "#{Time.now.to_f} Start find route"
@@ -52,7 +51,7 @@ class WorldMap < ActiveRecord::Base
 
     img = Magick::Image.read('public/world.bmp')[0]
 
-    route.each_with_index do |r, i|
+    route.each do |r|
       img.pixel_color(r[0], r[1], 'red')
     end
 
