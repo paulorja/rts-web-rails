@@ -119,6 +119,66 @@ class Cell < ActiveRecord::Base
     end
   end
 
+  def new_can_remove_road(user)
+    require './lib/pathfinding_map'
+
+    logger.info "#{Time.now.to_f} START CAN REMOVE ROAD"
+
+    # VALIDA SE TODAS AS CONSTRUCOES AO REDOR POSSUEM OUTRA ESTRADA
+    roads_arredores = []
+    arredores = arredores(1)
+    roads_arredores << arredores[1] if arredores[1].is_road
+    roads_arredores << arredores[3] if arredores[3].is_road
+    roads_arredores << arredores[5] if arredores[5].is_road
+    roads_arredores << arredores[7] if arredores[7].is_road
+
+    construcoes_ao_redor = []
+    arredores.each do |c|
+      if c.user_id == user.id and !c.is_road and c.id != self.id
+        construcoes_ao_redor << c
+      end
+    end
+
+    estradas_encontradas = 0
+
+    construcoes_ao_redor.each do |c|
+      c_arredores = c.arredores(1)
+      c_arredores.each do |c_a|
+        if c_a.is_road and c_a.id != self.id
+          estradas_encontradas += 1
+          break
+        end
+      end
+    end
+
+    # PATHFINDING
+    logger.info "#{Time.now.to_f} Start path finding to remove road"
+
+    user_roads = Cell.where('user_id = ? and building_code = ? and idle = true', user.id, BUILDING[:road][:code]).pluck(:x,  :y)
+
+    blocked_cells = [] 
+    (0..256).each do |x|
+      (0..256).each do |y|
+        blocked_cells << [x, y] if (!user_roads.include? [x, y]) or (x == self.x and y == self.y)
+      end
+    end    
+
+    map = PathfindingMap.new(blocked_cells)
+    roads_arredores.each_with_index do |r, i|
+      road_route = map.find_path(user.castle_x, user.castle_y, r.x, r.y)
+      find = false if road_route.nil?
+    end
+
+    logger.info "#{Time.now.to_f} End path finding to remove road"
+
+    if find and estradas_encontradas == construcoes_ao_redor.size
+      true
+    else
+      false
+    end
+
+  end
+
   def can_remove_road(user)
     logger.info "#{Time.now.to_f} START CAN REMOVE ROAD"
 

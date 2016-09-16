@@ -56,4 +56,4 @@ gem 'jquery-ui-rails'
 gem 'touchpunch-rails'
 gem 'animate-rails'
 
-
+gem "chingu-pathfinding"
