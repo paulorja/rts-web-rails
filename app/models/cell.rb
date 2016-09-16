@@ -162,10 +162,14 @@ class Cell < ActiveRecord::Base
         blocked_cells << [x, y] if (!user_roads.include? [x, y]) or (x == self.x and y == self.y)
       end
     end    
+    logger.info "#{Time.now.to_f} Created blocked cells"
 
     map = PathfindingMap.new(blocked_cells)
+    logger.info "#{Time.now.to_f} Created map"
+
     roads_arredores.each_with_index do |r, i|
       road_route = map.find_path(user.castle_x, user.castle_y, r.x, r.y)
+      logger.info "#{Time.now.to_f} Route #{i} find"
       find = false if road_route.nil?
     end
 
