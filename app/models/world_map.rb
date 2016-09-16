@@ -9,7 +9,10 @@ class WorldMap < ActiveRecord::Base
     string_map = ""
     roads = Cell.where('user_id = ? and building_code = ? and idle = true', user.id, BUILDING[:road][:code]).pluck(:x,  :y)
 
-    blocked_cells = Set.new 
+    blocked_cells = Set.new
+    start_p = nil
+    end_p = nil
+     
     map_pxl.each_with_index do |p, i|
       y = i / 256
       x = i % 256
@@ -39,7 +42,7 @@ class WorldMap < ActiveRecord::Base
     logger.info "#{Time.now.to_f} Start find route"
     route = map.find_path(start_p[:x], start_p[:y], end_p[:x], end_p[:y])
     logger.info "#{Time.now.to_f} End find route"
-    
+
     return route
   end
 
