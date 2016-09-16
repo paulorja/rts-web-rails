@@ -167,7 +167,8 @@ class Cell < ActiveRecord::Base
 
     map = PathfindingMap.new(blocked_cells)
     logger.info "#{Time.now.to_f} Created map"
-
+    find = true
+    
     roads_arredores.each_with_index do |r, i|
       road_route = map.find_path(user.castle_x, user.castle_y, r.x, r.y)
       logger.info "#{Time.now.to_f} Route #{i} find"
