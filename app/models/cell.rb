@@ -164,7 +164,7 @@ class Cell < ActiveRecord::Base
         if (user_roads.include? [x, y]) or (x == user.castle_x and y == user.castle_y)
           logger.info "#{Time.now.to_f} XY: #{x}, #{y} Not Blocked"
         else
-          blocked_cells << [x, y] 
+          blocked_cells.add([x, y]) 
         end
       end
     end    
