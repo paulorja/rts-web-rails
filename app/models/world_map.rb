@@ -9,7 +9,7 @@ class WorldMap < ActiveRecord::Base
     string_map = ""
     roads = Cell.where('user_id = ? and building_code = ? and idle = true', user.id, BUILDING[:road][:code]).pluck(:x,  :y)
 
-
+    blocked_cells = Set.new 
     map_pxl.each_with_index do |p, i|
       y = i / 256
       x = i % 256
@@ -20,8 +20,6 @@ class WorldMap < ActiveRecord::Base
       gold = TERRAIN[:gold][:color]
       tree = TERRAIN[:tree][:color]
       stone = TERRAIN[:stone][:color]
-
-      blocked_cells = Set.new 
 
       if cell.x == x and cell.y == y
         end_p = {x: x, y: y}
