@@ -34,6 +34,10 @@ $(document).on('turbolinks:load', function() {
         });
     }
 
+    $('.parse-timer').each(function() {
+        $(this).html($(this).html().toHHMMSS());
+    });
+
     refresh_label_timers();
 });
 

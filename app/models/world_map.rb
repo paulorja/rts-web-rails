@@ -1,14 +1,16 @@
 class WorldMap < ActiveRecord::Base
 
   def self.attack_route(user, cell)
+    logger.info "#{Time.now.to_f} Start attack route method"
+
     require './lib/pathfinding_map'
     require 'set'
 
     img = Magick::Image.read('public/world.bmp')[0]
     map_pxl = img.get_pixels(0, 0, 256, 256)
-    string_map = ""
     roads = Cell.where('user_id = ? and building_code = ? and idle = true', user.id, BUILDING[:road][:code]).pluck(:x,  :y)
 
+    logger.info "#{Time.now.to_f} Start crate blocked cells"
     blocked_cells = Set.new
     start_p = nil
     end_p = nil
@@ -16,8 +18,6 @@ class WorldMap < ActiveRecord::Base
     map_pxl.each_with_index do |p, i|
       y = i / 256
       x = i % 256
-
-      string_map << "\n" if i > 1 and x == 0
 
       grass = TERRAIN[:grass][:color]
       gold = TERRAIN[:gold][:color]
@@ -36,8 +36,12 @@ class WorldMap < ActiveRecord::Base
         blocked_cells.add([x, y])
       end
     end
+    logger.info "#{Time.now.to_f} End crate blocked cells"
 
+    logger.info "#{Time.now.to_f} Start crate map"
     map = PathfindingMap.new(blocked_cells)
+    logger.info "#{Time.now.to_f} End crate map"
+
 
     logger.info "#{Time.now.to_f} Start find route"
     route = map.find_path(start_p[:x], start_p[:y], end_p[:x], end_p[:y])

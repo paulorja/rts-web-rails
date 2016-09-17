@@ -1,0 +1,24 @@
+#army_selectable .ui-selecting {
+  background-color: rgba(0, 82, 149, 0.51);
+}
+
+#army_selectable .ui-selected {
+  background-color: rgba(0, 82, 149, 0.51);
+  border-color:blue;
+}
+
+#army_selectable {
+  list-style-type: none; margin: 0;
+  padding: 0;
+}
+
+#army_selectable li {
+  margin: 1px;
+  float: left;
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
+  text-align: center;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}

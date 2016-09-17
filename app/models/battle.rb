@@ -3,6 +3,7 @@ class Battle < ActiveRecord::Base
   belongs_to :user_to, class_name: 'User', foreign_key: :user_to_id
   belongs_to :cell
 
+  CELL_SPEED = 300
 
   def can_attack
     cell_to = Cell.find(cell_to_id)
