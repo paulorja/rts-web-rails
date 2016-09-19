@@ -23,4 +23,11 @@ class BattleController < ApplicationController
     end
   end
 
+  def battles
+    @atk_going = EventBattle.where(user_from_id: @current_user.id)
+    #@atk_returning
+
+    @atk_on_user = EventBattle.where(user_to_id: @current_user.id)
+
+  end
 end

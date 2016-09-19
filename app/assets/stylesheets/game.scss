@@ -51,10 +51,10 @@ a {
 #game-content-left {
   float: left;
   width: 287px;
-  height: 475px;
-  border-right:1px solid #ccc;
+  height: 481px;
+  border-right:1px solid $dark-2;
   overflow: hidden;
-  top: 35px;
+  top: 31px;
   animation-duration: 0.3s;
 }
 

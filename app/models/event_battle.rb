@@ -5,9 +5,6 @@ class EventBattle < ActiveRecord::Base
   belongs_to :battle
   belongs_to :event
 
-  BATTLE_TIME = 3600
-  MAX_SETPS = 6
-
   def self.start_event(user_from, cell_id, units)
 
     cell = Cell.find(cell_id)
@@ -15,11 +12,12 @@ class EventBattle < ActiveRecord::Base
     battle.user_from_id = user_from.id
     battle.user_to_id = cell.user_id
     battle.cell_id = cell.id
+    attack_route = WorldMap.attack_route(user_from, cell)
 
     user_units = CellUnit.where('user_id = ? and id IN (?) and idle = true', user_from.id, units)
 
     return "Você não selecionou nenhum soldado" if user_units.size < 1
-    return "Suas estradas não chegam no alvo" unless cell.have_user_road(user_from.id)
+    return "Seus soldados não conseguem chegar no alvo" if attack_route.nil?
 
     battle.battle_data = {
         user_from_armies: user_units,
@@ -30,7 +28,7 @@ class EventBattle < ActiveRecord::Base
 
     event = Event.new()
     event.start_time = Time.now.to_i
-    event.end_time = Time.now.to_i + BATTLE_TIME
+    event.end_time = Time.now.to_i + Battle::CELL_SPEED * attack_route.size
     event.event_type = :battle
     event.save
 

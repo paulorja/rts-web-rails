@@ -4,20 +4,20 @@
 #game-content-right.text-center
   - if @attack_route.nil?
     %h4 Suas tropas não conseguem chegar até este local.
+    %p As tropas partem do seu castelo, então tenha saídas estratégicas de estradas para mais velocidade.
     %p Você só pode atacar quadrados em que suas tropas possam chegar andando.
     %p As tropas não não andam pela água e não passam por outros jogadores.
   - else
     %h4 Selecione as tropas que vão para o ataque
 
 
-    = form_tag('/battle/send_attack', method: :post) do
+    = form_tag('/battle/send_attack', method: :post, id: 'attack-form') do
       = hidden_field_tag(:cell_id, params[:cell_id])
       %div{style: 'height: 160px;'}
         %ol#army_selectable
           - @armies.each do |a|
             - unit = Unit.get_unit(a.unit)
-            %li.ui-state-default{class: unit[:css_class], title: "Ataque: #{a.attack} ", 'data-atk': "#{a.attack}"}= ''
-
+            %li.ui-state-default{class: unit[:css_class], title: "Ataque: #{a.attack} ", 'data-atk': "#{a.attack}",  'data-id': a.id}= ''
       %table
         %tr
           %td
@@ -46,12 +46,16 @@
   $( function() {
     $( "#army_selectable" ).selectable({
       stop: function() {
+        $('army-input').remove();
         var total_atk = 0;
         var total_units= 0;
+
         $(".ui-selected").each(function() {
           total_atk += parseFloat($(this).attr('data-atk'));
           total_units++;
+          $('#attack-form').append("<input name='unit[]' type='hidden' value='"+$(this).attr('data-id')+"' class='army-input' />");
         });
+
         $('#totalAtk').html(total_atk);
         $('#totalUnits').html(total_units);
       }

@@ -1,0 +1,19 @@
+#game-content-left
+  = render 'menu'
+
+#game-content-right
+
+  %h4 Seus ataques
+
+  %table.table
+    %thead
+      %tr
+        %th Tropas
+        %th Hora de chegada
+    %tbody
+      - @atk_going.each do |a|
+        %tr
+          %td
+          %td
+  - if @atk_on_user.size > 0
+    %h4 Você será atacado!

@@ -19,7 +19,7 @@ class Battle < ActiveRecord::Base
 
     from_armies = group_armies(parse_battle_data['user_from_armies'])
     to_armies = group_armies(user_to.all_armies)
-    total_towers = count_towers(parse_battle_data['cells'])
+    total_towers = count_towers(cell.arredores(1))
 
     total_atk = 0.0
     from_armies.each {|f| (total_atk += f[1][:atk].to_f)}
@@ -56,7 +56,12 @@ class Battle < ActiveRecord::Base
       end
     end
 
+    parse_battle_data['total_atk'] = total_atk
+    parse_battle_data['total_def'] = total_def
+    parse_battle_data['from_armies'] = from_armies
+    parse_battle_data['to_armies'] = to_armies
 
+    self.battle_data = parse_battle_data.to_json
 
     self.save
   end
@@ -95,7 +100,7 @@ class Battle < ActiveRecord::Base
     end
 
     def calculate_deaths(qtd, deaths_ratio)
-      ((qtd.to_f * (deaths_ratio/100) * 0.33) + 0.25).to_i
+      ((qtd.to_f * (deaths_ratio/100) * 0.7) + 0.25).to_i
     end
 
     def calculate_hurts(qtd, deaths)
