@@ -35,6 +35,7 @@ class EventBattleBack < ActiveRecord::Base
     end
     battle.user_to.user_data.total_pop -= user_to_killed_units.size
     battle.user_to.user_data.save
+    CellUnit.where('user_id = ? and id IN (?) and idle = true', battle.user_to.id, user_to_killed_units).delete_all
 
 
     battle.save

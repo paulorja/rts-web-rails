@@ -76,6 +76,11 @@ class Battle < ActiveRecord::Base
     parse_battle_data['user_from_armies']
   end
 
+  def user_to_armies
+    parse_battle_data = JSON.parse(battle_data)
+    parse_battle_data['user_to_armies']
+  end
+
   def from_armies
     parse_battle_data = JSON.parse(battle_data)
     parse_battle_data['from_armies']
