@@ -11,7 +11,7 @@
             stone: 200,
             time: 60,
             castle_level: 2,
-            score: 4
+            score: 2
         }
     ]
 }

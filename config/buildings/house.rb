@@ -16,7 +16,7 @@
             stone: 120,
             time: 120,
             population: 1,
-            score: 1,
+            score: 0,
             castle_level: 2
         },
         {
@@ -24,7 +24,7 @@
             stone: 650,
             time: 660,
             population: 1,
-            score: 2,
+            score: 0,
             castle_level: 3
         },
         {
@@ -32,7 +32,7 @@
             stone: 1350,
             time: 2050,
             population: 1,
-            score: 3,
+            score: 1,
             castle_level: 4
         }
     ]

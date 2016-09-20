@@ -11,7 +11,7 @@
             gold: 150,
             time: 80,
             castle_level: 5,
-            score: 4
+            score: 3
         }
     ]
 }

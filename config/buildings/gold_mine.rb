@@ -11,7 +11,7 @@
             stone: 125,
             wood: 125,
             time: 25,
-            score: 1
+            score: 0
         },
         {
             wood: 850,
