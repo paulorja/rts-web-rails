@@ -46,17 +46,17 @@ class EventBattleBack < ActiveRecord::Base
     user_castle = Cell.where('x = ? and y = ?', battle.user_from.castle_x, battle.user_from.castle_y).first 
     next_road = user_castle.next_road
 
-    next_road = 'INSERT INTO cell_units (cell_id, user_id, unit, hurt, idle, attack, name) VALUES'
+    query_units = 'INSERT INTO cell_units (cell_id, user_id, unit, hurt, idle, attack, name) VALUES'
     query_units_values = Array.new
 
     battle.user_from_armies.each do |u|
-      query_units_values.push "(#{next_road.id}, #{u['user_id']}, #{u['unit']}, #{u['hurt']}, '#{true}', '#{(u['attack']+0.1)}', '#{u['name']}')"
+      query_units_values.push "(#{next_road.id}, #{u['user_id']}, #{u['unit']}, #{u['hurt']}, true, '#{(u['attack']+0.1)}', '#{u['name']}')" if u['death'] != true
     end
 
     query_units << query_units_values.join(', ')+';'
 
     conn = ActiveRecord::Base.connection
-    conn.execute(query_terrains)
+    conn.execute(query_units)
 
     e.destroy
     event_battle_back.destroy
