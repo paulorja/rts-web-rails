@@ -5,6 +5,7 @@ class CreateBattles < ActiveRecord::Migration
       t.references :user_to
       t.references :cell
       t.text :battle_data
+      t.integer :route_size
 
       t.timestamps null: false
     end

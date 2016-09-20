@@ -17,7 +17,7 @@
         %ol#army_selectable
           - @armies.each do |a|
             - unit = Unit.get_unit(a.unit)
-            %li.ui-state-default{class: unit[:css_class], title: "Ataque: #{a.attack} ", 'data-atk': "#{a.attack}",  'data-id': a.id}= ''
+            %li.ui-state-default{class: unit[:css_class], title: "Nome: #{a['name']} \nAtaque: #{a['attack']} ", 'data-atk': "#{a.attack}",  'data-id': a.id}= ''
       %table
         %tr
           %td

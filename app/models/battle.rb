@@ -70,6 +70,27 @@ class Battle < ActiveRecord::Base
     self.save
   end
 
+  def user_from_armies
+    parse_battle_data = JSON.parse(battle_data)
+    parse_battle_data['user_from_armies']
+  end
+
+  def from_armies
+    parse_battle_data = JSON.parse(battle_data)
+    parse_battle_data['from_armies']
+  end
+
+  def kill_unit(unit_id)
+    parse_battle_data = JSON.parse(battle_data)
+    parse_battle_data['user_from_armies'].each do |unit|
+      if unit['id'] == unit_id
+        unit['death'] = true
+        self.battle_data = parse_battle_data.to_json
+        return true
+      end
+    end
+  end
+
   private
     def group_armies armies
       group_armies = {}

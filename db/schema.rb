@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827203547) do
+ActiveRecord::Schema.define(version: 20160919221126) do
 
   create_table "battles", force: :cascade do |t|
     t.integer  "user_from_id", limit: 4
     t.integer  "user_to_id",   limit: 4
     t.integer  "cell_id",      limit: 4
     t.text     "battle_data",  limit: 65535
+    t.integer  "route_size",   limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
@@ -46,6 +47,12 @@ ActiveRecord::Schema.define(version: 20160827203547) do
   end
 
   add_index "cells", ["x", "y"], name: "x", using: :btree
+
+  create_table "event_battle_backs", force: :cascade do |t|
+    t.integer "event_id",     limit: 4
+    t.integer "user_from_id", limit: 4
+    t.integer "battle_id",    limit: 4
+  end
 
   create_table "event_battles", force: :cascade do |t|
     t.integer "event_id",     limit: 4

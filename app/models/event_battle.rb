@@ -13,6 +13,7 @@ class EventBattle < ActiveRecord::Base
     battle.user_to_id = cell.user_id
     battle.cell_id = cell.id
     attack_route = WorldMap.attack_route(user_from, cell)
+    battle.route_size = attack_route.size
 
     user_units = CellUnit.where('user_id = ? and id IN (?) and idle = true', user_from.id, units)
 
@@ -39,6 +40,7 @@ class EventBattle < ActiveRecord::Base
          cell_id: battle.cell_id,
          battle_id: battle.id
     })
+    CellUnit.where('user_id = ? and id IN (?) and idle = true', user_from.id, units).delete_all
 
     return battle
   end
@@ -48,6 +50,8 @@ class EventBattle < ActiveRecord::Base
     battle = Battle.find_by_id(event_battle.battle_id)
 
     battle.combat
+
+    EventBattleBack.start_event(@current_user, battle)
 
     e.destroy
     event_battle.destroy

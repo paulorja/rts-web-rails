@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function() {
     var selected_unit = null;
     var content_selected_unit = $('.content-selected-unit');
 
-    if (typeof preselect_cell !== 'undefined'){
+    if (typeof preselect_cell !== 'undefined' && preselect_cell > 0){
         selected_sprite = $(".link-sprite[obj_id='"+preselect_cell+"']");
         selected_sprite.addClass('sprite-selected');
         content_selected_sprite.addClass('animated slideInLeft');

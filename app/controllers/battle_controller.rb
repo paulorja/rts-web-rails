@@ -19,15 +19,15 @@ class BattleController < ApplicationController
       flash[:alert] = start_battle
       redirect_to :back
     else
-      render json: start_battle.battle_data
+      redirect_to world_zoom_c_path(start_battle.cell.x, start_battle.cell.y)
     end
   end
 
   def battles
-    @atk_going = EventBattle.where(user_from_id: @current_user.id)
-    #@atk_returning
+    @atk_going = EventBattle.includes(:battle).where(user_from_id: @current_user.id)
+    @atk_returning = EventBattleBack.includes(:battle).where(user_from_id: @current_user.id)
 
-    @atk_on_user = EventBattle.where(user_to_id: @current_user.id)
+    @atk_on_user = EventBattle.includes(:battle).where(user_to_id: @current_user.id)
 
   end
 end

@@ -3,17 +3,63 @@
 
 #game-content-right
 
-  %h4 Seus ataques
-
-  %table.table
-    %thead
-      %tr
-        %th Tropas
-        %th Hora de chegada
-    %tbody
-      - @atk_going.each do |a|
-        %tr
-          %td
-          %td
   - if @atk_on_user.size > 0
-    %h4 Você será atacado!
+    %h3.text-center Você será atacado!
+
+  %h4.text-center Ataques Indo
+  - if @atk_going.size == 0
+    %div.text-center Nenhum
+  - else
+    %table.table
+      %thead
+        %tr
+          %th Alvo
+          %th Tropas
+          %th Chega em:
+      %tbody
+        - @atk_going.each do |a|
+          %tr
+            %td= link_to a.user_to.login, world_zoom_c_path(a.cell.x, a.cell.y)
+            %td
+              %button.btn-sm.btn-show-armies Ver tropas
+              %div.show-armies
+                - a.battle.user_from_armies.each do |u|
+                  - unit = Unit.get_unit(u['unit'])
+                  .unit-box
+                    .unit-box-item{class: unit[:css_class], title: "Nome: #{u['name']} \nAtaque: #{u['attack']} "}
+            %td.text-center
+              .chronometer{data_time: a.event.wait_time}
+  %h4.text-center Ataques Voltando
+  - if @atk_returning.size == 0
+    %div.text-center Nenhum
+  - else
+    %table.table
+      %thead
+        %tr
+          %th Alvo
+          %th Tropas
+          %th Chega em:
+      %tbody
+        - @atk_returning.each do |a|
+          %tr
+            %td= link_to a.battle.user_to.login, world_zoom_c_path(a.battle.cell.x, a.battle.cell.y)
+            %td
+              %button.btn-sm.btn-show-armies Ver tropas
+              %div.show-armies
+                - a.battle.user_from_armies.each do |u|
+                  - unit = Unit.get_unit(u['unit'])
+                  .unit-box
+                    .unit-box-item{class: unit[:css_class], title: "Nome: #{u['name']} \nAtaque: #{u['attack']} "}
+                      - if u['death']
+                        %span.dead-unit X
+            %td.text-center
+              .chronometer{data_time: a.event.wait_time}
+
+:javascript
+  $('.show-armies').hide();
+
+  $('.btn-show-armies').click(function() {
+    $(this).next().slideToggle();
+  });
+
+  $( document ).tooltip();
