@@ -640,7 +640,10 @@ class Cell < ActiveRecord::Base
       sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_building_up.event.wait_time}'></div>" if cell.event_building_up
       sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_to_grass.event.wait_time}'></div>" if cell.event_to_grass
       sprites_layer_3 << "<div class='sprite-timer chronometer' data_time='#{cell.event_building_destroy.event.wait_time}'></div>" if cell.event_building_destroy
-      sprites_layer_3 << "<div class='battle-chronometer chronometer' data_time='#{cell.event_battle.event.wait_time}'></div>" if cell.event_battle
+      if cell.event_battle
+        battle_title = "#{cell.event_battle.user_from.login} atacará este edifício."
+        sprites_layer_3 << "<div class='battle-chronometer chronometer' title='#{battle_title}' data_time='#{cell.event_battle.event.wait_time}'></div>"
+      end
 
       cell.cell_units.each do |u|
         unity = Unit.get_unit(u.unit)

@@ -3,7 +3,7 @@ class EventBattleBack < ActiveRecord::Base
   belongs_to :battle
   belongs_to :event
 
-  def self.start_event(user_from, battle)
+  def self.start_event(battle)
 
     killed_units = Array.new
 
@@ -19,12 +19,15 @@ class EventBattleBack < ActiveRecord::Base
       end
     end
 
+    battle.user_from.user_data.total_pop -= killed_units.size
+    battle.user_from.user_data.save
+
     battle.save
 
     event = Event.new()
     event.start_time = Time.now.to_i
     event.end_time = Time.now.to_i + Battle::CELL_SPEED * battle.route_size
-    event.event_type = :battle
+    event.event_type = :battle_back
     event.save
 
     EventBattleBack.create({
@@ -36,7 +39,13 @@ class EventBattleBack < ActiveRecord::Base
 
   end
 
-  def self.resolve_event(e)
+  def self.resolve(e)
+    event_battle_back = EventBattleBack.where('event_id = ?', e.id).first
+    battle = Battle.find_by_id(event_battle_back.battle_id)
 
+
+
+    e.destroy
+    event_battle_back.destroy
   end
 end

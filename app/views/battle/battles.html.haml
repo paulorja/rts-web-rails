@@ -4,11 +4,12 @@
 #game-content-right
 
   - if @atk_on_user.size > 0
-    %h3.text-center Você será atacado!
+    %h2.text-center Você será atacado!
 
-  %h4.text-center Ataques Indo
+  %h3.text-center Ataques Indo
   - if @atk_going.size == 0
-    %div.text-center Nenhum
+    %div.text-center
+      %i Nenhum
   - else
     %table.table
       %thead
@@ -29,9 +30,10 @@
                     .unit-box-item{class: unit[:css_class], title: "Nome: #{u['name']} \nAtaque: #{u['attack']} "}
             %td.text-center
               .chronometer{data_time: a.event.wait_time}
-  %h4.text-center Ataques Voltando
+  %h3.text-center Ataques Voltando
   - if @atk_returning.size == 0
-    %div.text-center Nenhum
+    %div.text-center
+      %i Nenhum
   - else
     %table.table
       %thead

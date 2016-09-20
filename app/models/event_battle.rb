@@ -51,7 +51,7 @@ class EventBattle < ActiveRecord::Base
 
     battle.combat
 
-    EventBattleBack.start_event(@current_user, battle)
+    EventBattleBack.start_event(battle)
 
     e.destroy
     event_battle.destroy

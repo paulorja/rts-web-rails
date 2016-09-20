@@ -7,7 +7,8 @@ class Event < ActiveRecord::Base
                     :offer_end,
                     :blacksmith,
                     :event_new_unit,
-                    :battle]
+                    :battle,
+                    :battle_back]
 
 
   def wait_time
@@ -33,6 +34,8 @@ class Event < ActiveRecord::Base
           EventNewUnit.resolve e
         when 'battle'
           EventBattle.resolve e
+        when 'battle_back'
+          EventBattleBack.resolve e
         else
           raise 'Fodeo'
       end
