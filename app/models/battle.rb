@@ -56,6 +56,7 @@ class Battle < ActiveRecord::Base
       end
     end
 
+    parse_battle_data['user_to_armies'] = user_to.all_armies
     parse_battle_data['total_atk'] = total_atk
     parse_battle_data['total_def'] = total_def
     parse_battle_data['from_armies'] = from_armies
@@ -80,9 +81,14 @@ class Battle < ActiveRecord::Base
     parse_battle_data['from_armies']
   end
 
-  def kill_unit(unit_id)
+  def to_armies
     parse_battle_data = JSON.parse(battle_data)
-    parse_battle_data['user_from_armies'].each do |unit|
+    parse_battle_data['to_armies']
+  end
+
+  def kill_unit(unit_id, target)
+    parse_battle_data = JSON.parse(battle_data)
+    parse_battle_data[target].each do |unit|
       if unit['id'] == unit_id
         unit['death'] = true
         self.battle_data = parse_battle_data.to_json
