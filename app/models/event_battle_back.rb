@@ -44,7 +44,7 @@ class EventBattleBack < ActiveRecord::Base
     battle = Battle.find_by_id(event_battle_back.battle_id)
 
     user_castle = Cell.where('x = ? and y = ?', battle.user_from.castle_x, battle.user_from.castle_y).first 
-    next_road = user_castle.query_unitsg1
+    next_road = user_castle.query_units
 
     next_road = 'INSERT INTO cell_units (cell_id, user_id, unit, hurt, idle, attack, name) VALUES'
     query_units_values = Array.new
