@@ -62,6 +62,9 @@ Rails.application.routes.draw do
   get 'ranking', to: 'ranking#general'
   get 'ranking/territories', to: 'ranking#territories'
   get 'ranking/population', to: 'ranking#population'
+  get 'ranking/atk', to: 'ranking#atk'
+  get 'ranking/def', to: 'ranking#def'
+  get 'ranking/best_soldier', to: 'ranking#best_soldier'
 
   #reports
 

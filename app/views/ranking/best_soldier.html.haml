@@ -1,0 +1,23 @@
+
+#game-content-left
+  = render 'menu'
+
+#game-content-right.simplebar
+  %table.table
+    %thead
+      %tr
+        %th Pos.
+        %th Soldado
+        %th Jogador
+        %th{style: 'width: 20px;'}
+        %th Matou
+    %tbody
+      - @soldiers.each_with_index do |s, i|
+        %tr
+          %td= (i+1).to_s
+          %td= s.name
+          %td= link_to(s.user.login, user_profile_path(s.user.login))
+          %td{style: "background-color: #{u.color}"}
+            - unit = UNIT.get_unit(s.unit)
+            %div.icon-no-repeat{style: 'width: 20px; height: 20px;', css_class: unit[:css_class]}
+          %td= s.attack

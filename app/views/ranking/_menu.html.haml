@@ -7,3 +7,9 @@
     = link_to 'Territórios', '/ranking/territories'
   .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'ranking' and action_name == 'population')}
     = link_to 'População', '/ranking/population'
+  .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'ranking' and action_name == 'atk')}
+    = link_to 'Atacantes', '/ranking/atk'
+  .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'ranking' and action_name == 'def')}
+    = link_to 'Defensores', '/ranking/def'
+  .side-menu-item{class: ('side-menu-item-selected' if controller_name == 'ranking' and action_name == 'best_soldier')}
+    = link_to 'Soldado', '/ranking/best_soldier'

@@ -16,8 +16,8 @@ class CreateUserData < ActiveRecord::Migration
       t.integer :total_pop, default: 0
       t.integer :max_pop, default: 0
       t.integer :total_territories, default: 0
-      t.integer :total_killed_units, default: 0
-      t.integer :total_dead_units, default: 0
+      t.integer :total_atk, default: 0
+      t.integer :total_def, default: 0
       t.integer :score, default: 0
       t.integer :new_reports, default: 0
       t.integer :new_message, default: 0

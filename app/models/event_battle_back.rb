@@ -17,9 +17,6 @@ class EventBattleBack < ActiveRecord::Base
         end
       end
     end
-    battle.user_from.user_data.total_pop -= user_from_killed_units.size
-    battle.user_from.user_data.save
-
 
     user_to_killed_units = Array.new
     battle.to_armies.each do |armies_code|
@@ -33,7 +30,13 @@ class EventBattleBack < ActiveRecord::Base
         end
       end
     end
+
+    battle.user_from.user_data.total_pop -= user_from_killed_units.size
+    battle.user_from.user_data.total_atk += user_to_killed_units.size
+    battle.user_from.user_data.save
+
     battle.user_to.user_data.total_pop -= user_to_killed_units.size
+    battle.user_to.user_data.total_def += user_from_killed_units.size
     battle.user_to.user_data.save
     CellUnit.where('user_id = ? and id IN (?) and idle = true', battle.user_to.id, user_to_killed_units).delete_all
 
