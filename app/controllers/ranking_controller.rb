@@ -21,7 +21,7 @@ class RankingController < ApplicationController
   end
 
   def best_soldier
-    @soldiers = CellUnit.includes(:user).joins(:user).order('cell_unit.attack DESC').limit(100)
+    @soldiers = CellUnit.includes(:user).joins(:user).order('cell_units.attack DESC').limit(100)
   end
 
 end
