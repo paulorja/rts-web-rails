@@ -139,34 +139,34 @@ ActiveRecord::Schema.define(version: 20160919221126) do
   end
 
   create_table "user_data", force: :cascade do |t|
-    t.integer  "user_id",            limit: 4
-    t.float    "wood",               limit: 24,  default: 0.0
-    t.float    "gold",               limit: 24,  default: 0.0
-    t.float    "food",               limit: 24,  default: 0.0
-    t.float    "stone",              limit: 24,  default: 0.0
-    t.integer  "wood_villagers",     limit: 4,   default: 0
-    t.integer  "gold_villagers",     limit: 4,   default: 0
-    t.integer  "food_villagers",     limit: 4,   default: 0
-    t.integer  "stone_villagers",    limit: 4,   default: 0
-    t.integer  "storage",            limit: 4,   default: 0
-    t.integer  "total_roads",        limit: 4,   default: 0
-    t.integer  "max_roads",          limit: 4,   default: 0
-    t.integer  "total_pop",          limit: 4,   default: 0
-    t.integer  "max_pop",            limit: 4,   default: 0
-    t.integer  "total_territories",  limit: 4,   default: 0
-    t.integer  "total_killed_units", limit: 4,   default: 0
-    t.integer  "total_dead_units",   limit: 4,   default: 0
-    t.integer  "score",              limit: 4,   default: 0
-    t.integer  "new_reports",        limit: 4,   default: 0
-    t.integer  "new_message",        limit: 4,   default: 0
-    t.integer  "blacksmith_hoe",     limit: 4,   default: 0
-    t.integer  "blacksmith_axe",     limit: 4,   default: 0
-    t.integer  "blacksmith_pick",    limit: 4,   default: 0
-    t.string   "last_update",        limit: 255
+    t.integer  "user_id",           limit: 4
+    t.float    "wood",              limit: 24,  default: 0.0
+    t.float    "gold",              limit: 24,  default: 0.0
+    t.float    "food",              limit: 24,  default: 0.0
+    t.float    "stone",             limit: 24,  default: 0.0
+    t.integer  "wood_villagers",    limit: 4,   default: 0
+    t.integer  "gold_villagers",    limit: 4,   default: 0
+    t.integer  "food_villagers",    limit: 4,   default: 0
+    t.integer  "stone_villagers",   limit: 4,   default: 0
+    t.integer  "storage",           limit: 4,   default: 0
+    t.integer  "total_roads",       limit: 4,   default: 0
+    t.integer  "max_roads",         limit: 4,   default: 0
+    t.integer  "total_pop",         limit: 4,   default: 0
+    t.integer  "max_pop",           limit: 4,   default: 0
+    t.integer  "total_territories", limit: 4,   default: 0
+    t.integer  "total_atk",         limit: 4,   default: 0
+    t.integer  "total_def",         limit: 4,   default: 0
+    t.integer  "score",             limit: 4,   default: 0
+    t.integer  "new_reports",       limit: 4,   default: 0
+    t.integer  "new_message",       limit: 4,   default: 0
+    t.integer  "blacksmith_hoe",    limit: 4,   default: 0
+    t.integer  "blacksmith_axe",    limit: 4,   default: 0
+    t.integer  "blacksmith_pick",   limit: 4,   default: 0
+    t.string   "last_update",       limit: 255
     t.boolean  "have_market"
     t.boolean  "have_blacksmith"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   add_index "user_data", ["user_id"], name: "index_user_data_on_user_id", using: :btree

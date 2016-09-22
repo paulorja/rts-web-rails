@@ -5,8 +5,7 @@ class Report < ActiveRecord::Base
   enum report_type: [
       :user_accept_offer,
       :user_recourses_arrived,
-      :battle_start,
-      :battle_end
+      :battle
   ]
 
   def self.report_detail(report_id, user_data)
@@ -28,6 +27,8 @@ class Report < ActiveRecord::Base
         return "Chegaram recursos de #{user_2.login}"
       when 'user_accept_offer'
         return "#{user_2.login} aceitou sua oferta"
+      when 'battle'
+        return ''
       else
         return 'OPS'
     end
