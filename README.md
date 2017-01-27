@@ -1,11 +1,14 @@
-## Setup ##
 
-### Link to play ###
+## Play ##
 
 http://rts.linuxzando.com.br
 
+## Setup ##
 
 ### Pra rodar o projeto ###
+
+* Ruby: 2.3.1
+* Rails: 4.2.6
 
 * sudo apt-get install imagemagick libmagickwand-dev
 * cd rts-web
@@ -13,13 +16,21 @@ http://rts.linuxzando.com.br
 * rake db:create db:migrate db:seed RAILS_ENV=development
 * rails server
 
-### Projeto rodando ###
+### Mysql ###
 
+* Criar usuário:
+* username: rts-web
+* password: 123456
+
+
+## Desenvolvimento ##
+
+### Rodando o jogo ###
+
+* rails s
 * Entrar com admin (admin, 1234)
-* Acessar a url localhost:3000/admin
+* Acessar a url /admin
 * clicar em RESET WORLD
-
-### ------------------------------ ###
 
 ### COMANDOS DEV ###
 * **rails s** rodar o game
@@ -27,16 +38,7 @@ http://rts.linuxzando.com.br
 * **rake game:rec999** enche os recursos de todos os jogadores
 * **rake game:resolve_events** termina todos os eventos do jogo
 
-### Ruby ###
-
-* Ruby: 2.3.1
-* Rails: 4.2.6
-
-### Mysql
-
-* Criar usuário mysql:
-* username: rts-web
-* password: 123456
+### ------------------------------ ###
 
 ### Containers ###
 * ter docker instalado (https://docs.docker.com/engine/installation/)
