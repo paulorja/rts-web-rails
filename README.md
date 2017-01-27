@@ -10,7 +10,7 @@ http://rts.linuxzando.com.br
 Ruby: 2.3.1
 Rails: 4.2.6
 
-sudo apt-get install imagemagick libmagickwand-dev
+sudo apt-get install imagemagick libmagickwand-dev \n
 cd rts-web
 bundle install
 rake db:create db:migrate db:seed RAILS_ENV=development
