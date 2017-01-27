@@ -33,9 +33,9 @@ Acessar a url /admin
 clicar em RESET WORLD
 
 ### COMANDOS DEV ###
-**rails s** rodar o game
-**rake game:reset_server** reseta a base de dados e gera um novo mapa
-**rake game:rec999** enche os recursos de todos os jogadores
+**rails s** rodar o game \n
+**rake game:reset_server** reseta a base de dados e gera um novo mapa \n
+**rake game:rec999** enche os recursos de todos os jogadores \n
 **rake game:resolve_events** termina todos os eventos do jogo
 
 ### ------------------------------ ###
