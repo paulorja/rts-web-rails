@@ -1,5 +1,10 @@
 ## Setup ##
 
+### Link to play ###
+
+http://rts.linuxzando.com.br
+
+
 ### Pra rodar o projeto ###
 
 * sudo apt-get install imagemagick libmagickwand-dev
