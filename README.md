@@ -5,7 +5,7 @@ http://rts.linuxzando.com.br
 
 ## Setup ##
 
-### Pra rodar o projeto ###
+### Run ###
 ```
 Ruby: 2.3.1
 Rails: 4.2.6
@@ -18,31 +18,31 @@ rails server
 ```
 ### Mysql ###
 ```
-Criar usuário:
+Create user:
 username: rts-web
 password: 123456
 ```
 
-## Desenvolvimento ##
+## Development ##
 
-### Rodando o jogo ###
+### Run server ###
 ```
 rails s
-Entrar com admin (admin, 1234)
-Acessar a url /admin
-clicar em RESET WORLD
+Enter with admin (admin, 1234)
+URL: /admin
+click: RESET WORLD
 ```
-### COMANDOS DEV ###
+### RAKE DEV COMMANDS ###
 ```
-**rails s** rodar o game
-**rake game:reset_server** reseta a base de dados e gera um novo mapa
-**rake game:rec999** enche os recursos de todos os jogadores
-**rake game:resolve_events** termina todos os eventos do jogo
+**rails s** run server
+**rake game:reset_server** reset database and generate a new map
+**rake game:rec999** send 999999 recourses to all players
+**rake game:resolve_events** finish all events
 ```
 ### ------------------------------ ###
 
 ### Containers ###
-* ter docker instalado (https://docs.docker.com/engine/installation/)
+* install docker (https://docs.docker.com/engine/installation/)
 
 ### dockerfile mysql 
 
