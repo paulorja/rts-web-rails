@@ -1,8 +1,3 @@
-
-## Play ##
-
-http://rts.linuxzando.com.br
-
 ## Setup ##
 
 ### Run ###
